@@ -1,0 +1,1762 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts, amsmath, amssymb}
+\usepackage[none]{hyphenat}
+\usepackage{fancyhdr} %create a custom header and footer
+\usepackage[utf8]{inputenc}
+\usepackage[english, main=ukrainian]{babel}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage[scr]{rsfso}
+\usepackage{physics}
+\usepackage[unicode]{hyperref}
+\usepackage{caption}
+\usepackage{scalerel,stackengine}
+\stackMath
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern-.6pt\bigwedge\kern-.6pt}%
+    {\rule[-\textheight/2]{1ex}{\textheight}}%WIDTH-LIMITED BIG WEDGE
+  }{\textheight}% 
+}{0.5ex}}%
+\stackon[1pt]{#1}{\tmpbox}%
+}
+\usepackage{ragged2e}
+\usepackage[shortcuts]{extdash}
+
+
+\fancyhead{}
+\fancyfoot{}
+\parindent 0ex
+\DeclareMathOperator*\uplim{\overline{lim}}
+\def\stackbelow#1#2{\underset{\displaystyle\overset{\displaystyle\shortparallel}{#2}}{#1}}
+\def\residue#1#2{\underset{z = {#1}}{\textrm{res}} {#2}}
+\def\residuee#1#2{\underset{p = {#1}}{\textrm{res}} {#2}}
+\def\hugespace{\vspace{5mm} \\}
+
+\usepackage{blindtext}
+
+
+\begin{document}
+	\begin{titlepage}
+		\begin{center}
+		\hfill
+		\vfill
+		\line(1,0){400}\\
+		\large{\textbf{Гармонічний аналіз + операційне числення}}\\[1mm]
+		{\textbf{семестр 4}}\\[1mm]
+		\line(1,0){400}\\
+		\vfill
+        	\end{center}
+    	\end{titlepage}
+    
+	\tableofcontents
+	\newpage
+	
+	\section{Диференціювання}
+	\subsection{Основні означення}
+	\textbf{Definition 1.1.1.} Задана функція $f: A \rightarrow \mathbb{C}$ і т. $z_0 \in A$ - гранична точка\\
+	Функція $f$ називається \textbf{диференційованою в т.} $z_0$, якщо
+	\begin{align*}
+	\exists L \in \mathbb{C}: f(z)-f(z_0)=L(z-z_0) + o(|z-z_0|), z \rightarrow z_0
+	\end{align*}
+	А \textbf{похідною в т.} $z_0$ називають границю
+	\begin{align*}
+	f'(z_0) = \lim_{z \to z_0} \frac{f(z)-f(z_0)}{z-z_0},
+	\end{align*}
+	якщо вона існує\\
+	
+	\textbf{Proposition 1.1.2.} Функція $f: A \rightarrow \mathbb{C}$ - диференційована в т. \\ $z_0 \in A \iff \exists f'(z_0)$ \\
+	\textbf{Proof.}\\
+	$f$ - диференційована в т. $z_0 \iff \exists L \in \mathbb{C}: \\f(z)-f(z_0)=L(z-z_0) + o(|z-z_0|) \iff \\ \iff o(|z-z_0|) = f(z)-f(z_0) - L(z-z_0) \iff \\ \iff
+	\displaystyle \lim_{z \to z_0} \frac{f(z)-f(z_0) - L(z-z_0)}{z-z_0} = \lim_{z \to z_0} \frac{f(z)-f(z_0)}{z-z_0} - L = 0 \iff \\ \iff \exists L = f'(z_0) = \lim_{z \to z_0} \frac{f(z)-f(z_0)}{z-z_0}$ $\blacksquare$ \hugespace
+	\textbf{Remark 1.1.2.} Оскільки наша функція $f$ є комплексною, а змінна $\\z = x + iy$, то $f$ можна представити наступним чином
+	\begin{align*}
+	f(x,y) = u(x,y) + iv(x,y),
+	\end{align*}
+	Тобто як функцію від двох змінних з дійсною та уявною частинами
+	\hugespace
+	\textbf{Theorem 1.1.3. Теорема Коші-Рімана}\\
+	Функція $f: A \rightarrow \mathbb{C}$ - диференційована в т. $z_0 = x_0+iy_0 \in A \iff u,v$ - диференційовані в т. $(x_0,y_0)$ та виконуються наступні умови: \\
+	$
+	\begin{cases}
+		\displaystyle\frac{\partial u}{\partial x}(x_0,y_0) = \frac{\partial v}{\partial y}(x_0,y_0)\\
+		\displaystyle\frac{\partial u}{\partial y}(x_0,y_0) = -\frac{\partial v}{\partial x}(x_0,y_0)\\
+	\end{cases}
+	$\\
+	\textbf{Proof.}\\
+	$f$ - диференційована в т. $z_0 \iff \exists L \in \mathbb{C}: \\f(z)-f(z_0)=L(z-z_0) + o(|z-z_0|) \iff \\
+	\iff \exists L=A+ib: u(x,y)+iv(x,y)-u(x_0,y_0)-v(x_0,y_0)= \\ =(A+iB)(x+iy-x_0-iy_0)+o(|z-z_0|) \iff \\
+	\iff \exists A,B \in \mathbb{R}: u(x,y)-u(x_0,y_0)+i(v(x,y)-v(x_0,y_0))=A(x-x_0)+B(y-y_0)+i(A(y-y_0)+B(x-x_0))+o(|z-z_0|)+io(|z-z_0|) \iff \\
+	\iff \exists A,B \in \mathbb{R}: 	\begin{cases}
+	u(x,y)-u(x_0,y_0)=A(x-x_0)+B(y-y_0)+o(|z-z_0|)\\
+	v(x,y)-v(x_0,y_0)=A(y-y_0)+B(x-x_0)+o(|z-z_0|)
+	\end{cases} \\ \iff u,v$ - диференційовані в т. $(x_0,y_0)$ та:
+		$
+	\begin{cases}
+		\displaystyle\frac{\partial u}{\partial x}(x_0,y_0) = A = \frac{\partial v}{\partial y}(x_0,y_0)\\
+		\displaystyle\frac{\partial u}{\partial y}(x_0,y_0) -B= -\frac{\partial v}{\partial x}(x_0,y_0)\\
+	\end{cases}
+	$
+	$\blacksquare$
+	\hugespace
+	\textbf{Remark 1.1.3.(1).} Оскільки $f'(z_0)=L$, то за Коші-Рімана,
+	\begin{align*}
+	f'(z_0) = L = A+iB = \frac{\partial u}{\partial x}(x_0,y_0) + i\frac{\partial v}{\partial x}(x_0,y_0),
+	\end{align*}
+	Коротше, є чотири варіанти, як розписати похідну
+	\hugespace
+	
+	\textbf{Example 1.1.3.} Знайти похідну $f(z)=e^z$\\
+	$\displaystyle e^z=e^{x+iy}=e^x(\cos y+i \sin y)=e^x \cos y +i e^x \sin y
+	\\ \Rightarrow u(x,y)=e^x \cos y$; $v(x,y) = e^x \sin y$\\
+	Перевіримо умову Коші-Рімана:\\
+	$\displaystyle\frac{\partial u}{\partial x}=e^x \cos y$; 
+	$\displaystyle\frac{\partial v}{\partial y}=e^x \cos y$; 
+	$\displaystyle\frac{\partial u}{\partial y}=-e^x \sin y$; 
+	$\displaystyle\frac{\partial v}{\partial x}=e^x \sin y$;
+	\\$\Rightarrow \begin{cases}
+	\displaystyle e^x \cos y = e^x \cos y \\
+	\displaystyle -e^x \sin y = -(e^x \sin y)\\
+	\end{cases}$\\
+	Дана система виконується $\forall x,y \in \mathbb{R}$. Отже, $f$ - диференційована в будь-якій т. $z_0$, а її похідна дорівнює:\\
+	$\displaystyle f'(z)=\frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x} = e^x \cos y + ie^x \sin y = e^x e^{iy} = e^z$
+	\hugespace
+	
+	\textbf{Remark 1.1.3.(2).} Насправді, всі табличні похідні справедливі й для комплекснозначного аргументу. Доведння проводиться такмими самими шляхами.\\
+	Також зазначу, що арифметика похідної та похідна від композиції теж зберігається
+	\hugespace
+	
+	\textbf{Theorem 1.1.4.} Якщо $f'(z) = 0$ в будь-якій точці, то $f(z)=C$\\
+	\textbf{Proof.}\\
+	$\displaystyle f'(z)=\frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x} = 0 \Rightarrow \begin{cases}
+	\displaystyle\frac{\partial u}{\partial x}=0\\
+	\displaystyle\frac{\partial v}{\partial x}=0\\
+	\end{cases} \overset{\textrm{умова Коші-Рімана}}{\Rightarrow}
+	\begin{cases}
+	du=0\\
+	dv=0\\
+	\end{cases} \Rightarrow \\ \Rightarrow
+	\begin{cases}
+	u=C\\
+	v=C\\
+	\end{cases}
+	$\\
+	Отже, $f(z)=C$ $\blacksquare$
+	\hugespace
+	\textbf{Corollary 1.1.4.} Якщо $f'(z)=g'(z)$ в будь-якій точці, то $f(z)=g(z)+C$\\
+	\textit{Розглянути функцію} $h(z)=f(z)-g(z)$
+	\hugespace
+	
+	\subsection{Умова Коші-Рімана в полярній системі \\координат (*)}
+	Задане комплексне число $z=x+iy$ представимо в іншому вигляді:
+	$z=|z|(\cos \varphi + i \sin \varphi)$\\
+	Тоді якщо покласти $\rho = |z|$, то:
+	\\$\begin{cases}
+	\displaystyle x = \rho \cos \varphi \\
+	\displaystyle y = \rho \sin \varphi \\
+	\end{cases}$\\
+	Задана комплекснозначна функція $f(z)$, яку можна переписати таким чином:\\
+	$f(z) = u(x,y) + i(x,y)$\\
+	Знайдемо наступні похідні:\\
+	$\displaystyle\frac{\partial u}{\partial \rho} = \frac{\partial u}{\partial x}\frac{\partial x}{\partial \rho}+\frac{\partial u}{\partial y}\frac{\partial y}{\partial \rho} = \frac{\partial u}{\partial x} \cos \varphi+\frac{\partial u}{\partial y} \sin \varphi$ $(1)$\\
+	$\displaystyle\frac{\partial u}{\partial \varphi} = \frac{\partial u}{\partial x}\frac{\partial x}{\partial \varphi}+\frac{\partial u}{\partial y}\frac{\partial y}{\partial \varphi} = -\rho \sin \varphi\frac{\partial u}{\partial x} + \rho \cos \varphi \frac{\partial u}{\partial y}$ $(2)$\\
+	Отримали систему двох рівнянь відносно $\displaystyle \frac{\partial u}{\partial x}, \frac{\partial u}{\partial y}$, яку ми розв'яжемо.\\
+	Для $\displaystyle \frac{\partial u}{\partial x}$ необхідно: $(1)\cdot \rho \cos \varphi - (2)\cdot \sin \varphi$\\
+	Для $\displaystyle \frac{\partial u}{\partial y}$ необхідно: $(1)\cdot \rho \sin \varphi + (2)\cdot \cos \varphi$\\
+	$\Rightarrow \begin{cases}
+				 \displaystyle \frac{\partial u}{\partial x} = \displaystyle \frac{\partial u}{\partial \rho} \cos \varphi - \frac{1}{\rho} \frac{\partial u}{\partial \varphi} \sin \varphi\\
+				 \displaystyle \frac{\partial u}{\partial y} = \displaystyle \frac{\partial u}{\partial \rho} \sin \varphi + \frac{1}{\rho} \frac{\partial u}{\partial \varphi} \cos \varphi\\
+				 \end{cases}$\\
+	Аналогічними міркуваннями ми знайдемо функцію $v$. Тоді отримаємо:\\
+	$\begin{cases}
+				 \displaystyle \frac{\partial v}{\partial y} = \displaystyle \frac{\partial v}{\partial \rho} \sin \varphi + \frac{1}{\rho} \frac{\partial v}{\partial \varphi} \cos \varphi\\
+				 \displaystyle \frac{\partial v}{\partial x} = \displaystyle \frac{\partial v}{\partial \rho} \cos \varphi - \frac{1}{\rho} \frac{\partial v}{\partial \varphi} \sin \varphi\\
+				 \end{cases}$\\
+	Нарешті, використаємо умову Коші-Рімана:\\
+	$
+	\begin{cases}
+		\displaystyle\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}\\
+		\displaystyle\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}\\
+	\end{cases} \Rightarrow
+	\begin{cases}
+		\displaystyle \frac{\partial u}{\partial \rho} \cos \varphi - \frac{1}{\rho} \frac{\partial u}{\partial \varphi} \sin \varphi = \frac{\partial v}{\partial \rho} \sin \varphi + \frac{1}{\rho} \frac{\partial v}{\partial \varphi} \cos \varphi$ (1) $\\
+		\displaystyle \frac{\partial u}{\partial \rho} \sin \varphi + \frac{1}{\rho} \frac{\partial u}{\partial \varphi} \cos \varphi = -\frac{\partial v}{\partial \rho} \cos \varphi + \frac{1}{\rho} \frac{\partial v}{\partial \varphi} \sin \varphi$ (2) $\\
+	\end{cases}
+	$\\
+	Зробимо наступні перетворення системи:\\
+	$\begin{cases}
+		$(1)$\cdot \cos \varphi +$(2)$\cdot \sin \varphi \\
+		$(1)$\cdot \sin \varphi -$(2)$\cdot \cos \varphi \\
+	\end{cases}$\\
+	Остаточно отримаємо умову Коші-Рімана в полярній системі координат:
+	\begin{align*}
+			\begin{cases}
+		\displaystyle\frac{\partial u}{\partial \rho} = \frac{1}{\rho}\frac{\partial v}{\partial \varphi}\\
+		\displaystyle\frac{1}{\rho}\frac{\partial u}{\partial \varphi} =- \frac{\partial v}{\partial \rho}
+	\end{cases}
+	\end{align*}
+	\\
+	Показниковим буде наступний приклад, навіщо взагалі полярна умова:
+	\hugespace
+	\textbf{Example 1.2.1.} Знайти похідну $f(z)=z^n$\\
+	Якщо розписати $z^n = (x+iy)^n$, то далі буде неприємно робити справу по біному Ньютона. Тому краще розглянути полярну заміну:\\
+	$f(z) = z^n = |z^n|(\cos n \varphi + i\sin n \varphi) = \overset{u(\rho, \phi)}{\rho^n \cos n\varphi}  + i \overset{v(\rho, \phi)}{\rho^n \sin n\varphi}$\\
+			$\Rightarrow \begin{cases}
+		\displaystyle\ n \rho^{n-1} \cos n\varphi = \frac{1}{\rho} \rho^n \cdot n \cos n \varphi \\
+		\displaystyle -\frac{1}{\rho} \cdot \rho^n n \sin n \varphi =- n \rho^{n-1} \sin n \varphi
+	\end{cases}$
+	\\
+	Умова Коші-Рімана виконується завжди. А тому похідна існує всюди. Знайдемо її:\\
+	$f'(z)= \displaystyle \frac{1}{\rho} \rho^n \cdot n \cos n \varphi + i n \rho^{n-1} \sin n \varphi = n\rho^{n-1}\left(\cos n\varphi + i \sin n\varphi  \right) = nz^{n-1}$
+	\hugespace
+	
+	\subsection{Гармонічні функції}
+	\textbf{Definition 1.3.1.} Функція $f$ називається \textbf{аналітичною в т.} $z_0$, якщо вона є диференційованою в околі т. $z_0$, тобто:
+	\begin{align*}
+	\exists \delta: \forall z \in A: |z-z_0|<\delta \Rightarrow f \text{ -диференційована в т.} z
+	\end{align*}
+	Функція $f$ є \textbf{аналітичною в області} $D$, якщо $\forall z \in D: f$ - аналітична в т. $z$\\
+	
+	\textbf{Definition 1.3.2.} Задана функція $H: A \rightarrow \mathbb{R}^2$ і така т. $(x_0,y_0)$, що на цьому околі існує часткові похідні других порядків \\
+	Функція $H$ називається \textbf{гармонічною в т.} $(x_0,y_0)$, якщо справедлива рівність:
+	\begin{align*}
+	\frac{\partial^2 H}{\partial x^2} + \frac{\partial^2 H}{\partial y^2} = 0
+	\end{align*}
+	\\
+	
+	\textbf{Theorem 1.3.3.} Задана одна з функцій $v$ (або $u$) - гармонічна і двічі аналітична в околі т. $z_0$. Тоді $\exists u$ (або $v$)$: f(z) = u(x,y) + iv(x,y)$ - аналітична в т. $z_0$\\
+	\textbf{Proof.}\\
+	Оскільки $v$ - гармонічна, то\\
+	$\displaystyle\frac{\partial^2 v}{\partial x^2} + \frac{\partial^2 v}{\partial y^2} = 0$\\
+	Також оскільки $f$ - аналітична, то для неї виконується умова Коші-Рімана:\\
+	$
+	\begin{cases}
+		\displaystyle\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}\\
+		\displaystyle\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}\\
+	\end{cases}
+	$\\
+	Для знаходження $u$ можна зробити наступні кроки:\\
+	$\displaystyle du = \frac{\partial u}{\partial x}dx + \frac{\partial u}{\partial y}dy = \frac{\partial v}{\partial y}dx -\frac{\partial v}{\partial x}dy = Pdx+Qdy$\\
+	Перевіримо, що ми зможемо знайти цю функцію через інтеграл за шляхом. Для цього дізнаємось, що:\\
+	$\displaystyle \frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}$. 
+	\\Справді, $\displaystyle \frac{\partial}{\partial y}\left( \frac{\partial v}{\partial y} \right) = \frac{\partial^2 v}{\partial y^2}$ та $\displaystyle \frac{\partial}{\partial x}\left( -\frac{\partial v}{\partial x} \right) = -\frac{\partial^2 v}{\partial x^2}$\\
+	Рівність є справедливою в силу гармонічності функції. Тому наш інтеграл може бути порахованим і він не залежить від шляху, тому:\\
+	$\displaystyle u = \int_{(x_0, y_0)}^{(x,y)} \frac{\partial v}{\partial y}\,dx -\frac{\partial v}{\partial x}\,dy + C$\\
+	Отже, $f(z) = u(x,y) + iv(x,y)$\\
+	Випадок, коли дано, що $u$ - гармонічна, є аналогічним $\blacksquare$
+	\hugespace
+	\textbf{Remark 1.3.3.(1).} Зворотнє твердження до \textbf{Th. 1.3.3.} є вірним\\
+	\textit{Дійсно, якщо $f$ - аналітична, то ми використовуємо умову Коші-Рімана. Якщо систему продиференціювати спочатку по $x$, додати обидві рядочки, а потім зробити ті самі процедури по $y$, то отримаємо умови гармонічних функцій для $u,v$}
+	\hugespace
+	\textbf{Remark 1.3.3.(2).} Таке доведення, скоріш, є конструктивним на основі прикладів, аніж теоретичним
+	\hugespace
+	\textbf{Example 1.3.3.} Дізнатись, чи є функція $u(x,y)=2xy+3$ гармонічною. Якщо так, відновити функцію $f(x,y) = u(x,y)+iv(x,y)$\\
+	$\displaystyle\frac{\partial u}{\partial x} = 2y \Rightarrow \frac{\partial^2 u}{\partial x^2} = 0$\\
+	$\displaystyle\frac{\partial u}{\partial y} = 2x \Rightarrow \frac{\partial^2 u}{\partial y^2} = 0$\\
+	$\Rightarrow \displaystyle\frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0$ - гармонічна. Отже, за \textbf{Th. 1.3.3.}, ми можемо знайти уявну частину функції для аналітичної функції $f(z)=u(x,y)+iv(x,y)$. Скористаємось умовою Коші-Адамара:\\
+		$
+	\begin{cases}
+		\displaystyle 2y = \frac{\partial v}{\partial y}\\
+		\displaystyle\ 2x = -\frac{\partial v}{\partial x}\\
+	\end{cases} \Rightarrow dv = -2x\,dx + 2y\,dy\\
+	\displaystyle\Rightarrow v(x,y) = \int_{(0,0)}^{(x,y)}-2x\,dx+2y\,dy=\cdots=-x^2+y^2+C
+	$\\
+	Отже, $f(x,y) = 2xy+3+i(y^2-x^2+C)$\\
+	Якщо звести до функції вигляду від змінної $z = x+iy$, то:\\
+	$f(z) = -iz^2+C$
+	\hugespace
+	
+	\subsection{Геометричне застосування}
+	Задана функція $f(z)$ - аналітична в т. $z_0$, тобто диференційована в околі цієї точки\\
+	В цьому околі розглянемо диференційовану криву \\ $\gamma(t) = z(t) = x(t)+iy(t)$. Вважаємо $z(t_0) = z_0$\\
+	Подіємо функцією $f$ на цю криву $\gamma$ та отримаємо нову криву \\ $\tilde{\gamma}(t) = f(z(t))$\\
+	$\tilde{\gamma}(t)$ - диференційована в околі т. $t_0$\\
+	$(\tilde{\gamma}(t))' = f'(z(t))z'(t) \iff
+	\begin{cases}
+	|\tilde{\gamma}(t)|' = |f'(z(t))||z'(t)| \\
+	\arg ((\tilde{\gamma}(t))') = \arg(f'(z(t)) + \arg(z'(t))
+	\end{cases}
+	$\\
+	Згадаємо формулу довжини кривої: $l(\gamma) = \displaystyle \int_{t_1}^{t_2} \sqrt{(x'(t))^2 +(y'(t))^2}\,dt$\\
+	В нашому випадку: \\ 
+	$l(\tilde{\gamma}) = \displaystyle \int_{t_1}^{t_2} |(\tilde{\gamma}(t))'|\,dt$\\
+	$l(\gamma) = \displaystyle \int_{t_1}^{t_2} |z'(t)|\,dt$\\
+	Тоді $|f'(z(t))|$ - \textbf{коефіцієнт розтягнення в т.} $z_0$\\
+	\\
+	$(\tilde{\gamma}(t))', \gamma'(t))$ - дотичні вектори до кривої\\
+	Тоді $\arg f'(z)$ - \textbf{кут, на який повертається дотична вектор}
+	\hugespace
+	Більш детально про аналітичні функції можна побачити в підручнику Шабата "Введение в комплексный анализ"
+	\begin{figure}[h]
+	\captionsetup{justification=centering}
+	\centerline{\includegraphics[scale = 1]{geom sense.png}}
+	\caption{Шматок кривої навколо т. $z_0$ розтянули та повернули на деякий кут. (на малюнку масштаб не відповідає реальності: тут $z$ має бути близьким до $z_0$)}
+	\end{figure}
+	
+	\textbf{Example.} Знайти кут повороту та коефіцієнт розтягнення в т. $z_0 = 1+i$ для $f(z) = z^3$\\
+	$f(z_0)=(1+i)^3=(-2+2i)$, це нам ще знадобиться\\
+	Оскільки $f'(z) = 3z^2$, то $f'(z_0) = 3(1+i)^2 = 6i$\\
+	$\displaystyle \Rightarrow |f'(z_0)| = 6, \arg f'(z_0) = \frac{\pi}{2}$\\
+	\newpage
+
+	
+	%END OF PARAGRAPH 1%
+	
+	
+	\section{Інтегрування}
+	\subsection{Основні методи інтегрування}
+	Задана функція $f(z) = u(x,y) + iv(x,y)$. Нехай також $\gamma$ - орієнтований шлях в просторі $\mathbb{C}$. Необхідно знайти наступний інтеграл:\\
+	$\displaystyle \int\displaylimits_{\gamma} f(z)\,dz = \int\displaylimits_{\gamma} \left(u(x,y)+iv(x,y) \right)\,\underset{(?)}{(dx+i\,dy)} \overset{(\textrm{розкриваємо дужки)}}{=} \\ = \int\displaylimits_{\gamma} u(x,y)\,dx-v(x,y)\,dy+ i\int\displaylimits_{\gamma} v(x,y)\,dx+u(x,y)\,dy$\\
+	Отримали стандартний криволінійний інтеграл II роду\\\\
+	Якщо $\gamma = \{ z(t), t \in \vec{[a,b]} \}$ та $dz(t)=z'(t)\,dt$, то інтеграл зведеться до наступного вигляду:\\
+	$\displaystyle \int\displaylimits_{\gamma} f(z)\,dz = \int_a^b f(z(t))z'(t)\,dt$\\
+	Або\\
+	$\displaystyle\int\displaylimits_{\gamma} u(x,y)\,dx-v(x,y)\,dy+ i\int\displaylimits_{\gamma} v(x,y)\,dx+u(x,y)\,dy = \\ = \int_a^b u(x(t),y(t))x'(t)-v(x(t),y(t))y'(t)\,dt + \\ + i\int_a^b v(x(t),y(t))x'(t)+u(x(t),y(t))y'(t)\,dt$\\
+	\hugespace
+	\textbf{Example 2.1.1.} Обчислити $\displaystyle\int\displaylimits_{\gamma} \operatorname{Im}(z) \,dz$, де\\ $\gamma=\{(x,y): y=2x^2, 0 \leq x \leq 1 \}$\\
+	$z=x+iy=x+2ix^2 \Rightarrow dz=dx+i\,dy=(1+4ix)\,dx$\\
+	Тоді $\displaystyle\int\displaylimits_{\gamma} \operatorname{Im}(z) \,dz = \int_0^1 2x^2(1+4ix)\,dx = \int_0^1 2x^2+8ix^3\,dx = \frac{2}{3}+2i$
+	\hugespace
+	
+	\subsection{Властивості та інші теореми}
+	\textbf{Proposition 2.2.1.} Інтеграл $\displaystyle \int\displaylimits_{\gamma} f(z)\,dz$ від параметризації кривої не залежить\\
+	\textbf{Proposition 2.2.2.} Для цього ж інтегралу  виконуються лінійні властивості\\
+	\textit{Випливають з властивостей криволінійного інтегралу II роду}
+	\hugespace
+	\textbf{Theorem 2.2.3. Ознака модуля}\\
+	$\displaystyle \left\lvert\int\displaylimits_{\gamma} f(z)\,dz \right\rvert \leq \int\displaylimits_{\gamma} |f(z)| \,|dz|$\\
+	\textbf{Proof.}\\
+	Параметризуємо криву $\gamma = \{z(t), t \in \vec{[a,b]}\}$. Тоді\\
+	$z(t)=x(t)+iy(t)$\\
+	$dz(t) = (x'(t)+iy'(t))\,dt$\\
+	$\displaystyle dl = \sqrt{(x'(t))^2+(y'(t))^2}\,dt=|z'(t)|\,dt=|dz|$. Тепер ми знаємо про $|dz|$\\
+	Позначимо $J = \displaystyle \int\displaylimits_{\gamma} f(z)\,dz$. Оскільки це є комплексне число, то $J = |J|e^{i\varphi}$\\
+	$\Rightarrow |J|=Je^{-i\varphi}$, тоді\\
+	$\displaystyle \abs{\int\displaylimits_{\gamma} f(z)\,dz} = e^{-i \varphi} \int\displaylimits_{\gamma} f(z)\,dz = \int_a^b e^{-i \varphi} f(z(t)) z'(t)\,dt = \\ = \int_a^b \Re(e^{-i \varphi} f(z(t)) z'(t))\,dt + \overbrace{\int_a^b \Im(e^{-i \varphi} f(z(t)) z'(t))\,dt}^{=0} =\int_a^b \Re(e^{-i \varphi} f(z(t)) z'(t))\,dt \\ \overset{|J| \geq 0}{=} \abs{\int_a^b \Re(e^{-i \varphi} f(z(t)) z'(t))\,dt} \leq \int_a^b |\Re(e^{-i \varphi}|f(z(t))||z'(t))|\,dt \boxed{\leq} $\\
+	Якщо $w = \alpha + i \beta$, то $|w| = \sqrt{\alpha^2 + \beta^2} \geq \sqrt{\alpha^2} = |\Re w|$\\
+	Тобто $|\Re w| \leq |w|$\\
+	$\boxed{\leq} \displaystyle \int_a^b |e^{-i \varphi} f(z(t)) z'(t)|\,dt = \int_a^b |f(z(t))|z'(t)\,dt = \int\displaylimits_{\gamma} |f(z)|\,|dz|$ $\blacksquare$
+	\hugespace
+	
+	Перед іншими теоремами залишу нагадання
+	\begin{figure}[h]
+	\captionsetup{justification=centering}
+	\centerline{\includegraphics[scale = 0.5]{simply_connected.png}}
+	\caption{Ліворуч - однозв'язна область. Праворуч - вже не є однозв'язною, оскільки вона містить (грубо кажучи) дірки}
+	\end{figure}
+	\hugespace
+	
+	\textbf{Theorem 2.2.4. Теорема Коші}\\
+	Задана функція $f$ - аналітична в однозв'язній області $D$. Тоді для довільного замкненого контуру $\gamma$ в $D$
+	\begin{align*}
+	\oint\displaylimits_{\gamma} f(z)\,dz=0
+	\end{align*}
+	\begin{figure}[h]
+	\centerline{\includegraphics[scale = 1]{g1026.png}}
+	\caption{Однозв'язна область $D$ і замкнений контур $\gamma$}
+	\end{figure}
+	\textbf{Proof.}\\
+	$\displaystyle\oint f(z)\,dz = \oint u\,dx-v\,dy + i\oint v\,dx+u\,dy \fbox{=}$\\
+	За теоремою Коші-Рімана, можна побачити, що коефіцієнти при $dx$ рівні коефіцієнту при $dy$. Тоді за лемою Пуанкаре про незалежність від шляху, ми отримаємо бажане\\
+	$\fbox{=} 0$  $\blacksquare$\\
+	\hugespace
+	\textbf{Corollary 2.2.4.} Інтеграл не залежить від шляху\\
+	\hugespace
+	\textbf{Example 2.2.4.} $\displaystyle \oint\displaylimits_{|z| = \frac{1}{2}} \frac{z^2}{z-i} = 0$\\
+	Звісно, є неприємна точка $z = i$, але незважаючи на це, в колі $\displaystyle |z|=\frac{1}{2}$ наша функція є аналітичною. Тому \textbf{Th.2.2.4.} спрацьовує
+	\hugespace
+	
+	\textbf{Theorem 2.2.5.} Задана функція $f$ - аналітична в однозв'язній області $D$. Тоді функція $f$ має первісну $F$ в області $D$\\
+	\textbf{Proof.}\\
+	Розглянемо функцію $F(z)=\displaystyle \int_{z_0}^z f(\zeta)\,d\zeta$ - інтеграл з верхньою межею. Перевіримо, що $F'(z)=f(z)$.\\
+	$\displaystyle \frac{F(z)-F(z_1)}{z-z_1} = \frac{1}{z-z_1} \left[ \int_{z_0}^z f(\zeta)\,d\zeta - \int_{z_0}^{z_1} f(\zeta)\,d\zeta \right] = \frac{1}{z-z_1} \int_{z_1}^z f(\zeta)\,d\zeta$\\
+	В той же самий час\\
+	$\displaystyle f(z_1)=f(z_1)\frac{1}{z-z_1}\cdot(z-z_1)=\frac{1}{z-z_1} \int_{z_1}^z f(z_1)\,d\zeta$\\
+	\hugespace
+	\textbf{Remark.} $\displaystyle\int _{z_1}^z 1\,d\zeta \boxed{=}$\\
+	Задамо $\zeta = z_1+t(z-z_1)$. Тоді $t \in [0,1]$, а також $d\zeta = (z-z_1)\,dt$\\
+	$\boxed{=} \displaystyle\int _0^1 (z-z_1)\,dt = z-z_1$\\
+	Дивно виглядає, але поки невідомо, що формула Ньютона-Лейбніца тут працює
+	\hugespace
+	Звідси випливає, що:\\
+	$\displaystyle \left\lvert \frac{F(z)-F(z_1)}{z-z_1} - f(z_1) \right\rvert = \frac{1}{|z-z_1|} \left\lvert \int_{z_1}^z f(\zeta)\,d\zeta - \int_{z_1}^z f(z_1)\,d\zeta \right\rvert =\\= \frac{1}{|z-z_1|} \left\lvert \int_{z_1}^z f(\zeta)-f(z_1)\,d\zeta \right\rvert \leq \frac{1}{|z-z_1|} \int_{z_1}^z |f(\zeta)-f(z_1)|\,|d\zeta|\fbox{<}$\\
+	Оскільки $f$ - аналітична, то вона є неперервною. Звідси - рівномірно неперервна, тобто $\forall \varepsilon>0$ $\exists \delta: \forall z: |z-z_0|<\delta \Rightarrow |f(z)-f(z_1)|<\varepsilon$. Тоді $|\zeta - z_1|<\delta \Rightarrow |f(\zeta)-f(z_1)|<\varepsilon$\\
+	$\displaystyle \fbox{<} \frac{1}{|z-z_1|} \int_{z_1}^z \varepsilon \,|d\zeta| = \varepsilon$\\
+	Це означає, що $\displaystyle \exists \lim_{z\to z_1} \frac{F(z)-F(z_1)}{z-z_1}=f(z_1)=F'(z_1)$. І це $\forall z_1 \in D$ $\blacksquare$
+	\hugespace
+	\textbf{Corollary 2.2.5.} Якщо $\textrm{Ф}$ - первісна, то $\displaystyle \int_{z_0}^{z_1} f(z)\,dz = \textrm{Ф}(z_1)-\textrm{Ф}(z_0)$\\
+	\textbf{Proof.}\\
+	$\textrm{Ф}$ - первісна $\Rightarrow \textrm{Ф}'(z)=f(z)$\\
+	За щойно доведеною теоремою, $F'(z)=f(z)$. Отже, $\textrm{Ф}(z)=F(z)+C$\\
+	$\begin{cases}
+		\textrm{Ф}(z_0) = 0 + C\\
+		\textrm{Ф}(z_1) = F(z_1) + C\\
+	\end{cases} \Rightarrow F(z_1)=\textrm{Ф}(z_1)-\textrm{Ф}(z_0)$ $\blacksquare$\\
+	\hugespace
+	\textbf{Example 2.2.5.!} Обчислити $\displaystyle \oint \frac{dz}{(z-z_0)^n}$ по колу $\{z: |z-z_0|=1\}, n\in \mathbb{N}$\\
+	Зробимо параметризацію: $\displaystyle z-z_0=e^{it},t \in \vec{[0,2\pi]}$\\
+	$dz=ie^{it}\,dt$\\
+	$\Rightarrow \displaystyle \oint \frac{dz}{(z-z_0)^n}= \int_0^{2\pi} \frac{ie^{it}\,dt}{e^{nit}}=i\int_0^{2\pi}e^{(1-n)it}\,dt =$
+	$\left[ 
+      \begin{gathered} 
+        2 \pi i, n =1 \\ 
+        \frac{1}{1-n}e^{(1-n)it} \Big|_0^{2\pi} = 0, n \neq 1 \\ 
+      \end{gathered} 
+\right.$
+	\hugespace
+	
+	\textbf{Theorem 2.2.6. Теорема Коші 2}\\
+	Задана функція $f$ - аналітична в області $D$. Відомо, що замкнені контури $\gamma_1$, $\gamma_2$ обмежують однорідну область $D_{\gamma_1 \gamma_2}$, в якої $f$ - аналітична. Тоді
+	\begin{align*}
+	\oint\displaylimits_{\gamma_1} f(z)\,dz = \oint\displaylimits_{\gamma_2} f(z)\,dz
+	\end{align*}
+	\begin{figure}[h]
+	\centerline{\includegraphics[scale = 1]{path1375.png}}
+	\caption{Тут $D_{\gamma_1 \gamma_2}$ яскраво-блакитна область}
+	\end{figure}
+	\textbf{Proof.}\\
+	Вважатимемо, що вони протилежно напрямлені, контури $\gamma_1^+,\gamma_2^+$\\
+	$\displaystyle\oint\displaylimits_{\gamma_1^+} f(z)\,dz - \oint\displaylimits_{\gamma_2^+} f(z)\,dz = \displaystyle\oint\displaylimits_{\gamma_1^+} f(z)\,dz + \oint\displaylimits_{\gamma_2^-} f(z)\,dz = \oint\displaylimits_{\gamma_1^+ \cup \gamma_2^-} f(z)\,dz = \\ = \oint\displaylimits_{\gamma_1^+ \cup \gamma_2^-} u\,dx-v\,dy + i\oint\displaylimits_{\gamma_1^+ \cup \gamma_2^-} u\,dy+v\,dx \overset{\textrm{ф-ла Гріна}}{=} \\ = \iint\displaylimits_{D_{\gamma_1^+ \cup \gamma_2^-}} -\frac{\partial v}{\partial x} - \frac{\partial u}{\partial y} \,dxdy + i\iint\displaylimits_{D_{\gamma_1^+ \cup \gamma_2^-}} -\frac{\partial v}{\partial y} + \frac{\partial u}{\partial x} \,dxdy \overset{\textrm{умова Коші-Рімана}}{=} 0$ $\blacksquare$\\
+	\hugespace
+	
+	\textbf{Theorem 2.2.7. Інтегральна формула Коші}\\
+	Задана функція $f$ - аналітична в області $D$ і т. $z_0 \in D$. Відомо, що замкнений контур $\gamma \in D$ охоплює т. $z_0$ та обмежує однозв'язну область $D_{\gamma}$. Тоді
+	\begin{align*}
+	\oint\displaylimits_{\gamma} \frac{f(z)}{z-z_0}\,dz = 2 \pi i f(z_0)
+	\end{align*}
+	\begin{figure}[h]
+	\centerline{\includegraphics[scale = 1]{path1376.png}}
+	\caption{Контур $\gamma$ утворює однозв'язну область}
+	\end{figure}
+	\textbf{Proof.}\\
+	Розглянемо коло $c = \{ z: |z-z_0|=\rho\}$ таке, що $c \subset D_{\gamma}$. Тоді за попередньою теоремою,\\
+	$\displaystyle\oint\displaylimits_{\gamma} \frac{f(z)}{z-z_0}\,dz = \oint\displaylimits_c \frac{f(z)}{z-z_0}\,dz \boxed{=}$\\
+	Покладемо $z-z_0=\rho e^{it} \Rightarrow dz=\rho ie^{it}\,dt$\\
+	$\displaystyle \boxed{=} \int_{0}^{2\pi} \frac{f(z_0+\rho e^{it})}{\rho e^{it}} \cdot \rho i e^{it} \,dt = i \int_{0}^{2\pi} f(z_0+ \rho e^{it})\,dt \boxed{=}$\\
+	Тут інтеграл не залежить від радіусу $\rho$. Тому ми спрямуємо його до нуля\\
+	$\displaystyle \boxed{=} \lim_{\rho \to 0} i \int_{0}^{2\pi} f(z_0+ \rho e^{it})\,dt = i \int_{0}^{2\pi} f(z_0)\,dt = 2\pi i f(z_0)$ $\blacksquare$\\
+	\hugespace
+	\textbf{Example 2.2.7.} $\displaystyle\oint\displaylimits_{|z|=1} \frac{\sin z}{z} \,dz = 2\pi i \sin 0 = 0$\\
+	\hugespace
+	
+	\subsection{Степеневі ряди}
+	Для комплексних чисел степеневий ряд визначається так само:
+	\begin{align*}
+	\sum_{n=0}^{\infty} c_n(z-z_0)^n
+	\end{align*}
+	Так само радіус збіжності визначається або Даламбером, або Коші-Адамаром.\\
+	$R = \displaystyle\lim_{n \to \infty}\frac{|c_n|}{|c_{n+1}|}$ або $R = \displaystyle\frac{1}{\displaystyle\uplim_{n \to \infty} \sqrt[n]{|c_n|}}$\\
+	Область збіжності визначає нерівність: $|z-z_0|<R$
+	\hugespace
+	
+	\textbf{Example 2.3.0.} Визначити область збіжності ряду $\displaystyle \sum_{n=1}^{\infty} \frac{(z-1)^n}{n^2 2^n}$\\
+	Знайдемо радіус $R$ за Коші-Адамара:\\
+	$R = \displaystyle\frac{1}{\displaystyle\uplim_{n \to \infty} \sqrt[n]{\frac{1}{|n^2 2^n|}}} = \frac{1}{\displaystyle \frac{1}{2} \lim_{n \to \infty} \sqrt[n]{\frac{1}{|n^2|}} } = 2$\\
+	Отже, степеневий ряд збігається, коли $|z-1|<2$
+	\hugespace
+	Надалі будемо вважати, що ми вже знаємо про цей факт: $\displaystyle \sum_{z=0}^{\infty} z^n = \frac{1}{1-z}$ при $|z|<1$
+	\hugespace
+	
+	\textbf{Theorem 2.3.1. Теорема Тейлора}\\
+	Задана функція $f$ - аналітична в області $D$.\\ Тоді $\exists R:$ в колі $\{\zeta: |\zeta-z_0|<R\} \subset D$ функція $f$ розкладається в ряд
+	\begin{align*}
+	f(z) = \sum_{n=0}^{\infty} c_n(z-z_0)^n \\
+	c_n = \frac{1}{2\pi i} \oint\displaylimits_{|\zeta-z_0|=\rho<R} \frac{f(\zeta)}{(\zeta-z_0)^{n+1}}\,d\zeta
+	\end{align*}
+	\textbf{Proof}.\\
+	Скористаємось інтегральною формулою Коші:
+	$\displaystyle \oint\displaylimits_{\gamma} \frac{f(\zeta)}{\zeta-z}\,d\zeta = 2\pi i f(z)$\\
+	За ще одною теоремою Коші, ми можемо змінити контуру інтегрування. Тоді отримаємо:\\
+	$f(z) = \displaystyle \frac{1}{2\pi i} \oint\displaylimits_{|\zeta-z_0|=\rho} \frac{f(\zeta)}{\zeta-z}\,d\zeta = \frac{1}{2\pi i}\oint\displaylimits_{|\zeta-z_0|=\rho} \frac{f(\zeta)}{\zeta-z_0+z_0-z}\,d\zeta \boxed{=}$\\
+	Тут ми оберемо таке $\rho$, щоб $\displaystyle \abs{\frac{z-z_0}{\zeta - z_0}}<1$\\
+	$\boxed{=} \displaystyle \frac{1}{2\pi i} \oint\displaylimits_{|\zeta-z_0|=\rho} \frac{f(\zeta)}{\zeta-z_0} \cdot \frac{1}{\displaystyle 1- \frac{z-z_0}{\zeta -z_0}} \,d\zeta = \frac{1}{2\pi i}\oint\displaylimits_{|\zeta-z_0|=\rho} \frac{f(\zeta)}{\zeta-z_0} \cdot \sum_{n=0}^{\infty} \frac{(z-z_0)^n}{(\zeta-z_0)^n} \,d\zeta = \\ = \sum_{n=0}^{\infty}\frac{1}{2\pi i} \oint\displaylimits_{|\zeta-z_0|=\rho} \frac{f(\zeta)}{(\zeta-z_0)^{n+1}} \,d\zeta \cdot (z-z_0)^n$\\
+	Нарешті, якщо покласти $c_n = \displaystyle\frac{1}{2\pi i}\oint\displaylimits_{|\zeta-z_0|=\rho} \frac{f(\zeta)}{(\zeta-z_0)^{n+1}} \,d\zeta$, то\\ $f(z) = \displaystyle\sum_{n=0}^{\infty} c_n(z-z_0)^n$
+	 $\blacksquare$
+	 \hugespace
+	 \textbf{Corollary 2.3.1.} $\displaystyle |c_n| \leq \frac{M}{\rho^n}$, де $\displaystyle M=\max_{z\in D} |f(z)|$\\
+	 \textbf{Proof}.\\
+	 $\displaystyle |c_n| = \abs{\frac{1}{2\pi i}} \abs{\oint\displaylimits_{|\zeta-z_0|=\rho} \frac{f(\zeta)}{(\zeta-z_0)^{n+1}}\,d\zeta} \leq \frac{1}{2\pi} \oint\displaylimits_{|\zeta-z_0|=\rho} \abs{\frac{f(\zeta)}{(\zeta-z_0)^{n+1}}}\,\abs{dz} \overset{\zeta-z_0= \rho e^{it}}{\leq} \\ \overset{|f(\zeta)| \leq M}{\leq} \frac{1}{2\pi} \int_{0}^{2 \pi} \frac{M}{\rho^n}\,dt \leq \frac{M}{\rho^n}$ $\blacksquare$\\
+	\hugespace
+	
+	\textbf{Theorem 2.3.2. Теорема Луівілля}\\
+	Задана функція $f$ - аналітична всюди, але обмежена. Тоді $f(z)=const$\\
+	\textbf{Proof}.\\
+	За минулою теоремою, ми можемо розкласти в ряд $f(z)$. Оскільки вона всюди аналітична, ми можемо взяти $R\rightarrow \infty$. Тоді за щойно доведеним наслідком, $\displaystyle |c_n| \leq \frac{M}{R^n} \rightarrow 0$, але $c_n$ ніяк не залежить від обраного $R$.\\
+	Отже, $c_n=0$ при $n \neq 0 \Rightarrow f(z)=c_0$ $\blacksquare$
+	\hugespace
+	\textbf{Corollary 2.3.2.} $\cos z$ та $\sin z$ не є обмеженими
+	\hugespace
+	\textbf{Theorem 2.3.3.} Розклад степеневого ряду є єдиним\\
+	\textit{Це випливає, насправді, з теореми Тейлора. Можна спробувати при-\\пустити, що є два ряди, рівні за значенням, але коефіцієнти різні. Причому, радіус збіжності теж може бути різним. Але розписуючи коефіцієнти, ми прийдемо до їхньої рівності через всілякі теореми Коші}
+	\hugespace
+	\textbf{Proposition 2.3.4.} Якщо функція $f$ має первісну в $D$, то вона є аналітичною
+	\textbf{Proof}.\\
+	Отже, нехай є первісна $F$, яка може розкластися в ряд Тейлора:\\
+	$\displaystyle F(z)=\sum_{n=0}^{\infty} c_n(z-z_0)^n$,$|z-z_0|<R$. Тоді\\ $\displaystyle f(z)=F'(z)=\sum_{n=1}^{\infty} nc_n(z-z_0)^{n-1} \Rightarrow f'(z) = \sum_{n=2}^{\infty} n(n-1)c_n(z-z_0)^{n-2}$\\
+	Ряд має такий самий радіус збіжності за ознаками - аналітична $\blacksquare$
+	\hugespace
+	\textbf{Proposition 2.3.5.} Задана функція $f$ - аналітична в $D$.\\Тоді $f$ - $\infty$-диференційована\\
+	\textbf{Proof.}\\
+	$\displaystyle f(z)=\sum_{n=0}^{\infty} c_n(z-z_0)^n \Rightarrow \\ \forall k\geq1: \exists f^{(k)}(z) = \sum_{n=k}^{\infty} n(n-1) \cdots (n-(k-1))c_n(z-z_0)^{n-k}$. У всіх такий самий радіус збіжності $\blacksquare$
+	\hugespace
+	
+	\textbf{Theorem 2.3.6.} Задані $f,g$ - аналітичні в колі $|z-z_0|<R$ таким чином, що множина $S=\{z: f(z)=g(z)\}$ містить граничну т. $z_0$. Тоді $f(z)=g(z)$ на всьому колі\\
+	\textbf{Proof}.\\
+	Розкладемо обидві функції на степеневий ряд:\\
+	$\displaystyle f(z)=\sum_{n=0}^{\infty} c_n(z-z_0)^n$\\
+	$\displaystyle g(z)=\sum_{n=0}^{\infty} a_n(z-z_0)^n$\\
+	Далі розглянемо послідовність $\{z_k, k\geq 1\} \subset S$ таку, що $\displaystyle\lim_{k\to\infty} z_k = z_0$. Тоді $\forall k: f(z_k)=g(z_k) \Rightarrow \stackbelow{\displaystyle\lim_{k\to\infty} f(z_k)}{c_0} = \stackbelow{\displaystyle\lim_{k\to\infty} g(z_k)}{a_0}$\\
+	$f(z_k)-c_0=f(z_k)-a_0$\\
+	Ділимо на $z-z_k$. Тоді\\
+	$\displaystyle \frac{1}{z_k-z_0}(f(z_k)-c_0) = \frac{1}{z_k-z_0}(f(z_k)-a_0)$\\
+	$\displaystyle \sum_{n=1}^{\infty} c_n(z_k-z_0)^{n-1} = \sum_{n=1}^{\infty} a_n(z_k-z_0)^{n-1}$\\
+	$\Rightarrow c_1 = a_1$ при $k\to\infty$\\
+	$f(z_k)-c_0-c_1(z-z_0) = g(z_k)-a_0-a_1(z-z_0)$\\
+	Ділимо на $(z-z_k)^2$. Тоді...\\
+	За МІ, ми отримаємо, що $\forall n \geq 1: c_n = a_n \Rightarrow f(z)=g(z)$ $\blacksquare$
+	\hugespace
+	
+	\textbf{Corollary 2.3.6.(1).} Наступні ряди справедливі:
+	\begin{align*}
+e^z = \sum_{n=0}^{\infty} \frac{z^n}{n!}\\
+\sin z = \sum_{n=0}^{\infty} (-1)^n \frac{z^{2n+1}}{(2n+1)!}\\
+\cos z = \sum_{n=0}^{\infty} (-1)^n \frac{z^{2n}}{(2n)!}
+	\end{align*}
+	\textbf{Proof.}\\
+	Доведу лише перший ряд. Решта аналогічно\\
+	$f(z) = e^z, g(z)=\displaystyle \sum_{n=0}^{\infty} \frac{z^n}{n!}$\\
+	Якщо покласти $S=\mathbb{R}$, то тоді $z_0$ - гранична точка та $f(x)=g(x) \forall x \in \mathbb{R}$\\
+	Отже, $f(z)=g(z)$ $\blacksquare$
+	\hugespace
+	\textbf{Corollary 2.3.6.(2).} Задана функція $f$ - аналітична в $D$. Тоді функцію можна розкласти іншим чином:
+	\begin{align*}
+	f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(z_0)}{n!} (z-z_0)^n
+	\end{align*}
+	\textbf{Proof.}\\
+	$f(x)=\displaystyle \sum_{n=0}^{\infty} \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n, |x-x_0|<R$\\ $\displaystyle g(z)=\sum_{n=0}^{\infty} \frac{f^{(n)}(x_0)}{n!} (z-x_0)^n$\\
+	Якщо покласти $S=(x_0-R, x_0+R)$, де $x_0$ - гранична точка, то отримаємо $f(z)=g(z)$ $\blacksquare$
+	\hugespace
+	\textbf{Corollary 2.3.6.(3). Узагальнена інтегральна формула Коші}
+	\begin{align*}
+	\oint\displaylimits_{\gamma} \frac{f(z)}{(z-z_0)^{n+1}}\,dz = \frac{2 \pi i}{n!} f^{(n)}(z_0)
+	\end{align*}
+	\hugespace
+	\textbf{Example 2.3.6.(1).} Розкласти функцію $\displaystyle \frac{1}{5+z^2}$ в ряд Тейлора\\
+	$\displaystyle \frac{1}{5+z^2} = \frac{1}{5} \frac{1}{1 + \frac{z^2}{5}} \overset{\textstyle \frac{z^2}{5} = t}{=} \frac{1}{5} \frac{1}{1+t} = \frac{1}{5} \frac{1}{1-(-t)} = \frac{1}{5} \sum_{n=0}^{\infty} (-t)^n = \sum_{n=0}^{\infty} (-1)^n \frac{z^{2n}}{5^{n+1}}$\\
+	Де $\displaystyle |-t|<1 \Rightarrow \abs{\frac{z^2}{5}} < 1 \Rightarrow |z| < \sqrt{5}$
+	\hugespace
+	
+	\textbf{Example 2.3.6.(3).} $\displaystyle \oint\displaylimits_{|z+i|=1} \frac{\sin z}{(z+i)^3} \,dz = \frac{2\pi i}{2!} (\sin z)'' \Big|_{z=-i} = -\pi \sh 1$
+	\hugespace
+	
+	\textbf{Theorem 2.3.7. Теорема Морери}\\
+	Задана функція $f \in C(D)$, де $D$ - однозв'язна область. Відомо, що для довільного закмненого контуру в $D:$\\ $\displaystyle \oint f(z)\,dz=0$. Тоді $f$ - аналітична\\
+	\textbf{Proof.}\\
+	З умови випливає, що інтеграл не залежить від шляху. Отже, коректно визначеним буде наступний інтеграл:\\
+	$\displaystyle F(z)=\int_{z_0}^z f(\zeta)\,d\zeta, z_0 \in D$\\
+	Доведемо, що $F$ - первісна до $f$\\
+	$\displaystyle \frac{F(z_0+\Delta z)-F(z_0)}{\Delta z} = \frac{1}{\Delta z} \int_{z_0}^{z_0+\Delta z} f(\zeta) \,d\zeta$\\
+	Крім того, $\displaystyle \int_{z_0}^{z_0+\Delta z} f(z_0) \,d\zeta = f(z_0) \Delta z$. Тоді\\
+	$\displaystyle \abs{\frac{F(z_0+\Delta z)-F(z_0)}{\Delta z} - f(z_0)} \leq \frac{1}{\abs{\Delta z}} \int_{z_0}^{z_0+\Delta z} \abs{f(\zeta) - f(z)} \,d\zeta \boxed{<}$\\
+	Оскільки $f \in C(D)$, то тоді вона неперервна в якомусь колі \\ $\{z: |z-\zeta| >r\} \subset D$. Звідси вона рівномірно неперервна в колі, тому... $|f(\zeta) - f(z)|<\varepsilon$\\
+	$\boxed{<} \varepsilon$\\
+	Отже, $F'(z) = f(z)$. Тому $F$ - аналітична, а тоді - $\infty$-диференційована. Випливає, що $\exists F''(z)=f'(z) \Rightarrow f$ - аналітична $\blacksquare$\\
+	\hugespace
+	\textbf{Theorem 2.3.! Узагальнення}\\
+	Задана функція $f \in C(D)$, де $D$ - однозв'язна область. Тоді наступні умови є еквівалентними:
+	\begin{align*}
+	\underbrace{\begin{cases}
+		\displaystyle\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}\\
+		\displaystyle\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}\\
+	\end{cases}}_{R}
+	 \iff f \underbrace{\textrm{- розкладається в Тейлора}}_{C} \iff \forall \gamma: \underbrace{\oint\displaylimits_{\gamma} f(z)\,dz=0}_{W}
+	\end{align*}
+	\textbf{Proof.}
+	\begin{figure}[h]
+	\includegraphics[scale = 0.7]{Pic.png}
+	\caption{Схематичне доведення}
+	\end{figure}
+	\\
+	$\blacksquare$
+	\hugespace
+	
+	\subsection{Нулі аналітичної функції}
+	\textbf{Definition 2.4.1.} Задана функція $f$ - аналітична в $D$\\
+	Точка $z_0$ називається \textbf{нулем функції} $f(z)$, якщо $f(z_0) = 0$\\
+	Точка $z_0$ називається \textbf{нулем кратності} $k$, якщо $\exists g$ - аналітична:\\ $f(z)=(z-z_0)^k g(z)$, $g(z_0) \neq 0$
+	\hugespace
+	\textbf{Theorem 2.4.2.} Задана функція $f$ - аналітична в $D$\\
+	$z_0$ - корінь кратності $k \iff \begin{cases} 
+	f(z_0)=f'(z_0)=\cdots=f^{(k-1)}(z_0) = 0\\
+	f^{(k)}(z_0) \neq 0
+	\end{cases}$\\
+	\textbf{Proof.}\\
+	$\boxed{\Rightarrow}$ Дано: $z_0$ - корінь кратності $k$, тобто $\exists g$ - аналітична:\\ $f(z)=(z-z_0)^k g(z)$, $g(z_0) \neq 0$\\
+	Оскільки $g$ - аналітична, то $\displaystyle g(z) = \sum_{n=0}^{\infty} \frac{g^{(n)}(z_0)}{n!} (z-z_0)^n$\\
+	$\Rightarrow \displaystyle f(z) = \sum_{n=0}^{\infty} \frac{g^{(n)}(z_0)}{n!} (z-z_0)^{n+k} = \sum_{m=0}^{\infty} \frac{f^{(m)}(z_0)}{m!} (z-z_0)^{m}$\\
+	Лівий вираз починається з дужки номера $k$. А правий вираз - з дужки номера $0$. Тому всі вирази з дужками від $0$ до $k-1$ мають бути обнуленими. Отже\\
+	$\begin{cases} 
+	f(z_0)=f'(z_0)=\cdots=f^{(k-1)}(z_0) = 0\\
+	f^{(k)}(z_0) \neq 0
+	\end{cases}$
+	\hugespace
+	$\boxed{\Leftarrow}$ Дано: $\begin{cases} 
+	f(z_0)=f'(z_0)=\cdots=f^{(k-1)}(z_0) = 0\\
+	f^{(k)}(z_0) \neq 0
+	\end{cases}$\\
+	$\Rightarrow \displaystyle f(z) = \sum_{n=k}^{\infty} \frac{f^{(n)}(z_0)}{n!} (z-z_0)^{n}= (z-z_0)^{k} \sum_{n=k}^{\infty} \frac{f^{(n)}(z_0)}{n!} (z-z_0)^{n-k}$\\
+	Покладемо $\displaystyle g(z) = \sum_{n=k}^{\infty} \frac{f^{(n)}(z_0)}{n!} (z-z_0)^{n-k}$, причому $g(z_0) \neq 0$. Тоді\\
+	$f(z)=(z-z_0)^k g(z) \Rightarrow z_0$ - корінь кратності $k$ $\blacksquare$
+	\hugespace
+	
+	\subsection{Ряди Лорана}
+	Ряд Лорана має наступний вигляд
+	\begin{align*}
+	\sum_{n=-\infty}^{+\infty} c_n(z-z_0)^n
+	\end{align*}
+	Розпишемо даний ряд іншим шляхом:\\
+	$\displaystyle \sum_{n=-\infty}^{+\infty} c_n(z-z_0)^n = \sum_{n=-\infty}^{-1} c_n(z-z_0)^n + \sum_{n=0}^{+\infty} c_n(z-z_0)^n =$\\
+	В першій сумі замінимо лічильник: $n=-k$\\
+	$\displaystyle = \underbrace{\sum_{k=1}^{\infty} \frac{c_{-k}}{(z-z_0)^k}}_{\textrm{головна частина}} + \underbrace{\sum_{n=0}^{+\infty} c_n(z-z_0)^n}_{\textrm{правильнаа частина}}$\\
+	Далі дізнаємось область збіжності для двох рядів:\\
+	- правильна частина: $R = \displaystyle\frac{1}{\displaystyle\uplim_{n \to \infty} \sqrt[n]{|c_n|}} \Rightarrow |z-z_0|<R$\\
+	- головна частина: тимчасова заміна $\displaystyle t=\frac{1}{z-z_0}$. Тоді отримаємо степеневий ряд вигляду:\\
+	$\displaystyle \sum_{k=1}^{\infty} c_{-k}t^k$\\
+	$R' = \displaystyle\frac{1}{\displaystyle\uplim_{k \to \infty} \sqrt[k]{|c_{-k}|}} \Rightarrow |t|<R' \Rightarrow |z-z_0|>\frac{1}{R'} \overset{\textrm{покладемо}}{=} r$\\
+	Таким чином область збіжності визначається кільцем:
+	\begin{align*}
+	\uplim_{k \to \infty} \sqrt[k]{|c_{-k}|}=r<|z-z_0|<R=\frac{1}{\displaystyle\uplim_{n \to \infty} \sqrt[n]{|c_n|}}
+	\end{align*}
+	Більш того, сума ряду Лорана є аналітичною в цьому кільці\\
+	Надалі $K=\{z: r<|z-z_0|<R\}$
+	\hugespace
+	\textbf{Theorem 2.5.1. Теорема Лорана}\\
+	Задана функція $f$ - аналітична в кільці $K$\\
+	Тоді $f$ розкладається в ряд Лорана:
+	\begin{align*}
+	f(z)= \sum_{k=1}^{\infty}\frac{c_{-k}}{(z-z_0)^k}  + \sum_{n=0}^{+\infty} c_n(z-z_0)^n\\
+	c_m = \frac{1}{2 \pi i}\oint\displaylimits_{|\zeta-z_0|=\rho} \frac{f(\zeta)}{(\zeta-z_0)^{m+1}} \,d\zeta, \textrm{ } r<\rho<R
+	\end{align*}
+	\textbf{Proof.}\\
+	Скористаємось інтегральною формулою Коші:
+	$\displaystyle \oint\displaylimits_{\gamma} \frac{f(\zeta)}{\zeta-z}\,d\zeta = 2\pi i f(z)$\\
+	За ще одною теоремою Коші, ми можемо змінити контуру інтегрування. Тоді отримаємо:\\
+	$f(z) = \displaystyle \frac{1}{2\pi i} \oint\displaylimits_{c} \frac{f(\zeta)}{\zeta-z}\,d\zeta =$\\
+	Тут $c = c_1 \cup c_2^- = \{\zeta: |\zeta-z_0|<R\} \cup \{\zeta: |\zeta-z_0|>r\}$\\
+	 $ =\displaystyle\frac{1}{2\pi i}\oint\displaylimits_{c_1 \cup c_2^-} \frac{f(\zeta)}{\zeta-z}\,d\zeta = \frac{1}{2\pi i} \left(\oint\displaylimits_{c_1} \frac{f(\zeta)}{\zeta-z}\,d\zeta - \oint\displaylimits_{c_2} \frac{f(\zeta)}{\zeta-z}\,d\zeta \right) = \\ = \frac{1}{2\pi i} \left(\oint\displaylimits_{c_1} \frac{f(\zeta)}{\zeta-z_0+z_0-z}\,d\zeta - \oint\displaylimits_{c_2} \frac{f(\zeta)}{\zeta-z_0+z_0-z}\,d\zeta \right)=\\
+	=\frac{1}{2\pi i} \left(\oint\displaylimits_{c_1} \frac{f(\zeta)}{\zeta-z_0} \cdot \frac{1}{1- \displaystyle\frac{z-z_0}{\zeta-z_0}}\,d\zeta + \oint\displaylimits_{c_2} \frac{f(\zeta)}{z-z_0} \cdot \frac{1}{1- \displaystyle\frac{\zeta-z_0}{z-z_0}}\,d\zeta \right) \boxed{=}$\\
+	Вважаємо, що $\displaystyle \abs{\frac{z-z_0}{\zeta - z_0}}<1$ та $\displaystyle \abs{\frac{\zeta-z_0}{z-z_0}}<1$\\
+	$\boxed{=} \displaystyle\frac{1}{2\pi i}\oint\displaylimits_{c_1} \frac{f(\zeta)}{\zeta-z_0} \cdot \sum_{n=0}^{\infty} \frac{(z-z_0)^n}{(\zeta-z_0)^n} \,d\zeta + \displaystyle\frac{1}{2\pi i}\oint\displaylimits_{c_2} \frac{f(\zeta)}{z-z_0} \cdot \sum_{n=0}^{\infty} \frac{(\zeta-z_0)^n}{(z-z_0)^n} \,d\zeta = 
+	\\ = \sum_{n=0}^{\infty} \frac{1}{2\pi i}\oint\displaylimits_{c_1} \frac{f(\zeta)}{(\zeta - z_0)^{n+1}} \,d\zeta \cdot (z-z_0)^n + \sum_{n=0}^{\infty} \frac{1}{2\pi i}\oint\displaylimits_{c_2} f(\zeta)(\zeta-z_0)^n \,d\zeta \cdot \frac{1}{(z-z_0)^{n+1}}$\\
+	Прийшли до ряду Лорана. За теоремою Коші, ми можемо змінити коло $c_1$ та $c_2$, щоб коло було радіусом $\rho$\\
+	Нарешті, якщо покласти $c_m = \displaystyle\frac{1}{2\pi i}\oint\displaylimits_{|\zeta-z|=\rho} \frac{f(\zeta)}{(\zeta-z_0)^{m+1}} \,d\zeta$, $m \in \mathbb{Z}$, то\\ $f(z) = \displaystyle\sum_{k=1}^{\infty}\frac{c_{-k}}{(z-z_0)^k}  + \sum_{n=0}^{+\infty} c_n(z-z_0)^n$ $\blacksquare$
+	 \hugespace
+	 \textbf{Theorem 2.5.2.} Розклад в ряд Лорана є єдиним в заданому кільці\\
+	 \textit{Випливає з теореми Лорана. Якщо вважати, що є різні розклади ряда Тейлора в різних кільцях, то ми можем взяти інше кільце, щоб ряд розпадався одночасно. А там буде суперечення}
+	 \hugespace
+	 \textbf{Example 2.5.1.} Розкласти $\displaystyle f(z)=\frac{1}{z(z-3)}$ в ряд Лорана в т. $z_0 = 0$\\
+	 $f(z) =  \displaystyle \frac{1}{z} \frac{1}{z-3} = \frac{1}{z} \frac{1}{-3} \frac{1}{1-\displaystyle\frac{z}{3}} = -\frac{1}{3z} \sum_{n=0}^{\infty} \frac{z^n}{3^n} = -\sum_{n=0}^{\infty} \frac{z^{n-1}}{3^{n+1}} = \\= -\frac{1}{3z} - \sum_{n=1}^{\infty} \frac{z^{n-1}}{3^{n+1}}$, якщо $\displaystyle \abs{\frac{z}{3}} <1 \iff \abs{z} < 3 $\\
+	 $f(z) = \displaystyle \frac{1}{z} \frac{1}{z-3} = \frac{1}{z} \frac{1}{z} \frac{1}{1-\displaystyle\frac{3}{z}} = \frac{1}{z^2} \sum_{n=0}^{\infty} \frac{3^n}{z^n} = \sum_{n=0}^{\infty} \frac{3^n}{z^{n+2}}$, якщо $\displaystyle \abs{\frac{3}{z}}<1 \iff \abs{z}>3$
+	 \hugespace
+	 
+	 \subsection{Особливі точки}
+	 \textbf{Definition 2.6.1.} Точка $z_0$ називається \textbf{особливою для} $f(z)$, якщо в ній вона не є визначеною
+	 \hugespace
+	 \textbf{Definition 2.6.2.} Точка $z_0$ називається \textbf{ізольовано особливою для} $f(z)$, якщо в деякому околі т. $z_0$ $f$ - аналітична
+	 \hugespace
+	 \textbf{Класифікація особливих ізольованих точок}:\\
+	 - \textbf{усувна}, якщо $\displaystyle\exists \lim_{z \to z_0} f(z)$\\
+	 - \textbf{полюс}, якщо $\displaystyle\exists \lim_{z \to z_0} f(z) = \infty$\\
+	 - \textbf{суттєва}, якщо $\displaystyle \nexists \lim_{z \to z_0} f(z)$
+	 \hugespace
+	 
+	 \subsubsection{Усувна точка}
+	 \textbf{Theorem.} Т. $z_0$ - усувна $\iff$ при розкладі $f(z)$ в Лорана всі коефіцієнти головної частині є нулевими\\
+	 \textbf{Proof.}\\
+	 Оцінимо коефіцієнти головної частини:\\
+	 $\displaystyle \abs{c_{-k}} = \abs{\frac{1}{2 \pi i}\oint\displaylimits_{|z-z_0|=\rho} \frac{f(z)}{(z-z_0)^{-k+1}} \,dz} = \frac{1}{2 \pi}\abs{\oint\displaylimits_{|z-z_0|=\rho} f(z)(z-z_0)^{k-1} \,dz} \leq \\ \leq \frac{1}{2 \pi i}\oint\displaylimits_{|z-z_0|=\rho} \abs{f(z)} \abs{(z-z_0)^{k-1}} \abs{\,dz} \leq \frac{1}{2 \pi i}\oint\displaylimits_{|z-z_0|=\rho} \abs{f(z)} \rho^{k-1} \abs{\,dz} \leq$\\
+	 Через те, що $z_0$ - усувна, то $\displaystyle\exists \lim_{z \to z_0} f(z)$, а тому функція є обмеженою\\
+	 $\leq \displaystyle \frac{\rho^{k-1}}{2 \pi i}\oint\displaylimits_{|z-z_0|=\rho} M  \abs{\,dz} = M \rho^{k-1}$\\
+	 За наслідком теореми Коші, ми можемо $\rho \to 0$. Тоді:\\
+	 $0\leq|c_{-k}|\leq M \rho^{k-1} \to 0$ $\forall k \geq 1$ $\blacksquare$
+	 \hugespace
+	 \textbf{Corollary.} Якщо т. $z_0$ - усувна, то при розкладі $f(z)$ матиме вигляд степеневого ряду
+	 \hugespace
+	 Усувну точку $z_0$ можна довизначити значенням $c_0$ з ряду. Тоді $f$ - аналітична в цій точці
+	 \hugespace
+	 
+	 \subsubsection{Полюс}
+	 Якщо т. $z_0$ є полюсом, то $\displaystyle\exists \lim_{z \to z_0} f(z) = \infty \iff \lim_{z \to z_0} \frac{1}{f(z)} = 0$\\
+	 Розглянемо функцію $h(z) = \displaystyle \frac{1}{f(z)}$, для якого $z_0$ - усувна. Довизначивши, ми отримаємо, що $h(z_0) = 0$. Звідси в ній вона аналітична, а також є нулем функції\\
+	 Вважатимемо, що $z_0$ - нуль кратності $k$, тобто $h(z)=(z-z_0)^k g(z)$, $g(z_0) \neq 0$\\
+	 Тоді $\displaystyle f(z)=\frac{1}{(z-z_0)^k g(z)}$
+	 \hugespace
+	 \textbf{Definition.} Точка $z_0$ для $f$ є \textbf{полюсом степені} $k$, якщо для функції $\displaystyle h(z)=\frac{1}{f(z)}$ $z_0$ - нуль кратності $k$
+	 \hugespace
+	 \textbf{Lemma.} $z_0$ - полюс для $f$ степені $k \iff \exists \displaystyle \lim_{z \to z_0} (z-z_0)^k f(z) = a \neq 0 \neq \infty$
+	 \textbf{Proof.}\\
+	 $\boxed{\Rightarrow} $ Дано: $z_0$ - полюс степені $k$. Тоді $\displaystyle \lim_{z \to z_0} (z-z_0)^k f(z) = \lim_{z \to z_0} \frac{(z-z_0)^k}{h(z)} = \\ = \lim_{z \to z_0} \frac{(z-z_0)^k}{(z-z_0)^k g(z)} = \lim_{z \to z_0} \frac{1}{g(z)} \neq 0$\\
+	 \hugespace
+	 $\boxed{\Leftarrow} $ Дано: $\exists \displaystyle \lim_{z \to z_0} (z-z_0)^k f(z) = a \neq 0$. Тоді для функції $(z-z_0)^k f(z)$ т. $z_0$ - усувна. Тому якщо довизначити її, то створимо нову функцію:\\
+	 $\displaystyle g(z) = \frac{1}{(z-z_0)^k f(z)}$ - аналітична  $\displaystyle \Rightarrow g(z_0)=\lim_{z \to z_0} \frac{1}{(z-z_0)^k f(z)} = \frac{1}{a}$\\
+	 Тому  $\displaystyle\frac{1}{f(z)}=g(z)(z-z_0)^k$ і $z_0$ - корінь кратності $k$ для $h(z)=\displaystyle \frac{1}{f(z)}$ $\blacksquare$
+	 \hugespace
+	 \textbf{Proposition.} Задана така функція $\displaystyle f(z)=\frac{a(z)}{b(z)}$, що $z_0$ - корінь рівняння для чисельнику і знаменнику з відповідними кратностями $k$ і $m$. Тоді $z_0$ - $\left[
+  \begin{array}{ccc}
+     \textrm{усувна}, k \geq m \\
+     \textrm{полюс степені  } m-k, k < m \\
+  \end{array}
+\right.$\\
+\textbf{Proof.}\\
+Дійсно, за умовою твердження, $\displaystyle f(z)=\frac{(z-z_0)^k a_1(z)}{(z-z_0)^m b_1(z)}$. При $k<m$ отримаємо, що $z-z_0$ залишається в знаменнику. Тому при $z\to z_0$ функція прямує до нескінченності.\\
+А якщо $k \geq m$, то при $z \to z_0$ отримаємо $f(z) \to 0$ $\blacksquare$
+\hugespace
+\textbf{Theorem.} Точка $z_0$ є полюсом степені $k \iff$ в розкладі $f(z)$ в ряд Лорана головна частина містить лише $k$ доданків\\
+\textbf{Proof.}\\
+$z_0$ - полюс степені $k \iff$ для $\displaystyle \frac{1}{f(z)} = g(z)(z-z_0)^k$, $z_0$ - нуль кратності $k \iff$ $\displaystyle f(z)=\frac{1}{(z-z_0)^k} \underset{=h(z)}{\frac{1}{g(z)}} = \frac{1}{(z-z_0)^k} h(z)$, $h(z)$ - аналітична в околі т. $z_0 \iff \displaystyle f(z)=\frac{1}{(z-z_0)^k} \sum_{n=0}^{\infty}a_n(z-z_0)^n$, $a_0 = h(z_0) \neq 0$\\
+$\iff \displaystyle f(z)=\sum_{n=0}^{\infty} a_n(z-z_0)^{n-k} \underset{n-k=m}{=} \sum_{m=-k}^{\infty} a_{m+k}(z-z_0)^{m} \underset{a_{m-k}=c_m}{=} \\ = \sum_{m=-k}^{\infty} c_m (z-z_0)^{m}$ $\iff$ ряд Лорана містить лише $k$ доданків головної частини $\blacksquare$
+\hugespace
+
+\subsubsection{Суттєва точка}
+\textbf{Theorem.} Точка $z_0$ є суттєвою $\iff$ в розкладі $f(z)$ в ряд Лорана головна частини має нескінченну кількість доданків\\
+\textit{Просто тому, що при 0 - усувна точка. Якщо скінченна кількість, то це вже полюс}
+\hugespace
+\textbf{Example. 2.6.(1).} Знайти всі особливі точки для функції $\displaystyle f(z) = \frac{e^z-1}{\sin z}$\\
+Проблема виникає в $\sin z = 0 \iff z_k = \pi k, k \in \mathbb{Z}$\\
+Перевіримо т. $z_0 = 0$:\\
+$\displaystyle \lim_{z \to 0} \frac{e^z-1}{\sin z} = \lim_{z \to 0} \frac{e^z-1}{z} \frac{z}{\sin z} \overset{\textrm{чудові границі}}{=} 1 \cdot 1 = 1$\\
+Отже, $z_0$ - усувна точка\\
+Розглянемо далі т. $z_{k} = \pi k$, $k \neq 0$:\\
+Зауважимо, що $\sin z_k = 0$, але $(\sin z_k)' = \cos z_k \neq 0$. Тому для знаменнику $z_k$ - корінь кратності 1\\
+$\displaystyle \lim_{z \to \pi k} \frac{e^z-1}{\sin z} = \infty$ (в чисельнику буде якесь ненульове число)\\
+Таким чином, $z_k$ - полюс порядка 1\\
+\hugespace
+\textbf{Example 2.6.(2).} Знайти всі особливі точки для функції $\displaystyle f(z) = e^{\textstyle \frac{1}{z}}$\\
+Проблемна точка: $z = 0$\\
+Розкладемо функцію в ряд Лорана в т. $z_0 = 0$\\
+$\displaystyle e^{\textstyle \frac{1}{z}} = \sum_{n=0}^{\infty} \frac{1}{z^n n!}$\\
+Ряд Лорана містить нескінченну кількість головної частини. А тому $z = 0$ - суттєва точка
+\hugespace
+\textbf{Remark 2.6.(1).} Першу/другу чудові границі варто було б показати окремо, що вони реально працюють в комплексному випадку\\
+\textbf{Proof.}\\
+$\displaystyle \lim_{z \to 0} \frac{\sin z}{z} = \lim_{z \to 0} \frac{1}{z} \sum_{n=0}^{\infty} (-1)^n \frac{z^{2n+1}}{(2n+1)!} = \lim_{z \to 0} \sum_{n=0}^{\infty} (-1)^n \frac{z^{2n}}{(2n+1)!} = \\ = \lim_{z \to 0} \left(1 + \sum_{n=1}^{\infty} (-1)^n \frac{z^{2n}}{(2n+1)!}\right) = 1 + 0 = 1$\\
+Аналогічно для другої чудової границі, $\displaystyle \lim_{z \to 0} \frac{e^z - 1}{z} = 1$ $\blacksquare$
+\hugespace
+
+\subsection{Лишки}
+\textbf{Definition 2.7.1.} Задана функція $f$ - аналітична в проколотому околі $z_0$ та контур $\gamma$, що охоплює т. $z_0$ та належить контуру\\
+\textbf{Лишком функціїї} $f(z)$ \textbf{в т.} $z_0$ називається наступний вираз:
+\begin{align*}
+ \underset{z = z_0}{\textrm{res}} f(z) = \frac{1}{2 \pi i} \oint\displaylimits_{\gamma} f(z) \,dz
+\end{align*}
+
+\textbf{Theorem 2.7.2.} Задана функція $f$ - аналітична в проколотому околі $z_0$. Тоді $\displaystyle \residue{z_0}{f(z)} = c_{-1}$\\
+\textbf{Proof.}\\
+Дійсно, оскільки $f$ - аналітична, ми можемо розкласти на Лорана. Зокрема $\displaystyle c_{-1} = \frac{1}{2 \pi i} \oint\displaylimits_{|z-z_0|=\rho} f(z) \,dz = \residue{z_0}{f(z)}$ $\blacksquare$
+\hugespace
+\textbf{Методи знаходження лишків для різних типів особливих точок}:
+\subsubsection{Усувна точка}
+\textbf{Lemma.} Якщо т. $z_0$ - усувна, то $\residue{z_0}{f(z)} = 0$\\
+\textbf{Proof.}\\
+Дійсно, при т. $z_0$ - усувна - отримаємо, що Лоран не містить головної частини, а тому $c_{-1}=\residue{z_0}{f(z)} = 0$ $\blacksquare$
+\hugespace
+
+\subsubsection{Полюс}
+\textbf{Theorem.} Якщо $z_0$ - полюс порядку $k$, то \\$\displaystyle \residue{z_0}{f(z)} = \frac{1}{(k-1)!} \lim_{z \to z_0} (f(z)(z-z_0)^k)^{(k-1)}$\\
+\textbf{Proof.}\\
+$z_0$ - полюс степені $k$, тоді\\
+$\displaystyle f(z) = \frac{c_{-k}}{(z-z_0)^k} + \cdots + \frac{c_{-1}}{(z-z_0)} + \sum_{n=0}^{\infty} c_n(z-z_0)^n$\\
+$\displaystyle \Rightarrow f(z)(z-z_0)^k = c_{-k} + \cdots + c_{-1}(z-z_0)^{k-1} + \sum_{n=0}^{\infty} c_n(z-z_0)^{n+k}$\\
+Далі продиферинціюємо $(k-1)$ разів, отримавши наступне:\\
+$\displaystyle (f(z)(z-z_0)^k)^{(k-1)} = (k-1)!c_{-1} + \sum_{n=0}^{\infty} (n-k)\cdots(n-2)c_n(z-z_0)^{n+1}$\\
+В обох частинах рівності знайдемо границю:\\
+$\displaystyle \lim_{z \to z_0} (f(z)(z-z_0)^k)^{(k-1)} = (k-1)!c_{-1}+0 = (k-1)! \residue{z_0}{f(z)}$ $\blacksquare$
+\hugespace
+
+\textbf{Часткові випадки}:\\
+1. Якщо $z_0$ - полюс степені $1$. Тоді\\ $\displaystyle \residue{z_0}{f(z)} = \lim_{z \to z_0} f(z)(z-z_0)$
+\hugespace
+2. Якщо $\displaystyle f(z) = \frac{\varphi (z)}{\psi (z)}$, де $z_0$ - не нуль чисельнику, але нуль знаменнику кратності $1$. Тоді $z_0$ - полюс порядку $1$. Отже:\\
+$\displaystyle \residue{z_0}{f(z)} = \lim_{z \to z_0} \frac{\varphi (z)}{\psi (z)} (z-z_0) = \lim_{z \to z_0} \frac{\varphi (z)}{\displaystyle\frac{\psi (z)-\psi (z_0)}{(z-z_0)}} = \lim_{z \to z_0} \frac{\varphi(z)}{\psi'(z_0)}$\\
+$\Rightarrow \displaystyle \residue{z_0}{f(z)} = \lim_{z \to z_0} \frac{\varphi(z)}{\psi'(z_0)}$
+\hugespace
+
+\subsubsection{Суттєва точка}
+Тут $\residue{z_0}{f(z)}$ рахується лише за розкладом в ряд Лорана
+\hugespace
+\textbf{Example. 2.7.(1).} Знайти всі лишки функції $\displaystyle f(z) = \frac{e^z-1}{\sin z}$\\
+Вже дізнались в \textbf{Ex. 2.6.(1).}, що $z = 0$ - усувна та $z = \pi k, k \neq 0$ - полюс порядку 1\\
+$\residue{0}{f(z)} = 0$\\
+$\displaystyle \residue{\pi k}{f(z)} = \lim_{z \to \pi k} \frac{e^z-1}{\sin z} (z - \pi k) \overset{z - \pi k = t}{=} \lim_{t \to 0} \frac{e^{t}e^{\pi k} - 1}{\sin{(\pi k + t)}} t = \lim_{t \to 0} \frac{e^{t}e^{\pi k} - 1}{(-1)^k\sin{t}} t = \\ = (-1)^k (e^{\pi k} - 1)$
+\hugespace
+\textbf{Example. 2.7.(2).} Знайти всі лишки функції $\displaystyle f(z) = e^{\textstyle \frac{1}{z}}$\\
+Вже знаємо, що за \textbf{Ex. 2.6.(2).} т. $z = 0$ є суттєвою. Але все рівно звернемось до ряду Лорана:\\
+$\displaystyle e^{\textstyle \frac{1}{z}} = \sum_{n=0}^k \frac{1}{z^n n!}$\\
+Коефіцієнт перед $\displaystyle \frac{1}{z}$: $c_{-1} = 1$\\
+Отже. $\residue{0}{f(z)} = c_{-1} = 1$
+\hugespace
+
+\subsection{Застосування лишків для обчислення інтегралів}
+\textbf{Theorem 2.8.1. Теорема Коші (для лишків, 1*)}\\
+Задана функція $f$ - аналітична в області $D$ за винятком скінченної кількості особливих точок і замкнений контур $\gamma$, якийй охоплює особлиіві точки $z_1,z_2,\cdots z_n$. Тоді
+\begin{align*}
+\oint\displaylimits_{\gamma} f(z)\,dz = 2 \pi i \sum_{k=1}^{n} \residue{z_k}{f(z)}
+\end{align*}
+\textbf{Proof.}\\
+Для кожної точки $z_1,\cdots, z_n$ ми розглянемо коло $U_j = \{z: |z-z_j|<\delta_j\}$, причому вони не перетинаються між собою. Тут $\gamma$ охоплює кожну $U_j$. Тоді\\
+$\displaystyle\oint\displaylimits_{\gamma} f(z)\,dz = \oint\displaylimits_{\gamma} f(z)\,dz - \left(\oint\displaylimits_{U_1} f(z)\,dz + \cdots + \oint\displaylimits_{U_n} f(z)\,dz   \right) +\\ + \left(\oint\displaylimits_{U_1} f(z)\,dz + \cdots + \oint\displaylimits_{U_n} f(z)\,dz   \right) \boxed{=}$ \\
+Для кожного інтегралу з мінусом ми замінюємо знак, змінюючи напрямок контуру\\
+$\boxed{=} \displaystyle \oint\displaylimits_{\gamma \cup U_1^- \cup \cdots \cup U_n^-} f(z)\,dz + \left(\oint\displaylimits_{U_1} f(z)\,dz + \cdots + \oint\displaylimits_{U_n} f(z)\,dz   \right) \boxed{=} $\\
+Перший інтеграл обмежує всю область $D$, окрім тих, що потрапляють до кожного кола. А така область є однорідною. Тому за теоремою Коші, перший інтеграл буде нулевим\\
+	\begin{figure}[h]
+	\includegraphics[scale = 1]{path1377.png}
+	\caption{}
+	\end{figure}
+$\boxed{=} \displaystyle \sum_{k=1}^n \oint\displaylimits_{U_k} f(z)\,dz \overset{def}{=} \sum_{k=1}^n 2\pi i \residue{z_k}{f(z)} = 2\pi i \sum_{k=1}^n \residue{z_k}{f(z)}$ $\blacksquare$\\
+\hugespace
+\textbf{Example 2.8.1.} $\displaystyle \oint\displaylimits_{|z-2|=2} \frac{z\,dz}{(z-1)(z-2)} \boxed{=}$\\
+Розглянемо функцію $\displaystyle f(z) = \frac{z}{(z-1)(z-2)}$\\
+Тут $z = 1, z = 2$ - обидві полюси 1 порядку, тому\\
+$\displaystyle \residue{1}{f(z)} = \lim_{z \to 1} \frac{z}{(z-1)(z-2)} (z-1) = -1$\\
+$\displaystyle \residue{2}{f(z)} = \lim_{z \to 2} \frac{z}{(z-1)(z-2)} (z-2) = 2$\\
+$\boxed{=} 2 \pi i (\residue{1}{f(z)} + \residue{2}{f(z)}) = 2 \pi i$
+\hugespace
+
+\textbf{Theorem 2.8.2. Теорема Коші (для лишків, 2*)}\\
+Задана функція $f$ - аналітична в $\mathbb{C}$ за винятком скінченної кількості особливих точок $z_1,z_2,\cdots z_n$. Тоді (див. п. 2.9.3. про лишки)
+\begin{align*}
+\sum_{k=1}^{n} \residue{z_k}{f(z)} + \residue{\infty}{f(z)} = 0
+\end{align*}
+\textbf{Proof.}\\
+Розглянемо замкнений контур $\gamma$, що охоплює всі скінченні особливі точки\\
+$\displaystyle \residue{\infty}{f(z)} \overset{def}{=} \frac{1}{2 \pi i} \oint\displaylimits_{\gamma^-} f(z) \,dz = -\frac{1}{2 \pi i} \oint\displaylimits_{\gamma^+} f(z) \,dz = -\frac{1}{2 \pi i} \cdot 2 \pi i\sum_{k=1}^{n}  \residue{z_k}{f(z)}$\\
+$\Rightarrow\displaystyle \sum_{k=1}^{n} \residue{z_k}{f(z)} + \residue{\infty}{f(z)} = 0$ $\blacksquare$\\
+\hugespace
+\textbf{Remark 2.8.} Ми не розглядаємо нескінченну кількість особливих точок, оскільки в цьому випадку з'являються граничні точки. А вони не є ізольованими
+\hugespace
+
+\subsection{Нескінченна особлива точка}
+Хочеться піти здалеку, як зрозуміти цю дивну точку, $z = \infty$\\
+Вважаємо, що в нас є система координат, на якій ми побудуємо сферу радіусом $1\over{2}$ таким чином, щоб сфера торкалась площини $XOY$ в точці $(0,0)$\\
+На площині $XOY$ кожна точка з координатами $(x,y)$ буде відповідати значенню комплексного числа $z = x + iy$\\
+І позначимо верхню точку сфери $N$
+\begin{figure}[h]
+\centerline{\includegraphics[scale = 1]{Riemann_sphere.png}}
+\caption{Просто картина}
+\end{figure}
+\\
+Через точку із $XOY$ (скажімо, т. $P$) та т. $N$ проведемо пряму. Отримаємо точку перетину $M$\\
+Тоді кожна точка сфери відповідає точці $XOY$. Звідси якщо взяти якийсь окіл т. $M$, то вона відповідатиме окілу т. $P$\\
+І навпаки: кожна точка $XOY$ відповідає т. сфери... Але не в т. $N$. Взагалі кажучи, жодна точка $XOY$ не відповідає $N$, оскільки пряма буде паралельна до цієї площини. Тому вирішили, що для т. $N$ ставимо в відповідність т. $z = \infty$\\
+Тепер візьмемо окіл т. $N$ радіуса $D$ і подивимось, який окіл відповідає $XOY$. Принаймні це нам знадобиться, якщо ми хочемо розкласти в ряд Лорана\\
+Отримаємо площину вигляду $|z|>D$. Тобто всі точки комплексної площини за межами кола
+\begin{figure}[h]
+\centerline{\includegraphics[scale = 0.5]{Riemann_sphereINF.png}}
+\caption{Просто картина}
+\end{figure}
+\\
+От і все. А тепер можна почати веселість\\
+
+\subsubsection{Розклад в Лорана}
+Зробимо перетворення $\displaystyle w = \frac{1}{z}$. Точка $z = \infty$ переводить в точку $w = 0$\\
+Розглянемо ряд Лорана в околі $z = \infty$, тобто для $\{z: |z|>D\}$\\
+$\displaystyle f(z) = f(\frac{1}{w}) = g(w) = $\\
+$|z|>D \iff \displaystyle \abs{\frac{1}{w}} > D \iff |w| < \frac{1}{D}$\\
+$\displaystyle = \sum_{k=1}^{\infty} \frac{c_{-k}}{w^k} + \sum_{n=0}^{\infty} c_n w^n = \underbrace{\sum_{k=1}^{\infty} c_{-k}z^k}_{\textrm{головна частина}} + \underbrace{\sum_{n=0}^{\infty} \frac{c_n}{z_n}}_{\textrm{правильна частина}}$\\
+Отримали ряд Лорана в околі $z = \infty$
+\hugespace
+Коефіцієнти ряду:\\
+$\displaystyle c_n = \frac{1}{2 \pi i} \oint\displaylimits_{\gamma} \frac{g(w)}{w^{n+1}} \,dw \boxed{=} $\\
+Проведемо заміну: $\displaystyle w = \frac{1}{z} \Rightarrow g(w) = f(z)$\\
+$\displaystyle dw = -\frac{1}{z^2} \,dz$\\
+І візьмемо контур $|w|=\rho$ - коло\\
+Тоді якщо $w = \rho e^{it}, t \in \displaystyle \vec{[0, 2\pi]}$ - обхід проти годинникової стрілки, то\\
+$z = \displaystyle \frac{1}{w} = \frac{1}{\rho} e^{-it}, t \in \displaystyle \vec{[2 \pi, 0]}$ - обхід за годинникової стрілки\\
+Отже, $|w| = \rho$ переводиться в $\displaystyle |z| = \frac{1}{\rho}$ зі зміном орієнтації\\
+Тому $\gamma \rightarrow \gamma_{-}$ (перед інтегралом буде ще знак мінус)\\
+$\displaystyle \boxed{=} - \frac{1}{2 \pi i} \oint\displaylimits_{\gamma} -\frac{f(z) z^{n+1}}{z^2} \,dz = \frac{1}{2 \pi i} \oint\displaylimits_{\gamma} f(z) z^{n-1} \,dz$\\
+Остаточно:
+\begin{align*}
+c_n = \frac{1}{2 \pi i} \oint\displaylimits_{\gamma} f(z) z^{n-1} \,dz
+\end{align*}
+\\
+
+\subsubsection{Ізольовані точки}
+\textbf{Definition.} Точка $z=\infty$ називається \textbf{ізольованою особливою для} $f(z)$, якщо $\exists R:$ в області $\{z: |z|>R\}$, f - аналітична\\
+\textbf{Класифікація ізольованих точок}:\\
+	 - \textbf{усувна}, якщо $\displaystyle\exists \lim_{z \to \infty} f(z)$\\
+	 - \textbf{полюс}, якщо $\displaystyle\exists \lim_{z \to \infty} f(z) = \infty$\\
+	 - \textbf{суттєва}, якщо $\displaystyle \nexists \lim_{z \to \infty} f(z)$
+	 \hugespace
+Порядок полюса $z = \infty$:
+$\displaystyle \exists \lim_{z \to \infty} f(z) = \infty \iff \lim_{z \to \infty} \frac{1}{f(z)} = 0$\\
+Тоді порядком цієї точки функції $f(z)$ називають кратність нуля функції $\displaystyle h(z) = \frac{1}{f(z)}$, а точніше кратність нуля точки $w_0 = 0$ для функції $\displaystyle g(w) = h\left(\frac{1}{w}\right)$\\
+\vspace{5mm}\\
+\textbf{Proposition 1.} Точка $z = \infty$ - усувна $\iff$ ряд Лорана не містить головної частини\\
+\textbf{Proposition 2.} Точка $z = \infty$ - полюс порядка $k$ $\iff$ ряд Лорана містить $k$ доданків головної частини\\
+\textbf{Proposition 3.} Точка $z = \infty$ - суттєва $k$ $\iff$ ряд Лорана містить нескінченну кількість доданків головної частини\\
+\textit{Всі ці твердження випливають з того, що ряд Лорана в $z = \infty$ - це ряд Лорана в $\displaystyle w = \frac{1}{z} = 0$}
+\hugespace
+
+\subsubsection{Лишки}
+\textbf{Defintion.} Задана функція $f$ та ізольована точка $z = \infty$\\
+\textbf{Лишком функції} $f(z)$ \textbf{в т.} $z$ називається наступний вираз:
+\begin{align*}
+\residue{\infty}{f(z)} = \frac{1}{2 \pi i} \oint\displaylimits_{\gamma_-} f(z)\,dz
+\end{align*}
+За межами $\gamma_-$ немає інших особливих точок
+\hugespace
+\textbf{Theorem.} Задана функція $f$ та ізольована точка $z = \infty$\\ Тоді $\residue{\infty}{f(z)} = -c_1$\\
+\textit{Випливає з розкладу ряду Лорана та визначення коефіцієнтів}\\
+\hugespace
+Шукати лишки можна за аналогічними теоремами в залежності від класифікації ізольованої точки
+\hugespace
+\textbf{Example 2.9.} Визначити тип ізольованої точки $z_* = \infty$ для функції $f(z) = 1 - z + 2z^2$ і знайти лишок\\
+Тут вже функція розкладена в ряд Лорана в т. $z_* = \infty$, що містить дві доданки головної частини. А тому $z_* = \infty$ - полюс порядку 2\\
+Коефіцієнт перед $z$: $c_1 = -1$\\
+Тому $\residue{\infty}{f(z)} = -c_1 = 1$
+\hugespace
+
+\subsection{Застосування лишків до дійсних інтегралів}
+I. $R(x,y)$ - дробово-раціональна функція від $x,y$\\
+Розглянемо $\displaystyle \int_{0}^{2\pi} R(\cos x, \sin x) \,dx \boxed{=}$\\
+Заміна: $\displaystyle \cos x = \frac{e^{ix}+e^{-ix}}{2}, \sin x = \frac{e^{ix}-e^{-ix}}{2i}$\\
+$\displaystyle e^{ix} = z \Rightarrow z \in \{z: |z| = 1\}$ - коло радіуса 1, що рухається проти годинникової стрілки\\
+$\displaystyle e^{-ix} = \frac{1}{z}$\\
+$\Rightarrow \displaystyle \cos x = \frac{z+\frac{1}{z}}{2} = \frac{z^2+1}{2z}$\\
+$\Rightarrow \displaystyle \sin x = \frac{z-\frac{1}{z}}{2} = \frac{z^2-1}{2zi}$\\
+$dz = i e^{ix}\,dx$\\
+$\displaystyle \boxed{=} -\oint\displaylimits_{|z|=1} iR\left(\frac{z^2+1}{2z}, \frac{z^2-1}{2zi}\right) \frac{dz}{z} \boxed{=}$\\
+Підінтегральна функція - дробово-раціональний вираз від $z$, що має скінченну кількість особливих точок, в тому числі скінченну кількість полюсів в колі $|z|=1$\\
+$\displaystyle \boxed{=} 2 \pi \sum_{j=1}^n \residue{z_j}{\left(R\left(\frac{z^2+1}{2z}, \frac{z^2-1}{2zi}\right) \frac{1}{z}\right)}$\\
+\hugespace
+\textbf{Example.} $\displaystyle \int_{0}^{2\pi} \frac{dx}{2 + \cos x + \sin x} \boxed{=}$\\
+Проводимо ту саму заміну:  $\displaystyle z = e^{ix} \Rightarrow \cos x = \frac{z^2+1}{2z}, \sin x = \frac{z^2-1}{2zi}$\\
+$\displaystyle dx = \frac{-i}{z} \,dz$\\
+$\displaystyle \boxed{=} -i\oint\displaylimits_{|z|=1} \frac{1}{2+ \frac{z^2+1}{2z} + \frac{z^2-1}{2zi}} \frac{dz}{z} = \oint\displaylimits_{|z|=1} \frac{2}{4iz + iz^2 + i + z^2 - 1} \,dz = \\ = \oint\displaylimits_{|z|=1} \frac{2}{z^2(1+i) + 4iz + i-1} \,dz \boxed{=}$\\
+Перепозначу: $\displaystyle f(z) = \frac{1}{z^2(1+i)+4iz+i-1}$\\
+Подивимось на особливі точки підінтегрального виразу:\\
+$z^2(1+i)+4iz+i-1=0$\\
+$z_1 = \displaystyle \frac{\sqrt{2}-2}{2} + i \frac{\sqrt{2}-2}{2}$\\
+$z_2 = \displaystyle -\frac{\sqrt{2}+2}{2} - i \frac{\sqrt{2}+2}{2}$\\
+Обидва вони полюси першої кратності. Лише одна точка - $z_1$ - потрапляє в коло $|z| =1$\\
+$\displaystyle f(z) = \frac{1}{(1+i)(z-z_1)(z-z_2)}$\\
+$\displaystyle \boxed{=} 2 \cdot 2\pi i \residue{z_1}{f(z)} = 4 \pi i \lim_{z \to z_1} \frac{1}{(1+i)(z-z_2)} = 4 \pi i \frac{1}{(1+i)(z_1 - z_2)} = \dots = \\ = \sqrt{2} \pi$
+\hugespace
+
+II. Невласні дійсні інтеграли\\
+Розглянемо $\displaystyle \int_{-\infty}^{+\infty} f(x) dx \overset{\textrm{обчислимо}}{=} = p.v. \int_{-\infty}^{+\infty} f(x) dx = \lim_{A \to \infty} \int_{-A}^{+A} f(x) dx$
+\hugespace
+\textbf{Theorem.} Задана функція $f(x)$ на $\mathbb{R}$ така, що вона продовжується аналітично на верхню півплощину $\mathbb{C}$ (тобто $\Im z \geq 0$) за виключенням скінченної кількості точок $z_1, \cdots, z_n$\\
+Наша функція $f(z)$ така, що $\displaystyle \exists \lim_{|z| \to \infty} |z f(z)| = 0$\\
+Тоді \begin{align*}
+\int_{-\infty}^{+\infty} f(x) dx = 2 \pi i \sum_{j=1}^n \residue{z_j}{f(z)}
+\end{align*}
+\textbf{Proof.}\\
+$\displaystyle \int_{-\infty}^{+\infty} f(x) dx = \displaystyle \lim_{R \to \infty} \int_{-R}^{R} f(x) dx = \\
+= \lim_{R \to \infty} \left(\int\displaylimits_{[\overrightarrow{-R,R}]} f(z)dz + \int\displaylimits_{\underset{\Im z \geq 0}{|z|=R}} f(z)dz - \int\displaylimits_{ \underset{\Im z \geq 0}{|z|=R}} f(z)dz \right) = \\ =
+\lim_{R \to \infty} \left(\int\displaylimits_{[\overrightarrow{-R,R}] \cup \underset{\Im z \geq 0}{|z|=R}} f(z)dz - \int\displaylimits_{ \underset{\Im z \geq 0}{|z|=R}} f(z)dz \right) \boxed{=}
+$\\
+Обидва інтеграли мають напрямок в противогодинникової стрілки\\
+Розглянемо $\displaystyle \abs{\int\displaylimits_{ \underset{\Im z \geq 0}{|z|=R}} f(z)dz} \leq \int\displaylimits_{ \underset{\Im z \geq 0}{|z|=R}} \abs{f(z)}\abs{dz} = $\\
+Заміна: $z = Re^{it}, t \in [0, \pi], |dz| = R\,dt$\\
+$\displaystyle = \int_0^\pi f(Re^{it}) R\,dt$\\
+Нас цікавить границя цього модулю:\\
+$\displaystyle \lim_{R \to \infty} f(Re^{it})R = \lim_{\underset{|z|=R}{|z| \to \infty}} |z f(z)| \overset{\textrm{умова}}{=} 0$\\
+Звідси $\displaystyle \lim_{R \to \infty} \int_0^\pi f(Re^{it}) R\,dt = 0$\\
+\\
+$\displaystyle \boxed{=}  \lim_{R \to \infty} \int\displaylimits_{[\overrightarrow{-R,R}] \cup \underset{\Im z \geq 0}{|z|=R}} f(z)dz = $\\
+Для великих $R$ наш контур охоплює всі особливі точки $f(z)$. Але наша кількість скінченна\\
+$\displaystyle = \sum_{j=1}^n \residue{z_j}{f(z)}$ $\blacksquare$
+\hugespace
+
+\textbf{Example.} $\displaystyle \int_{-\infty}^{+\infty} \frac{x^2+1}{x^4+1}\,dx = \boxed{=}$\\
+Розглянемо функцію $\displaystyle f(z) = \frac{z^2+1}{z^4+1}$, при цьому $\Im z > 0$\\
+Для неї є чотири проблемні точки $z_1, z_2, z_3, z_4$, але потрапляють лише $z_1, z_4$ - два полюси, обидва першого порядку:\\
+$\displaystyle z_1 = \frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2} i \Rightarrow \residue{z_1}{f(z)} = \frac{i+1}{(z_1-z_2)(z_1-z_3)(z_1-z_4)^2} = \frac{1}{2 \sqrt{2} i}$\\
+$\displaystyle z_4 = -\frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2} i \Rightarrow \residue{z_4}{f(z)} = \frac{-i+1}{(z_4-z_1)(z_4-z_2)(z_4-z_3)^2} = \frac{1}{2 \sqrt{2} i}$\\
+І нарешті, треба перевірити умову: $\displaystyle \lim_{z \to \infty} z f(z) = \lim_{z \to \infty} z \cdot \frac{z^2+1}{z^4+1} = 0$\\
+$\displaystyle \boxed{=} 2 \pi i \frac{1}{\sqrt{2} i } = \pi \sqrt{2}$
+\hugespace
+
+III. Розглянемо $\displaystyle \int_{-\infty}^{+\infty} f(x) \cos \alpha x \,dx $ або $\displaystyle \int_{-\infty}^{+\infty} f(x) \sin \alpha x \,dx $\\
+Варто зауважити, що $\cos \alpha x = \Re e^{i \alpha x}$, $\sin \alpha x = \Im e^{i \alpha x}$\\
+Тому:\\
+$\displaystyle \int_{-\infty}^{+\infty} f(x) \cos \alpha x \,dx = \Re \int_{-\infty}^{+\infty} f(x) e^{i \alpha x} \,dx$\\
+$\displaystyle \int_{-\infty}^{+\infty} f(x) \sin \alpha x \,dx = \Im \int_{-\infty}^{+\infty} f(x) e^{i \alpha x} \,dx$\\
+Тоді далі будемо розглядати \\ $\displaystyle \int_{-\infty}^{+\infty} f(x) e^{i \alpha x} \,dx = p.v. \int_{-\infty}^{+\infty} f(x) e^{i \alpha x} \,dx = \lim_{R \to \infty} \int_{-R}^{R} f(x) e^{i \alpha x} \,dx$
+\hugespace
+\textbf{Lemma. Лема Жордана}\\
+Задана функція $f$ - аналітична на верхній півплощині $\mathbb{C}$ за виключенням скінченної кількості особливих точок.\\
+Відомо, що $\displaystyle \lim_{|z| \to \infty} \max_{\underset{\Im z \geq 0}{|z|=R}} \abs{f(z)} = 0$. Тоді
+\begin{align*}
+\lim_{R \to \infty} \int\displaylimits_{\underset{\Im z \geq 0}{|z|=R}} f(z)e^{i \alpha z} \,dz = 0
+\end{align*}
+\textbf{Proof.}\\
+$\displaystyle \abs{\int\displaylimits_{\underset{\Im z \geq 0}{|z|=R}} f(z)e^{i \alpha z} \,dz} \leq \int\displaylimits_{\underset{\Im z \geq 0}{|z|=R}} |f(z)e^{i \alpha z}| \,|dz| =$\\
+Заміна: $z = Re^{it}, t \in [0, \pi], |dz|=R\,dt$\\
+$= \displaystyle \int_0^{pi} \abs{f(Re^{it})e^{iR \alpha e^{it}}} R\,dt \boxed{\leq}$\\
+Розглянемо окремо $\displaystyle \abs{e^{iR \alpha e^{it}}} = \abs{e^{iR \alpha (\cos t + i \sin t)}} = \underset{=1}{|e^{iR \alpha \cos t}|} |e^{-\alpha R \sin t}| = e^{-\alpha R \sin t}$\\
+$\displaystyle \sin t \geq 
+\begin{cases}
+ \displaystyle\frac{2}{\pi} t , t \in [0, \frac{\pi}{2}]\\
+ \\
+ \displaystyle\frac{2}{\pi} (\pi - t), t \in [\frac{\pi}{2}, \pi] \\
+\end{cases} \overset{\textrm{позначимо}}{=} g(t)\\
+$\\
+\begin{figure}[h]
+\centerline{\includegraphics[scale = 0.6]{sinless.png}}
+\caption{Червоний - $\sin t$, Синій - $g(t)$}
+\end{figure}
+
+Отже,\\
+$\displaystyle e^{-\alpha R \sin t} \leq e^{-\alpha R g(t)}$\\
+$\displaystyle \boxed{\leq} \max_{\underset{\Im z \geq 0}{|z|=R}} \abs{f(z)} \int_0^\pi e^{-\alpha R g(t)} R\,dt = \max_{\underset{\Im z \geq 0}{|z|=R}} \abs{f(z)} \left(\int_0^{\frac{\pi}{2}} e^{-\alpha R \frac{2\pi}{t}} R\,dt + \int_{\frac{\pi}{2}}^{\pi} e^{-\alpha R \frac{2}{\pi}(\pi-t)} R\,dt \right) = \\ = \max_{\underset{\Im z \geq 0}{|z|=R}} \abs{f(z)} R \left(-\frac{\pi}{2 \alpha R} (e^{-\alpha R}-1) + \frac{\pi}{2\alpha R} (1 - e^{-\alpha R}) \right) = \max_{\underset{\Im z \geq 0}{|z|=R}} \abs{f(z)} \left(-\frac{\pi}{\alpha}e^{-\alpha R} + \frac{\pi}{\alpha} \right) = \\ = \max_{\underset{\Im z \geq 0}{|z|=R}} \abs{f(z)} \frac{\pi}{\alpha} \left(1 - e^{-\alpha R} \right)$\\
+Якщо $R \to \infty$, то отриманий вираз прямує до нуля. Таким чином,\\
+$\displaystyle \lim_{R \to \infty} \int\displaylimits_{\underset{\Im z \geq 0}{|z|=R}} f(z)e^{i \alpha z} \,dz = 0$ $\blacksquare$
+\hugespace
+\textbf{Theorem.} Задана функція $f(x)$ на $\mathbb{R}$ така, що вона продовжується аналітично на верхню півплощину $\mathbb{C}$ за виключенням скінченної кількості точок $z_1, \cdots, z_n$\\
+Наша функція $f(z)$ така, що $\exists \displaystyle \lim_{|z| \to \infty} \max_{\underset{\Im z \geq 0}{|z|=R}} \abs{f(z)} = 0$\\
+Тоді
+\begin{align*}
+\int_{-\infty}^{+\infty} f(x) e^{i \alpha x} \,dx = 2 \pi i \sum_{j=1}^n \residue{z_j}{f(z)e^{i \alpha z}}
+\end{align*}
+\textbf{Proof.}\\
+$\displaystyle \int_{-\infty}^{+\infty} f(x) e^{i \alpha x} \,dx = \lim_{R \to \infty} \left(\int\displaylimits_{[\overrightarrow{-R,R}]} f(z)e^{i \alpha z}dz + \int\displaylimits_{\underset{\Im z \geq 0}{|z|=R}} f(z)e^{i \alpha z}dz - \int\displaylimits_{ \underset{\Im z \geq 0}{|z|=R}} f(z)e^{i \alpha z}dz \right) = \\ 
+= \lim_{R \to \infty} \left(\int\displaylimits_{[\overrightarrow{-R,R}] \cup \underset{\Im z \geq 0}{|z|=R}} f(z)e^{i \alpha z}dz - \int\displaylimits_{ \underset{\Im z \geq 0}{|z|=R}} f(z)e^{i \alpha z}dz \right) \overset{\textrm{Lm. Жордана}}{=} \\ = \lim_{R \to \infty} (2 \pi i)\sum_{j=1}^n \residue{z_j}{f(z)e^{i \alpha z}} = 2 \pi i \sum_{j=1}^n \residue{z_j}{f(z)e^{i \alpha z}}$ $\blacksquare$
+\hugespace
+
+\textbf{Example.} $\displaystyle \int_{-\infty}^{+\infty} \frac{x \sin x}{x^2+4x+20} = \Im \int_{-\infty}^{+\infty} \frac{x e^{ix}}{x^2+4x+20} \boxed{=}$\\
+Розглянемо функцію $\displaystyle f(z) = \frac{z}{z^2+4z+20}$, де $\Im z \geq 0$ \\
+$z_1, z_2$ - корені знаменнику, але $z_1 = -2 + 4i$ - полюс першого порядку - потрапляє в нашу область\\
+Більш того, $\displaystyle \lim_{z \to \infty} f(z) = \lim_{z \to \infty} \frac{z}{z^2+4z+20} = 0$\\
+$\displaystyle \boxed{=} \Im[ 2\pi i \residue{z_1}{f(z)e^{iz}}] = \Im\left[ 2\pi i \lim_{z \to -2+4i} \frac{ze^{iz}}{2+2+4i}\right] = \dots = \\ = \Im\left[ \frac{\pi}{4} e^{-4} (4i-2)(\cos 2 - i \sin 2) \right] = \frac{\pi}{4}e^{-4} (4\cos 2 + 2 \sin 2)$
+\newpage
+
+
+%END OF PARAGRAPH 2%
+
+
+\section{Ряди Фур'є}
+\subsection*{Передмова до цієї теми}
+Зазвичай аби розповісти про ряди Фур'є та їхнє появлення на світ, необіхдно знати багато тем з лінійної алгебри 2 семестру. Користуючись нагодою, я хочу передати величезний "привіт"  одному викладачу, що максимально завалив зміст дисципліни лін. ал. (із КН ММСА)\\
+\\
+І водночас двічі вдячний ГБ за уникнення таких складнощів та дав, в принципі, достойне оповідання рядів Фур'є без лінійки.\\
+ 
+\subsection{Початок}
+Нехай задана $g(z)$ - аналітична в кільці $K = \{z: 1-\varepsilon_1 <|z|<1+\varepsilon_2 \}$. Причому $\{z: |z|=1\} \subset K$\\
+Розкладемо $g(z)$ в ряд Лорана за степенем $z$ в цьому кільці:\\
+$\displaystyle g(z) = \sum_{n=-\infty}^{\infty} c_n z^n$,\\
+де $\displaystyle c_n = \frac{1}{2 \pi i} \oint\displaylimits_{|z|=1} \frac{g(z)}{z^{n+1}}\,dz$\\
+А тепер зробимо наступне:\\
+$|z|=1 \Rightarrow z = e^{ix}, x \in [0, 2 \pi]$. Тоді\\
+$\displaystyle g(z) = g(e^{ix}) \overset{\textrm{позн}}{=} f(x)$\\
+$\displaystyle c_n = \frac{1}{2 \pi i} \oint\displaylimits_{|z|=1} \frac{g(z)}{z^{n+1}}\,dz \overset{z=e^{ix}}{=}  \frac{1}{2 \pi i} \int_0^{2 \pi} \frac{f(x)}{e^{(n+1)ix}} ie^{ix}\,dx = \frac{1}{2 \pi} \int_0^{2 \pi} f(x)e^{-inx}\,dx$\\
+Отримали комплексну форму ряду Фур'є\\
+$\displaystyle f(x) = \sum_{n=-\infty}^{\infty} c_n e^{inx}, c_n = \frac{1}{2 \pi} \int_0^{2 \pi} f(x)e^{-inx}\,dx$
+\hugespace
+Є деякі необхідні умови:\\
+$f \in D([0, 2\pi]) \iff f$ - $2 \pi$-періодична інтегрована на будь-якому відрізку $\iff$ $f \in D([-\pi, \pi])$\\
+За функцією $f(x)$ будуємо ряд Фур'є:\\
+$\displaystyle S(x) = \sum_{n=-\infty}^{\infty} c_n e^{inx}, c_n = \frac{1}{2 \pi} \int_0^{2 \pi} f(x)e^{-inx}\,dx$\\
+\hugespace
+\textbf{Головні питання до цього ряду:}\\
+1) збіжність ряду Фур'є\\
+2) якщо збігається, то який зв'язок між $S(x)$ та $f(x)$\\
+Будемо вивчати для випадку $f(x)$ - дійснозначна функція (в подальшому)\\
+\hugespace
+Розглянемо ряд Фур'є\\
+$\displaystyle \sum_{n=-\infty}^{-1} c_n + c_0 + \displaystyle \sum_{n=1}^{\infty} c_n
+= c_0 + \displaystyle \sum_{k=1}^{\infty} c_{-k}e^{-ikx} + \sum_{n=1}^{\infty} c_ne^{inx} \boxed{=}
+$\\
+Коефіцієнти головної частини: \\ $\displaystyle c_{-k} = \frac{1}{2 \pi} \int_0^{2\pi} f(x)e^{ikx} \,dx = \overline{\frac{1}{2 \pi} \int_0^{2\pi} f(x)e^{-ikx} \,dx} = \overline{c_k}$\\
+Тому $c_{-k}e^{-ikx} = \overline{c_k} \overline{e^{ikx}} = \overline{c_k e^{ikx}}$\\
+$\displaystyle \boxed{=} c_0 + \sum_{n=1}^{\infty} \left( \underset{\in \mathbb{R}}{\overline{c_n e^{inx}} + c_n e^{inx}} \right) \boxed{=}$\\
+Маленький комплексний факт:\\
+$\begin{cases}
+w = a + ib\\
+\overline{w} = a - ib
+\end{cases} \Rightarrow w + \overline{w} = 2a = 2\Re w
+$\\
+$\displaystyle \boxed{=} c_0 + \sum_{n=1}^{\infty} 2 \Re(c_n e^{inx}) \boxed{\boxed{=}}$\\
+З'ясуємо більш детально про коефіцієнт:\\
+$\displaystyle c_n = \frac{1}{2\pi}\int_0^{2\pi} f(x)e^{-inx}\,dx = \frac{1}{2 \pi} \int_0^{2\pi} f(x) \cos nx \,dx - i \frac{1}{2 \pi} \int_0^{2\pi} f(x) \sin nx \,dx$\\
+Тоді:\\
+$\displaystyle \Re (c_n e^{inx}) = \\ = \Re\left(\left(\frac{1}{2 \pi} \int_0^{2\pi} f(x) \cos nx \,dx - i \frac{1}{2 \pi} \int_0^{2\pi} f(x) \sin nx \,dx \right) \cdot \left(\cos nx + i \sin nx \right)\right) = \frac{1}{2 \pi i} \left(\int_0^{2 \pi} f(x) \cos nx \,dx \cdot \cos nx + \int_0^{2 \pi} f(x) \sin nx \,dx \cdot \sin nx \right)$\\
+$\displaystyle \boxed{\boxed{=}} c_0 + \sum_{n=1}^{\infty} \frac{1}{\pi} \left(\int_0^{2 \pi} f(x) \cos nx \,dx \cdot \cos nx + \int_0^{2 \pi} f(x) \sin nx \,dx \cdot \sin nx \right)$\\
+$\displaystyle c_0 = \frac{1}{2 \pi} \int_{0}^{2 \pi} f(x)\,dx$\\
+Отримали дійсну формулу ряда Фур'є:
+\begin{align*}
+f(x) \leadsto \frac{a_0}{2} + \sum_{n=0}^{\infty} a_n \cos nx + b_n \sin nx \\
+a_n = \frac{1}{\pi}\int_0^{2\pi} f(x) \cos nx \,dx, n \in \mathbb{N} \setminus \{0\} \\
+b_n = \frac{1}{\pi}\int_0^{2\pi} f(x) \sin nx \,dx, n \in \mathbb{N}
+\end{align*}
+Але ці формули для функції $2\pi$-періодичних
+\hugespace
+Розглянемо відображення $[0, 2\pi] \leftarrow [0, 2l]$\\
+$[0, 2\pi] \rightarrow x$, $\displaystyle x = \frac{t}{l}\pi, t \in [0,2l]$\\
+Тоді $\displaystyle f(x) = f(\frac{t}{l}\pi) \overset{\textrm{позн}}{=} g(t)$ - задана на $[0, 2l]$, тобто $2l$-періодична\\
+$\displaystyle a_n = \frac{1}{\pi}\int_0^{2\pi} f(x) \cos nx \,dx \overset{\displaystyle x = \frac{t}{l} \pi}{=} \frac{1}{l} \int_0^{2l} g(t) \cos \left( \frac{\pi n t}{l} \right) \,dt$\\
+$\displaystyle b_n = \frac{1}{\pi}\int_0^{2\pi} f(x) \sin nx \,dx \overset{\displaystyle x = \frac{t}{l} \pi}{=} \frac{1}{l} \int_0^{2l} g(t) \sin \left( \frac{\pi n t}{l} \right) \,dt$\\
+Тоді розклад в ряд:\\
+$\displaystyle g(t) \leadsto \displaystyle \frac{a_0}{2} + \sum_{n=0}^{\infty} a_n \cos \left( \frac{\pi n t}{l} \right) + b_n \sin \left( \frac{\pi n t}{l} \right)$\\
+Найчастіше зручно шукати коефіцієнти в такому вигляді:\\
+$\displaystyle a_n = \frac{1}{l} \int_{-l}^{l} g(t) \cos \left( \frac{\pi n t}{l} \right) \,dt$\\
+$\displaystyle b_n = \frac{1}{l} \int_{-l}^{l} g(t) \sin \left( \frac{\pi n t}{l} \right) \,dt$
+\hugespace
+
+\subsection{Аналіз збіжності ряду}
+\textbf{Lemma 3.2.1. Лема Рімана}\\ Задана функція $f \in D([a,b])$ (навіть в невласному сенсі абсолютно). Тоді
+\begin{align*}
+1) \int_a^b f(x) \cos \lambda x \,dx \to 0, \lambda \to \infty \\
+2) \int_a^b f(x) \sin \lambda x \,dx \to 0, \lambda \to \infty
+\end{align*}
+\textbf{Proof.}\\
+Доведемо перший пукнт, другий аналогічно\\
+Ми розглянемо чотири випадки функції $f$:\\
+a) $f(x) = c$ (константа)\\
+ $\Rightarrow \displaystyle \int_a^b f(x) \cos \lambda x \,dx = \frac{c}{\lambda} \sin \lambda x \Big|_{a}^b = \frac{c}{\lambda} \left(\sin \lambda b - \sin \lambda a \right) \overset{\lambda \to \infty}{\to} 0$
+\hugespace
+б) $\displaystyle f(x) = \sum_{k=1}^n c_k 1_{<\alpha_k, \beta_k>} (x)$ (проста функція)\\
+$\Rightarrow \displaystyle \int_a^b f(x) \cos \lambda x \,dx = \sum_{k=1}^n \int_a^b 1_{<\alpha_k, \beta_k>} (x) c_k \cos \lambda x \,dx = \sum_{k=1}^n c_k \int_{\alpha_k}^{\beta_k} \cos \lambda x \,dx = \frac{1}{\lambda} \sum_{k=1}^n c_k (\sin \lambda \beta_k - \sin \lambda \alpha_k) \overset{\lambda \to \infty}{\to} 0$\\
+\hugespace
+в) $f \in D([a,b])$, або $\exists \{p_n(x), n \geq 1\}: p_n \rightrightarrows f$ (інтегрована функція)\\
+$\Rightarrow \displaystyle \forall \varepsilon: \exists N: \sup_{x \in [a,b]} |p_N(x) - f(x)| < \varepsilon \iff \\ \forall x \in [a,b]: p_N(x) - \varepsilon <f(x) < p_N(x) + \varepsilon$\\
+$\Rightarrow \displaystyle \abs{\int_a^b f(x) \cos \lambda x \,dx - \int_a^b p_N(x) \cos \lambda x \,dx} = \abs{\int_a^b (f(x) - p_N(x)) \cos \lambda x \,dx} \leq \\ \leq \int_a^b |f(x)-p_N(x)| |\cos \lambda x| \,dx \leq \int_a^b \varepsilon \,dx = \varepsilon(b-a)$\\
+Таким чином оскільки за п. б), $\displaystyle \int_a^b p_N(x) \cos \lambda x \,dx \overset{\lambda \to \infty}{\to} 0$, то\\
+$\displaystyle \forall \varepsilon>0: \exists \Lambda: \forall |\lambda| > \Lambda: \abs{\int_a^b p_N(x) \cos \lambda x \,dx} < \varepsilon(b-a)$\\
+Звідси маємо:\\
+$\displaystyle \abs{\int_a^b f(x) \cos \lambda x \,dx} \leq \abs{\int_a^b f(x) \cos \lambda x \,dx-\int_a^b p_N(x) \cos \lambda x \,dx} + \abs{\int_a^b p_N(x) \cos \lambda x \,dx} \\ < 2\varepsilon(b-a)$\\
+Отже, за означенням, $\displaystyle \int_a^b f(x) \cos \lambda x \,dx \overset{\lambda \to \infty}{\to} 0$\\
+\hugespace
+г) випадок невласного інтегралу, що збіжний абсолютно, тобто (наприклад) \\ $\displaystyle \int_a^b f(x) \cos \lambda x \,dx = \lim_{\delta \to 0+} \int_a^{b-\delta} f(x) \cos \lambda x \,dx$
+\\
+(аналогічно для особливої точки $a$, або коли маємо безліч особливих точок $c_1,\dots,c_n \in (a,b))$\\
+$\displaystyle \abs{\int_a^b f(x) \cos \lambda x \,dx} = \abs{\int_a^{b-\delta} f(x) \cos \lambda x \,dx + \int_{b-\delta}^b f(x) \cos \lambda x \,dx} \leq \\ \leq \abs{\int_a^{b-\delta} f(x) \cos \lambda x \,dx} + \int_{b-\delta}^b |f(x)| |\cos \lambda x| \,dx \leq \\ \leq \abs{\int_a^{b-\delta} f(x) \cos \lambda x \,dx} + \int_{b-\delta}^b |f(x)| | \,dx \boxed{<}$\\
+Оскільки $\displaystyle \int_a^b |f(x)|\,dx$ збігається, то $\displaystyle \forall \varepsilon>0: \exists \delta: \int_{b-\delta}^b |f(x)|\,dx < \frac{\varepsilon}{2}$\\
+Більш того, за п. в), $\displaystyle \int_a^{b-\delta} f(x) \cos \lambda x \,dx \overset{\lambda \to \infty}{\to} 0$, тому $\displaystyle \exists \Lambda: \forall |\lambda|>\Lambda: \abs{\int_a^{b-\delta} f(x) \cos \lambda x \,dx} < \frac{\varepsilon}{2}$\\
+$\displaystyle \boxed{<} \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$\\
+Отже, за означенням, $\displaystyle \int_a^b f(x) \cos \lambda x \,dx \overset{\lambda \to \infty}{\to} 0$ $\blacksquare$
+\hugespace
+
+Розглянемо частковий ряд:
+$\displaystyle S_k(x) = \frac{a_0}{2} + \sum_{n=1}^k a_n \cos nx + b_n \sin nx$, де\\
+$\displaystyle a_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \cos nt \,dt$, 
+$\displaystyle b_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \sin nt \,dt$\\
+Тоді,\\$\displaystyle S_k(x) = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t)\,dt + \frac{1}{\pi} \sum_{n=1}^k \int_{-\pi}^{\pi} f(t) \cos nt \,dt \cos nx + \int_{-\pi}^{\pi} f(t) \sin nt \,dt \sin nx = \\
+=\frac{1}{2\pi} \int_{-\pi}^{\pi} f(t)\,dt + \frac{1}{\pi} \sum_{n=1}^k \int_{-\pi}^{\pi} f(t) (\cos nt \cos nx + \sin nt \sin nx) \,dt = \\
+= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(t)\,dt + \frac{1}{\pi} \int_{-\pi}^{\pi} f(t)\sum_{n=1}^k  \cos n(t-x) \,dt = \\
+= \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \left(\frac{1}{2} + \sum_{n=1}^k  \cos n(t-x)  \right)\,dt \boxed{=}
+ $\\
+ Знайдемо суму підінтегрального виразу:\\
+ $\displaystyle \frac{1}{2} + \sum_{n=1}^k  \cos n\alpha = \frac{1}{2} + \sum_{n=1}^k  \frac{\cos n\alpha \sin \frac{\alpha}{2}}{\sin \frac{\alpha}{2}} = \\
+ = \frac{1}{2} + \frac{1}{\sin \frac{\alpha}{2}} \cdot \frac{1}{2} \sum_{n=1}^k \left( \sin (\frac{\alpha}{2}+n\alpha) + \sin (\frac{\alpha}{2} - n\alpha) \right) = \\
+ = \frac{1}{2} + \frac{1}{2 \sin \frac{\alpha}{2}} \left(\sin \frac{3\alpha}{2} - \sin \frac{\alpha}{2} + \sin \frac{5\alpha}{2} - \sin \frac{3\alpha}{2} + \dots + \sin \frac{(2k+1)\alpha}{2} - \sin \frac{(2k-1)\alpha}{2} \right) \\ 
+ = \frac{1}{2} + \frac{1}{2 \sin \frac{\alpha}{2}} \left(\sin \frac{(2k+1)\alpha}{2} - \sin \frac{\alpha}{2} \right) = \frac{\sin (\frac{(2k+1)\alpha}{2})}{2 \sin (\frac{\alpha}{2})}
+ $\\
+ \vspace{5mm}\\
+ $\displaystyle \boxed{=} \frac{1}{\pi} \int_{-\pi}^{\pi} f(t) \frac{\sin (\frac{(2k+1)(t-x)}{2})}{2 \sin (\frac{(t-x)}{2})} \,dt \overset{t-x=u}{=}
+ \frac{1}{2\pi} \int_{-\pi-x}^{\pi-x} f(u+x) \frac{\sin (\frac{(2k+1)}{2}u)}{\sin (\frac{1}{2}u)} \,du =
+ $\\
+Наша функція $f$ - $2 \pi$-періодична, також і друга функція (як сума $\cos$). Тоді границю $[-\pi-x, \pi-x]$ можна замінити на $[-\pi, \pi]$\\
+ $\displaystyle = \frac{1}{2\pi} \int_{-\pi}^{\pi} f(u+x) \frac{\sin (\frac{(2k+1)}{2}u)}{ \sin (\frac{1}{2}u)} \,du = \\
+ = \frac{1}{2\pi} \int_{0}^{\pi} f(u+x) \frac{\sin (\frac{(2k+1)}{2}u)}{ \sin (\frac{1}{2}u)} \,du + \frac{1}{2\pi} \int_{-\pi}^{0} f(u+x) \frac{\sin (\frac{(2k+1)}{2}u)}{ \sin (\frac{1}{2}u)} \,du \boxed{=}
+ $\\
+Зробимо заміну в другому інтегралі: $u = -v$ і замінимо потім на літеру $u$. Отримаємо наступне\\
+$\displaystyle \boxed{=} \frac{1}{2\pi} \int_{0}^{\pi} f(x+u) \frac{\sin (\frac{(2k+1)}{2}u)}{ \sin (\frac{1}{2}u)} + f(x-u) \frac{\sin (\frac{(2k+1)}{2}u)}{ \sin (\frac{1}{2}u)} \,du = \\
+= \frac{1}{\pi} \int_{0}^{\pi} (f(x+u)+f(x-u)) \frac{\sin (\frac{(2k+1)}{2}u)}{2 \sin (\frac{1}{2}u)} \,du$\\
+Таким чином ми довели теорему:
+\hugespace
+\textbf{Theorem 3.2.2.} Задана функція $f$ - $2 \pi$-періодична, інтегрована. Тоді $\displaystyle S_k(x) = \frac{a_0}{2} + \sum_{n=1}^k a_n \cos nx + b_n \sin nx$ - часткова сума ряду Фур'є - дорівнює іншому виразу:
+\begin{align*}
+S_k(x) = \frac{1}{\pi} \int_{0}^{\pi} (f(x+u)+f(x-u)) D_k(u) \,du
+\end{align*}
+\hugespace
+\textbf{Перепозначення}: $\displaystyle \frac{\sin (\frac{(2k+1)}{2}u)}{2 \sin (\frac{1}{2}u)} = \frac{1}{2} + \sum_{n=1}^k \cos ku = D_k(u)$ - ядро Діріхле
+\hugespace
+\textbf{Властивості ядра Діріхле:}\\
+1) $D_k(u)$ - парна, $2 \pi$-періодична функція\\
+2) $\displaystyle \frac{1}{\pi} \int_{-\pi}^{\pi} D_k(u) \,du = 1$\\
+\textbf{Proof.}\\
+1. \textit{Вже доводили під час муток з формулами}\\
+2. $\displaystyle \int_{-\pi}^{\pi} D_k(u) \,du = \int_{-\pi}^{\pi} \frac{1}{2} \,du + \sum_{n=1}^k \int_{-\pi}^{\pi} \cos ku \,du = \frac{1}{2} 2 \pi = \pi$ $\blacksquare$
+\hugespace
+Але нас ще цікавить збіжність часткового ряду\\
+Розглянемо рівність:\\
+$\displaystyle S_k(x) - c = \frac{1}{\pi} \int_{0}^{\pi} (f(x+u)+f(x-u)) D_k(u) \,du - c \frac{1}{\pi} \int_{-\pi}^{\pi} D_k(u) \,du = \\
+= \frac{1}{\pi} \int_{0}^{\pi} (f(x+u)+f(x-u)) D_k(u) \,du - c \frac{2}{\pi} \int_{0}^{\pi} D_k(u) \,du = \\
+= \frac{1}{\pi} \int_{0}^{\pi} (f(x+u)+f(x-u)-2c) D_k(u) \,du =
+$\\
+Позначимо $f(x+u)+f(x-u)-2c= g_{c,x}(u)$\\
+$\displaystyle = \frac{1}{\pi} \int_{0}^{\pi} g_{c,x}(u) D_k(u) \,du$\\
+Сформулюємо зараз нову теорему та доведемо її:
+\hugespace
+\textbf{Theorem 3.2.3. Ознака Діні (для рядів Фур'є)}\\
+Задана функція $f$ - $2\pi$-періодчина, інтегрована.\\ Якщо $\exists \delta > 0: \displaystyle \int_{0}^{\delta} \frac{|g_{c,x}(u)|}{u}\,du$ - збіжний, то $S_k(x) \to c, k \to \infty$\\
+\textbf{Proof.}\\
+Вже з'ясували, що $\displaystyle S_k(x) - c = \frac{1}{\pi} \int_{0}^{\pi} g_{c,x}(u) D_k(u) \,du = \\
+= \frac{1}{\pi} \int_{0}^{\delta} g_{c,x}(u) D_k(u) \,du + \frac{1}{\pi} \int_{\delta}^{\pi} g_{c,x}(u) D_k(u) \,du$\\
+Розглянемо доданки по черзі:\\
+2. $\displaystyle \frac{1}{\pi}\int_{\delta}^{\pi} g_{c,x}(u) \frac{\sin (\frac{(2k+1)}{2}u)}{2 \sin (\frac{1}{2}u)} \,du \to 0, k \to \infty$\\
+за лемою Рімана, тому що $\displaystyle \frac{g_{c,x}(u)}{\sin (\frac{1}{2}u)}$ - функція без особових точок та інтегрована\\
+1. $\displaystyle \frac{1}{\pi} \int_{0}^{\delta} g_{c,x}(u) \frac{\sin (\frac{(2k+1)}{2}u)}{2 \sin (\frac{1}{2}u)} \,du$\\
+Можемо застосувати лему Рімана. Але треба зазначити, що $\displaystyle \int_{0}^{\delta} \abs{\frac{g_{c,x}(u)}{2 \sin (\frac{u}{2})}} \,du$ збіжний абсолютно. Перевіримо за ознакою порівняння в граничній формі.\\
+За умовою теореми, $\displaystyle \int_{0}^{\delta} \frac{|g_{c,x}(u)|}{u}\,du$ - збіжний\\
+$\displaystyle \lim_{u \to 0} \frac{\frac{|g_{c,x}(u)|}{2 \sin \frac{u}{2}}}{\frac{|g_{c,x}(u)|}{u}} = \lim_{u \to 0} \frac{u}{2 \sin \frac{u}{2}} = 1$\\
+Отже, наш інтеграл збіжний. Тоді за лемою Рімана,\\
+$\displaystyle \frac{1}{\pi} \int_{0}^{\delta} g_{c,x}(u) \frac{\sin (\frac{(2k+1)}{2}u)}{2 \sin (\frac{1}{2}u)} \,du \to 0$, $k \to \infty$\\
+Остаточно: $S_k(x) - c \to 0$, $k \to \infty$ $\blacksquare$
+\hugespace
+
+\textbf{Corollary 3.2.3.(1).} Якщо $f$ - диференційована в т. $x_0$, то \\ $S_k(x_0) \to f(x_0), k \to \infty$\\
+\textbf{Proof.}\\
+З ознаки Діні випливає, що достатньо перевірити збіжність інтеграла за умовою теореми\\
+А зараз:\\
+$g_{c,x_0}(u) = f(x_0+u)+f(x_0-u) - 2c \overset{c = f(x_0)}{=} (f(x_0+u)-f(x_0))+(f(x_0-u)-f(x_0))$\\
+$\displaystyle \Rightarrow \frac{\abs{g_{c,x_0}(u)}}{u} = \frac{\abs{(f(x_0+u)-f(x_0))+(f(x_0-u)-f(x_0))}}{u} = \\ = \abs{ \frac{f(x_0+u)-f(x_0)}{u} + \frac{f(x_0)-f(x_0-u)}{-u} } \overset{u \to 0}{\to} |f'(x_0)+f'(x_0)| = |f'(x_0)|$\\
+Таким чином, у підінтегрованої функції т. $u=0$ є усувною. Тому збіжний\\
+Отже, $S_k(x_0) \to f(x_0), k \to \infty$ $\blacksquare$
+\hugespace
+\textbf{Corollary 3.2.3.(2).} Якщо для $f$ т. $x_0$ є стрибком та містить ліву і праву похідну, то $\displaystyle S_k(x_0) \to \frac{1}{2} (f(x_0,+)+f(x_0,-))$\\
+\textbf{Proof.}\\
+$\displaystyle c = \frac{1}{2} (f(x_0,+)+f(x_0,-))$\\
+Тоді $g_{c,x_0}(u) = f(x_0+u) - f(x_0,+) + f(x_0-u) - f(x_0,-)$\\
+$\displaystyle \Rightarrow \frac{\abs{g_{c,x_0}(u)}}{u} = \frac{\abs{(f(x_0+u)-f(x_0,+))+(f(x_0-u)-f(x_0,-))}}{u} = \\ = \abs{ \frac{f(x_0+u)-f(x_0,+)}{u} + \frac{f(x_0,-)-f(x_0-u)}{-u} } \overset{u \to 0}{\to} |f'(x_0,+)+f'(x_0,-)|$\\
+Тоді інтеграл в ознаку Діні збігається. Отже $S_k(x_0) \to c$ $\blacksquare$
+\hugespace
+\textbf{Corollary 3.2.3.(3).} Якщо $f$ задовільняє умові Ліпшиця в околі т. $x_0$, то $S_k(x) \to f(x_0)$, $k \to \infty$\\
+\textbf{Proof.}\\
+$c = f(x_0)$\\
+$\displaystyle \Rightarrow \frac{\abs{g_{c,x_0}(u)}}{u} = \frac{\abs{(f(x_0+u)-f(x_0))+(f(x_0-u)-f(x_0))}}{u} \leq \\ \leq \frac{\abs{f(x_0+u)-f(x_0)}}{u} + \frac{\abs{f(x_0-u)-f(x_0)}}{u} \leq \frac{Lu}{u} + \frac{Lu}{u} = 2L$\\
+Тобто така функція є обмеженою в околі $(0, \delta)$, тому є інтегрованою\\
+За ознаки Діні, $S_k(x) \to f(x_0)$ $\blacksquare$
+\hugespace
+
+Проаналізуємо тепер ряд Фур'є на рівномірну збіжність\\
+\textbf{Theorem 3.2.4.} Задана функція $f$ - $2\pi$-періодчина, кусково \\ неперервно-диференційована. Тоді ряд Фур'є рівномірно збігається до $f$\\
+\textit{Без доведення, бо я заплутався вже (в цей день ГБ не щастило)}
+\hugespace
+\textbf{Example.} Розкласти функцію в ряд Фур'є $f(x) = 6-x$ на проміжку $(3, 9)$\\
+Її період $T = 6 = 2l$, тому $l=3$\\
+Ряд Фур'є містить таку форму:\\
+$\displaystyle S(x) = a_0 + \sum_{n=1}^{\infty} a_n \cos \left(\frac{\pi n x}{3} \right) + b_n \sin \left(\frac{\pi n x}{3} \right)$\\
+Знайдемо всі коефіцієнти за формулами:\\
+$\displaystyle a_n = \frac{1}{3} \int_{3}^{9} (6-x) \cos \left(\frac{\pi n x}{3} \right) \,dx = 0$, $\forall n \neq 0$\\
+\textit{Можна міркувати двома способами чому 0: або через періодичність ми можемо змінити границі інтегрування на $[-3,3]$ та використати той факт, що функція - непарна; або площа фігури $[3,6]$ рівний протилежно площі фігури $[6.9]$. Другий варіант все ж таки більш сприятливий}\\
+$\displaystyle a_n = \frac{1}{3} \int_{3}^{9} (6-x) \,dx \overset{\textrm{ті самі міркування}}{=} 0$\\
+$\displaystyle b_n = \frac{1}{3} \int_{3}^{9} (6-x) \sin \left(\frac{\pi n x}{3} \right) \,dx \overset{u = 6-x}{=} \dots \overset{dv = \sin \left(\frac{\pi n x}{3} \right) \,dx}{=} (-1)^n \frac{6}{\pi n}$\\
+Отже, $\displaystyle f(x) \leadsto S(x) = \sum_{n=1}^{\infty} (-1)^n\frac{6}{\pi n} \sin \left(\frac{\pi n x}{3} \right)$\\
+У нас тут функція $f$ - диференційована в т. $x \neq 3 + 6k, k \in \mathbb{Z}$. Тоді за першим наслідком ознаки Діні, $S(x) = f(x)$\\
+При $x_k = 3 + 6k$ ці точки є стрибками, а також містять ліву та праву похідні. Тоді за другим наслідком ознаки Діні, \\ $S(x_k) = \displaystyle \frac{1}{2} (f(x_k+) + f(x_k-)) = 0$
+	\begin{figure}[h]
+	\captionsetup{justification=centering}
+	\centerline{\includegraphics[scale = 0.6]{FourierExpansion.png}}	
+	\caption{Червоний графік відповідає розкладу в ряд Фур'є \\ (тут я взяв лише 10 доданків; при нескінченної кількості вона буде схожа за наш початковий графік, оскім стрибків)}
+	\end{figure}
+\hugespace
+
+\subsection{Додатковий зміст із практики (*)}
+\textbf{Властивості ряду Фур'є}\\
+1. Якщо на $(-l,l)$ задана непарная функція $f$, то $\forall n \geq 1: a_n = 0$\\
+2. Якщо на $(-l,l$ задана парна функція $f$, то $\forall n \geq 1: b_n = 0$\\
+3. Якщо $f \in C((-l,l))$, що є $2l$-періодична, то $f \in C(\mathbb{R})$\\
+\textit{Залишу без доведення}
+\hugespace
+\textbf{Розклад функції $f(x)$, що задана на $[0,l)$, в ряд за косінус та сінус}\\
+1. $\cos$-Фур'є\\
+Продовжимо нашу функцію на $(-l,0)$ парним чином, тобто:\\
+$\tilde{f}(x) = \begin{cases} f(x), x \in [0,l) \\ f(-x), x \in (-l,0) \end{cases}$\\
+Якщо обережно перевірити, то $\tilde{f}(-x)=\tilde{f}(x)$, $x \in (-l,l)$\\
+Оскільки вона парна, то $\forall n \geq 1: b_n = 0$\\
+$\Rightarrow \tilde{f}(x) \leadsto S(x) = \displaystyle \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n \cos \left( \frac{\pi n x}{l} \right)$\\
+Причому $a_n = \displaystyle \frac{1}{\pi} \int_{-l}^{l} \tilde{f}(x) \cos \left( \frac{\pi n x}{l} \right) \,dx = \frac{2}{l} \int_0^l f(x) \cos \left( \frac{\pi n x}{l} \right)\,dx$\\
+Ну а якщо виконаються ознаки Діні, то при $x \in [0,l): \\ S(x) = \tilde{f(x)} = f(x)$
+\hugespace
+2. $\sin$-Фур'є\\
+Продовжимо нашу функцію на $(-l,0)$ непарним чином, тобто:\\
+$\tilde{f}(x) = \begin{cases} f(x), x \in [0,l) \\ -f(-x), x \in (-l,0) \end{cases}$\\
+Якщо обережно перевірити, то $\tilde{f}(-x)=-\tilde{f}(x)$, $x \in (-l,l)$\\
+Оскільки вона непарна, то $\forall n \geq 1: a_n = 0$\\
+$\Rightarrow \tilde{f}(x) \leadsto S(x) = \displaystyle \sum_{n=1}^{\infty} b_n \sin \left( \frac{\pi n x}{l} \right)$\\
+Причому $b_n = \displaystyle \frac{1}{\pi} \int_{-l}^{l} \tilde{f}(x) \sin \left( \frac{\pi n x}{l} \right) \,dx = \frac{2}{l} \int_0^l f(x) \sin \left( \frac{\pi n x}{l} \right)\,dx$\\
+Ну а якщо виконаються ознаки Діні, то при $x \in [0,l): \\ S(x) = \tilde{f(x)} = f(x)$
+\hugespace
+\textbf{Example. } Розкласти функцію $f(x) = x-1$ в косінус-ряд, $x \in (0,2)$\\
+Робимо той самий алгоритм:\\
+$\tilde{f}(x) = \begin{cases} x-1, x \in (0,2) \\ -x-1, x \in (-2,0) \end{cases}$ - $4$-періодична, до речі $\Rightarrow l =2$ \\
+Обчислимо коефіцієнти:\\
+$\displaystyle a_n = \frac{2}{2} \int_0^2 (x-1)\cos \left(\frac{\pi n x}{2} \right)\,dx \overset{\textrm{ну там за частинами}}{=} \left[ 
+      \begin{gathered} 
+        0, n = 2k \\ 
+        \frac{-8}{\pi^2(2k+1)^2} , n = 2k+1 \\ 
+      \end{gathered} 
+\right.$\\
+Таким чином, $S(x) = \displaystyle \sum_{k=1}^{\infty} \frac{-8}{\pi^2(2k+1)^2} \cos \left(\frac{\pi (2k+1) x}{2} \right)$\\
+Функція $\tilde{f}(x)$ на $(0,2)$ є диференційованою, тому за наслідком ознаки Діні,\\
+$\tilde{f(x)} = f(x) = x-1 = \displaystyle \sum_{k=1}^{\infty} \frac{-8}{\pi^2(2k+1)^2} \cos \left(\frac{\pi (2k+1) x}{2} \right)$\\
+\textbf{Remark!} Функцію з прикладу можна розкласти в ряд Фур'є стандартним шляхом, не подовжуючи її. Це говорить про те, що розклад в якомусь сенсі не є єдиним
+\hugespace
+
+\subsection{Середнє за Чезаро}
+\textbf{Definition 3.4.1.} Задана функція $f$ - $2\pi$-періодчина, інтегрована і ряд Фур'є $S$ для неї\\
+\textbf{Середнім за Чезаро} називають наступний вираз
+\begin{align*}
+\sigma_n(x) = \frac{1}{n} \left( S_0(x) + S_1(x) + \dots + S_{n-1}(x) \right)
+\end{align*}
+Отримаємо інтегральний вигляд середьного за Чезаро\\
+$\displaystyle \sigma_n(x) = \frac{1}{n} \sum_{k=0}^{n-1}S_k(x) = \frac{1}{n} \sum_{k=0}^{n-1} \int_{0}^{\pi} \frac{f(x+u) + f(x-u)}{2\pi} \frac{\sin (\frac{(2k+1)}{2}u)}{\sin (\frac{1}{2}u)} \,du =\\
+= \frac{1}{n} \int_0^{\pi} \frac{f(x+u) + f(x-u)}{2\pi \sin (\frac{1}{2}u)}\sum_{k=0}^{n-1}  \sin (\frac{(2k+1)}{2}u) \,du \boxed{=}
+$\\
+Розпишемо суму в інтегралі:\\
+$\displaystyle \sum_{k=0}^{n-1}  \sin (\frac{(2k+1)}{2}u) = \sum_{k=0}^{n-1} \frac{\sin (\frac{(2k+1)}{2}u) \sin \frac{u}{2}}{\sin \frac{u}{2}} = \\ = \frac{1}{\sin \frac{u}{2}}\sum_{k=0}^{n-1} \frac{1}{2} (\cos(ku)-\cos((k+1)u)) = \frac{1-\cos nu}{2\sin \frac{u}{2}} = \frac{\sin^2 \frac{nu}{2}}{\sin \frac{u}{2}}$\\
+\\
+$\displaystyle \boxed{=} \frac{1}{n} \int_0^{\pi} \frac{f(x+u) + f(x-u)}{2\pi} \frac{\sin^2 \frac{nu}{2}}{\sin^2 \frac{u}{2}} \,du = $\\
+$u = 2v, du = 2dv$\\
+$\displaystyle = \int_0^{\frac{\pi}{2}} \frac{f(x+2v) + f(x-2v)}{2\pi} \frac{\sin^2 nv}{n \sin^2 v} \,dv$\\
+Таким чином ми довели лему:
+\hugespace
+\textbf{Lemma 3.4.2.} Задана функція $f$ - $2\pi$-періодчина, інтегрована і ряд Фур'є $S$ для неї. Тоді середнє за Чезаро має інтегрований вираз:
+\begin{align*}
+\sigma_n(f)(x) = \frac{1}{\pi}\int_0^{\frac{\pi}{2}} (f(x+2v) + f(x-2v)) F_n(v) \,dv
+\end{align*}
+\hugespace
+\textbf{Перепозначення}: $\displaystyle \frac{\sin^2 nv}{2n \sin^2 v} = \frac{1}{n} \sum_{k=0}^{n-1} D_k(2v) = F_n(v)$ - ядро Феєра
+\hugespace
+\textbf{Властивості ядра Феєра}:\\
+1) $F_k(v)$ - парна, $2\pi$-періодчина\\
+2) $\displaystyle \frac{1}{\pi}\int_{-\pi}^{\pi}F_n(v)\,dv = 1$
+\textit{Для обох пунктів розглянути другу формулу ядра Феєра}
+\hugespace
+
+\textbf{Theorem 3.4.3. Теорема Феєра}\\
+Задана функція $f$ -, неперервна на $[0, 2\pi]$. Тоді $\sigma_n(f) ^\rightarrow_\rightarrow f$ на $[0,2\pi]$\\
+\textit{Поки що без доведення}
+\hugespace
+\textbf{Corollary 3.4.3.(1).} $\forall \varepsilon>0$ існує тригонометричний многочлен $\displaystyle T_\varepsilon(x) = A_0 + \sum_{n=1}^{N(\varepsilon)} A_n \cos nx + B_n \sin nx$ такий, що $\norm{f - T_{\varepsilon}}<\varepsilon$\\
+\textbf{Proof.}\\
+Дійсно існує, можна $T_{\varepsilon}(x) = \sigma_n(f)(x) \blacksquare$
+\hugespace
+\textbf{Corollary 3.4.3.(2).} Якщо $f \in C([a,b])$, тоді $\forall \varepsilon>0$ існує звичайний многочлен $\displaystyle P_{\varepsilon}(x)$ такий, що $\norm{f-P_{\varepsilon}}<\varepsilon$\\
+\textbf{Proof.}\\
+Задана функція $f(x), x \in [a,b]$\\
+Задамо $\displaystyle t = \frac{x-a}{b-a} \cdot 2\pi, t \in [0, 2\pi]$\\
+Звідси $\displaystyle x = \frac{t(b-a)}{2\pi}+a$\\
+$\displaystyle f(x) \overset{\textrm{підставляємо x і позначення}}{=} g(t)$, $g \in C([0,2\pi])$\\
+Тоді за теоремою Феєра, $\sigma_n(g) ^\rightarrow_\rightarrow g$, або\\
+$\displaystyle \forall \varepsilon > 0: \exists N(\varepsilon): \norm{g_{N(\varepsilon)}(g) -g} < \frac{\varepsilon}{2}$\\
+$\displaystyle \sigma_{N(\varepsilon)}(g)(t) = A_0 + \sum_{n=1}^{N(\varepsilon)} A_n \cos nt + B_n \sin nt$ - розкладається в ряд Тейлора
+$\displaystyle \sigma_{N(\varepsilon)}(g)(t) = \sum_{k=0}^{\infty} c_k t^k$\\
+Тоді $\exists K_{\varepsilon}:$ для часткової суми цього ряду $\displaystyle \sum_{k=0}^{K(\varepsilon)} c_k t^k = P_{\varepsilon}(k)$ виконано $\displaystyle \norm{\sigma_n(g) - P_{\varepsilon}} < \frac{\varepsilon}{2}$. Тому\\
+$\norm{g-P_{\varepsilon}} = \norm{g - \sigma_{N(\varepsilon)}(g) + \sigma_{N(\varepsilon)}(g) - P_{\varepsilon}} \leq \norm{g - \sigma_{N(\varepsilon)}(g)} + \norm{\sigma_{N(\varepsilon)}(g) - P_{\varepsilon}} < \varepsilon$\\
+$\displaystyle P_{\varepsilon}(t) = P_{\varepsilon}(\frac{x-a}{b-a} \cdot 2\pi) = P_{1\varepsilon}(x)$\\
+$\Rightarrow \norm{g - P_{\varepsilon}} = \norm{f - P_{1\varepsilon}} < \varepsilon$ $\blacksquare$
+\hugespace
+\textbf{Theorem 3.4.4. Рівність Парсеваля}\\
+Задана функція $f$ - $2\pi$-періодчина, інтегрована. Тоді
+\begin{align*}
+\frac{1}{\pi} \int_{0}^{2\pi} f^2(x)\,dx = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} a_n^2 + b_n^2
+\end{align*}
+де $a_n, b_n$ - коефіцієнти як в ряду Фур'є\\
+\textbf{Proof.}\\
+$\displaystyle S_k(x) = \frac{a_0}{2} + \sum_{n=1}^k a_n \cos nx + b_n \sin nx$. Тоді можна отримати, що\\
+$\displaystyle \int_0^{2\pi} \left( f(x)-S_k(x) \right)^2 \,dx \to 0$, якщо $n \to \infty$\\
+$\displaystyle \int_0^{2\pi} \left( f(x)-S_k(x) \right)^2 \,dx = \int_0^{2\pi} f^2(x)\,dx - 2\int_0^{2\pi} f(x)S_k(x) \,dx + \int_0^{2\pi} S_k^2(x)\,dx = \\
+= \int_0^{2\pi} f^2(x)\,dx - \\ - 2 \left( \int_0^{2\pi} \frac{a_0}{2} f(x) \,dx + \sum_{n=1}^k \left( a_n \int_0^{2\pi} \cos nx f(x) \,dx + b_n \int_0^{2\pi} \sin nx f(x) \,dx \right) \right) + \int_0^{2\pi} \left(\frac{a_0}{2} + \sum_{n=1}^k a_n \cos nx + b_n \sin nx \right)^2 \,dx \boxed{=}
+$\\
+Зауважимо, що справедлива така рівність: $\displaystyle \left( \sum_{j=1}^{m} c_j \right)^2 = \sum_{l=1}^m \sum_{j=1}^m c_l c_j$\\
+$\displaystyle \boxed{=} \int_0^{2\pi} f^2(x)\,dx - 2\left(\frac{a_0}{2} \cdot \pi a_0 + \sum_{n=0}^k a_n \cdot \pi a_n + b_n \cdot \pi b_n \right) + \\ +
+\int_0^{2\pi} \left( \frac{a_0}{2} \right)^2 \,dx + \int_0^{2\pi} 2 \cdot \frac{a_0}{2} \cdot \sum_{n=1}^k a_n \cos nx + b_n \sin nx \,dx + \\ + \int_0^{2\pi} \left(\sum_{n=1}^k a_n \cos nx + b_n \sin nx \right)^2\,dx = \\
+= \int_0^{2\pi} f^2(x)\,dx - 2\left(\frac{a_0}{2} \cdot \pi a_0 + \sum_{n=0}^k a_n \cdot \pi a_n + b_n \cdot \pi b_n \right) + \\ + \frac{\pi a_0^2}{2} + a_0 \sum_{n=1}^k \left( a_n \int_0^{2\pi} \cos nx \, dx + b_n \int_0^{2\pi} \sin nx \, dx \right) + \\ +
+\sum_{n=1}^k \sum_{m=1}^k a_n a_m \int_0^{2\pi} \cos nx \cos mx \, dx + \sum_{n=1}^k \sum_{m=1}^k 2 a_n b_m \int_0^{2\pi} \cos nx \sin mx \,dx + \sum_{n=1}^k \sum_{m=1}^k b_n b_m \int_0^{2\pi} \sin nx \sin mx \,dx \boxed{\boxed{=}}$\\
+Зауважимо, що $\displaystyle \int_0^{2\pi} \cos nx \,dx = \int_0^{2\pi} \sin nx \,dx = 0$\\
+Також звідси випливає, що $\displaystyle \int_0^{2\pi} \cos nx \cos mx \,dx = \int_0^{2\pi} \cos nx \sin mx \,dx = \int_0^{2\pi} \sin nx \sin mx \,dx = 0$, але при $m \neq n$. Тому пропадуть безліч доданків прямо зараз\\
+$\displaystyle \boxed{\boxed{=}} \int_0^{2\pi} f^2(x)\,dx -\frac{\pi a_0^2}{2} - 2\pi \sum_{n=0}^k a_n^2 + b_n^2 + \sum_{n=1}^k \left(a_n^2 \int_0^{2\pi} \cos^2 nx \,dx + b_n \int_0^{2\pi} \sin^2 nx \,dx  \right) = \\
+= \int_0^{2\pi} f^2(x)\,dx - \pi \left(\frac{a^2_0}{2} + \sum_{n=0}^k a_n^2 + b_n^2 \right) \to 0$ при $n \to \infty$\\
+І НАРЕШТІ, отримали довгоочікувану рівність:\\
+$\displaystyle \frac{1}{\pi} \int_{0}^{2\pi} f^2(x)\,dx = \frac{a_0^2}{2} + \sum_{n=1}^{\infty} a_n^2 + b_n^2$ $\blacksquare$
+\hugespace
+\textbf{Example 3.4.4. Приклад застосування}\\
+Нехай $f(x) = x$, $x \in (-\pi, \pi)$. Вона є непарною, тому $a_n = 0: \forall n \geq 0$\\
+$\displaystyle b_n = \dots = \frac{2(-1)^{n+1}}{n}$\\
+А тепер застосуємо рівність Парсеваля:\\
+$\displaystyle \frac{1}{\pi} \int_{-\pi}^{\pi} x^2\,dx = \frac{2\pi^2}{3} \overset{\textrm{Th. 3.3.4.}}{=} \sum_{n=1}^{\infty} \frac{4}{n^2} \Rightarrow$
+\begin{align*}
+\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+\end{align*}
+\hugespace
+
+\subsection{Перетворення Фур'є}
+\textbf{Definition 3.5.1.} Задана функція $f(x)$ на $\mathbb{R}$ - абсолютно інтегрована\\
+\textbf{Перетворенням Фур'є} функції $f(x)$ називається функція:
+\begin{align*}
+\int_{-\infty}^{+\infty} f(x)e^{i \lambda x}\,dx = \hat{f}(\lambda) \overset{\textrm{або}}{=} \mathscr{F}\{f(x)\}
+\end{align*}
+\\
+\textbf{Theorem 3.5.2. Властивості}\\
+1. $\displaystyle \int_{-\infty}^{+\infty} f(x)e^{i \lambda x}\,dx$ збіжний рівномірно на $\mathbb{R}$
+\hugespace
+2. $\hat{f}(\lambda) \in C(\mathbb{R})$
+\hugespace
+3. Якщо функція $f(x)$ є такою, що $\displaystyle \int_{-\infty}^{+\infty} (1+|x|^k) |f(x)| \,dx$ збіжний, то $\exists (\hat{f}(\lambda))^{(k)} = \reallywidehat{((ix)^k f(x))}(\lambda)$
+\hugespace
+4. Якщо $f(x) \in C^{(k-1)}(\mathbb{R})$, $\exists f^{(k)}(x)$ - абсолютно інтегрована на $\mathbb{R}$ та $f^{(n)}(x) \to 0$, $x \to \pm \infty, n=\{0,\dots, k-1\}$, то $\displaystyle (\reallywidehat{f^{(k)}})(\lambda) = (-i \lambda)^k \hat{f}(\lambda)$\\
+\textbf{Proof.}\\
+1. За ознакою Вейерштрасса та умовою властивості, $|f(x)e^{i \lambda x}| = |f(x)| |e^{i \lambda x}| = |f(x)|$, тому і виконується рівномірна збіжність
+\hugespace
+2. Наслідок властивості 1
+\hugespace
+3. Для довільних $n$ із $\{0,1,\dots,k\}$: $(1+|x|^n) < (1+|x|^k)$\\
+Тому збіжним буде $\displaystyle \int_{-\infty}^{+\infty} (1+|x|^n) |f(x)| \,dx$, а згодом\\
+$\displaystyle (\hat{f}(\lambda))^{(k)}= \left(\int_{-\infty}^{+\infty} f(x)e^{i \lambda x}\,dx  \right)^{(k)}$ (*)\\
+Обчислимо формально, чому дорівнює права частина (нам поки невідомо, чи виконується рівність):\\
+$\displaystyle \int_{-\infty}^{+\infty} \left( f(x)e^{i \lambda x} \right)^{(k)}\,dx = \int_{-\infty}^{+\infty} f(x) (ix)^k e^{i \lambda x} \,dx$. Її ми перевіримо на рівномірну збіжність. Знову за Вейерштрассом\\
+$\displaystyle |f(x) (ix)^k e^{i \lambda x}| = |f(x)| |(ik)^x| |e^{i \lambda x}| = |f(x)| |x^k| \leq |f(x)| (1+ |x|^k)$\\
+Враховуючи умову властивості, досліджуючий інтеграл є рівномірно збіжним\\
+Тому рівність (*) є справедливою. Тому\\
+$(\hat{f}(x))^{(k)} = \reallywidehat{((ix)^k f(x))}(\lambda)$
+\hugespace
+4. $\displaystyle (\reallywidehat{f^{(k)}})(\lambda) = \int_{-\infty}^{+\infty} f^{(k)}(x)e^{i \lambda x}\,dx = $\\
+Інтегруємо за частинами так, щоб я знизив похідну, тому:\\
+$u = e^{i \lambda x} \Rightarrow du = i \lambda e^{i \lambda x}\,dx$\\
+$dv = f^{(k)}(x)\,dx \Rightarrow v = f^{(k-1)}(x)$\\
+$\displaystyle = \underset{\to 0}{f^{(k-1)}(x) e^{i \lambda x}\Big|_{-\infty}^{+\infty}} -i \lambda \int_{-\infty}^{+\infty} f^{(k-1)}(x) e^{i \lambda x}\,dx = $\\
+Робимо ту саму Санту-Барбару до кінця і отримаємо бажану формулу\\
+$\displaystyle = (-i\lambda)^k \int_{-\infty}^{+\infty} f(x)e^{i \lambda x} = (-i\lambda)^k \hat{f}(\lambda)\,dx$ $\blacksquare$
+\hugespace
+\textbf{Example.} Знайти перетворення Фур'є для функції $\displaystyle f(x)=e^{-ax^2+bx+c},\\ a>0$\\
+Варто перевірити на абсолютну збіжність:\\
+$\displaystyle \int_{-\infty}^{+\infty} |f(x)|\,dx = \int_{-\infty}^{+\infty} e^{-ax^2+bx+c} \,dx = e^c \int_{-\infty}^{+\infty} \frac{e^{bx}}{e^{ax^2}} \,dx$\\
+Скористаємось фактом (колись давно з 2 семестру), що $\displaystyle \int_{-\infty}^{+\infty} \frac{dx}{e^{kx^2}}$ - збіжний. Тоді за ознакою границі,\\
+$\displaystyle \lim_{x \to \infty} \frac{\displaystyle \frac{e^{bx}}{e^{ax^2}}}{\displaystyle \frac{1}{e^{kx^2}}} = \lim_{x \to \infty} e^{(k-a)x^2 +bx} = (0<k<a) = (e^{-\infty}) = 0$\\
+Тому там наш інтеграл збігається абсолютно. А ТЕПЕР вже можна й перетворення\\
+$\hat{f(\lambda)} = \displaystyle \int_{-\infty}^{+\infty} e^{-ax^2+bx+c} e^{i \lambda x}\,dx = \int_{-\infty}^{+\infty} e^{-ax^2+(b+ i\lambda)x+c} \,dx =$\\
+В степені виділяємо повний квадрат, мені впадлу вставляти це, тому одразу ж :c\\
+$= \displaystyle \int_{-\infty}^{+\infty} e^{\textstyle -a\left(x - \frac{b+i\lambda}{2a} \right)^2 + c + \frac{(b+i\lambda)^2}{4a}} \,dx = $\\
+Заміна: $\displaystyle x-\frac{b+i\lambda}{2a} = t$\\
+$= \displaystyle e^{\textstyle c + \frac{(b+i\lambda)^2}{4a}} \int_{-\infty}^{+\infty} e^{\textstyle -at^2} \,dt = e^{\textstyle c + \frac{(b+i\lambda)^2}{4a}} \sqrt{\frac{\pi}{a}}$
+\hugespace
+
+\subsection{Зворотнє перетворення Фур'є}
+\textbf{Definition 3.6.1.} Задана функція $g(\lambda)$ на $\mathbb{R}$ - абсолютно інтегрована\\
+\textbf{Зворотнім перетворенням Фур'є} функції $g(\lambda)$ називається функція:
+\begin{align*}
+ \frac{1}{2\pi}\int_{-\infty}^{+\infty} g(\lambda) e^{-i \lambda x}\,d\lambda = \breve{g}(x)
+\end{align*}
+Хочемо: $\breve{(\reallywidehat{f})}(x) = f(x)$\\
+\textbf{Proof.}\\
+Ну або в інакшому вигляді, ми пруфимо, що\\
+$\displaystyle \frac{1}{2\pi} \int_{-\infty}^{+\infty} \left(\int_{-\infty}^{+\infty} f(x) e^{i\lambda x}\,dx \right) e^{-i \lambda s}\,d\lambda = f(s)$\\
+\\
+Розпишемо ліву частину:\\
+$\displaystyle \frac{1}{2\pi} \int_{-\infty}^{+\infty} \left(\int_{-\infty}^{+\infty} f(x) e^{i\lambda x}\,dx \right) e^{-i \lambda s}\,d\lambda = \frac{1}{2\pi} \lim_{A \to \infty} \int_{-A}^{A} \left(\int_{-\infty}^{+\infty} f(x) e^{i\lambda x}\,dx \right) e^{-i \lambda s}\,d\lambda$\\
+і спростимо вираз в ліміті:\\
+$\displaystyle \int_{-A}^{A} \left(\int_{-\infty}^{+\infty} f(x) e^{i\lambda x}\,dx \right) e^{-i \lambda s}\,d\lambda = \int_{-A}^{A} \left(\int_{-\infty}^{+\infty} f(x) e^{i\lambda(x-s)}\,dx \right) \,d\lambda =$\\
+Через те, що $|f(x)e^{i \lambda(x-s)}| = |f(x)|$, то внутрішній інтеграл абсолютно збіжний. Тому можна змінити місцями порядок інтегрування\\
+$= \displaystyle \int_{-\infty}^{+\infty} \left(\int_{-A}^{A} f(x) e^{i\lambda(x-s)}\,d\lambda \right) \,dx = \int_{-\infty}^{+\infty} f(x) \left(\int_{-A}^{A} e^{i\lambda(x-s)}\,d\lambda \right) \,dx = \\ = \int_{-\infty}^{+\infty} f(x) \frac{e^{i \lambda (x-s)}}{i(x-s)} \Big|_{-A}^A \,dx = \int_{-\infty}^{+\infty} f(x) \frac{2 \sin A(x-s)}{x-s} \,dx \overset{\scriptstyle x-s=t}{=} \\ = \int_{-\infty}^{0} 2f(s+t) \frac{ \sin At}{t} \,dt + \int_{0}^{+\infty} 2f(s+t) \frac{ \sin At}{t} \,dt \overset{t = -t \textrm{ в першому}}{=} \\ = \int_{0}^{+\infty} 2(f(s+t)+f(s-t)) \frac{ \sin At}{t} \,dt$\\
+\\
+Тоді\\
+$\displaystyle \frac{1}{2\pi} \displaystyle \int_{-A}^{A} \left(\int_{-\infty}^{+\infty} f(x) e^{i\lambda x}\,dx \right) e^{-i \lambda s}\,d\lambda - c = \\ 
+= \frac{1}{\pi} \int_{0}^{+\infty} (f(s+t)+f(s-t)) \frac{ \sin At}{t} \,dt - c \frac{2}{\pi} \int_0^{+\infty} \frac{\sin At}{t}\,dt = \\ 
+= \frac{1}{\pi} \int_{0}^{+\infty} (f(s+t)+f(s-t)-2c) \frac{\sin At}{t}\,dt =$\\
+Позначимо $f(s+t)+f(s-t)-2c=h_{c,s}(t)$\\
+$= \displaystyle \int_{0}^{+\infty} h_{c,s}(t) \frac{\sin At}{t}\,dt$\\
+Сформулюємо теорему та доведемо її:
+\hugespace
+\textbf{Theorem 3.6.1. Ознака Діні (для перетворення Фур'є)}\\
+Задана така функція $f$, що є абсолютно збіжною на $\mathbb{R}$.\\
+Якщо $\exists \delta>0: \displaystyle \int_{0}^{\delta} \frac{|h_{c,s}(t)|}{t}\,dt$ - збіжний, то $\displaystyle \int_{0}^{+\infty} h_{c,s}(t) \frac{\sin At}{t}\,dt \to 0$, $A \to \infty$\\
+\textit{Якщо розписати наш інтеграл як сума $[0,\delta]$, $[\delta, +\infty)$, то ми матимемо два інтеграли, що прямують до нуля за лемою Рімана}
+\hugespace
+\textbf{Corollary 3.6.1.}\\
+1) Якщо $f$ - неперервно-диференційована в т. $x_0$, то $\breve{(\reallywidehat{f})}(x_0) = f(x_0)$
+\hugespace
+2) Якщо $f$ - диференційована в лівому та правому околі т. $x_0$, то $\displaystyle \breve{(\reallywidehat{f})}(x_0) = \frac{f(x_0,+)+f(x_0,-)}{2}$\\
+\textbf{Proof.}\\
+1) Встановимо $c = f(x_0)$, тоді\\
+$\displaystyle \breve{(\reallywidehat{f})}(x_0) = \lim_{A \to \infty} \int_{0}^{+\infty} (f(x_0+t)-f(x_0)+f(x_0-t)-f(x_0)) \frac{\sin At}{t}\,dt = 0$\\
+\textit{Майже дослівно повторюємо доведення з 1-го наслідку з ознаки Діні для рядів}
+\hugespace
+2) \textit{Майже дослівно повторюємо доведення з 2-го наслідку з ознаки Діні для рядів} $\blacksquare$
+\\
+\newpage
+
+
+%END OF PARAGRAPH 3%
+
+
+\section{Операційне числення}
+\subsection{Оригінали функцій}
+\textbf{Definition 4.1.1.} Функція $f(t)$ називається \textbf{оригіналом}, якщо вона під умовами:\\
+1) $f(t) = 0, t<0$\\
+2) $f(t)$ - кусково неперервна\\
+3) $\exists M: \exists \alpha: |f(t)|<Me^{\alpha t}$
+\hugespace
+\textbf{Example 4.1.1.} $\sin t \to \begin{cases} \sin t, t \geq 0 \\ 0, t < 0 \end{cases}$ - функцію перевели в оригінал
+\hugespace
+\textbf{Definition 4.1.2.} \textbf{Функція Хевісайда} визначається наступним чином
+\begin{align*}
+\chi(t) = \begin{cases} 1, t \geq 0 \\ 0, t < 0 \end{cases}
+\end{align*}
+\\
+\textbf{Example 4.1.2.} $\sin t \to \sin t \cdot \chi(t)$ - скорочена версія \textbf{Ex. 4.1.1}
+\hugespace
+\textbf{Definition 4.1.3.} Задан $f(t)$ - оригінал\\
+\textbf{Степенем зростання} $f(t)$ називається число:
+\begin{align*}
+\sigma(f) = \inf\{\alpha: \exists M: |f(t)| < Me^{\alpha t}\}
+\end{align*}
+\\
+\textbf{Example 4.1.3.}\\
+1. $f(t) = \sin t$. (тут автоматично вважаємо, що виконується перша умова). Перевіримо третю умову:\\
+3) $|\sin t| \leq 1 = 1 \cdot e^{0t}$, тобто $\exists M=1, \alpha = 0$\\
+Знайдемо степінь зростання:\\
+$\forall \alpha > 0: |\sin t| < 1\cdot e^{\alpha t}$\\
+Припустимо, що для $\alpha < 0: \exists M: |\sin t| < M\cdot e^{\alpha t}$\\
+Якщо $t \to \infty$, то $|\sin t| \to 0$, що є супереченням (в неї ліміту вопще нема)\\
+Тому $\sigma(f) = 0$\\
+\\
+2. $f(t) = e^{\mu t}$\\
+Зрозуміло, що $|e^{\mu t}| < 1\cdot e^{\mu t}$, тобто $\alpha = \mu$\\
+$\forall \alpha > \mu: |e^{\mu t}| < 1\cdot e^{\alpha t}$\\
+Припустимо знову, що для $\alpha < \mu: \exists M: e^{\mu t} < M e^{\alpha t}$, або\\
+$e^{t(\mu - \alpha)} < M$\\
+Якщо $t \to \infty$, то $e^{(\mu-\alpha)t} \to \infty$, прийшли до суперечення\\
+Тому $\sigma(f) = \mu$\\
+\\
+3. $f(t) = t^{\mu}, \mu>0$\\
+Перевіримо третю умову, тобто\\
+$\displaystyle \exists? M: |t^{\mu}| \leq Me^{\alpha t} \iff \frac{t^{\mu}}{e^{\alpha t}} < M$\\
+Якщо $t \to \infty$, то $\displaystyle \frac{t^{\mu}}{e^{\alpha t}} \to 0$ ЗА УМОВОЮ, що $\alpha > 0$, а тому така дріб є обмеженою. Отже знак питання прибираємо\\
+Припустимо, що для $\alpha<0: \exists M: t^{\mu} < Me^{\alpha t}$\\
+Зробимо аналогічні кроки, та отримаємо, що дріб прямує до нескінченності, що суперечить припущенню\\
+І окремо при $\alpha = 0$: $t^{\mu} < M$ - також суперечення\\
+Але тим не менш, $\sigma(f) = \inf\{\alpha > 0\} = 0$
+\hugespace
+\textbf{Proposition 4.1.4. Арифметичні властивості оригіналів}\\
+Задані $f(t), g(t)$ - оригінали. Тоді\\
+1) $h(t) = g(t)+g(t)$ - оригінал, а $\sigma(h)=\max\{\sigma(f),\sigma(g)\}$\\
+2) $h(t) = af(t), a \in \mathbb{R}$ - оригінал, а $\sigma(h)=\sigma(f)$\\
+3) $h(t) = f(t) g(t)$ - оригінал, а $\sigma(h)= \sigma(f) + \sigma(g)$\\
+\textbf{Proof.}\\
+Умови 1 та 2 всюди автоматично виконуються (в принципі)\\
+З умови твердження відомо, що $\begin{cases} |f(t)| < M_1 e^{\alpha_1 t} \\ |g(t)| < M_2 e^{\alpha_2 t} \end{cases}$. Тоді\\
+1) $|h(t)| \leq |f(t)| + |g(t)| < M_1 e^{\alpha_1 t} + M_2 e^{\alpha_2 t} < (M_1+M_2)e^{\alpha t}$, якщо $\alpha = \max\{\alpha_1, \alpha_2\}$\\
+Пункт 3 виконується, тому $h$ - оригінал. Більш того, $\sigma(h) = \max\{\sigma(f),\sigma(g)\}$\hugespace
+2) \textit{при перевірки п. 3 там просто нафіг піде константа} $a$\\ \\
+3) $|h(t)| < M_1 e^{\alpha_1 t} M_2 e^{\alpha_1 t} = M_1 M_2 e^{(\alpha_1 + \alpha_2)t}$\\
+Пукнт 3 виконуєься, тому $h$ - оригінал. Більш того, $\sigma(h)= \sigma(f) + \sigma(g)$ $\blacksquare$
+\hugespace
+\textbf{Definition 4.1.5.} \textbf{Згорткою функцій} $f(x)$ та $g(x)$ на $\mathbb{R}$ називається функція:
+\begin{align*}
+f*g(x) = \int_{-\infty}^{+\infty} f(u)g(x-u)\,du
+\end{align*}
+\\
+Що буде, якщо $f,g$ - оригінали? Яким буде вигляд згортки?\\
+$f*g(t) \overset{\textrm{\textit{вже доводимо}}}{=} \displaystyle \int_{-\infty}^{+\infty} f(s)g(t-s)\,ds = $\\
+З $s<0$ випливає $f(s) = 0$\\
+З $s>t$ випливає $t-s<0 \Rightarrow g(t-s) = 0$\\
+$= \displaystyle \int_{0}^{t} f(s)g(t-s)\,ds$\\
+Таким чином:
+\hugespace
+\textbf{Proposition 4.1.5.(1).} Якщо $f,g$ - оригінали, то \\ $\displaystyle f*g(t) = \int_0^t f(s)g(t-s)\,ds$
+\hugespace
+\textbf{Proposition 4.1.5.(2).} Якщо $f,g$ - оригінали, то  $\displaystyle f*g(t) = g*f(t)$\\
+\textit{Під час інтегрування провести заміну: $t-s=u$}
+\hugespace
+\textbf{Proposition 4.1.5.(3).} Якщо $f,g$ - оригінали, то $f*g$ - теж оригінал, а $\sigma(f*g) = \max\{\sigma(f),\sigma(g)\}$\\
+\textbf{Proof.}\\
+Пункти 1, 2 виконані. Залишилось перевірити пункт 3\\
+$|f*g(t)| = \displaystyle \abs{\int_0^t f(s)g(t-s)\,ds} \leq \int_0^t |f(s)| |g(t-s)| \,ds < \\ < \int_0^t |f(s)| |g(t-s)| \,ds < \int_0^t M_1 e^{\alpha_1 s} M_2 e^{\alpha_2(t-s)} \,ds = e^{\alpha_2 t} M_1 M_2 \int_0^t e^{(\alpha_1 - \alpha_2)s} \,ds = \\ = \frac{e^{\alpha_2 t} M_1 M_2}{\alpha_1 - \alpha_2} (e^{(\alpha_1 - \alpha_2)t}-1) = \frac{M_1 M_2}{\alpha_1 - \alpha_2} (e^{\alpha_1 t} - e^{\alpha_2 t}) = \frac{M_1 M_2}{|\alpha_1 - \alpha_2|} |e^{\alpha_1 t} - e^{\alpha_2 t}| \leq \\ \leq \frac{M_1 M_2}{\alpha_1 - \alpha_2} 2e^{\alpha t}$, якщо $\alpha = \max\{\alpha_1, \alpha_2\}$\\
+Таким чином, $f*g$ - оригінал, а $\sigma(f*g) = \max\{\sigma(f),\sigma(g)\}$ $\blacksquare$
+\hugespace
+
+\subsection{Перетворення Лапласа}
+\textbf{Definition 4.2.1.} Заданий $f$ - оригінал\\
+\textbf{Перетворенням Лапласа} $f(t)$ називається
+\begin{align*}
+f(t) \leftrightarrow \int_0^{+\infty} f(t)e^{-pt}\,dt = F(p) \overset{\textrm{або}}{=} \mathscr{L}\{f(t)\}
+\end{align*}
+$F(p)$ називають \textbf{зображенням}, де $p \in \mathbb{C}$
+\hugespace
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{ c|c }
+ $f$ & $F$ \\
+ \hline
+ $\chi(t)$ & $\displaystyle \frac{1}{p}$ \\
+ \hline
+ $e^{\alpha t}$ & $\displaystyle \frac{1}{p- \alpha}$\\
+ \hline
+ $\ch \alpha t$ & $\displaystyle \frac{p}{p^2-\alpha^2}$\\
+ \hline
+ $\sh \alpha t$ & $\displaystyle \frac{\alpha}{p^2-\alpha^2}$\\
+ \hline
+ $\sin \alpha t$ & $\displaystyle \frac{\alpha}{p^2 + \alpha^2}$\\
+ \hline
+ $\cos \alpha t$ & $\displaystyle \frac{p}{p^2 + \alpha^2}$\\
+ \hline
+ $t^n$ & $\displaystyle \frac{n!}{p^{n+1}}$ \\
+\end{tabular}
+	    \caption{Таблиця зображень}
+    		\label{tab:table1}
+\end{center}
+\end{table}
+
+\textbf{Proposition 4.2.2. Про збіжність}\\
+$\displaystyle \int_0^{+\infty} f(t)e^{-pt}\,dt$ збіжний на комплексній півплощині $\{p: \Re p>\sigma(f)\}$, а рівномірно збіжний на $\{p: \Re p>\alpha>\sigma(f)\}$\\
+\textbf{Proof.}\\
+$p = x + iy$, $\Re p = x > \sigma(f)$\\
+Доведемо за ознакою порівняння\\
+$|f(t)e^{-pt}| = |f(t)| |e^{-xt}e^{iyt}| < Me^{\alpha t} e^{-xt} = Me^{(\alpha - x)t}$, $\forall \alpha > \sigma(f)$\\
+Якщо обрати таке $\alpha$, щоб $x>\alpha>\sigma(f)$, то отримаємо:\\
+$|f(t)e^{-pt}| < Me^{(\alpha-x)t}$\\
+$\displaystyle \int_0^{+\infty} Me^{(\alpha-x)t}\,dt = \dots = \frac{M}{x-\alpha}$ - збіжний\\
+Отже, збіжний і початковий інтеграл - зображення $\blacksquare$
+\hugespace
+\textbf{Theorem 4.2.3.} Заданий $f(t)$ - оригінал зі степенем вільності $\sigma(f)$. Тоді зображення $F(p)$ є аналітичною функцією на півплощині \\ $\{p: \Re p>\sigma(f)\}$\\
+\textbf{Proof.}\\
+Формально, $F'(p) = \displaystyle -\int_0^{+\infty} f(t) t e^{-pt}\,dt$. Для рівності треба, щоб права рівність збігалась рівномірно\\
+До речі, $f(t)t$ - теж оригінал, зі степенем вільності $\sigma(f(t)t)=\sigma(f)$\\
+Тоді $\forall \alpha_0 > \sigma(f): \displaystyle \int_0^{+\infty} f(t)te^{-pt}$ - збіжний рівномірно на $\{p: \Re p > \alpha_0 > \sigma(f) \}$\\
+Отже, рівність справедлива $\blacksquare$
+\hugespace
+\textbf{Theorem 4.2.4.} Заданий $f(t)$ - оригінал. Тоді $F(p) \to 0$, $\Re p \to \infty$\\
+\textbf{Proof.}\\
+$|F(p)| = \displaystyle \abs{\int_0^{+\infty} f(t)e^{-pt}\,dt} \leq \int_0^{+\infty} |f(t)| |e^{-(x+iy)t}| \,dt = \int_0^{+\infty} |f(t)|e^{-xt}\,dt <$\\
+Ми обираємо таке $\alpha$, щоб $\sigma(f) < \alpha < x$\\
+$< \displaystyle \int_0^{+\infty} Me^{\alpha t} e^{-xt}\,dt = \dots = \frac{M}{x-\alpha} \to 0$, якщо $x = \Re p \to \infty$ $\blacksquare$
+\hugespace
+\textbf{Theorem 4.2.5. Властивості зображень}\\
+1. Лінійність, $\alpha f(t) + \beta g(t) \leftrightarrow \alpha F(p) + \beta G(p)$
+\hugespace
+2. Зміщенність, $e^{\alpha t}f(t) \leftrightarrow F(p-\alpha)$
+\hugespace
+3. Запізнення,\\
+Нехай є оригінал $f(t)$ та функція Хевісайда $\eta(t)$. Розглянемо $g(t) = f(t-\tau) \eta(t-\tau), \tau>0$. Тоді $g(t) \leftrightarrow F(p)e^{-p\tau}$
+\hugespace
+4. Диференціювання зображення,\\ $f^{(n)}(t) \leftrightarrow p^n F(p) - (f^{(n-1)}(0)+ pf^{(n-2)}(0)+\dots + p^{n-1}f(0))$ (тут всі похідні є оригіналами)
+\hugespace
+5. Інтегрування оригіналу, $\displaystyle \int_0^t f(s)\,ds \leftrightarrow \frac{F(p)}{p}$
+\hugespace
+6. Диференціювання зображення, $t^k f(t) \leftrightarrow (-1)^k F^{(k)}(p)$
+\hugespace
+7. Інтегрування зображення, $\displaystyle \frac{f(t)}{t} \leftrightarrow \int_p^{+\infty} F(q)\,dq$, тут $q \to \infty$ таким чином, що $\Re q \to \infty$
+\hugespace
+8. $f*g(t) \leftrightarrow F(p) G(p)$\\
+\textbf{Proof.}\\
+1. \textit{Випливає з лінійних властивостей інтегралів}
+\hugespace
+2. \textit{Просто розписуємо інтеграл, а там властивості степеней буде}
+\hugespace
+3. \textit{Зробити заміну: $t - \tau = s$}
+\hugespace
+4. $f'(t) \leftrightarrow \displaystyle \int_0^{+\infty} f'(t)e^{-pt}\,dt \overset{u=e^{-pt}, dv=f'(t)\,dt}{=} f(t)e^{-pt}\Big|_0^{+\infty} - (-p) \int_0^{+\infty} f(t)e^{-pt}\,dt = $\\
+Оскільки $f$ -  оригінал, то $|f(t)| < Me^{\alpha t}$. Далі, $|e^{-pt}| = e^{-xt}$, $\alpha < x$\\
+Тому $|f(t)e^{-pt}| < Me^{\alpha t}e^{-xt} \to 0$, коли $t \to \infty$
+$= pF(p) - f(0)$\\
+$=pF(p)-f(0)$\\
+Ну а далі чисто за МІ
+\hugespace
+5. $\displaystyle \int_0^{+\infty} f(s)\,ds \leftrightarrow \int_0^{+\infty} \left( \int_0^t f(s)\,ds \right) e^{-pt}\,dt \overset{\scriptstyle u = \int_0^t f(s)\,ds, dv = e^{-pt}\,dt}{=} \\ = \frac{-1}{p} \int_0^t f(s)\,ds \cdot e^{-pt} \Big|_0^{+\infty} + \frac{1}{p} \int_0^{+\infty} f(t)e^{-pt}\,dt = \frac{1}{p}F(p)$
+\hugespace
+6. $t f(t) \leftrightarrow \displaystyle \int_0^{+\infty} tf(t)e^{-pt} = -\int_0^{+\infty} f(t) (e^{-pt})'_p\,dt = - \left(\int_0^{+\infty} f(t)e^{-pt}\,dt \right)' = \\ = -F'(p)$\\
+Потім тупо за МІ
+\hugespace
+7. $\displaystyle \frac{f(t)}{t} \leftrightarrow G(p)$ (якесь зображення)\\
+За властивістю 6, $\displaystyle f \cdot \frac{f(t)}{t} \leftrightarrow -G'(p)$\\
+$\Rightarrow F(p) \leftrightarrow f(t) \leftrightarrow -G'(p) \Rightarrow G'(p) = -F(p)$\\
+Також, $\displaystyle \left(\int_p^{+\infty} F(q)\,dq \right)'_p = -F(p)$\\
+Отже, $G(p) = \displaystyle \int_p^{+\infty} F(q)\,dq$
+\hugespace
+8. $f*g(t) \leftrightarrow \displaystyle \int_0^{+\infty} (f*g)(t)e^{-pt}\,dt = \int_0^{+\infty} \left( \int_0^t f(s)g(t-s)\,ds \right)e^{-pt}\,dt = \int_0^{+\infty} \int_0^t f(s)g(t-s)e^{-p((t-s)+s)}\,ds\,dt =$\\
+Заміна змінних: $t-s=y$, $s=s$\\
+$y = [0,+\infty), s = [0,+\infty)$, $J=1$\\
+$\displaystyle = \int_0^{+\infty} \int_0^{+\infty} f(s)g(y)e^{-p(y+s)}\,ds\,dy = \int_0^{+\infty} g(y)e^{-py}\,dy \int_0^{+\infty} f(s)e^{-ps}\,ds = \\ =G(p)F(p)$
+$\blacksquare$
+\hugespace
+\textbf{Theorem 4.2.6. Теорема Мелліна}\\
+Заданий $f(t)$, $F(p)$ - диференційований оригінал зі степенем вільності $\sigma(f) = \alpha$ та його зображення. Тоді
+\begin{align*}
+f(t) = \frac{1}{2 \pi i} \int_{x - i\infty}^{x + i\infty} e^{pt}F(p)\,dp, x > \alpha
+\end{align*}
+\textbf{Proof.}\\
+Розглянемо оригінал $g(t) = f(t)e^{-xt}$, такий, що $x>\alpha$\\
+Покажемо, що $\displaystyle \int_{-\infty}^{+\infty} |g(t)|\,dt \overset{\textrm{або}}{=} \int_{0}^{+\infty} |g(t)|\,dt$ - абсолютно збіжний\\
+Візьмемо якийсь $\alpha<x_*<x$. Тоді\\
+$|g(t)| < Me^{x_* t}e^{-xt} = Me^{(x_*-x)t}$\\
+$\displaystyle \int_0^{+\infty} M e^{(x_*-x)t}\,dt = \frac{M}{x_*-x}e^{(x_*-x)t}\Big|_0^{+\infty} < \infty$\\
+Тоді за Вейерштрасса, наш початковий інтеграл збіжний. Отже, для $g(t)$ можна застосувати перетворення Фур'є (стандартне та зворотнє)\\
+Оскільки $f(t)$ - частково неперервно-диференційований, то за ознакою Діні та наслідками з неї отримаємо: \\
+$g(t)= \displaystyle \breve{\reallywidehat{g}}(t) \overset{\textrm{п. 3.6.}}{=} \frac{1}{2\pi} \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} g(s) e^{i\lambda (s-t)}\,ds \,d\lambda \overset{g(s)=f(s)e^{-sx},s<0}{=} \\ = \frac{1}{2\pi} \int_{-\infty}^{+\infty} \int_{0}^{+\infty} g(s) e^{i\lambda (s-t)}\,ds \,d\lambda$\\
+$\displaystyle f(t)e^{-tx} = \frac{1}{2\pi} \int_{-\infty}^{+\infty} \int_{0}^{+\infty} f(s) e^{-sx} e^{i\lambda (s-t)}\,ds \,d\lambda = \\ = \frac{1}{2\pi} \int_{-\infty}^{+\infty} \int_{0}^{+\infty} f(s) e^{-sx+i\lambda s}e^{-i\lambda t} \,ds \,d\lambda = \\ = \frac{1}{2\pi} \int_{-\infty}^{+\infty} \left( \int_{0}^{+\infty} f(s) e^{-s(x-i\lambda)}e^{-i\lambda t} \,ds \right) \,d\lambda \overset{\lambda = -y}{=} \frac{1}{2\pi} \int_{-\infty}^{+\infty} \left( \int_{0}^{+\infty} f(s) e^{-s(x+iy)}e^{iyt} \,ds \right) \,dy$\\
+$\Rightarrow \displaystyle f(t) = \frac{1}{2\pi} \int_{-\infty}^{+\infty} \left( \int_{0}^{+\infty} f(s) e^{-s(x+iy)}e^{(x+iy)t} \,ds \right) \,dy \overset{x+iy=p}{=} \\ =
+\frac{1}{2\pi} \int_{x-i \infty}^{x+i \infty} \left( \int_{0}^{+\infty} f(s) e^{-ps} \,ds \right) e^{pt} \frac{1}{i} \,dp =
+\frac{1}{2\pi i} \int_{x-i \infty}^{x+i \infty} F(p) e^{pt} \,dp$ $\blacksquare$
+\hugespace
+Доведена формула називається \textbf{формулою Мелліна}. Більш детальне та красиве доведення буде в книжці Тихонова "Теория функций комплексного анализа"
+\\
+\subsection{Відновлення оригінала}
+\subsubsection{За допомогою лишків}
+\textbf{Theorem. } Заданий $f(t)$, $F(p)$ - диференційований оригінал зі степенем вільності $\sigma(f) = \alpha$ та його зображення, яка є аналітичною всоди за виключенням скінченної кількості точок $p_1, \dots, p_n$ (такі, що $\Re p_t < \alpha$). Тоді
+\begin{align*}
+f(t) = \sum_{j=1}^k \residuee{p_j}{F(p)e^{pt}}
+\end{align*}
+\textbf{Proof.}\\
+Через умови ми можемо скористатись формулою Мелліна:\\
+$f(t) = \displaystyle \frac{1}{2\pi i} \int_{x-i \infty}^{x+i \infty} F(p) e^{pt} \,dp =$\\
+Заміна: $p = qe^{i \frac{\pi}{2}} = iq$ $\Rightarrow dp = i\,dq$\\
+$\displaystyle = \frac{1}{2\pi i} \int_{\infty +ix}^{-\infty + ix} F(iq) e^{qit} i \,dq =$\\
+Заміна2: $q = ip = i(x+iy) = ix-y \Rightarrow$ $dq = -dy$\\
+$\displaystyle = \frac{1}{2\pi} \int_{-\infty}^{+\infty} F(x+iy) e^{(x+iy)t} \,dy \overset{F(x+iy)=g(y)}{=} \frac{1}{2\pi} e^{xt} \int_{-\infty}^{+\infty} g(y) e^{iyt} \,dy \overset{\textrm{за умовами особливих точок}}{=} \\ = \frac{1}{2 \pi} e^{xt}  2\pi i \sum_{j=1}^k \residuee{p_j}{g(z)e^{izt}} = \sum_{j=1}^k \residuee{p_j}{g(z)e^{izt}} = ...$\\
+\textit{Десь ГБ забув $i$: сам не можу знайти(((}\\
+\subsubsection{За розкладом зображення в ряд Лорана}
+\textbf{Lemma.} Заданий $f(t)$, $F(p)$ - диференційований оригінал та його зображення. Якщо $\displaystyle F(p) = \sum_{n=1}^{\infty} \frac{c_n}{p^n}$, то
+\begin{align*}
+f(t) = \sum_{n=1}^{\infty} c_n \frac{t^{n-1}}{(n-1)!}
+\end{align*}
+\textbf{Proof.}\\
+$\displaystyle f(t) = \frac{1}{2 \pi i} \int_{x - i\infty}^{x + i\infty} e^{pt}F(p)\,dp  = \frac{1}{2 \pi i} \int_{x - i\infty}^{x + i\infty} \sum_{n=1}^{\infty} \frac{c_n}{p^n} e^{pt}\,dp = \\ = \sum_{n=1}^{\infty} c_n \left( \frac{1}{2\pi i} \int_{x - i\infty}^{x + i\infty} \frac{1}{p^n} e^{pt}\,dp \right) = \sum_{n=1}^{\infty} \frac{c_n}{(n-1)!}t^{n-1}$ $\blacksquare$\\
+
+\subsection{Трохи корисних прикладів використання}
+\textbf{Example 4.4.1.} Розв'язати систему диференціальних рівнянь:
+$\begin{cases}
+x' = 3x + y \\
+y' = -4x - y
+\end{cases}
+$\\
+Додатково $x(0) = 5$, $y(0) = -7$\\
+$x(t) \rightarrow X(p) \Rightarrow x'(t) \rightarrow pX(p) - x(0) = pX(p) - 5$\\
+$y(t) \rightarrow Y(p) \Rightarrow y'(t) \rightarrow pY(p) - y(0) = pY(p) + 7$\\
+Отже, система матиме такий вигляд:\\
+$\begin{cases}
+pX - 5 = 3X + Y\\
+pY + 7 = -4X - Y
+\end{cases}
+$
+Обчислимо систему, розв'язуючи відносно $X(p), Y(p)$. Використовуючи магію метода Крамера, отримаємо\\
+$\begin{cases}
+\displaystyle X(p) = \frac{5p-2}{(p-1)^2}\\
+\displaystyle Y(p) = \frac{-7p+1}{(p-1)^2}
+\end{cases}
+$\\
+$\displaystyle X(p) = \frac{5}{(p-1)} + \frac{3}{(p-1)^2} \rightarrow x(t) = 5e^t + 3t e^t$\\
+$\displaystyle Y(p) = \frac{-7}{(p-1)} + \frac{-6}{(p-1)^2} \rightarrow y(t) = -7e^t - 6t e^t$
+\hugespace
+\textbf{Example 4.4.2.} Розв'язати інтегральне рівняння:\\
+$\displaystyle \int_0^t \ch (t- \tau) x(\tau) \,d\tau = \ch t - \cos t$\\
+$x(t) \rightarrow X(p)$\\
+$\ch t \rightarrow \displaystyle \frac{p}{p^2-1}$\\
+$\cos t \rightarrow \displaystyle \frac{p}{p^2+1}$\\
+І нарешті, зауважимо згортку: $\displaystyle \int_0^t \ch(t-\tau) x(\tau)\,d\tau = ch * x(t) \rightarrow \frac{p}{p^2-1} X(p)$
+Тому рівняння матиме вигляд:\\
+$\displaystyle \frac{p}{p^2-1} X(p) = \frac{p}{p^2-1} - \frac{p}{p^2+1}$\\
+Виразимо $X(p)$ і отримаємо:\\
+$\displaystyle X(P) = \frac{2}{p^2+1} \rightarrow x(t) = 2 \sin t$
+\hugespace
+$\scaleobj{5}{\blacksquare}$
+\end{document}
+

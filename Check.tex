@@ -1,0 +1,20 @@
+\documentclass[10pt]{article}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+\pagestyle{empty}
+\begin{document}
+\definecolor{ffqqqq}{rgb}{1,0,0}
+\definecolor{cqcqcq}{rgb}{0.75,0.75,0.75}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1.0cm,y=1.0cm]
+\draw [color=cqcqcq,dash pattern=on 2pt off 2pt, xstep=1.0cm,ystep=1.0cm] (-9.2,-6.41) grid (11.23,7.21);
+\draw[->,color=black] (-9.2,0) -- (11.23,0);
+\foreach \x in {-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[below] {\footnotesize $\x$};
+\draw[->,color=black] (0,-6.41) -- (0,7.21);
+\foreach \y in {-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[left] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-9.2,-6.41) rectangle (11.23,7.21);
+\draw[line width=1.6pt,color=ffqqqq, smooth,samples=100,domain=-9.201316410674895:11.225755459152557] plot(\x,{(2*(\x)+5)},x>2);
+\end{tikzpicture}
+\end{document}
