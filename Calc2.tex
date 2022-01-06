@@ -1,0 +1,1344 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage[none]{hyphenat}
+\usepackage{fancyhdr} %create a custom header and footer
+\usepackage[utf8]{inputenc}
+\usepackage[english, main=ukrainian]{babel}
+\usepackage{pgfplots}
+\pgfplotsset{compat = newest}
+\usepgfplotslibrary{fillbetween}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{physics}
+\usepackage[unicode]{hyperref}
+\usepackage{tikz-3dplot}
+
+
+\fancyhead{}
+\fancyfoot{}
+\parindent 0ex
+\DeclareMathOperator*\uplim{\overline{lim}}
+\DeclareMathOperator*\downlim{\underline{lim}}
+\def\stackbelow#1#2{\underset{\displaystyle\overset{\displaystyle\shortparallel}{#2}}{#1}}
+\def\departial#1#2{\dfrac{\partial {#1}}{\partial {#2}}}
+\def\huge{\displaystyle}
+\def\bigline{\vspace{5mm}\\}
+\def\rightproof{$\boxed{\Rightarrow}$ }
+\def\leftproof{$\boxed{\Leftarrow}$ }
+
+
+\newtheoremstyle{theoremdd}% name of the style to be used
+  {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+  {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+  {\normalfont}% name of font to use in the body of the theorem
+  {0pt}% measure of space to indent
+  {\bfseries}% name of head font
+  {}% punctuation between head and body
+  { }% space after theorem head; " " = normal interword space
+  {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ \textbf{#3}\\}}}
+
+\theoremstyle{theoremdd}
+\newtheorem{theorem}{Theorem}[subsection]
+  
+\theoremstyle{theoremdd}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{theoremdd}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{theoremdd}
+\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{theoremdd}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{theoremdd}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{theoremdd}
+\newtheorem{example}[theorem]{Example}
+
+
+
+\newenvironment{pf}{\vspace*{-3mm} \textbf{Proof. \\}}{$\blacksquare$}
+
+\begin{document}
+	\begin{titlepage}
+		\begin{center}
+		\hfill
+		\vfill
+		\line(1,0){400}\\
+		\large{\textbf{Математичний аналіз}}\\[1mm]
+		{\textbf{2 семестр}}\\[1mm]
+		\line(1,0){400}\\
+		\vfill
+        	\end{center}
+    	\end{titlepage}
+\tableofcontents
+\newpage
+
+\section{Послідовності в $\mathbb{R}^m$}
+\subsection{Загальні означення та границя послідовності}
+\begin{definition}
+Вектор $\vec{a} \in \mathbb{R}^m$ називається \textbf{границею послідовності} $\{\vec{a}^{(n)}, n \geq 1 \}$, якщо
+\begin{align*}
+\forall \varepsilon > 0: \exists N(\varepsilon): \forall n \geq N: ||\vec{a}^{(n)} - \vec{a}|| < \varepsilon
+\end{align*}
+\end{definition}
+Позначення: $\huge \lim_{n \to \infty} \vec{a}^{(n)} = \vec{a}$
+\bigline
+
+\begin{theorem}
+Для послідовності $\{\vec{a}^{(n)}, n \geq 1 \}$ існує $\huge \lim_{n \to \infty} \vec{a}^{(n)} = \vec{a} \iff \\ \iff$ для всіх координат послідовності $\{a_j^{(n)}, n \geq 1\}$ існують $\\ \huge \lim_{n \to \infty} a_j^{(n)} = a_j, j = 1,\dots,m$
+\end{theorem}
+\begin{pf}
+\rightproof Дано: $\exists \huge \lim_{n \to \infty} \vec{a}^{(n)} = \vec{a}$, тобто\\
+$\huge \forall \varepsilon > 0: \exists N(\varepsilon): \forall n \geq N: ||\vec{a}^{(n)} - \vec{a}|| < \varepsilon$\\
+У нас границя визначається вектором $\vec{a} = \begin{pmatrix}
+a_1 \\ \vdots \\ a_m
+\end{pmatrix}$. Тоді\\
+$||\vec{a}^{(n)} - \vec{a}|| = \sqrt{(a_1^{(n)} - a_1)^2 + \dots + (a_1^{(m)} - a_m)^2}$\\
+$\Rightarrow \forall j = 1, \dots, m: |a_j^{(n)} - a_j| = \sqrt{(a_j^{(n)} - a_j)^2} < \\ < \sqrt{(a_1^{(n)} - a_1)^2 + \dots + (a_1^{(m)} - a_m)^2} < \varepsilon$\\
+Отже, $\exists \huge \lim_{n \to \infty} a_j^{(n)} = a_j$
+\bigline
+\leftproof Дано: $\forall j = 1,\dots, m: \exists \huge \lim_{n \to \infty} a_j^{(n)} = a_j$\\
+Тоді $\forall \varepsilon > 0: \exists N: \forall n \geq N: |a_j^{(n)} - a_j| < \dfrac{\varepsilon}{\sqrt{m}}$\\
+$\Rightarrow ||\vec{a}^{(n)} - \vec{a}|| = \sqrt{(a_1^{(n)} - a_1)^2 + \dots + (a_m^{(n)} - a_m)^2} < \sqrt{\dfrac{\varepsilon^2}{m} + \dots + \dfrac{\varepsilon^2}{m}} = \varepsilon$\\
+Отже, $\exists \huge \lim_{n \to \infty} \vec{a}^{(n)} = \vec{a}$
+\end{pf}
+
+\begin{definition}
+Послідовність $\{\vec{a}^{(n)}, n \geq 1 \}$ називається \textbf{фундаментальною}, якщо
+\begin{align*}
+\forall \varepsilon > 0: \exists N(\varepsilon): \forall n, k \geq N: ||\vec{a}^{(n)} - \vec{a}^{(k)}|| < \varepsilon
+\end{align*}
+\end{definition}
+
+\begin{theorem}[Критерій Коші]
+$\{\vec{a}^{(n)}, n \geq 1 \}$ - збіжна $\iff$ $\{\vec{a}^{(n)}, n \geq 1 \}$ - фундаментальна
+\end{theorem}
+\begin{pf}
+\rightproof Дано: $\{\vec{a}^{(n)}, n \geq 1 \}$ - збіжна, тобто $\forall j = 1,\dots, m: \{a_j^{(n)}, n \geq 1\}$ - збіжні\\
+Тоді всі вони - фундаментальні, тобто $\forall \varepsilon > 0: \exists N_j: \forall n,k \geq N_j: |a_j^{(n)} - a_j^{(k)}| < \dfrac{\varepsilon}{\sqrt{m}}$\\
+$\Rightarrow \exists N = \max\{N_1,\dots,N_m\}: \forall n,k \geq N: \\ ||\vec{a}^{(n)} - \vec{a}^{(k)}|| = \sqrt{(a_1^{(n)} - a_1^{(k)})^2 + \dots + (a_m^{(n)} - a_m^{(k)})^2} < \sqrt{\dfrac{\varepsilon^2}{m} + \dots + \dfrac{\varepsilon^2}{m}} = \varepsilon$\\
+Отже, наша послідовність - фундаментальна
+\bigline
+\leftproof Дано: $\{\vec{a}^{(n)}, n \geq 1 \}$ - фундаментальна, тобто \\
+$\forall \varepsilon > 0: \exists N(\varepsilon): \forall n, k \geq N: ||\vec{a}^{(n)} - \vec{a}^{(k)}|| < \varepsilon$\\
+Тоді $\forall j = 1,\dots, m: |a_j^{(n)} - a_j^{(k)}| < \varepsilon$, тобто $\forall j = 1,\dots, m: \{a_j^{(n)}, n \geq 1\}$ - фундаментальні\\
+Отже, вони всі - збіжні, а тому $\{\vec{a}^{(n)}, n \geq 1 \}$ - збіжна
+\end{pf}
+
+\begin{definition}
+Послідовність $\{\vec{a}^{(n)}, n \geq 1 \}$ називається \textbf{обмеженою}, якщо
+\begin{align*}
+\exists C > 0: \forall n \geq 1: ||\vec{a}^{(n)}|| \leq C
+\end{align*}
+\end{definition}
+
+\begin{definition}
+\textbf{Підпослідовність} послідовності $\{\vec{a}^{(n)}, n \geq 1 \}$ називається послідовність $\{\vec{a}^{(n_l)}, l \geq 1 \}$\\
+Де $\{n_l, l \geq 1 \}$ - строго зростаюча послідовність в $\mathbb{N}$
+\end{definition}
+
+\begin{theorem}[Теорема Вейерштрасса]
+Будь-яка обмежена послідовність векторів має збіжну підпослідовність векторів
+\end{theorem}
+
+\begin{pf}
+Маємо обмежену послідовність $\{\vec{a}^{(n)}, n \geq 1\}$, тобто\\
+$\exists C > 0: \forall n \geq 1: ||\vec{a}^{(n)}|| \leq C$\\
+Тоді кожна координата є обмеженою, оскільки $\forall j = 1,\dots, m$\\
+$|a_j^{(n)}| \leq \sqrt{\abs{a_1^{(n)}}^2 + \dots + \abs{a_m^{(n)}}^2} \leq C$\\
+Тобто всі послідовності $\{a_j^{(n)}, n \geq 1\}$ - обмежені\\
+Розглянемо $\{a_1^{(n)}, n \geq 1\}$ - обмежена. Тоді існує збіжна підпослідовність $\{a_1^{(n_l)}, l \geq 1\}$\\
+Розглянемо підпослідовність $\{\vec{a}^{(n_l)}, l \geq 1\}$\\
+Вона також є обмеженою, тому всі координатні послідовності - обмежені\\
+Розглянемо $\{a_2^{(n_l)}, l \geq 1\}$ - обмежена. Тоді існує збіжна підпідпослідовність $\{a_2^{(n_{l_k})}, k \geq 1 \}$\\
+Оскільки підпослідовність $\{a_1^{(n_l)}, l \geq 1 \}$ - збіжна, то збіжною буде й підпідпослідовність $\{a_1^{(n_{l_k})}, k \geq 1 \}$\\
+Розглянемо підпідпослідовність $\{\vec{a}^{(n_{l_k})}, k \geq 1\}$ - за аналогічними міркуваннями, теж обмежена\\
+Розглянемо підпідпослідовність $\{a_3^{(n_{l_k})}, k \geq 1 \}$ - обмежена. Тоді існує збіжна підпідпідпослідовність $\{a_3^{(n_{l_{k_p}})}, p \geq 1 \}$\\
+Оскільки підпідпослідовності $\{a_1^{(n_{l_k})}, k \geq 1 \}$, $\{a_2^{(n_{l_k})}, k \geq 1 \}$ - збіжні, то збіжними будуть підпідпідпослідовності  $\{a_1^{(n_{l_{k_p}})}, p \geq 1 \}$, $\{a_2^{(n_{l_{k_p}})}, p \geq 1 \}$\\
+...
+\\
+Після $m$ кроків отримаємо підпослідовність $\{\vec{a}^{(n_l)}, l \geq 1\}$, у якій всі координатні послідовності є збіжними. Тоді $\{\vec{a}^{(n_l)}, l \geq 1\}$ - збіжна
+\end{pf}
+
+\begin{definition}
+Задано множина $A \subset \mathbb{R}^m$\\
+Точка $\vec{x}^0$ називається \textbf{граничною точкою} множини $A$, якщо $\forall \varepsilon > 0: U_{\varepsilon}(\vec{x}^0) \cap A$ - нескінченна множина
+\end{definition}
+
+\begin{theorem}
+Задана множина $A \subset \mathbb{R}^m$\\
+$\vec{x}^0 \in A$ - гранична точка $\iff \exists \{\vec{x}^{(n)}, n \geq 1\} \subset A: \huge \lim_{n \to \infty} \vec{x}^{(n)} = \vec{x}^0$\\
+\end{theorem}
+\begin{pf}
+\rightproof Дано: $\vec{x}^0 \in A$ - гранична точка, тобто $\forall \varepsilon > 0: U_{\varepsilon}(\vec{x}^0) \cap A$ - нескінченна\\
+Зафіксуємо $\varepsilon = \dfrac{1}{n} \Rightarrow \forall \vec{x}^{(n)} \in U_{\varepsilon}(\vec{x}^0) \cap A: ||\vec{x}^{(n)} - \vec{x}^0|| < \dfrac{1}{n}$\\
+Тоді $\forall j = 1,\dots,m: |x_j^{(n)} - x_j^0| < \dfrac{1}{n}$\\
+За теоремою про 2 поліцаїв, отримаємо: $\forall j = 1, \dots, m: x_j^{(n)} \overset{n \to \infty}{\to} x_j^0$\\
+Із покоординатної збіжності випливає, що $\vec{x}^{(n)} \overset{n \to \infty} \to \vec{x}^0$ для послідовності $\{\vec{x}^{(n)}, n \geq 1\}$
+\bigline
+
+\leftproof Дано: $\exists \{\vec{x}^{(n)}, n \geq 1\} \subset A: \huge \lim_{n \to \infty} \vec{x}^{(n)} = \vec{x}^0$\\
+Тобто $\forall \varepsilon > 0: \exists N: \forall n \geq N: ||\vec{x}^{(n)} - \vec{x}^0|| < \varepsilon$\\
+$\Rightarrow \forall n \geq N: \vec{x}^{(n)} \in U_\varepsilon(\vec{x}^0) \cap A$ - тобто нескінчення $\Rightarrow \vec{x}^{0}$ - гранична точка
+\end{pf}
+
+\begin{proposition}
+Задані дві послідовності $\{\vec{a}^{(n)}, n \geq 1\}, \{\vec{b}^{(n)}, n \geq 1\}$, такі, що $\huge \lim_{n \to \infty} \vec{a}^{(n)} = \vec{a}, \lim_{n \to \infty} \vec{b}^{(n)} = \vec{b}$. Тоді\\
+1) $\forall c \in \mathbb{R}: \huge \lim_{n \to \infty} c \vec{a}^{(n)} = c \lim_{n \to \infty} \vec{a}^{(n)} = c \vec{a}$\\
+2) $\huge \lim_{n \to \infty} (\vec{a}^{(n)} + \vec{b}^{(n)}) = \lim_{n \to \infty} \vec{a}^{(n)} + \lim_{n \to \infty} \vec{b}^{(n)} = \vec{a} + \vec{b}$\\
+3) $\huge \lim_{n \to \infty} (\vec{a}^{(n)} \cdot \vec{b}^{(n)}) = \lim_{n \to \infty} \vec{a}^{(n)} \cdot \lim_{n \to \infty} \vec{b}^{(n)} = \vec{a} \cdot \vec{b}$
+\end{proposition}
+\begin{pf}
+1),2) \textit{випливає з властивостей границь в $\mathbb{R}$, якщо розглянути покоординатну збіжність}
+\bigline
+3) $\huge \lim_{n \to \infty} (\vec{a}^{(n)} \cdot \vec{b}^{(n)}) = \lim_{n \to \infty} (a_1^{(n)}b_1^{(n)} + \dots + a_m^{(n)}b_m^{(n)}) = a_1b_1 + \dots + a_m b_m = \vec{a} \cdot \vec{b}$
+\end{pf}
+\\
+
+\subsection{Границя функції}
+\begin{definition}
+Задана множина $A \subset \mathbb{R}^m$ та $\vec{x}^{0} \in A$ - гранична точка\\
+Маємо функцію $f: A \to \mathbb{R}$\\
+Число $a$ називається \textbf{границею функції} $f(\vec{x}) = f(x_1,\dots,x_m)$ \textbf{в т.} $\vec{x}^0$, якщо
+\begin{align*}
+\forall \varepsilon > 0: \exists \delta > 0: \forall \vec{x} \in A: \vec{x} \neq \vec{x}^0: ||\vec{x} - \vec{x}^0 || < \delta \Rightarrow |f(\vec{x}) - a| < \varepsilon \textrm{- def. Коші}\\
+\forall \{\vec{x}^{(n)}, n \geq 1\} \subset A: \forall n \geq 1: \vec{x}^{(n)} \neq \vec{x}^0: \huge \lim_{n \to \infty} \vec{x}^{(n)} = \vec{x}^0 \Rightarrow \lim_{n \to \infty} f(\vec{x}^{(n)}) = a \textrm{- def. Гейне}
+\end{align*}
+Позначення: $\huge \lim_{\vec{x} \to \vec{x}^0} f(\vec{x}) = a$
+\end{definition}
+
+\begin{theorem}
+Означення Коші $\iff$ Означення Гейне\\
+\textit{Доведення аналогічне як в $\mathbb{R}$}
+\end{theorem}
+
+\begin{proposition}[Арифметичні властивості]
+Задані функції $f,g: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+$\exists \huge \lim_{\vec{x} \to \vec{x}^0} f(\vec{x}) = a, \exists \lim_{\vec{x} \to \vec{x}^0} g(\vec{x}) = b$. Тоді\\
+1) $\huge \lim_{\vec{x} \to \vec{x}^0} cf(\vec{x}) = ca, \forall c \in \mathbb{R}$\\
+2) $\huge \lim_{\vec{x} \to \vec{x}^0} (f(\vec{x}) + g(\vec{x})) = a + b$\\
+3) $\huge \lim_{\vec{x} \to \vec{x}^0} f(\vec{x})g(\vec{x}) = ab$\\
+4) $\huge \lim_{\vec{x} \to \vec{x}^0} \dfrac{f(\vec{x})}{g(\vec{x})} = \dfrac{a}{b}, b \neq 0$\\
+\textit{Всі вони випливають із арифметичних послідовностей та означення Гейне}
+\end{proposition}
+
+\begin{theorem}[Критерій Коші]
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+$\exists \huge \lim_{\vec{x} \to \vec{x}^0} f(\vec{x}) = a \iff \\ \iff \forall \varepsilon > 0: \exists \delta: \forall \vec{x_1}, \vec{x_2} \in A: ||\vec{x_1} - \vec{x_2} || < \delta \Rightarrow |f(\vec{x_1}) - f(\vec{x_2})| < \varepsilon$\\
+\textit{Доведення аналогічне як в $\mathbb{R}$}
+\end{theorem}
+
+\subsection{Неперервність функції}
+\begin{definition}
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+Функція $f$ називається \textbf{неперервною в т.} $\vec{x}^0$, якщо $\exists \huge \lim_{\vec{x} \to \vec{x}^0} f(\vec{x}) = \vec{x}^0$\\
+Функція $f$ називається \textbf{неперервною на множині} $A$, якщо в $\forall \vec{x} \in A: f$ - неперервна
+\end{definition}
+
+\begin{proposition}
+Задані функції $f,g: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+Відомо, що $f,g$ - неперервні в т. $\vec{x}^0$. Тоді\\
+1) $cf$ - неперервна в т. $\vec{x}^0, \forall c \in \mathbb{R}$\\
+2) $f+g$ - неперервна в т. $\vec{x}^0$\\
+3) $fg$ - неперервна в т. $\vec{x}^0$\\
+4) $\dfrac{f}{g}$ - неперервна в т. $\vec{x}^0$, якщо $g(\vec{x}^0) \neq 0$\\
+\textit{Випливають з властивостей границь функцій та неперервності}
+\end{proposition}
+
+\begin{theorem}[Теорема Вейерштраса 1, 2]
+Задана множина $A$ - замкнена, обмежена та функція $f: A \to \mathbb{R}$ - неперервна на $A$. Тоді\\
+1. $f$ - обмежена на $A$\\
+2. $\exists \left[ \begin{gathered} \vec{x}^* \in A \\ \vec{x}_* \in A \end{gathered} \right. : \left[ \begin{gathered} f(\vec{x}^*) = \sup_{\vec{x} \in A} f(\vec{x}) \\ f(\vec{x}_*) = \inf_{\vec{x} \in A} f(\vec{x}) \end{gathered} \right.$\\
+\textit{Доведення аналогічне як в $\mathbb{R}$}
+\end{theorem}
+
+\begin{definition}
+Задана функція $f: A \to \mathbb{R}$\\
+Функція $f$ називається \textbf{рівномірно неперервною на множині} $A$, якщо
+\begin{align*}
+\forall \varepsilon > 0: \exists \delta > 0: \forall \vec{x_1}, \vec{x_2} \in A: ||\vec{x_1} - \vec{x_2}|| < \delta \Rightarrow |f(\vec{x_1}) - f(\vec{x_2})| < \varepsilon 
+\end{align*}
+\end{definition}
+
+\begin{theorem}
+Задана функція $f: A \to \mathbb{R}$ - рівномірно неперервна на $A$. Тоді вона є неперервною на $A$\\
+\textit{Доведення аналогічне як в $\mathbb{R}$}
+\end{theorem}
+
+\begin{theorem}[Теорема Кантора]
+Задана функція $f: A \to \mathbb{R}$ та $A$ - замкнена, обмежена\\
+Відомо, що $f$ - неперевна на $A$. Тоді вона є рівномірно неперервною на $A$\\
+\textit{Доведення аналогічне як в $\mathbb{R}$}
+\end{theorem}
+
+\subsection{Границя та неперервність векторнозначної функції}
+\begin{definition}
+Задана множина $A \subset \mathbb{R}^m$ та $\vec{x}^0 \in A$ - гранична точка\\
+Маємо функцію $\vec{f}: A \to \mathbb{R}^k$\\
+Вектор $\vec{b}$ називається \textbf{границею функції} $\vec{f}(\vec{x}) = \begin{pmatrix}
+f_1(x_1,\dots,x_m) \\ \vdots \\ f_k(x_1,\dots,x_m)
+\end{pmatrix}$ \textbf{в т.} $\vec{x}^0$, якщо
+\begin{align*}
+\forall \varepsilon > 0: \exists \delta > 0: \forall \vec{x} \in A: \vec{x} \neq \vec{x}^0: ||\vec{x} - \vec{x}^0 || < \delta \Rightarrow ||\vec{f}(\vec{x}) - \vec{b}|| < \varepsilon \textrm{- def. Коші}\\
+\forall \{\vec{x}^{(n)}, n \geq 1\} \subset A: \forall n \geq 1: \vec{x}^{(n)} \neq \vec{x}^0: \huge \lim_{n \to \infty} \vec{x}^{(n)} = \vec{x}^0 \Rightarrow \lim_{n \to \infty} \vec{f}(\vec{x}^{(n)}) = \vec{b} \textrm{- def. Гейне}
+\end{align*}
+Позначення: $\huge \lim_{\vec{x} \to \vec{x}^0} \vec{f}(\vec{x}) = \vec{b}$
+\end{definition}
+
+\begin{definition}
+Задана функція $f: A \to \mathbb{R}^k$ та $\vec{x}^0 \in A$ - гранична точка\\
+Функція $\vec{f}$ називається \textbf{неперервною в т.} $\vec{x}^0$, якщо $\exists \huge \lim_{\vec{x} \to \vec{x}^0} \vec{f}(\vec{x}) = \vec{f}(\vec{x}^0)$
+\end{definition}
+
+\begin{theorem}
+Задані множини $A \subset \mathbb{R}^m$, $B \subset \mathbb{R}^k$\\
+Задані функції $\vec{f}: A \to B$ - неперервна в т. $\vec{x}^0$, $\vec{g}: B \to \mathbb{R}$ - неперервна в т. $\vec{f}(\vec{x}^0)$\\
+Тоді функція $h: A \to \mathbb{R}: h(\vec{x}) = \vec{g}(\vec{f}(\vec{x}))$ - неперервна в т. $\vec{x_0}$
+\end{theorem}
+\newpage
+
+\section{Диференційованість}
+\subsection{Для функції із багатьма змінними}
+\begin{definition}
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+Функція $f$ називається \textbf{диференційованою в т.} $\vec{x}^0$, якщо
+\begin{align*}
+\exists L_1,\dots, L_m \in \mathbb{R}: f(\vec{x}^0 + \Delta \vec{x}) - f(\vec{x}^0) = L_1 \Delta x_1 + \dots + L_m \Delta x_m + \underset{\Delta \vec{x} \to 0}{o(||\vec{x}||)}
+\end{align*}
+\end{definition}
+
+\begin{proposition}
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+Функція $f$ - диференційована в т. $\vec{x}^0$. Тоді вона неперервна в т. $\vec{x}^0$
+\end{proposition}
+\begin{pf}
+$f$ - диференційована в т. $\vec{x}^0$, тобто\\
+$f(\vec{x}^0 + \Delta \vec{x}) - f(\vec{x}^0) = L_1 \Delta x_1 + \dots + L_m \Delta x_m + \underset{\Delta \vec{x} \to 0}{o(||\vec{x}||)}$\\
+Або можна це записати інакше:\\
+$f(\vec{x}) - f(\vec{x}^0) = L_1(x_1 - x_1^0) + \dots + L_m(x_m - x_m^0) + \underset{\vec{x} \to \vec{x}^0}{o(||\vec{x}-\vec{x}^0||)}$\\
+$\Rightarrow \huge \lim_{\vec{x} \to \vec{x}^0} (f(\vec{x}) - f(\vec{x}^0)) \boxed{=}$\\
+Всі дужки прямують покоординатно до нуля, $o$-маленьке також, в силу н.м. \\
+$\boxed{=} 0 \Rightarrow f$ - неперервна в т. $\vec{x}^0$
+\end{pf}
+
+\begin{definition}
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+\textbf{Частковою похідною функції} $f$ \textbf{в т.} $x_j$ називають величину
+\begin{align*}
+\dfrac{\partial f}{\partial x_j} (x_1^0, \dots, x_j^0, \dots, x_m^0) = \huge \lim_{\Delta x_j \to 0} \dfrac{f(x_1^0,\dots,x_j^0 + \Delta x_j, \dots, x_m^0) - f(x_1^0,\dots,x_j^0, \dots, x_m^0)}{\Delta x_j} \\
+\dfrac{\partial f}{\partial x_j} (x_1^0, \dots, x_j^0, \dots, x_m^0) = L_j, j = 1,\dots,m
+\end{align*}
+\end{definition}
+
+\begin{definition}
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+\textbf{Градієнтом функції} $f$ \textbf{в т.} $\vec{x}^0$ називається вектор
+\begin{align*}
+\grad f(\vec{x}^0) \overset{\textrm{або}}{=} \textrm{grad} f(\vec{x}^0) = \begin{pmatrix}
+L_1 \\ \vdots \\ L_m
+\end{pmatrix} = \overrightarrow{L}
+\end{align*}
+\textbf{Похідною функції} $f$ \textbf{в т.} $\vec{x}^0$ називається ковектор
+\begin{align*}
+f'(\vec{x}^0) = \begin{pmatrix}
+L_1 & \dots & L_m
+\end{pmatrix} = \overleftarrow{L}
+\end{align*}
+\end{definition}
+У випадку функції від трьох змін $f(x,y,z)$, градієнт можна розписати таким чином:\\
+$\textrm{grad} f(x,y,z) = \dfrac{\partial f}{\partial x} \vec{i} + \dfrac{\partial f}{\partial y} \vec{j} + \dfrac{\partial f}{\partial z} \vec{k}$
+\bigline
+Перепишемо умову диференційованості:\\
+$f(\vec{x}^0 + \Delta \vec{x}) - f(\vec{x}^0) = L_1 \Delta x_1 + \dots + L_m \Delta x_m + \underset{\Delta \vec{x} \to 0}{o(||\vec{x}||)} \boxed{=}$\\
+Якщо згадати, що $L_1 \Delta x_1 + \dots + L_m \Delta x_m = \left( \overrightarrow{L} \overrightarrow{\Delta x} \right) = \left(\textrm{grad} f(\vec{x}^0), \overrightarrow{\Delta x}\right)$\\
+Або побачити, що $L_1 \Delta x_1 + \dots + L_m \Delta x_m = \begin{pmatrix}
+L_1 & \dots & L_m
+\end{pmatrix} \begin{pmatrix}
+\Delta x_1 \\ \vdots \\ \Delta x_m
+\end{pmatrix} = f'(\vec{x}^0) \overrightarrow{\Delta x}$\\
+Тоді продовжимо рівність\\
+$\boxed{=} \left(\textrm{grad} f(\vec{x}^0), \overrightarrow{\Delta x}\right) + \underset{\Delta \vec{x} \to 0}{o(||\vec{x}||)} = f'(\vec{x}^0) \overrightarrow{\Delta x} + \underset{\Delta \vec{x} \to 0}{o(||\vec{x}||)}$
+\bigline
+
+\begin{definition}
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+\textbf{Диференціалом функції} $f(x)$ \textbf{в т.} $\vec{x}^0$ називається вираз
+\begin{align*}
+df(\vec{x}^0) = \dfrac{\partial f(\vec{x}^0)}{\partial x_1}\,dx_1 + \dots + \dfrac{\partial f(\vec{x}^0)}{\partial x_m}\,dx_m
+\end{align*}
+За умовою, що $||\overrightarrow{\Delta x}|| \to 0$
+\end{definition}
+
+\begin{definition}
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+А також задано вектор $\vec{l}$, такий, що $||\vec{l}|| = 1$ - напрямок\\
+\textbf{Похідною функції} $f$ \textbf{за напрямком} $\vec{l}$ \textbf{в т. $\vec{x}^0$} називають величину
+\begin{align*}
+\dfrac{\partial f}{\partial \vec{l}} (\vec{x}^0) = \lim_{t \to 0} \dfrac{f(\vec{x}^0+t \vec{l}) - f(\vec{x}^0)}{t}
+\end{align*}
+\end{definition}
+
+\begin{remark}
+Якщо всі координати вектора $\vec{l}$ будуть нулевими, окрім $l_j = 1$, то $\dfrac{\partial f}{\partial \vec{l}} (\vec{x}^0) = \dfrac{\partial f}{\partial x_j} (\vec{x}^0)$
+\end{remark}
+
+\begin{proposition}
+Задана функція $f: A \to \mathbb{R}$, $\vec{l}$ - напрямок та $\vec{x}^0 \in A$ - гранична точка\\
+$f$ - диференційована в т. $\vec{x}^0$. Тоді\\
+$\dfrac{\partial f}{\partial \vec{l}}(\vec{x}^0) = f'(\vec{x}^0) \vec{l} = \left(\textrm{grad} f(\vec{x}^0), \vec{l} \right)$
+\end{proposition}
+\begin{pf}
+$f$ - диференційована в т. $\vec{x}^0$. Тоді \\ $f(\vec{x}^0 + \Delta \vec{x}) - f(\vec{x}^0) = L_1 \Delta x_1 + \dots + L_m \Delta x_m + \underset{\Delta \vec{x} \to 0}{o(||\vec{x}||)}$\\
+Підставимо $\Delta \vec{x} = t \vec{l}$. Тоді\\
+$f(\vec{x}^0 + t \vec{l}) - f(\vec{x}^0) = \dfrac{\partial f}{\partial x_1} (\vec{x}^0) tl_1 + \dots + \dfrac{\partial f}{\partial x_m} (\vec{x}^0) t l_m + \underset{\Delta \vec{l} \to 0}{o(t || \vec{l}||)}$\\
+$\Rightarrow \huge \dfrac{\partial f}{\partial \vec{l}}(\vec{x}^0) = \lim_{t \to 0} \dfrac{f(\vec{x}^0 + t \vec{l}) - f(\vec{x}^0)}{t} = \lim_{t \to 0} \dfrac{\huge \sum_{j=1}^m \dfrac{\partial f}{\partial x_j}(\vec{x}^0)tl_j + o(t||\vec{l}||)}{t} = \\ = L_1 l_1 + \dots + L_m l_m = f'(\vec{x}^0) \vec{l} = \left( \textrm{grad} f(\vec{x}^0), \vec{l} \right)$
+\end{pf}
+
+\begin{theorem}
+$\dfrac{\partial f}{\partial \vec{l}}(\vec{x}^0)$ приймає за модулем:\\
+- max, якщо $\vec{l} \parallel \textrm{grad} \vec{f}(\vec{x}^0)$\\
+- min, якщо $\vec{l} \perp \textrm{grad} \vec{f}(\vec{x}^0)$
+\end{theorem}
+\begin{pf}
+Згадаємо нерівність Коші-Буняковського: $|(\vec{a}, \vec{b})| \leq ||\vec{a}|| \cdot ||\vec{b}||$\\
+Із попереднього твердження, $\dfrac{\partial f}{\partial \vec{l}}(\vec{x}^0) = \left( \textrm{grad} f(\vec{x}^0), \vec{l} \right)$. Тоді\\
+$\abs{\left( \textrm{grad} f(\vec{x}^0), \vec{l} \right)} \leq || \textrm{grad}f(\vec{x}^0) || \cdot ||\vec{l} ||$\\
+Якщо $\vec{l} \parallel \textrm{grad} \vec{f}(\vec{x}^0)$, то тоді $\exists \lambda \in \mathbb{R}: \textrm{grad} f(\vec{x}^0) = \lambda \vec{l}$\\
+$\Rightarrow \abs{(\vec{l}, \lambda \vec{l})} = \lambda || \vec{l} ||^2 \leq \lambda || \vec{l} ||^2$\\
+Отже, $\dfrac{\partial f}{\partial \vec{l}}(\vec{x}^0)$ приймає max значення\\
+Якщо $\vec{l} \perp \textrm{grad} \vec{f}(\vec{x}^0)$, то тоді $\left(\textrm{grad} f(\vec{x}^0), \vec{l} \right) = 0$ - найменше значення за модулем\\
+Отже, $\dfrac{\partial f}{\partial \vec{l}}(\vec{x}^0)$ приймає min значення
+\end{pf}
+\\
+\subsection{Для векторнозначних функцій}
+\begin{definition}
+Задана функція $\vec{f}: A \to \mathbb{R}^k$ та $\vec{x}^0 \in A$ - гранична точка\\
+Функція $\vec{f}$ називається \textbf{диференційованою в т.} $\vec{x}^0$, якщо
+\begin{align*}
+\exists M \in Mat(m \times k): \vec{f}(\vec{x}^0 + \Delta \vec{x}) - f(\vec{x}^0) = M \Delta \vec{x} + \underset{\Delta \vec{x} \to 0}{o(||\vec{x}||)}
+\end{align*}
+\end{definition}
+Дізнаємось, що це за матриця $M = \begin{pmatrix}
+M_{11} & \dots & M_{1m} \\
+\vdots & \ddots & \vdots \\
+M_{k1} & \dots & M_{km}
+\end{pmatrix}$\\
+$\begin{pmatrix}
+f_1(\vec{x}^0 + \Delta \vec{x}) \\ \vdots \\ f_k(\vec{x}^0 + \Delta \vec{x})
+\end{pmatrix} - \begin{pmatrix}
+f_1(\vec{x}^0) \\ \vdots \\ f_k(\vec{x}^0)
+\end{pmatrix} = \begin{pmatrix}
+M_{11} & \dots & M_{1m} \\
+\vdots & \ddots & \vdots \\
+M_{k1} & \dots & M_{km}
+\end{pmatrix} \begin{pmatrix}
+\Delta x_1 \\ \vdots \\ \Delta x_m
+\end{pmatrix} + \begin{pmatrix}
+o(||\Delta \vec{x}||) \\ \vdots \\ o(||\Delta \vec{x}||)
+\end{pmatrix}$\\
+Із цієї рівності випливає, що $\forall j = 1,\dots,k:$\\
+$f_j(\vec{x}^0 + \Delta \vec{x}) - f_j(\vec{x}^0) = M_{j1} \Delta x_1 + \dots + M_{jm} \Delta x_m + \underset{\Delta \vec{x} \to 0}{o(||\vec{x}||)}$\\
+Тоді звідси випливає, що:\\
+$M_{j1} = \dfrac{\partial f_j}{\partial x_1} (\vec{x}^0), \dots, M_{jm} = \dfrac{\partial f_j}{\partial x_m} (\vec{x}^0)$\\
+В результаті отримаємо ось такий вигляд матриці:\\
+$M = \begin{pmatrix}
+\dfrac{\partial f_1}{\partial x_1} & \dots & \dfrac{\partial f_1}{\partial x_m} \\
+\vdots & \ddots & \vdots \\
+\dfrac{\partial f_k}{\partial x_1} & \dots & \dfrac{\partial f_k}{\partial x_m}
+\end{pmatrix}(\vec{x}^0) = J(x) = \vec{f}'(\vec{x}^0)$ - \textbf{матриця Якобі}
+\bigline
+\begin{proposition}
+Задана функція $\vec{f}: A \to \mathbb{R}^k$ та $\vec{x}^0 \in A$ - гранична точка\\
+Функція $\vec{f}$ - диференційована в т. $\vec{x}^0$. Тоді вона неперервна в т. $\vec{x}^0$
+\end{proposition}
+\begin{pf}
+$\huge \lim_{\vec{x} \to \vec{x}^0} \left(M(\vec{x}- \vec{x}^0) + o(||\vec{x} - \vec{x}^0||) \right) = 0$
+\end{pf}
+\\
+
+\subsection{Властивості}
+\begin{theorem}[Достатня умова диференційованості]
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+Відомо, що $\exists \varepsilon > 0: \forall \vec{x} \in U_{\varepsilon}(\vec{x}^0): \forall j = 1,\dots,m: \exists \dfrac{\partial f}{\partial x_j}(\vec{x}^0)$ - неперервна в т. $\vec{x}^0$. Тоді функція $f$ - диференційована в т. $\vec{x}^0$
+\end{theorem}
+\begin{pf}
+Ми будемо доводити, коли $m = 2$. Для більших аргументів - аналогічно, але більш технічна справа\\
+Отже, дано $f(x,y)$ та в околі т. $(x_0,y_0)$ існують часткові похідні $\dfrac{\partial f}{\partial x}(x_0,y_0)$ та $\dfrac{\partial f}{\partial y}(x_0,y_0)$ - ще й неперервні\\
+$f(x_0 + \Delta x, y_0 + \Delta y) - f(x_0, y_0) = \\ = f(x_0 + \Delta x, y_0 + \Delta y) - \textcolor{red}{f(x_0+\Delta x, y_0)} + \textcolor{red}{f(x_0+\Delta x, y_0)} - f(x_0, y_0) \boxed{=}$\\
+Позначу $h(t) = f(x_0+ \Delta x, y_0+t), t \in [0, \Delta y]$\\
+Тоді $f(x_0 + \Delta x, y_0 + \Delta y) - f(x_0+\Delta x, y_0) = h(\Delta y) - h(0)$\\
+$h \in C([0, \Delta y])$, а також диференційована на $(0, \Delta y)$. Тоді за Лагранжом\\
+$h(\Delta y) - h(0) = h'(c_1) \Delta y, c_1 \in (0,y)$\\
+$h'(t) = f'_t(x_0+\Delta x, y_0 + t) = \dfrac{\partial f}{\partial y}(x_0 + \Delta x, y_0 + t)$\\
+$\Rightarrow h(\Delta y) - h(0) = \dfrac{\partial f}{\partial y}(x_0 + \Delta x, y_0 + c_1) \Delta y$
+\bigline
+Аналогічно $g(s) = f(x_0 + s, y_0), s \in [0, \Delta x]$\\
+Тоді $f(x_0+\Delta x, y_0) - f(x_0,y_0) = g(\Delta x) - g(0) \overset{\textrm{Лагранжа}}{=} g'(c_2) \Delta x = \\ = \dfrac{\partial f}{\partial x}(x_0+c_2, y_0) \Delta x, c_2 \in (0, \Delta x)$\\
+Повертаємось до нашої рівності
+\bigline
+$\boxed{=} \dfrac{\partial f}{\partial y}(x_0 + \Delta x, y_0 + c_1) \Delta y + \dfrac{\partial f}{\partial x}(x_0+c_2, y_0) \Delta x$\\
+Лишилось довести, що\\
+$(f(x_0 + \Delta x, y_0 + \Delta y) - f(x_0,y_0)) - \left(\dfrac{\partial f}{\partial x}(x_0,y_0) \Delta x + \dfrac{\partial f}{\partial y}(x_0,y_0) \Delta y \right) = \underset{\Delta x \to 0 \\ \Delta y \to 0}{o(||(\Delta x, \Delta y)||)}$\\
+Маємо:\\
+$(f(x_0 + \Delta x, y_0 + \Delta y) - f(x_0,y_0)) - \left(\dfrac{\partial f}{\partial x}(x_0,y_0) \Delta x + \dfrac{\partial f}{\partial y}(x_0,y_0) \Delta y \right) = \\
+= \left(\dfrac{\partial f}{\partial y}(x_0 + \Delta x, y_0 + c_1) \Delta y + \dfrac{\partial f}{\partial x}(x_0+c_2, y_0) \Delta x \right) - \left(\dfrac{\partial f}{\partial x}(x_0,y_0) \Delta x + \dfrac{\partial f}{\partial y}(x_0,y_0) \Delta y \right) = \\ = \left(\dfrac{\partial f}{\partial x}(x_0+c_2, y_0) - \dfrac{\partial f}{\partial x}(x_0,y_0) \right) \Delta x + \left(\dfrac{\partial f}{\partial y}(x_0 + \Delta x, y_0 + c_1) - \dfrac{\partial f}{\partial y}(x_0,y_0) \right) \Delta y$\\
+Якщо $\Delta x \to 0, \Delta y \to 0$, то звідси $c_1 \to 0, c_2 \to 0$ та за умовою того, що часткові похідні є неперервними, маємо:\\
+$\left(\dfrac{\partial f}{\partial x}(x_0+c_2, y_0) - \dfrac{\partial f}{\partial x}(x_0,y_0) \right) \overset{\textrm{позн}}{=} \alpha \to 0$\\
+$\left(\dfrac{\partial f}{\partial y}(x_0 + \Delta x, y_0 + c_1) - \dfrac{\partial f}{\partial y}(x_0,y_0) \right) \overset{\textrm{позн}}{=} \beta \to 0$\\
+Далі:\\
+$|\alpha \Delta x + \beta \Delta y| \overset{\textrm{К-Б}}{\leq} ||(\alpha,\beta)|| \cdot ||(\Delta x, \Delta y)|| = o(||(\Delta x, \Delta y)||)$ - можна перевірити за лімітом $\Rightarrow \alpha \Delta x + \beta \Delta y = o(||(\Delta x, \Delta y)||)$\\
+Остаточно отримуємо:\\
+$(f(x_0 + \Delta x, y_0 + \Delta y) - f(x_0,y_0)) - \left(\dfrac{\partial f}{\partial x}(x_0,y_0) \Delta x + \dfrac{\partial f}{\partial y}(x_0,y_0) \Delta y \right) = \underset{\Delta x \to 0 \\ \Delta y \to 0}{o(||(\Delta x, \Delta y)||)}$
+\end{pf}
+
+\begin{proposition}
+Задані функції $f,g: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка\\
+$f,g$ - диференційовані в т. $\vec{x}^0$. Тоді:\\
+1) $\alpha f$ - диференційована в т. $\vec{x}^0$, $\forall \alpha \in \mathbb{R}$, похідна $(\alpha f)' = \alpha f'$\\
+2) $f + g$ - диференційована в т. $\vec{x}^0$, похідна $(f+g)' = f'+g'$\\
+3) $fg$ - диференційована в т. $\vec{x}^0$, похідна $(fg)' = f'g + fg'$\\
+\end{proposition}
+\begin{pf}
+2) $f(\vec{x}) + g(\vec{x}) - [f(\vec{x}^0) + g(\vec{x}^0)] = [f(\vec{x}) - f(\vec{x}^0)] + [g(\vec{x}) - g(\vec{x}^0)] = \\ = f'(\vec{x}^0)(\vec{x} - \vec{x}^0) +o(||\vec{x} - \vec{x}^0||) + g'(\vec{x}^0)(\vec{x} - \vec{x}^0) + o(||\vec{x} - \vec{x}^0||) = \\
+=(f'(\vec{x}^0) + g'(\vec{x}^0))(\vec{x}- \vec{x}^0) + \underset{\vec{x} \to \vec{x}^0}{o(||\vec{x} - \vec{x}^0||)}$
+\bigline
+3) $f(\vec{x})g(\vec{x}) - f(\vec{x}^0)g(\vec{x}^0) = f(\vec{x})g(\vec{x}) - \textcolor{red}{f(\vec{x}^0)g(\vec{x})} + \textcolor{red}{f(\vec{x}^0)g(\vec{x})} - f(\vec{x}^0)g(\vec{x}^0) = [f(\vec{x}) - f(\vec{x}^0)]g(\vec{x}) + [g(\vec{x}) - g(\vec{x}^0)]f(\vec{x}^0) = \\ = [f'(\vec{x}^0)(\vec{x}-\vec{x}^0) + o(||\vec{x} - \vec{x}^0||)]g(\vec{x}) + [g'(\vec{x}^0)(\vec{x}-\vec{x}^0) + o(||\vec{x} - \vec{x}^0||)]f(\vec{x}^0) = \\ $
+Коли $\vec{x} \to \vec{x}^0)$, то звідси $g(\vec{x}) \to g(\vec{x}^0)$. Тоді функція $g$ є обмеженою
+\bigline
+1) \textit{Зрозуміло}
+\end{pf}
+
+\begin{proposition}
+Задані функції $\vec{f}: A \to B$ та $g: B \to \mathbb{R}$, де $A \subset \mathbb{R}^k, B \subset \mathbb{R}^n$\\
+$\vec{f}$ - диференційована в т. $\vec{x}^0$ та $g$ - диференційована в т. $\vec{f}(\vec{x}^0) = \vec{y}^0$\\
+Тоді фунцкія $h: A \to \mathbb{R}$ - диференційована в т. $\vec{x}^0$, а також\\
+$h'(\vec{x}^0) = f'(\vec{y}^0) g'(\vec{x}^0)$\\
+$\dfrac{\partial h}{\partial x_j}(\vec{x}^0) = \dfrac{\partial g}{\partial y_1}(\vec{y}^0) \dfrac{\partial f_1}{\partial x_j}(\vec{x}^0) + \dots + \dfrac{\partial g}{\partial y_n}(\vec{y}^0) \dfrac{\partial f_n}{\partial x_j}(\vec{x}^0), j = 1,\dots,k$
+\end{proposition}
+
+\begin{pf}
+За означенням диференційованості, маємо\\
+$h(\vec{x}) - h(\vec{x}^0) = f(\vec{g}(\vec{x})) - f(\vec{g}(\vec{x}^0)) =$\\
+Тимчасово позначу $\vec{y} = \vec{g}(\vec{x})$\\
+$=f(\vec{y}) - f(\vec{y}^0) = f'(\vec{y}^0) (\vec{y} - \vec{y}^0) + o(||\vec{y} - \vec{y}^0||) \boxed{=}$\\
+Маємо $\vec{y} - \vec{y}^0 = \vec{g}(\vec{x}) - \vec{g}(\vec{x}^0) = g'(\vec{x}^0)(\vec{x}-\vec{x}^0) + o(||\vec{x}-\vec{x}^0||)$\\
+Отже, $o(||\vec{y}-\vec{y}^0||) = o(||g'(\vec{x}^0)(\vec{x}-\vec{x}^0)||) + o(||\vec{x}-\vec{x}^0||) \overset{g'(\vec{x}^0) = const}{=} o(||\vec{x}-\vec{x}^0||)$\\
+$\boxed{=} f'(\vec{y}^0)g'(\vec{x}^0)(\vec{x}-\vec{x}^0) + o(||\vec{x} - \vec{x}^0||)$\\
+Тобто $h'(\vec{x}^0) = f'(\vec{y}^0) g'(\vec{x}^0)$
+\bigline
+А тепер розпишемо це більш детально\\
+$h'(\vec{x}^0) = f(\vec{y}^0) g'(\vec{x}^0) = \begin{pmatrix}
+\departial{f}{y_1}(\vec{y}^0) & \dots & \departial{f}{y_n}(\vec{y}^0)
+\end{pmatrix} \begin{pmatrix}
+ \departial{g_1}{x_1}(\vec{x}^0) & \dots & \departial{g_1}{x_k}(\vec{x}^0) \\
+ \vdots & \ddots & \vdots \\
+ \departial{g_n}{x_1}(\vec{x}^0) & \dots & \departial{g_n}{x_k}(\vec{x}^0)
+\end{pmatrix} = \\
+= \begin{pmatrix}
+\departial{f}{y_1}(\vec{y}^0)\departial{g_1}{x_1}(\vec{x}^0) + \dots + \departial{f}{y_n}(\vec{y}^0)\departial{g_n}{x_1}(\vec{x}^0)\\
+\vdots \\
+\departial{f}{y_1}(\vec{y}^0)\departial{g_1}{x_k}(\vec{x}^0) + \dots + \departial{f}{y_n}(\vec{y}^0)\departial{g_n}{x_k}(\vec{x}^0)\\
+\end{pmatrix} = \begin{pmatrix}
+\departial{h}{x_1}(\vec{x}^0) \\ \vdots \\ \departial{h}{x_k}(\vec{x}^0)
+\end{pmatrix}$\\
+Якщо порівняти кожну координату цієї рівності, то отримаємо бажане
+\end{pf}
+
+\subsection{Дотична площини, нормаль прямій}
+В підрозділі 2.4 та 2.6 ми задамо функцію $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка, стосується для всіх означень та теорем\\
+Також задамо таку поверхню
+\begin{align*}
+\Pi = \{\vec{x},z): z = f(\vec{x}) \}
+\end{align*}
+Площина в $\mathbb{R}^{n+1}$, що проходить через т. $(\vec{x}^0, z^0 = f(\vec{x}^0))$, задається таким рівнянням\\
+$z = z^0 + K_1(x_1-x_1^0) + \dots + K_n(x_n-x_n^0) \hspace{1cm} K_1,\dots,K_n \in \mathbb{R}$
+\begin{definition}
+\textbf{Дотичною площиною} до поверхні $\Pi$ в т. $\vec{x}^0$ називається площина в $\mathbb{R}^{n+1}$, що проходить через т. $(\vec{x}^0, z^0 = f(\vec{x}^0))$, для якої виконана рівність
+\begin{align*}
+z - f(\vec{x}) = o(||\vec{x}-\vec{x}^0||), \vec{x} \to \vec{x}^0
+\end{align*}
+\end{definition}
+
+\begin{theorem}
+Поверхня $\Pi$ має дотичну площину в т. $\vec{x}^0 \iff f$ - диференційована в т. $\vec{x}^0$, а також\\
+$K_j = \departial{f}{x_j}(\vec{x}^0), j=\overline{1,n}$\\
+\textit{Вправа: довести}
+\end{theorem}
+
+Тоді дотична площини задається таким рівнянням:
+\begin{align*}
+z - f(\vec{x}^0) = \departial{f}{x_1}(x_1-x_1^0) + \dots + \departial{f}{x_n}(x_n-x_n^0)
+\end{align*}
+
+\begin{definition}
+\textbf{Нормальною прямою} до поверхні $\Pi$ в т. $\vec{x}^0$ називається пряма в $\mathbb{R}^{n+1}$, що проходить через т. $(\vec{x}^0, z^0 = f(\vec{x}^0))$ та перпендикулярна до дотичної площини
+\end{definition}
+Вектор нормалі дотичної площини $\vec{N} = \left( \departial{f}{x_1}(\vec{x}^0), \dots, \departial{f}{x_n}(\vec{x}^0), -1  \right)$. Тоді це буде напрямним вектором для нормалі прямої. \\
+Тоді нормальна пряма задається таким рівнянням:
+\begin{align*}
+\dfrac{x_1 - x_1^0}{\departial{f}{x_1}(\vec{x}^0)} = \dots = \dfrac{x_n - x_n^0}{\departial{f}{x_n}(\vec{x}^0)} = \dfrac{z-z^0}{-1}
+\end{align*}
+
+\subsection*{Випадок $\mathbb{R}^3$}
+Маємо функцію $f: A \to \mathbb{R}$ та граничну точку $(x_0,y_0) \in A$\\
+$z = f(x,y)$\\
+Дотична площини
+\begin{align*}
+z - f(x_0,y_0) = \departial{f}{x}(x_0,y_0)(x-x_0)+\departial{f}{y}(x_0,y_0)(y-y_0)
+\end{align*}
+Нормаль прямої
+\begin{align*}
+\dfrac{x-x_0}{\departial{f}{x}(x_0,y_0)} = \dfrac{y-y_0}{\departial{f}{y}(x_0,y_0)} = \dfrac{z-f(x_0,y_0)}{-1}
+\end{align*}
+
+\iffalse
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.5]
+\begin{axis}[axis lines = center, axis on top, axis line style = {thick, black}]
+\addplot3[surf, domain=-1:4, y domain=0:2, red, opacity = 0.5]{-2+2*x+2*y};
+\addplot3[surf, domain=-1:4, y domain=0:2, blue, opacity = 0.5]{x^(2) * y^(2)};
+\addplot3+[no markers,samples=51, domain=-1:1,variable=\t]
+                                      ({1+2*\t},{2-\t},{1+2*\t});
+\end{axis}
+\end{tikzpicture}
+\end{figure}
+\fi
+
+
+\subsection{Приблизне обчислення}
+$z-f(\vec{x}) = o(||\vec{x}-\vec{x}^0||)$\\
+Якщо $\vec{x}_0$ близлький до $\vec{x}$, тобто $||\vec{x} - \vec{x}^0|| << 1$, то тоді\\
+$f(\vec{x})-z \approx 0$\\
+$\Rightarrow f(\vec{x}) \approx z^0 + \departial{f}{x_1}(\vec{x}^0)(x_1-x_1^0) + \dots + \departial{f}{x_n}(\vec{x}^0)(x_n-x_n^0)$
+\bigline
+\subsection{Дотична пряма, нормаль площини кривої}
+\begin{definition}
+\textbf{Кривою} в просторі $\mathbb{R}^n$ задається таким рівнянням
+\begin{align*}
+\vec{x} = \vec{x}(t), t \in (a,b)
+\end{align*}
+\textbf{Прямою} в просторі $\mathbb{R}^n$ задається таким рівнянням
+\begin{align*}
+\vec{x} = s \vec{l} + \vec{x}^0, s \in \mathbb{R}
+\end{align*}
+\end{definition}
+
+\begin{definition}
+\textbf{Дотичною} до кривої $\vec{x} = \vec{x}(t)$ називається пряма
+\begin{align*}
+\vec{x}(t) - \vec{x}^0 = (t-t_0) \vec{l} + o(t-t_0), t \to t_0
+\end{align*}
+\end{definition}
+
+\begin{theorem}
+Пряма $\vec{x} = s \vec{l} + \vec{x}^0$ - дотична до кривої $\vec{x} = \vec{x}(t) \iff \vec{x}(t)$ - диференційована в т. $t_0$, а також $\vec{l} = \vec{x}'(t_0)$\\
+\textit{Вправа: довести}
+\end{theorem}
+Тоді дотична пряма задається рівнянням:
+\begin{align*}
+\vec{x} = s \cdot \vec{x}'(t_0) + \vec{x}^0, s \in \mathbb{R}
+\end{align*}
+Напрямний вектор прямої $\vec{l} = (x_1'(t_0),\dots, x_n'(t_0))$\\
+Тоді це буде нормальним вектором для нормалі плоищини\\
+Тоді нормальна площина задається таким рівнянням:
+\begin{align*}
+x_1'(t_0)(x_1-x_1^0) + \dots + x_n'(t_0)(x_n-x_n^0)=0
+\end{align*}
+
+\subsection*{Випадок $\mathbb{R}^3$}
+Маємо криву $\begin{cases} x=x(t) \\ y=y(t) \\ z=z(t) \end{cases}, t \in (a,b)$\\
+Дотична прямої
+\begin{align*}
+\begin{cases}
+x=s x'(t_0)+x_0 \\
+y=s y'(t_0)+y_0\\
+z=s z'(t_0)+z_0
+\end{cases}, s \in \mathbb{R}
+\end{align*}
+Нормаль площини
+\begin{align*}
+x'(t_0)(x-x_0)+y'(t_0)(y-y_0)+z'(t_0)(z-z_0)=0
+\end{align*}
+
+
+
+\subsection{Неявно задані функції}
+\begin{remark}[Приклад для розуміння]
+Задано рівняння кола на площині $\mathbb{R}^2$ \\
+$x^2+y^2-1=0$\\
+Ми хочемо знайти дотичні в якійсь т. $x_0$. Тут виникає неявність, якщо виразити $y = \pm \sqrt{1-x^2}$. А бувають приклади й набагато гірше, де $y$ виразити явно зовсім неможна\\
+$\sin(x,y)+2x-y=0$\\
+Але намалювати її я можу, тому я хочу дотичну. Що робити
+\bigline
+Саме тому розглядають рівняння $F(x,y) = 0$, де $F$ - \textbf{неявна функція}
+\end{remark}
+
+\begin{theorem}
+Задана неявна функція $F: U(x_0,y_0) \to \mathbb{R}$, де $U$ - окіл т. $(x_0,y_0)$. Відомо, що виконуються такі умови\\
+1) $F(x_0,y_0)=0$\\
+2) $\departial{F}{y}(x_0,y_0) \neq 0$\\
+3) $F \in C^{(m)}(U(x_0,y_0))$\\
+Тоді справедливо наступне:\\
+I) $\exists \delta_1,\delta_2 > 0: (x_0-\delta_1,x_0+\delta_1) \times (y_0-\delta_2,y_0+\delta_2) \subset U(x_0,y_0)$\\
+II) $\exists f: (x_0-\delta_1,x_0+\delta_1) \to (y_0-\delta_2,y_0+\delta_2)$, така, що \\ $f \in C^{(m)}((x_0-\delta_1,x_0+\delta_1))$ та\\
+$(x,y) \in (x_0-\delta_1,x_0+\delta_1) \times (y_0-\delta_2,y_0+\delta_2) \iff \begin{cases} x \in (x_0-\delta_1,x_0+\delta_1) \\ y \in (y_0-\delta_2,y_0+\delta_2) \end{cases}$\\
+III) $F(x,y) = 0 \iff y=f(x)$\\
+IV) $f'(x) = -\dfrac{\departial{F}{x}(x,y) \Big|_{(x,f(x))}}{\departial{F}{y}(x,y) \Big|_{(x,f(x))}}$\\
+\textit{Без доведення. Можна подивитись у Зоріча зі 20 сторінками}
+\end{theorem}
+
+\begin{remark}
+Ця теорема повторюється для функцій $F(\vec{x},z)$ та навіть $F(\vec{x}, \vec{y})$
+\end{remark}
+
+\subsection{Диференціювання та похідні старших порядків}
+\begin{definition}
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка. Також $f$ - диференційована в околі т. $\vec{x}^0$\\
+\textbf{Частковими похідними другого роду} від функції $f$ в т. $\vec{x}^0$ називається
+\begin{align*}
+\dfrac{\partial}{\partial x_j} \left( \dfrac{\partial f}{\partial x_k} (\vec{x}^0) \right) = \dfrac{\partial^2 f}{\partial x_j \partial x_k} (\vec{x}^0)
+\end{align*}
+\end{definition}
+
+\begin{definition}
+Функція $f$ називається \textbf{двічі диференційованою в т.} $\vec{x}^0$, якщо $\textrm{grad} f$ - диференційована в т. $\vec{x}^0$, тобто
+\begin{align*}
+\textrm{grad} f(\vec{x}) - \textrm{grad} f(\vec{x}^0) = M(\vec{x} - \vec{x}^0) + o(|| \vec{x}-\vec{x}^0||), \vec{x} \to \vec{x}^0
+\end{align*}
+де $M$ - матриця всіх часткових похідних $\textrm{grad} f(\vec{x})$ - \textbf{матриця Гесе}
+\begin{align*}
+f''(\vec{x}) = M = \begin{pmatrix}
+\dfrac{\partial^2 f}{(\partial x_1)^2} & \dfrac{\partial^2 f}{\partial x_2 \partial x_1} & \dots & \dfrac{\partial^2 f}{\partial x_n \partial x_1} \\
+\dfrac{\partial^2 f}{\partial x_1 \partial x_2} & \dfrac{\partial^2 f}{(\partial x_2)^2} & \dots & \dfrac{\partial^2 f}{\partial x_n \partial x_2} \\
+\vdots & \vdots & \ddots & \vdots \\
+\dfrac{\partial^2 f}{(\partial x_1 \partial x_n} & \dfrac{\partial^2 f}{\partial x_2 \partial x_n} & \dots & \dfrac{\partial^2 f}{(\partial x_n)^2} \\
+\end{pmatrix}(\vec{x})
+\end{align*}
+\end{definition}
+
+\begin{theorem}
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка. Також $f$ - диференційована в околі т. $\vec{x}^0$\\
+Відомо, що $\exists \dfrac{\partial^2 f}{\partial x_j \partial x_k} (\vec{x}), \dfrac{\partial^2 f}{\partial x_k \partial x_j} (\vec{x})$, що є неперервними в околі т. $\vec{x}^0$\\
+Тоді не залежить від порядку диференціювання
+\end{theorem}
+
+\begin{pf}
+Ми будемо доводити, коли $m = 2$. Для більших аргументів - аналогічно, але більш технічна справа
+\bigline
+Отже, дано $f(x,y)$ та в околі т. $(x_0,y_0)$ існують часткові похідні другого порядку $\exists \dfrac{\partial^2 f}{\partial x \partial y} (x_0, y_0), \dfrac{\partial^2 f}{\partial y \partial x} (x_0, y_0)$ - ще й неперервні\\
+Розглянемо функції: \\ $g(x_0,y_0)=f(x_0+t\Delta x,y_0) - f(x_0,y_0)$ \\ $h(x_0,y_0) = f(x_0,y_0+s\Delta y) - f(x_0,y_0)$\\
+Для них маємо:\\
+$g(x_0,y_0+s\Delta y) - g(x_0,y_0) = \\ = [f(x_0+t\Delta x,y_0+s \Delta y) - f(x_0,y_0+s\Delta y)] - [f(x_0+ t\Delta x, y_0) - f(x_0,y_0)] = \\
+= [f(x_0+t\Delta x,y_0+s \Delta y)-f(x_0+t\Delta x,y_0)]-[f(x_0,y_0+s\Delta y)-f(x_0,y_0)] = \\
+=h(x_0+t\Delta x,y_0) - h(x_0,y_0)$\\
+Розглянемо ліву частину рівності\\
+$g(x_0,y_0+s\Delta y) - g(x_0,y_0) \boxed{=}$\\
+Скористаємось теоремою Лагранжа, якщо $k(s) = g(x_0,y_0 + s \Delta y)$. Тоді\\
+$k(s)-k(0)=k'(\tau) \cdot s, \tau \in (0,s)$\\
+А далі беремо похідну\\
+$k'(s) = (g(x_0,y_0+s\Delta y))'_s = \departial{g}{y}(x_0,y_0+s\Delta y) \dfrac{d(s\Delta y)}{ds} = \departial{g}{y}(x_0,y_0+s\Delta y) \Delta y$\\
+$\boxed{=} \departial{g}{y}(x_0,y_0+\tau \Delta y) \Delta y \cdot s$, тут $\tau \in (0,s)$\\
+Розпишемо частинну похідну окремо\\
+$\departial{g}{y}(x_0,y_0+\tau \Delta y) = \dfrac{\partial}{\partial y} \left(f(x_0+t \Delta x,y_0+\tau \Delta y)-f(x_0,y_0+\tau \Delta y)\right) = \\
+= \departial{f}{y}(x_0+t \Delta x, y_0 + \tau \Delta y) - \departial{f}{y}(x_0,y_0+\tau \Delta y) \boxed{=}$\\
+І знову теорема Лагранжа, якщо $p(t) = \departial{f}{y}(x_0+t\Delta x, y_0+\tau \Delta y)$. Тоді\\
+$p(t)-p(0)=p'(\theta)t, \theta \in (0,t)$\\
+Знову беремо похідну\\
+$p'(t)= \left(\departial{f}{y}(x_0+t\Delta x, y_0+\tau \Delta y) \right)'_t = \dfrac{\partial^2 f}{\partial x \partial y} (x_0 + t \Delta x, y_0 + \tau \Delta y) \Delta x$\\
+$\boxed{=} = \dfrac{\partial^2 f}{\partial x \partial y} (x_0+\theta \Delta x, y_0 + \tau \Delta y) \Delta x \cdot t$, тут $\theta \in (0,t)$\\
+Разом отримаємо:\\
+$g(x_0,y_0+s\Delta y) - g(x_0,y_0) = \departial{g}{y}(x_0,y_0+\tau \Delta y) \Delta y \cdot s = \\ = \dfrac{\partial^2 f}{\partial x \partial y} (x_0+\theta \Delta x, y_0 + \tau \Delta y) \Delta x \Delta y \cdot t \cdot s$, де $\theta \in (0,t), \tau \in (0,s)$
+\bigline
+Все аналогічно робиться для правої частини рівності\\
+$h(x_0+t\Delta x, y_0) - h(x_0,y_0) = \cdots = \\ = \dfrac{\partial^2 f}{\partial y \partial x} (x_0 + \gamma \Delta x, y_0 + \zeta \Delta y) \Delta y \Delta x \cdot s \cdot t$, де $\gamma \in (0,t), \zeta \in (0,s)$
+\bigline
+Отримуємо таку рівність\\
+$\dfrac{\partial^2 f}{\partial x \partial y} (x_0+\theta \Delta x, y_0 + \tau \Delta y) \Delta x \Delta y \cdot t \cdot s = \dfrac{\partial^2 f}{\partial y \partial x} (x_0 + \gamma \Delta x, y_0 + \zeta \Delta y) \Delta y \Delta x \cdot s \cdot t$\\
+$\dfrac{\partial^2 f}{\partial x \partial y} (x_0+\theta \Delta x, y_0 + \tau \Delta y) = \dfrac{\partial^2 f}{\partial y \partial x} (x_0 + \gamma \Delta x, y_0 + \zeta \Delta y)$\\
+Зробимо спрямування: $t \to 0, s \to 0 \Rightarrow \theta \to 0, \tau \to 0, \gamma \to 0, \zeta \to 0$\\
+Через неперервність ми отримаємо:\\
+$\dfrac{\partial^2 f}{\partial x \partial y} (x_0+\theta \Delta x, y_0 + \tau \Delta y) \to \dfrac{\partial^2 f}{\partial x \partial y}(x_0,y_0)$\\
+$\dfrac{\partial^2 f}{\partial y \partial x} (x_0 + \gamma \Delta x, y_0 + \zeta \Delta y) \to \dfrac{\partial^2 f}{\partial y \partial x}(x_0,y_0)$\\
+Остаточно отримали: $\dfrac{\partial^2 f}{\partial x \partial y}(x_0,y_0) = \dfrac{\partial^2 f}{\partial y \partial x}(x_0,y_0)$
+\end{pf}
+
+\begin{definition}
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка. Також $f$ - диференційована в околі т. $\vec{x}^0$\\
+\textbf{Другим диференціалом} функції $f$ називають насправді вираз $d^2f(\vec{x}) = d(df(\vec{x}))$\\
+Але ГБ давав це як формулу
+\begin{align*}
+d^2 f(\vec{x}) = \sum_{j,k=1}^n \dfrac{\partial^2 f(\vec{x})}{\partial x_j \partial x_k} \,dx_j \,dx_k
+\end{align*}
+\end{definition}
+
+\begin{definition}
+Задана функція $f: A \to \mathbb{R}$ та $\vec{x}^0 \in A$ - гранична точка. Також $f$ - диференційована в околі т. $\vec{x}^0$\\
+\textbf{Частковим похідним} $m+1$-го порядку називають похідні
+\begin{align*}
+\dfrac{\partial}{\partial x_{j_{m+1}}} \left( \dfrac{\partial^m f}{\partial x_{j_1} \partial x_{j_2} \dots \partial x_{j_m}} \right)(\vec{x}) = \dfrac{\partial^{m+1} f}{\partial x_{j_{m+1}} \partial x_{j_1} \partial x_{j_2} \dots \partial x_{j_m}}(\vec{x})
+\end{align*}
+\textbf{Похідною} $m$-го порядку функції $f$ називають
+\begin{align*}
+f^{(m)}(\vec{x}) = \left( \dfrac{\partial^m f}{\partial x_{j_1} \dots \partial x_{j_m}} \right)^n_{j_1,\dots,j_m=1}
+\end{align*}
+Як казав ГБ, ця річ - вже більш страший об'єкт на розглядання - називають це тензором\\
+Якщо грубо казати про те, що таке тензор\\
+$0D$-тензор - число\\
+$1D$-тензор - вектор\\
+$2D$-тензор - матриця\\
+$3D$-тензор - кубічна матриця, напевно)\\
+і т.д.
+\end{definition}
+
+\begin{remark}
+Якщо часткові похідні вищих порядків неперервні, то там також не залежить від порядку диференціювання
+\end{remark}
+
+\subsection{Формула Тейлора}
+\begin{theorem}[Теорема Тейлора]
+Задана функція $f: A \to \mathbb{R}$ така, що $f \in C^{(m)}(A)$ і т. $\vec{x}^0 \in A$. Відомо, що існує окіл $U_{\varepsilon}(\vec{x}^0) \subset A$\\
+Тоді $\exists \theta \in (0,1): f(\vec{x}) = f(\vec{x}^0) + \dfrac{f'(\vec{x}^0)}{1!}(\vec{x}-\vec{x}^0) + \dfrac{f''(\vec{x}^0)}{2!}(\vec{x}-\vec{x}^0)^2 + \dots \\ + \dfrac{f^{(m-1)}(\vec{x}^0)}{(m-1)!}(\vec{x}-\vec{x}^0)^{m-1} + \dfrac{f^{(m)}(\vec{x}^0+\theta(\vec{x}-\vec{x})^0}{m!}(\vec{x}-\vec{x}^0)^m$
+\end{theorem}
+\begin{remark}
+Оскільки тензори ми ніколи не проходили і не будемо, то ГБ одразу дає формулу, що під $f^{(k)}(\vec{x}^0)(\vec{x}-\vec{x}^0)^k$ можна розуміти
+\begin{align*}
+f^{(k)}(\vec{x}^0)(\vec{x}-\vec{x}^0)^k = \sum_{j_1,\dots,j_k} \dfrac{\partial^k f}{\partial x_{j_1}\dots \partial x_{j_k}}(\vec{x}^0) \cdot (x_{j_1}-x_{j_1}^0) \dots (x_{j_k}-x_{j_k}^0)
+\end{align*}
+Щоб було простіше сприймати цю формулу, перейдемо в $\mathbb{R}^3$\\
+Ми маємо функцію $f(x,y)$. Тоді замість $x_{j_1},\dots,x_{j_k}$ ми підставляємо або $x$, або $y$\\
+Якщо б ми шукали третю похідну з дужкою, то було б сумання з такою комбінацією: $xxx, xxy, xyy, xyx, yxy, yxx, yyx, yyy$
+\end{remark}
+
+\begin{pf}
+Розглянемо функцію $p(t) = f(\vec{x}^0 + t(\vec{x} - \vec{x}^0))$, тут $|t| \leq 1$\\
+Фактично ми розглядаємо функцію від однієї змінної, для якої можна застосувати формулу Тейлора ще з першого семестру\\
+Знайдемо похідні від цієї функції\\
+$p'(t) = f(\vec{x}^0 + t(\vec{x}-\vec{x}^0))'_t = f'(\vec{x}^0 + t(\vec{x}-\vec{x}^0)) \cdot (\vec{x}-\vec{x}^0)$\\
+$p''(t) = [f'(\vec{x}^0 + t(\vec{x}-\vec{x}^0)) \cdot (\vec{x}-\vec{x}^0)]'_t = f''(\vec{x}^0+t(\vec{x}-\vec{x}^0))(\vec{x}-\vec{x}^0)^2$\\
+$\vdots$ Індукцією можна довести, що\\
+$p^{(k)}(t) = f^{(k)}(\vec{x}^0 + t(\vec{x}-\vec{x}^0))^k$\\
+Тепер застосуємо цю формулу для $t_0 = 0$\\
+$p(t) = p(0) + \dfrac{p'(0)}{1!}t + \dfrac{p''(0)}{2!}t^2 + \dots + \dfrac{p^{(m-1)}(0)}{(m-1)!}t^{m-1} + \dfrac{p^{(m)}(\theta(t))}{m!}t^m$, де $\theta(t) \in (0,t)$\\
+Ну й тоді\\
+$f(\vec{x}) = f(\vec{x}^0 + 1 \cdot (\vec{x}-\vec{x}^0)) = p(1) = \\ = p(0) + \dfrac{p'(0)}{1!} + \dfrac{p''(0)}{2!} + \dots + \dfrac{p^{(m-1)}(0)}{(m-1)!} + \dfrac{p^{(m)}(\theta)}{m!} = \\
+= f(\vec{x}) = f(\vec{x}^0) + \dfrac{f'(\vec{x}^0)}{1!}(\vec{x}-\vec{x}^0) + \dfrac{f''(\vec{x}^0)}{2!}(\vec{x}-\vec{x}^0)^2 + \dots \\ + \dfrac{f^{(m-1)}(\vec{x}^0)}{(m-1)!}(\vec{x}-\vec{x}^0)^{m-1} + \dfrac{f^{(m)}(\vec{x}^0+\theta(\vec{x}-\vec{x})^0}{m!}(\vec{x}-\vec{x}^0)^m$\\
+Причому $\theta \in (0,1)$
+\end{pf}
+\bigline
+Можна обережно довести, що \\ $\dfrac{f^{(m)}(\vec{x}^0+\theta(\vec{x}-\vec{x})^0}{m!}(\vec{x}-\vec{x}^0)^m = o(||\vec{x}-\vec{x}^0||^{m-1}), \vec{x} \to \vec{x}^0$ - отримаємо
+
+\begin{corollary}
+Ті самі вимоги, що в теоремі Тейлора\\
+$f(\vec{x}) = f(\vec{x}^0) + \dfrac{f'(\vec{x}^0)}{1!}(\vec{x}-\vec{x}^0) + \dfrac{f''(\vec{x}^0)}{2!}(\vec{x}-\vec{x}^0)^2 + \dots \\ + \dfrac{f^{(m-1)}(\vec{x}^0)}{(m-1)!}(\vec{x}-\vec{x}^0)^{m-1} + o(||\vec{x}-\vec{x}^0||^{m-1}), \vec{x} \to \vec{x}^0$
+\end{corollary}
+
+(додати теорему про обернену функцію)
+
+\subsection{Екстремуми}
+\begin{definition}
+Задана функція $f:A\to \mathbb{R}$
+Точка $\vec{x}^0$ називається точкою\\
+- \textbf{локального максимуму}, якщо $\exists U_{\varepsilon}(\vec{x}^0): \forall \vec{x} \in U_{\varepsilon}(\vec{x}^0): f(\vec{x}^0) \geq f(\vec{x})$\\
+- \textbf{локального мінімуму}, якщо $\exists U_{\varepsilon}(\vec{x}^0): \forall \vec{x} \in U_{\varepsilon}(\vec{x}^0): f(\vec{x}^0) \leq f(\vec{x})$\\
+для строгих екстремумів нерівність строга та $\vec{x} \neq \vec{x}^0$
+\end{definition}
+
+\begin{theorem}[Необхідна умова локального екстремуму]
+Задана функція $f: A \to \mathbb{R}$ така, що має всі частинні похідні в т. $\vec{x}^0$\\
+Відомо, що $\vec{x}^0$ - локальний екстремум. Тоді $\departial{f}{x_j}(\vec{x}^0) = 0, \forall j=\overline{1,n}$
+\end{theorem}
+
+\begin{pf}
+Розглянемо функцію $h(x) = f(t,x_2^0,\dots,x_n^0)$ - функція від однієї змінної, така, що $t_0 = x_1^0$ - локальний екстремум. Більш того, $h'(t) = \departial{f}{x_1}(t,x_2^0,\dots,x_n^0)$\\
+Тоді за необхідною умовою локального екстремуму мат аналіза 1 семестру, $h'(t_0) = 0 \implies \departial{f}{x_1}(x_1^0,x_2^0,\dots,x_n^0) = 0$\\
+Для інших змінних аналогічно
+\end{pf}
+\bigline
+Вам далі треба згадати щось про квадратичні форми матриць, які є строго/нестрого додатньо/від'ємно визначеними, а також критерій Сільвестра
+
+\begin{lemma}
+Задана матриця $B(\vec{x}) = \begin{pmatrix}
+b_{11}(\vec{x}) & \dots & b_{1n}(\vec{x}) \\
+\vdots & \ddots & \vdots \\
+b_{1n}(\vec{x}) & \dots & b_{nn}(\vec{x}) \\
+\end{pmatrix} \in C(A)$\\
+Відомо, що $B(\vec{x}^0)$ - строго додатньо/від'ємно визначена. \\ Тоді $\exists U_{\varepsilon}(\vec{x}^0): \forall \vec{x} \in U_{\varepsilon}(\vec{x}): B(\vec{x})$ - строго додатньо/від'ємно визначена
+\end{lemma}
+
+\begin{pf}
+За умовою, $B(\vec{x}) \in C(A)$, тобто всі функції в матриці неперервні. Обчислюючи кутові мінори $\Delta_k, k = \overline{1,n}$, отримаємо, що $\Delta_k \in C(A)$\\
+Розглянемо випадок строго додатньої визначенності, тоді $\Delta_k (\vec{x}^0) > 0$\\
+Оскільки $\vec{x}^0$ - внутрішня, то $\exists U_{\varepsilon_k}(\vec{x}^0)$, де $\forall \vec{x} \in U_{\varepsilon_k}(\vec{x}^0): \Delta_k(\vec{x}) > 0$\\
+Оберемо $\varepsilon = \min \{\varepsilon_1, \dots, \varepsilon_n \}$, тоді\\
+$\forall \vec{x} \in U_{\varepsilon}(\vec{x}^0): \forall k = \overline{1,n}: \Delta_k(\vec{x}) > 0$\\
+Тоді за критерієм Сильвестра, $B(\vec{x})$ - строго додатньо визначена
+\end{pf}
+
+\begin{theorem}[Достатня умова локального екстремуму]
+Задана функція $f: A \to \mathbb{R}$, така, що $f \in C^{(2)}(A)$, а також $\vec{x}^0$ - критична точка\\
+1) $f''(\vec{x}^0)$ - строго додатньо визначена. Тоді $\vec{x}^0$ - строгий локальний мінімум\\
+2) $f''(\vec{x}^0)$ - строго від'ємно визначена. Тоді $\vec{x}^0$ - строгий локальний максимум\\
+3) $f''(\vec{x}^0)$ - знако-невизначена. Тоді $\vec{x}^0$ - не локальний екстремум
+\end{theorem}
+
+\begin{pf}
+За умовою, $\vec{x}^0$ - критична точка $\Rightarrow f'(\vec{x}^0) = \textbf{0}$\\
+Запишемо функцію у вигляді формули Тейлора\\
+$f(\vec{x}) = f(\vec{x}^0) + \dfrac{f''(\vec{x}^0+\theta(\vec{x}-\vec{x}^0))}{2!}(\vec{x}-\vec{x}^0)^2$\\
+$\Rightarrow f(\vec{x}) - f(\vec{x}^0) = \dfrac{(f''(\vec{x}^0 + \theta(\vec{x}-\vec{x}^0))(\vec{x}-\vec{x}^0), (\vec{x}-\vec{x}^0))}{2}$\\
+1) $f''(\vec{x}^0)$ - строго додатньо визначена. Тоді $\exists U_{\varepsilon}(\vec{x}^0): \forall \vec{x} \in U_{\varepsilon}(\vec{x}^0): f''(\vec{x})$ - строго додатньо визначена. \\ Тоді за означенням, $(f''(\vec{x}^0 + \theta(\vec{x}-\vec{x}^0))(\vec{x}-\vec{x}^0), (\vec{x}-\vec{x}^0)) > 0$\\
+Звідси $f(\vec{x})-f(\vec{x}^0) > 0 \implies \forall \vec{x} \in U_{\varepsilon}(\vec{x}^0): f(\vec{x}) > f(\vec{x}^0) \\ \Rightarrow \vec{x}^0$ - локальний мінімум
+\bigline
+2) $f''(\vec{x}^0)$ - строго від'ємно визначена. Тоді $\exists U_{\varepsilon}(\vec{x}^0): \forall \vec{x} \in U_{\varepsilon}(\vec{x}^0): f''(\vec{x})$ - строго від'ємно визначена. \\ Тоді за означенням, $(f''(\vec{x}^0 + \theta(\vec{x}-\vec{x}^0))(\vec{x}-\vec{x}^0), (\vec{x}-\vec{x}^0)) < 0$\\
+Звідси $f(\vec{x})-f(\vec{x}^0) < 0 \implies \forall \vec{x} \in U_{\varepsilon}(\vec{x}^0): f(\vec{x}) < f(\vec{x}^0) \\ \Rightarrow \vec{x}^0$ - локальний максимум
+\bigline
+3) $f''(\vec{x}^0)$ - знако-невизначена. Тоді \\ $(f''(\vec{x}^0 + \theta(\vec{x}_1-\vec{x}^0))(\vec{x}_1-\vec{x}^0), (\vec{x}_1-\vec{x}^0)) > 0$ та \\ $(f''(\vec{x}^0 + \theta(\vec{x}_2-\vec{x}^0))(\vec{x}_2-\vec{x}^0), (\vec{x}_2-\vec{x}^0)) < 0$ \\ в двух різних точках $\vec{x}_1,\vec{x}_2 \in U_{\varepsilon}(\vec{x}^0)$\\
+Тоді за попередними пунктами, $f(\vec{x}^0) < f(\vec{x}_1)$ та $f(\vec{x}^0) > f(\vec{x}_2)$, що порушують означення локального екстремуму для т. $\vec{x}^0$
+\end{pf}
+
+\subsection{Умовні локальні екстремуми}
+\begin{definition}
+Задана система функцій $\phi_j: A \to \mathbb{R}$, такі, що $\forall j=\overline{1,s}: \phi_j \in C'(A)$. Відомо, що вони також задовільняють умові\\
+$\rank \begin{pmatrix}
+\departial{\phi_1}{x_1} & \dots & \departial{\phi_1}{x_n} \\
+\vdots & \ddots & \vdots \\
+\departial{\phi_n}{x_1} & \dots & \departial{\phi_n}{x_n}
+\end{pmatrix}(\vec{x}^0) = s$ - деякий максимально можливий ранг\\
+Тоді рівняння $\phi_j(\vec{x}) = 0, j=\overline{1,s}$ називаються \textbf{умовами зв'язку}
+\end{definition}
+
+\begin{definition}
+Задано множину $M=\{ \vec{x}: \phi_j(\vec{x}) = 0, j=\overline{1,s} \}$\\
+Точка $\vec{x}^0$ називається \textbf{умовним локальним}\\
+- \textbf{максимумом}, якщо $\exists U_{\varepsilon}(\vec{x}^0): \forall \vec{x} \in M \cap U_{\varepsilon}(\vec{x}^0): f(\vec{x}^0) \geq f(\vec{x})$ \\
+- \textbf{мінімумом}, якщо $\exists U_{\varepsilon}(\vec{x}^0): \forall \vec{x} \in M \cap U_{\varepsilon}(\vec{x}^0): f(\vec{x}^0) \leq f(\vec{x})$\\
+для строгих екстремумів нерівність строга
+\end{definition}
+
+Одразу формулювати теорему буде складно, тому ми будемо спочатку будувати наші роздуми, як зрозуміти, що $\vec{x}^0$ - умовний локальний екстремум
+\bigline
+Маємо множину $M=\{\vec{x}: \phi_j(\vec{x}) = 0, j=\overline{1,s} \}$ та $\vec{x}^0$ - локальний екстремум\\
+Розглянемо диференційовану криву $\gamma = \{\vec{x}(t), t \in (-\delta, \delta )\} \subset M \cap U_{\varepsilon}(\vec{x}^0)$, причому нехай $\vec{x}(0) = \vec{x}^0$\\
+Функцію $f(\vec{x})$ звузимо на криву $\gamma$ - отримаємо функцію $h(t) = f(\vec{x}(t))$, де має локальний екстремум в т. $t_0 = 0$. Тоді за необхідною умовою, $h'(0) = 0$\\
+З іншого боку, $h'(0) = f'(\vec{x}(0)) \cdot \vec{x}'(0) \boxed{=}$\\
+Тут $f'(\vec{x}(0)) = \begin{pmatrix}
+\departial{f}{x_1}(\vec{x}(0)) & \dots & \departial{f}{x_n}(\vec{x}(0))
+\end{pmatrix}$\\
+А також $\vec{x}'(0) = \begin{pmatrix}
+x_1'(0) & \dots & x_n'(0)
+\end{pmatrix}$\\
+Множимо два вектори скалярно\\
+$\boxed{=} \departial{f}{x_1}(\vec{x}^0) x_1'(0) + \dots + \departial{f}{x_n}(\vec{x}^0) x_n'(0) = (\textrm{grad} f(\vec{x}^0), \vec{x}'(0))$\\
+$\implies (\textrm{grad} f(\vec{x}^0), \vec{x}'(0)) = 0 \implies \textrm{grad} f(\vec{x}^0) \perp \vec{x}'(0)$\\
+Маємо зв'язок: $h'(0) = 0 \iff \textrm{grad} f(\vec{x}^0) \perp \vec{x}'(0)$
+\bigline
+З'ясуємо, які властивості має $\vec{x}'(0)$, якщо $\gamma = \{\vec{x}(t), t \in (-\delta, \delta)\} \subset M$\\
+Отже, $\vec{x}(t) \subset M \iff \phi_j(\vec{x}(t)) = 0 \overset{(*)}{\iff} \phi_j'(\vec{x}(0)) \cdot \vec{x}'(0) = 0 \iff  \textrm{grad} \phi_j(\vec{x}^0) \perp \vec{x}'(0)$\\
+Маємо зв'язок 2: $\forall j=\overline{1,s}: \textrm{grad} \phi_j(\vec{x}^0) \perp \vec{x}'(0) \iff \vec{x}(t) \subset M$\\
+$(*)$ Чому в зворотній бік працює: $\phi_j'(\vec{x}(0)) \cdot \vec{x}'(0) = 0$. Тоді $\vec{x}'(0)$ перпендикулярна всім дотичним площинам до поверхонь $\phi_j(\vec{x}(t)) = 0$, тож $\vec{x}'(0)$ - дотичний вектор кривої $\gamma \Rightarrow \gamma \subset M$
+\bigline
+Підсумуємо:\\
+$\forall j=\overline{1,s}: \textrm{grad} \phi_j(\vec{x}^0) \perp \vec{x}'(0) \iff \vec{x}(t) \subset M \iff \\ \iff h(t) = f(\vec{x}(t)) \textrm{ має екстремум в т. } \vec{x}^0 \iff h'(0) = 0 \iff \\ \iff \textrm{grad}f(\vec{x}^0) \perp \vec{x}'(0)$
+\bigline
+Крива $\gamma$ - довільно обрана, тоді $\vec{x}'(0)$ - довільний, що під умовами зв'язку\\
+Тоді наша еквівалентність каже про те, що \\ $\textrm{grad} f(\vec{x}^0) \in span\{ \textrm{grad}\phi_j(\vec{x}^0): j=\overline{1,s} \}$ - ця лінійна оболонка в силу рангу є лінійно незалежною. Тому кожний елемент, який туди потрапляє, розкладається лінійною комбінацією елементів, власне\\
+$\exists \lambda_j, j = \overline{1,s}: \textrm{grad} \vec{f}(\vec{x}^0) = \lambda_1 \textrm{grad} \phi_1(\vec{x}^0)+\dots+\lambda_s \textrm{grad} \phi_s(\vec{x}^0)$
+\bigline
+Отримали теорему
+\begin{theorem}[Необхідна умова умовного локального екстремуму]
+Задана множина $M=\{\vec{x}: \phi_j(\vec{x}) =0, j = \overline{1,s} \}$ та функція $f: A \to \mathbb{R}$ така, що $f \in C'(A)$\\
+Відомо, що $\vec{x}^0$ - точка умовного локального екстремуму. Тоді\\
+$\exists \lambda_1,\dots,\lambda_s: \textrm{grad} \vec{f}(\vec{x}^0) - \left(\lambda_1 \textrm{grad} \phi_1(\vec{x}^0)+\dots+\lambda_s \textrm{grad} \phi_s(\vec{x}^0) \right) = 0$\\
+\textit{Довели}
+\end{theorem}
+
+До речі, останню умову можна переписати таким чином\\
+Ми створимо лагранжіан $L(\vec{x}, \lambda_1, \dots, \lambda_s) = f(\vec{x}) - \huge \sum_{j=1}^s \lambda_j \phi_k(\vec{x})$\\
+Тоді в т. $\vec{x}^0$ - екстремум, отже, $L_{\vec{x}}'(\vec{x}^0,\lambda_1,\dots,\lambda_s)=0$\\
+
+\begin{theorem}[Достатня умова умовного локального екстремуму]
+Задана множина $M=\{\vec{x}: \phi_j(\vec{x}) =0, j = \overline{1,s} \}$ та функція $f: A \to \mathbb{R}$ така, що $f \in C''(A)$\\
+Відомо, що \\
+1) $\vec{x}^0$ - критична точка для лагранжіана\\
+2) $\forall \vec{h} \in \mathbb{R}^n$, для яких $\textrm{grad} \phi_j(\vec{x}^0) \perp \vec{h}$, визначається квадратична форма\\
+$L''_{\vec{x},\vec{x}}(\vec{x}^0, \lambda_1, \dots, \lambda_s) \vec{h}^2 = \huge \sum_{j,k=1}^n \dfrac{\partial^2 L(\vec{x}^0, \lambda_1, \dots, \lambda_s)}{\partial x_j \partial x_k} h_j h_k$. Якщо права частина виразу\\
+- більше нуля, то $\vec{x}^0$ - точка строго умного локального мінімуму\\
+- менше нуля, то $\vec{x}^0$ - точка строго умного локального мінімуму\\
+- для знако-невизначених квадратичних форм $\vec{x}^0$ - не умовний екстремум
+\end{theorem}
+
+\begin{pf}
+Якщо брати т. $\vec{x} \in M$, то тоді лагранжіан $L(\vec{x}, \lambda_1, \dots, \lambda_s) = f(\vec{x})$\\
+Для неї застосуємо формулу Тейлора\\
+$L(\vec{x}, \lambda_1, \dots, \lambda_s) = L(\vec{x}^0, \lambda_1,\dots,\lambda_s) + \dfrac{L'_{\vec{x}}(\vec{x}^0,\lambda_1,\dots,\lambda_s)}{1!}(\vec{x}-\vec{x}^0) + \\ + \dfrac{L''_{\vec{x},\vec{x}}(\vec{x}^0 - \theta(\vec{x}-\vec{x}^0), \lambda_1,\dots,\lambda_s)}{2!}(\vec{x}-\vec{x}^0)^2$\\
+Тоді отримаємо, що\\
+$f(\vec{x})-f(\vec{x}^0) = \dfrac{L''_{\vec{x},\vec{x}}(\vec{x}^0 - \theta(\vec{x}-\vec{x}^0), \lambda_1,\dots,\lambda_s)}{2!}(\vec{x}-\vec{x}^0)^2$\\
+Тепер все залежить від правої частині рівності\\
+Ми розглянемо диференційовану криву \\ $\gamma = \{\vec{x}(t), t \in (-\delta,\delta) \} \subset M \cap U_{\varepsilon}(\vec{x}^0)$, причому $\vec{x}(0)=\vec{x}^0$\\
+Тоді $\vec{x}(t) - \vec{x}^0 = \vec{x}'(0)t + \vec{o}(t)$\\
+Для нашої кривої також відомо факт $\textrm{grad} \phi_j (\vec{x}^0) \perp \underset{=\vec{h}}{\vec{x}'(0)}$\\
+Підставимо це все в нашу формулу\\
+$f(\vec{x}(t)) -f(\vec{x}^0) = \dfrac{L''_{\vec{x},\vec{x}}(\vec{x}^0 - \theta(\vec{x}(t)-\vec{x}^0), \lambda_1,\dots,\lambda_s)}{2!}\vec{h}^2 t^2 + \vec{o}(t^2)$\\
+Оскільки $L''_{\vec{x},\vec{x}}(\vec{x}^0,\dots)$ - знаковизначена, то тоді за лемою, $\exists U_{\varepsilon}(\vec{x}^0): \forall \vec{x} \in U_{\varepsilon}(\vec{x}^0) \cap M: L''_{\vec{x},\vec{x}}(\vec{x},\dots)$ - так само знако визначений\\
+Якщо визначимо квадратичну форму із п. 2), то звідси й буде випливати, що $f(\vec{x}^0) < f(\vec{x})$ - тобто умовний локальний мінімум\\
+Аналогічно для інших випадків
+\end{pf}
+
+\begin{example}
+Задана функція $u = f(x,y,z) = x-2y+2z$. Знайдемо точки локального екстремуму за умовою, що \\ $\phi_1(x,y,z) = x^2+y^2+z^2-1=0$
+\bigline
+Спочатку розглянемо лагранжіан $L(x,y,z,\lambda_1) = f(x,y,z) - \lambda_1 \phi_1(x,y,z)$\\
+Знайдемо всі критичні точки, тобто $L'(x,y,z,\lambda_1) = 0$\\
+Або інакше кажучи\\
+$\begin{cases}
+\departial{f}{x}(x,y,z) - \lambda_1 \departial{\phi_1}{x}(x,y,z) = 0 \\
+\departial{f}{y}(x,y,z) - \lambda_1 \departial{\phi_1}{y}(x,y,z) = 0 \\
+\departial{f}{z}(x,y,z) - \lambda_1 \departial{\phi_1}{z}(x,y,z) = 0 \\
+\phi_1(x,y,z) = 0
+\end{cases} \Rightarrow \begin{cases}
+1 - \lambda_1 \cdot 2x = 0\\
+-2 - \lambda_1 \cdot 2y = 0\\
+2 - \lambda_1 \cdot 2z = 0\\
+x^2+y^2+z^2=1
+\end{cases}$\\
+Або $\lambda_1 = \dfrac{3}{2}, x = \dfrac{1}{3}, y = -\dfrac{2}{3}, z = \dfrac{2}{3}$\\
+Або $\lambda_1 = -\dfrac{3}{2}, x = -\dfrac{1}{3}, y = \dfrac{2}{3}, z = -\dfrac{2}{3}$\\
+Всі можливі критичні точки
+\bigline
+Тепер будуємо квадратичну форму лагранжіана  \\$L(x,y,z,\lambda_1) = x-2y+2z - \lambda_1(x^2+y^2+z^2-1)$ \\ Маємо \\
+$L''(x_0,y_0,z_0,\lambda_1) \vec{h}^2 = \dfrac{\partial^2 L}{\partial x^2} h_1^2 + \dfrac{\partial^2 L}{\partial y^2} h_2^2 + \dfrac{\partial^2 L}{\partial z^2} h_3^2 + 2 \dfrac{\partial^2 L}{\partial x \partial y}h_1h_2 + 2 \dfrac{\partial^2 L}{\partial y \partial z}h_2h_3 + 2 \dfrac{\partial^2 L}{\partial x \partial z}h_1h_3 ´= -2\lambda_1 h_1^2 -2 \lambda_1 h_2^2 - 2 \lambda_1 h_3^2$\\
+Обираємо такі $\vec{h} = \begin{pmatrix}
+h_1 \\ h_2 \\ h_3
+\end{pmatrix}$, щоб $(\textrm{grad} \phi_1(x_0,y_0,z_0), \vec{h}) = 0$\\
+В нашому випадку $\textrm{grad} \phi_1 = \begin{pmatrix}
+2x \\ 2y \\ 2z
+\end{pmatrix}$, тоді\\
+$2x \cdot h_1 + 2y \cdot h_2 + 2z \cdot h_3 = 0$\\
+Розглянемо кожну точку\\
+1) $\lambda_1 = \dfrac{3}{2}, x = \dfrac{1}{3}, y = -\dfrac{2}{3}, z = \dfrac{2}{3}$\\
+$\dfrac{2}{3} \left(h_1 - 2h_2 + 2h_3 \right) = 0 \Rightarrow h_1 = 2h_2 - 2h_3$\\
+Оцінюємо знак квадратичної форми:\\
+$L''(x,y,z,\lambda_1) \vec{h}^2 = -6(h_1^2+h_2^2+h_3^2) < 0$\\
+Отже, $1)$ - локальний максимум та $u = 3$
+\bigline
+2) $\lambda_1 = -\dfrac{3}{2}, x = -\dfrac{1}{3}, y = \dfrac{2}{3}, z = -\dfrac{2}{3}$\\
+$-\dfrac{2}{3} \left(h_1 - 2h_2 + 2h_3 \right) = 0 \Rightarrow h_1 = 2h_2 - 2h_3$\\
+Оцінюємо знак квадратичної форми:\\
+$L''(x,y,z,\lambda_1) \vec{h}^2 = 6(h_1^2+h_2^2+h_3^2) > 0$\\
+Отже, $1)$ - локальний мінімум та $u = -3$
+
+\end{example}
+\newpage
+
+\section{Інтеграли з параметром}
+\subsection{Основні означення та властивості}
+\begin{definition}
+Задана функція $f: [a,b] \times [c,d] \to \mathbb{R}$, така, що \\ $\forall y \in [c,d]: f \in D([a,b])$\\
+\textbf{Інтегралом з параметром} називають таку функцію $J: [c,d] \to \mathbb{R}$
+\begin{align*}
+J(y) = \int_a^b f(x,y)\,dx
+\end{align*}
+\end{definition}
+
+\begin{proposition}[Неперервність]
+Задана функція $f: [a,b] \times [c,d] \to \mathbb{R}$, така, що $f \in C([a,b] \times [c,d])$\\
+Тоді $J \in C([c,d])$
+\end{proposition}
+
+\begin{pf}
+Зафіксуємо т. $y_0 \in [c,d]$ - маємо функцію $f(x,y_0)$, тобто функцію від одного аргументу\\
+$f \in C([a,b]) \Rightarrow f \in D([a,b])$\\
+Таким чином, $J(y_0) = \huge \int_a^b f(x,y_0)\,dx$ є визначеною. І так для кожного $y_0$
+\bigline
+$f(x,y) \in C([a,b] \times [c,d]) \Rightarrow f(x,y) \in C_{unif}([a,b] \times [c,d]) \Rightarrow \\
+\forall \varepsilon > 0: \exists \delta(\varepsilon) > 0: \forall (x_1,y_1),(x_2,y_2) \in [a,b] \times [c,d]: ||(x_1,y_1)-(x_2,y_2)|| = \sqrt{(x_1-x_2)^2 + (y_1-y_2)^2} < \delta \Rightarrow |f(x_1,y_1)-f(x_2,y_2)| < \dfrac{\varepsilon}{b-a}$\\
+Тоді\\
+$|J(y_1)-J(y_2)| = \huge \abs{\int_a^b f(x,y_1)\,dx - \int_a^b f(x,y_2)\,dx} \leq \int_a^b |f(x,y_1)-f(x,y_2)| \boxed{<}$\\
+Якщо я оберу $(x,y_1),(x,y_2)$ так, що $||(x,y_1)-(x,y_2)|| = \sqrt{(y_1-y_2)^2} = |y_1-y_2|<\delta$, то тоді $|f(x,y_1)-f(x,y_2)| < \dfrac{\varepsilon}{b-a}$\\
+$\boxed{<} \huge \int_a^b \dfrac{\varepsilon}{b-a} = \varepsilon$\\
+Збираючи пазл, отримаємо $J \in C_{unif}([c,d]) \Rightarrow J \in C([c,d])$
+\end{pf}
+
+\begin{proposition}[Диференційованість]
+Задана функція $f: [a,b] \times [c,d] \to \mathbb{R}$, така, що:\\
+1) $\forall y_0 \in [c,d]: f(x,y_0) \in C([a,b])$\\
+2) $\forall (x,y) \in [a,b] \times [c,d]: \exists \departial{f}{y} \in C([a,b] \times [c,d])$\\
+Тоді $J$ - диференційована в $[c,d]$, при цьому $J'(y) = \huge\int_a^b \departial{f}{y}(x,y)\,dx$
+\end{proposition}
+
+\begin{pf}
+Диференційованість означає існування похідної, тобто необхідно довести її існування\\
+$\dfrac{J(y+\Delta y) - J(y)}{\Delta y} = \dfrac{1}{\Delta y} \huge \int_a^b f(x,y+\Delta y) - f(x,y)\,dx \boxed{=}$\\
+Згадаємо Ньютона-Лейбніца та властивості інтеграла та розпишемо \\ підінтегральний вираз таким чином\\
+$f(x,y+\Delta y) - f(x,y) = \huge\int_y^{y+\Delta y} f'_y(x,t)\,dt = \int_y^{y+\Delta y} \departial{f}{y}(x,t)\,dt$\\
+$\boxed{=} \huge \dfrac{1}{\Delta y} \int_a^b \left( \int_y^{y+\Delta y} \departial{f}{y}(x,t)\,dt \right)dx$\\
+Тепер зафіксуємо т. $y_0$ та розпишемо праву частину рівності, що ми доводимо\\
+$\huge \int_a^b \departial{f}{y}(x,y_0)\,dx = \int_a^b \dfrac{1}{\Delta y} \left( \int_{y_0}^{y_0+\Delta y} \departial{f}{y}(x,y_0) \,dt \right)dx = \dfrac{1}{\Delta y} \int_a^b \left( \int_{y_0}^{y_0+\Delta y} \departial{f}{y}(x,y_0) \,dt \right)dx$\\
+Ну а тепер час доводити існування похідної\\
+$\huge \abs{\dfrac{J(y_0+\Delta y) - J(y_0)}{\Delta y} - \huge\int_a^b \departial{f}{y}(x,y_0)\,dx} = \\
+= \abs{\dfrac{1}{\Delta y} \int_a^b \left( \int_{y_0}^{y_0+\Delta y} \departial{f}{y}(x,t)\,dt \right)dx - \dfrac{1}{\Delta y} \int_a^b \left( \int_{y_0}^{y_0+\Delta y} \departial{f}{y}(x,y_0) \,dt \right)dx} = \\
+= \abs{\dfrac{1}{\Delta y} \int_a^b \left( \int_{y_0}^{y_0 + \Delta y} \departial{f}{y}(x,t) - \departial{f}{y}(x,y_0) \,dt \right)dx} \boxed{<}$\\
+За умовою твердження, \\ $\departial{f}{y}(x,y) \in C([a,b] \times [c,d]) \Rightarrow \departial{f}{y}(x,y) \in C_{unif}([a,b] \times [c,d]) \Rightarrow$\\
+$\forall \varepsilon > 0: \exists \delta(\varepsilon) > 0: \forall (x,t),(x,y_0) \in [a,b]\times [c,d]: ||(x,t)-(x,y_0)|| < \delta \Rightarrow \abs{\departial{f}{y}(x,t) - \departial{f}{y}(x,y_0)} < \dfrac{\varepsilon}{b-a}$\\
+$\boxed{<} \huge\int_a^b \int_{y_0}^{y_0+\Delta y} \dfrac{1}{\Delta y} \dfrac{\varepsilon}{b-a} \,dt \,dx = \varepsilon$\\
+Знову збираємо пазл - отримуємо, що\\
+$\forall y_0 \in [c,d]: \exists \huge \lim_{\Delta y \to 0} \dfrac{J(y_0+\Delta y)-J(y_0)}{\Delta y} = \int_a^b \departial{f}{y}(x,y_0)\,dx = J'(y_0)$\\
+Отже, $J$ - диференційована на $[c,d]$
+\end{pf}
+
+\begin{proposition}[Інтегрованість]
+Задана функція $f: [a,b] \times [c,d] \to \mathbb{R}$, така, що $f \in C([a,b] \times [c,d])$\\
+Тоді $J \in D([c,d])$, а також $\huge \int_c^b \underset{=J(y)}{\int_a^b f(x,y)\,dx}\,dy = \int_a^b \int_c^d f(x,y)\,dy \,dx$
+\end{proposition}
+
+\begin{pf}
+Розглянемо дві функції: $h(t) = \huge \int_c^t \int_a^b f(x,y) \,dx \,dy \hspace{1cm} g(t) = \int_a^b \int_c^t f(x,y)\,dy\,dx$\\
+В нашому випадку $t \in [c,d]$\\
+Якщо $t =c$, то маємо, що $h(c) = g(c) = 0$\\
+Необхідно знайти, чому дорівнює $h'(t), g'(t)$\\
+Зробимо деякі заміни\\
+$h(t) = \huge \int_c^t J(y) \,dy \hspace{1cm} g(t) = \int_a^b F(x,t)\,dx$\\
+Маємо два інтеграли з параметром $t$. Другий інтеграл задовільняють умові з \textbf{Prp 3.1.4}, тоді можемо знайти похідну\\
+Перший - це інтеграл від верхньої межі, тому автоматично\\
+$h'(t) = J(t)$\\
+Другий рахується за попереднім твердженням\\
+$g'(t) = \huge \int_a^b \departial{F}{t}(x,t)\,dt = \huge \int_a^b f(x,t)\,dx = J(t)$\\
+Таким чином, $\forall t \in [c,d]: h'(t) = g'(t) \Rightarrow h(t) = g(t) + C$\\
+Але оскільки $h(c)=g(c)=0$, то одразу $C=0 \Rightarrow h(t) = g(t)$\\
+Ну а тоді $h(d) = g(d) \Rightarrow \huge \int_c^b \int_a^b f(x,y)\,dx\,dy = \int_a^b \int_c^d f(x,y)\,dy \,dx$
+\end{pf}
+
+\subsection{Невласні інтеграли з параметром}
+
+\begin{definition}
+Задана функція $f: [a,\omega) \times A$, така, що $\forall y \in A: \forall c \in [a,\omega): f\in D([a,c])$\\
+Також маємо збіжний невласний інтеграл із параметром $J(y)= \huge \int_a^\omega f(x,y)\,dx$\\
+Невласний інтеграл \textbf{збігається рівномірно} на множині $A$, якщо
+\begin{align*}
+\huge \sup_{y \in A} \abs{\int_a^\omega f(x,y)\,dx - \int_a^c f(x,y)\,dx} \overset{c \to \omega}{\to} 0
+\end{align*}
+\end{definition}
+
+\begin{theorem}[Критерій Коші]
+$\huge \int_a^\omega f(x,y)\,dx$ - збіжний рівномірно на $A \iff \\ \forall \varepsilon > 0: \exists C: \forall c_1,c_2 \in [C,\omega): \huge \sup_{y \in A} \abs{\int_{c_1}^{c_2} f(x,y)\,dx} < \varepsilon$\\
+\textit{Випливає з критерію Коші рівномірної збіжності функцій}
+\end{theorem}
+
+\begin{theorem}[Ознака Вейєрштрасса]
+Задані функції $f: [a,\omega) \times A \to \mathbb{R}$, $g: [a,\omega) \to \mathbb{R}$ такі, що\\
+1) $\forall x \in [a,\omega): \forall y \in A: |f(x,y)| \leq g(x)$\\
+2) $\huge \int_a^\omega g(x)\,dx$ - збіжний\\
+Тоді $\huge \int_a^\omega f(x,y)\,dx$ - збіжний рівномірно на $A$
+\end{theorem}
+
+\begin{pf}
+$\huge \sup_{y \in A} \abs{\int_c^\omega f(x,y)\,dx} \leq \abs{\int_c^\omega g(x)\,dx} \overset{c \to \omega}{\to} 0$
+\end{pf}
+
+\begin{theorem}[Ознака Абеля-Діріхле]
+Задані функції $f: [a,\omega) \times A \to \mathbb{R}$, $g: [a,\omega) \times A \to \mathbb{R}$ такі, що виконана одна з двох пар умов\\
+$a1) \huge \int_a^\omega f(x,y)\,dx$ - збіжний рівномірно на $A$\\
+$a2) \forall y \in A: g$ - монотонна від $x \in [a,\omega)$\\
+$a3) \exists D>0: \huge \sup_{y \in A} \sup_{c \in [a,\omega)} |g(x,y)| \leq D$
+\bigline
+$d1) \exists D>0: \huge \sup_{y \in A} \sup_{c \in [a,\omega)} \abs{\int_a^c f(x,y)\,dx} \leq D$\\
+$d2) \forall y \in A: g$ - монотонна від $x \in [a,\omega)$\\
+$d3) \huge \sup_{y \in A} |g(x,y)| \overset{x \to \omega}{\to} 0$\\
+Тоді $\huge \int_a^\omega f(x,y) g(x,y)\,dx$ - рівномірно збіжний на $A$\\
+\textit{Поки без доведення}
+\end{theorem}
+
+\begin{proposition}[Неперервність]
+Задана функція $f: [a,\omega) \times [c,d] \to \mathbb{R}$, така, що $f \in C([a,\omega) \times [c,d])$\\
+Також $J$ - рівномірно збіжний. Тоді $J \in C([c,d])$
+\end{proposition}
+
+\begin{pf}
+За означенням рівномірної збіжності, маємо, що $\huge \sup_{y \in [c,d]} \abs{\int_c^\omega f(x,y)\,dx} \to 0, c \to \omega$\\
+Тобто $\forall \varepsilon > 0: \exists c > a: \huge \sup_{y \in [c,d]} \abs{\int_c^\omega f(x,y)\,dx} < \dfrac{\varepsilon}{3}$\\
+Оцінимо $J$\\
+$\huge |J(y_1)-J(y_2)| = \abs{\int_a^\omega f(x,y_1)\,dx - \int_a^\omega f(x,y_2)\,dx} = \\ = \abs{\int_a^c f(x,y_1)\,dx - \int_a^c f(x,y_2)\,dx + \int_c^\omega f(x,y_1)\,dx - \int_c^\omega f(x,y_2)\,dx} \leq \\ \leq \abs{\int_a^c f(x,y_1)-f(x,y_2) \,dx} + \abs{\int_c^\omega f(x,y_1)\,dx} + \abs{\int_c^\omega f(x,y_2)\,dx} \boxed{<}$\\
+Перший модуль: $f \in C_{unif}([a,\omega) \times [c,d]) \\ \Rightarrow \exists \delta: \forall y_1,y_2: |y_1-y_2|<\delta \Rightarrow |f(x,y_1)-f(x,y_2)| < \dfrac{\varepsilon}{c-a}$\\
+Другий модуль: $\huge \sup_{y \in [c,d]} \abs{\int_c^\omega f(x,y)\,dx} < \dfrac{\varepsilon}{3} \\ \Rightarrow \forall y \in [c,d]: \abs{\int_c^\omega f(x,y)\,dx} < \dfrac{\varepsilon}{3}$\\
+$\boxed{<} \huge \int_a^c \dfrac{\varepsilon}{c-a}\,dx + \dfrac{2 \varepsilon}{3} = \varepsilon$\\
+Збираємо пазл та маємо, що $J \in C_{unif}([c,d]) \Rightarrow J \in C([c,d])$
+\end{pf}
+
+\begin{proposition}[Інтегрованість]
+Задана функція $f: [a,\omega) \times [c,d] \to \mathbb{R}$, така, що $f \in C([a,\omega) \times [c,d])$\\
+Також $J$ - рівномірно збіжний. Тоді $J \in D([c,d])$ та \\ $\huge \int_c^d \underset{=J(y)}{\int_a^\omega f(x,y)\,dx}\,dy = \int_a^\omega \int_c^d f(x,y)\,dy\,dx$
+\end{proposition}
+
+\begin{pf}
+Розглянемо $\huge \int_c^d J(y)\,dy = \int_c^d \int_a^b f(x,y)\,dx\,dy + \int_c^d \int_b^\omega f(x,y)\,dx\,dy$\\
+Перший доданок - це визначений інтеграл, тому там виконується \textbf{Prp 3.1.4.}, тобто\\
+$\huge \int_c^d \int_a^b f(x,y)\,dx\,dy = \int_a^b \int_c^d f(x,y)\,dy\,dx$\\
+Другий доданок - цікавіше\\
+$\huge \abs{\int_c^d \int_b^\omega f(x,y)\,dx\,dy} \leq \int_c^d \abs{\int_b^\omega f(x,y)\,dx}\,dy \leq \int_c^d \sup_{y \in [c,d]} \abs{\int_b^\omega f(x,y)\,dx}\,dy = \sup_{y \in [c,d]} \abs{\int_b^\omega f(x,y)\,dx} (d-c) \to 0, b \to \omega$\\
+Якщо $b \to \omega$, то тоді отримаємо\\
+$\huge \int_c^d J(y)\,dy = \huge \int_a^\omega \int_c^d f(x,y)\,dx\,dy + 0 = \huge \int_a^\omega \int_c^d f(x,y)\,dx\,dy$
+\end{pf}
+
+\begin{proposition}[Диференційованість]
+Задана функція $f: [a,\omega) \times [c,d] \to \mathbb{R}$, така, що:\\
+1) $\departial{f}{y} \in C([a,\omega) \times [c,d])$\\
+2) $\exists y_0 \in [c,d]: J(y_0)$ - збіжний\\
+3) $\huge \int_a^\omega \departial{f}{y}(x,y)\,dx$ - рівномірно збіжний
+Тоді $J$ - збіжний, диференційована в $[c,d]$, при цьому $J'(y) = \huge \int_a^\omega \departial{f}{y}(x,y)\,dx$
+\end{proposition}
+
+\begin{pf}
+Розглянемо функцію $I(y) = \huge \int_a^\omega \departial{f}{y}(x,y)\,dx$ - неперервна за умовною рівномірна. Часткові похідні є неперервними також за умовою. Тоді за \textbf{Prp. 3.2.6.}, $I \in D([y,y_0])$\\
+$\huge \int_{y_0}^y I(t)\,dt = \huge \int_a^\omega \int_{y_0}^y \departial{f}{y}(x,t)\,dt\,dx = \int_a^\omega f(x,y)-f(x,y_0)\,dx = \\ = J(y) - J(y_0)$\\
+$\Rightarrow J(y) = \huge \int_{y_0}^y I(t)\,dt - J(y_0)$ - обидва збіжні. Тому сума - збіжна\\
+Отже, $J$ - збіжний $\forall y \in [c,d]$\\
+$\Rightarrow J'(y) = I(y) - 0 = \huge \int_a^\omega \departial{f}{y}(x,y)\,dx$
+\end{pf}
+
+\begin{proposition}[Невласне інтегрування невласного інтеграла]
+Задана функція $f: [a, +\infty) \times [c, +\infty) \to \mathbb{R}$ така, що $f \in C([a, +\infty) \times [c, +\infty))$, а також виконані умови:\\
+$1) \forall b > a: \huge \int_c^{+\infty} f(x,y)\,dy$ - збіжний рівномірно в $[a,b]$\\
+$2) \forall d > c: \huge \int_a^{+\infty} f(x,y)\,dx$ - збіжний рівномірно в $[c,d]$\\
+$3) \huge \int_c^{+\infty} |f(x,y)|\,dy, \huge \int_a^{+\infty} |f(x,y)|\,dx$ - збігаються $\forall x \geq a, \forall y \geq c$\\
+$4) \huge \int_a^{+\infty} \int_c^{+\infty} |f(x,y)|\,dy\,dx$ або $\huge \int_c^{+\infty} \int_a^{+\infty} |f(x,y)|\,dx\,dy$ - збіжний\\
+Тоді обидва інтеграли - збіжні та \\ $\huge \int_a^{+\infty} \int_c^{+\infty} |f(x,y)|\,dy\,dx  = \huge \int_c^{+\infty} \int_a^{+\infty} |f(x,y)|\,dx\,dy$\\
+\textit{Поки без доведення}
+\end{proposition}
+
+\subsection{Інтеграл Діріхле}
+Інтегралом Діріхле називають таку рівність, яку зараз доведу (про збіжність вже говорили)
+\begin{align*}
+\int_0^{+\infty} \dfrac{\sin x}{x}\,dx = \dfrac{\pi}{2}
+\end{align*}
+Розглянемо функцію $F(a) = \huge \int_0^{+\infty} \dfrac{\sin ax}{x}\,dx$\\
+Зауважимо, що якщо зробити заміну $ax =t$, то отримаємо, що \\ $F(a) = F(1)$. А також $F(-a) = -F(a)$, $F(0)=0$\\
+Із цих умою випливає, що $F(a)$ - розривна, тож $F(a)$ - не збіжна рівномірно на $\mathbb{R}$\\
+Розглянемо функцію $J(a) = \huge \int_0^{+\infty} \dfrac{\sin ax}{x} e^{-bx}\,dx$, $b \geq 0$\\
+Підінтегральна функція - неперервна, має неперервну часткову похідну $\departial{f}{a} = \cos ax \cdot e^{-bx}$, а також $\huge \int_0^{+\infty} \cos ax \cdot e^{-bx}\,dx$ - рівномірно збіжний (додати приклад)\\
+Остаточно отримаємо\\
+$F(a) = \huge \int_0^{+\infty} \dfrac{\sin ax}{x}\,dx = \lim_{b \to 0^+} \int_0^{+\infty} \dfrac{\sin ax}{x} e^{-bx}\,dx = \lim_{b \to 0^+} J(a) = \dfrac{\pi}{2}$
+
+\subsection{Інтеграл Ейлера-Пуассона}
+Інтегралом Діріхле називають таку рівність, яку зараз доведу
+\begin{align*}
+\int_0^{+\infty} e^{-x^2}\,dx = \dfrac{\sqrt{\pi}}{2}
+\end{align*}
+Позначимо $J = \huge \int_0^{+\infty} e^{-x^2}\,dx$\\
+Зробимо заміну $x = at$. Тоді\\
+$J = \huge \int_0^{+\infty} e^{-a^2 t^2}a \,dt$\\
+$J^2 = \huge J \int_0^{+\infty} e^{-a^2}\,da = \int_0^{+\infty} \left( \int_0^{+\infty} e^{-a^2 t^2} a\,dt \right) e^{-a^2}\,da = \int_0^{+\infty} \int_0^{+\infty} ae^{-a^2t^2-a^2}\,dt\,da \\ = \int_0^{+\infty} \int_0^{+\infty} e^{-a^2(t^2+1)} a\,da \,dt =$\\
+Заміна: $s = -a^2(t^2+1)$\\
+$= \huge \int_0^{+\infty} \dfrac{1}{2(t^2+1)} \int_{-\infty}^0 e^s\,ds\,dt = \int_0^{+\infty} \dfrac{1}{2(t^2+1)}\,dt = \dfrac{\pi}{4}$\\
+$\Rightarrow J = \dfrac{\sqrt{\pi}}{2}$
+
+\subsection{Гамма-функція}
+\begin{definition}
+\textbf{Гамма-функцією} називають таку функцію
+\begin{align*}
+\Gamma(\alpha) = \huge \int_0^{+\infty} x^{\alpha-1}e^{-x}\,dx, \alpha > 0
+\end{align*}
+\end{definition}
+
+\begin{lemma}
+$\alpha > 0$ - область збіжності гамми-функції
+\end{lemma}
+
+\begin{pf}
+$\huge \int_0^{+\infty} x^{\alpha-1}e^{-x}\,dx = \int_0^1 x^{\alpha-1}e^{-x}\,dx + \int_1^{+\infty} x^{\alpha-1}e^{-x}\,dx$\\
+Розглянемо перший інтеграл. Особлива точка - $x = 0$\\
+Порівняємо з інтегралом $\huge \int_0^1 x^{\alpha-1}\,dx$ - збіжний для $\alpha > 0$\\
+$\huge \lim_{x \to 0} \dfrac{x^{\alpha-1} e^{-x}}{x^{\alpha -1}} = 1$\\
+Отже, обидва збіжні, тому перший доданок - збіжний\\
+Розглянемо другий інтеграл. Особлива точка - $x = \infty$\\
+Порівняємо з інтегралом $\huge \int_1^{+\infty} e^{-\frac{x}{2}} \,dx$ - збіжний для $\alpha > 0$\\
+$\huge \lim_{x \to \infty} \dfrac{x^{\alpha -1} e^{-x}}{e^{-\frac{x}{2}}} = \left[ \begin{gathered} 0 \textrm{ за правилом Лопіталя, } \alpha \geq 1 \\ \huge \lim_{x \to \infty} \dfrac{1}{x^{1-\alpha} e^{\frac{x}{2}}} = 0, \alpha < 1 \end{gathered} \right.$\\
+Отже, обидва збіжні, тому другий доданок - збіжний\\
+Остаточно, $\Gamma(\alpha)$ - збіжний
+\end{pf}
+
+\begin{lemma}
+$\Gamma \in C^{\infty} ((0,+\infty))$
+\end{lemma}
+
+\begin{pf}
+\textit{Поки без доведення}
+\end{pf}
+
+\begin{theorem}
+$\forall \alpha > 0: \Gamma (\alpha+1) = \alpha \Gamma (\alpha)$\\
+\textit{Вказівка: ліву частину інтегруємо частинами}, $u = x^{\alpha}, dv = e^{-x}\,dx$
+\end{theorem}
+Що, якщо $\alpha \in \mathbb{N}$\\
+$\Gamma(n+1) = n \Gamma (n) = n(n-1) \Gamma (n-1) = \dots = n(n-1)(n-2)\dots \cdot 2 \cdot 1 \Gamma (1)$\\
+$\Gamma(1) = \huge \int_0^{+\infty} e^{-x}\,dx = -e^{-x} \Big|_{0}^{+\infty} = 1$\\
+Отже,
+\begin{corollary}
+$\Gamma(n+1) = n!$
+\end{corollary}
+А далі перевіримо, чому дорівнює гамма-функція в т. $\alpha = \dfrac{1}{2}$\\
+$\Gamma \left( \dfrac{1}{2} \right) = \huge \int_0^{+\infty} x^{-\frac{1}{2}}e^{-x}\,dx \overset{\textrm{Заміна: } t = \sqrt{x}}{=} 2 \huge \int_0^{+\infty} e^{-t^2}\,dt = 2 \dfrac{\sqrt{\pi}}{2} = \sqrt{\pi}$\\
+Далі скористаємось тотожністю $\Gamma(\alpha+1) = \Gamma(\alpha)$, щоб знайти $\Gamma \left( \dfrac{1}{2} + n \right)$. Отримаємо:
+\begin{corollary}
+$\Gamma \left( \dfrac{1}{2} + n \right) = \dfrac{(2n-1)!!}{2^n} \sqrt{\pi}$
+\end{corollary}
+
+\begin{theorem}[Функціональне рівняння Ейлера]
+$\Gamma(\alpha) \cdot \Gamma(1-\alpha) = \dfrac{\pi}{\sin \pi \alpha}$\\
+$\Gamma \left(\dfrac{1}{2} + \alpha \right) \cdot \Gamma \left(\dfrac{1}{2}-\alpha \right) = \dfrac{\pi}{\cos \pi \alpha}$\\
+\textit{Без доведення. Тут треба знати щось про функціональне рівняння}
+\end{theorem}
+
+\subsection{Бета-функція}
+\begin{definition}
+\textbf{Бета-функцією} називають таку функцію
+\begin{align*}
+B(\alpha,\beta) = \int_0^1 x^{\alpha-1} (1-x)^{\beta-1}\,dx, \alpha,\beta>0
+\end{align*}
+\end{definition}
+
+\begin{lemma}
+$\alpha, \beta >0$ - область збіжності бети-функції
+\end{lemma}
+
+\begin{pf}
+$\huge \int_0^1 x^{\alpha-1} (1-x)^{\beta-1}\,dx = \int_0^{\frac{1}{2}} x^{\alpha-1} (1-x)^{\beta-1}\,dx +  \int_{\frac{1}{2}}^1 x^{\alpha-1} (1-x)^{\beta-1}\,dx$\\
+Розглянемо перший інтеграл. Особлива точка - $x =0$\\
+Порівняємо з інтегралом $\huge \int_0^{\frac{1}{2}} x^{\alpha - 1} \,dx$ - збіжний для $\alpha > 0$\\
+$\huge \lim_{x \to 0} \dfrac{x^{\alpha-1}(1-x)^{\beta-1}}{x^{\alpha-1}} = 1$\\
+Отже, обидва збіжні, тому перший доданок - збіжний\\
+Розглянемо другий інтеграл. Проводимо заміну $1-x=t$, тоді маємо\\
+$-\huge \int_{0}^{\frac{1}{2}} (1-t)^{\alpha-1} t^{\beta - 1}\,dt$ - це той самий перший доданок. І він вже буде збіжним, якщо $\beta > 0$\\
+Остаточно, $B(\alpha, \beta)$ - збіжний
+\end{pf}
+
+\begin{proposition}
+$B(\alpha, \beta) = \huge \int_0^{+\infty} \dfrac{y^{\alpha-1}}{(1+y)^{\alpha+\beta}}\,dy$\\
+\textit{Вказівка: зробити заміну} $x = \dfrac{y}{1+y}$
+\end{proposition}
+
+\begin{theorem}[Зв'язок між $\Gamma$ та $B$]
+$B(\alpha,\beta) = \dfrac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha+\beta)}$
+\end{theorem}
+
+\begin{pf}
+Розглянемо $\Gamma(\alpha+\beta)$ та проведемо заміну $x = y(t+1), dx = (t+1)\,dy$\\
+$\Gamma(\alpha+\beta) = \huge \int_0^{+\infty} x^{\alpha+\beta-1} e^{-x}\,dx = (t+1)^{\alpha+\beta} \int_0^{+\infty} y^{\alpha+\beta-1}e^{-y(t+1)}\,dy$\\
+Отримаємо\\
+$\dfrac{\Gamma(\alpha+\beta)}{(1+t)^{\alpha+\beta}} = \huge \int_0^{+\infty} y^{\alpha+\beta-1}e^{-y(t+1)}\,dy$\\
+Помножимо обидві частини на $t^{\alpha-1}$ та проінтегруємо від $0$ до $+\infty$\\
+$\huge \int_0^{+\infty} \dfrac{t^{\alpha-1}}{(1+t)^{\alpha+\beta}} \Gamma(\alpha+\beta) = \huge \int_0^{+\infty} \int_0^{+\infty} y^{\alpha+\beta-1} t^{\alpha-1}e^{-y}e^{-yt}\,dy\,dt$\\
+$\Gamma(\alpha+\beta) \cdot B(\alpha,\beta) = \huge \int_0^{+\infty} y^{\beta-1} e^{-y} \int_0^{+\infty} y^{\alpha} t^{\alpha-1}e^{-yt}\,dt \,dy$\\
+Внутрішній інтеграл при заміні $yt = x$ стане рівним $\Gamma(\alpha)$. Його виносимо з-під зовнішнього інтегралу, а сам інтеграв вже є $\Gamma(\beta)$. Тоді\\
+$\Gamma(\alpha+\beta) B(\alpha, \beta) = \Gamma(\alpha) \Gamma(\beta)$
+\end{pf}
+
+
+\end{document}
