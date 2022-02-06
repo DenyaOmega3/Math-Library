@@ -1,0 +1,6 @@
+\babel@toc {ukrainian}{}
+\contentsline {section}{\numberline {1}Трохи топології}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Метричні простори}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Відкриті та замкнені множини. Збіжні послідовності}{4}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Замикання множин}{8}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Повнота}{10}{subsection.1.4}%

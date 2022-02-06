@@ -1,0 +1,608 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage[none]{hyphenat}
+\usepackage{fancyhdr} %create a custom header and footer
+\usepackage[utf8]{inputenc}
+\usepackage[english, main=ukrainian]{babel}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{physics}
+\usepackage[unicode]{hyperref}
+\usepgfplotslibrary{polar}
+\usepackage{ifthen}
+\usetikzlibrary{spy}
+\usepackage{bbm}
+
+
+\fancyhead{}
+\fancyfoot{}
+\parindent 0ex
+\def\huge{\displaystyle}
+\def\rightproof{$\boxed{\Rightarrow}$ }
+\def\leftproof{$\boxed{\Leftarrow}$ }
+
+\usepackage{pdfpages}
+
+\newtheoremstyle{theoremdd}% name of the style to be used
+  {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+  {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+  {\normalfont}% name of font to use in the body of the theorem
+  {0pt}% measure of space to indent
+  {\bfseries}% name of head font
+  {}% punctuation between head and body
+  { }% space after theorem head; " " = normal interword space
+  {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ \textbf{#3}\\}}}
+
+\theoremstyle{theoremdd}
+\newtheorem{theorem}{Theorem}[subsection]
+  
+\theoremstyle{theoremdd}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{theoremdd}
+\newtheorem{samedef}[theorem]{Definition}
+
+\theoremstyle{theoremdd}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{theoremdd}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{theoremdd}
+\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{theoremdd}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{theoremdd}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{pf}{\vspace*{-3mm} \textbf{Proof. \\}}{$\blacksquare$}
+\newenvironment{pfMI}{\vspace*{-3mm} \textbf{Proof MI. \\}}{$\blacksquare$}
+\newenvironment{pfNoTh}{\textbf{Proof. \\}}{$\blacksquare$}
+
+%delete
+
+\begin{document}
+\tableofcontents
+\newpage
+
+\section{Трохи топології}
+\subsection{Метричні простори}
+\begin{definition}
+Задано $X$ - деяка множина та $\rho: X \to X \to \mathbb{R}$ - функція\\
+\textbf{Метричним простором} називають пару $(X, \rho)$, в якому задовільняються три умови
+\begin{align*}
+\forall x,y \in X: \rho(x,y) \geq 0 ,\hspace{0.5cm} \rho(x,y) = 0 \Leftrightarrow x = y \\
+\forall x,y \in X: \rho(x,y) = \rho(y,x) \\
+\forall x,y,z \in X: \rho(x,z) \leq \rho(x,y) + \rho(y,z)
+\end{align*}
+При цьому функція $\rho$ називається \textbf{метрикою} та описує \textbf{відстань} між $x,y$
+\end{definition}
+
+\begin{example}
+Розглянемо декілька прикладів\\
+1. $X = \mathbb{R}$, на якій задається метрика $\rho(x,y) = |x-y|$ \bigskip \\
+2. $X = \mathbb{R}^n$, на якій можна задати дві метрики\\
+$\rho_1(\vec{x}, \vec{y}) = \sqrt{(x_1-y_1)^2 + \dots + (x_n-y_n)^2}$ \\ $\rho_2(\vec{x}, \vec{y}) = |x_1-y_1|+\dots+|x_n-y_n|$
+\bigskip \\
+3. $X = C([a,b])$, на якій задається метрика $\huge \rho(f,g) = \max_{t \in [a,b]} |f(t)-g(t)|$
+\end{example}
+
+\begin{definition}
+Задано $(X,\rho)$ - метричний простір\\
+Пару $(Y,\tilde{\rho})$, де $Y \subset X$, назвемо \textbf{метричним підпростором} $(X,\rho)$, якщо
+\begin{align*}
+\forall x,y \in Y: \tilde{\rho}(x,y) = \rho(x,y)
+\end{align*}
+При цьому метрика $\tilde{\rho}$, кажуть, \textbf{індукована в} $Y$ \textbf{метрикою} $\rho$
+\end{definition}
+
+\begin{proposition}
+Задано $(X,\rho)$ - метричний простір та $(Y,\tilde{\rho})$ - підпростір\\
+Для метрики $\tilde{\rho}$ всі три аксіоми зберігаються\\
+\textit{Вправа: досвідчитись в цьому}
+\end{proposition}
+
+\begin{example}
+Маємо $X = F([a,b])$ - множину обмежених функцій та $\rho(f,g) = \huge \sup_{t \in [a,b]} |f(t)-g(t)|$\\
+Тоді $Y = C([a,b])$ маємо метрику \\ $\tilde{\rho}(f,g) = \huge \max_{t \in [a,b]} |f(t)-g(t)| = \huge \sup_{t \in [a,b]} |f(t)-g(t)|$\\
+Отже, $C([a,b])$ - метричний підпростір простору $F([a,b])$
+\end{example}
+
+\begin{definition}
+Задано $L$ - лінійний простір над $\mathbb{R}$ або $\mathbb{C}$\\
+Задамо функцію $|| \cdot ||: L \to \mathbb{R}$, що називається \textbf{нормою}, якщо виконуються умови:
+\begin{align*}
+\forall x \in L: ||x|| \geq 0 \\
+\forall x \in L: \forall \alpha \in \mathbb{R} \text{ або } \mathbb{C}: ||\alpha x|| = |\alpha| ||x|| \\
+\forall x,y \in L: ||x+y|| \leq ||x|| + ||y||
+\end{align*}
+Тоді пару $(L, ||\cdot ||)$ назвемо \textbf{нормованим простором}
+\end{definition}
+
+\begin{proposition}
+Задано $(L, || \cdot ||)$ - нормований простір\\
+Тоді функція $\rho(x,y) = ||x-y||$ задає метрику\\
+\textit{Вправа: перевірити три аксіоми}
+\end{proposition}
+
+\begin{example}
+Задано $(E, (\cdot, \cdot))$ - евклідів простір\\
+Ми можемо евклідів простір $E$ перетворити в нормований простір \\ $(E, || \cdot ||)$ функцією $||x|| = \sqrt{(x,x)}$\\
+Тому $(E, \rho)$ - метричний простір та $\rho(x,y) = ||x-y||$
+\end{example}
+
+\begin{example} Більш важливий приклад. Нехай $\vec{a} = (a_1,a_2,\dots)$ - дійсна числова послідовність. Задамо простір\\
+$l_1 = \left\{ \vec{a} \text{ } |  \huge\sum_{n=1}^\infty |a_n| < \infty \right\}$\\
+Задаються такі операції:\\
+$\vec{a} + \vec{b} = (a_1,a_2,\dots) + (b_1,b_2,\dots) = (a_1+b_1,a_2+b_2,\dots)$\\
+$\alpha \vec{a} = (\alpha a_1, \alpha a_2, \dots)$\\
+Якщо перевірити 8 аксіом, то отримаємо, що $l_1$ - лінійний простір\\
+Важливе зауваження: $\vec{a}+\vec{b}, \alpha \vec{a} \in l_1$, тому що маємо $\huge\sum_{n=1}^\infty a_n$, $\huge\sum_{n=1}^\infty b_n$ - збіжні, а тому збіжним буде $\huge \sum_{n=1}^\infty (a_n+b_n), \sum_{n=1}^\infty \alpha a_n$\\
+Можна задати нормований простір функцією $|| \vec{a} || = \huge \sum_{n=1}^\infty |a_n|$\\
+А тому це - метричний простір з $\rho(\vec{a}, \vec{b}) = ||\vec{a} - \vec{b}||$
+\bigskip \\
+Узагальнення: $l_p = \left\{ \vec{a} \text{ } | \huge\sum_{n=1}^\infty |a_n|^p < \infty \right\}$\\
+Тут задається норма $||\vec{a}|| = \left( \huge\sum_{n=1}^\infty |a_n|^p \right)^{\frac{1}{p}}$
+\end{example}
+
+\begin{example}
+Тут ще є така множина: $l_{\infty} = \{ \vec{a} \text{ } | \vec{a} - \text{обмежені} \}$. Задані такі самі операції\\
+Задається норма $||\vec{a}|| = \huge \sup_{n \in \mathbb{N}} |a_n|$\\
+Отже, $l_{\infty}$ - метричний простір
+\end{example}
+
+\subsection{Відкриті та замкнені множини. Збіжні послідовності}
+\begin{definition}
+Задано $(X,\rho)$ - метричний простір та $a \in X$\\
+\textbf{Відкритою кулею} радіусом $r$ з центром $a$ називають множину
+\begin{align*}
+B(a;r) = \{x \in X | \rho(a,x) < r\}
+\end{align*}
+Її ще називають $r$\textbf{-околом т.} $a$
+\end{definition}
+
+\begin{example} Декілька прикладів\\
+1. Маємо $X = \mathbb{R}$, $\rho(x,y) = |x-y|$. Тут відкрита куля задається інтервалом\\
+$B(a;r) = \{x \in \mathbb{R} | \text{ } |x-a| < r\} = (a-r,a+r)$
+\bigskip \\
+2. Маємо $X = \mathbb{R}^2$, $\rho(\vec{x}, \vec{y}) = ||\vec{x}-\vec{y}||$. Тут відкрита куля задається колом\\
+$B(0;1) = \{(x,y) \in \mathbb{R}^2 | \text{ } x^2+y^2 <1 \}$
+\end{example}
+
+\begin{definition}
+Задано $A \subset X$ та $a \in A$\\
+Точка $a$ називається \textbf{внутрішньою} на $A$, якщо
+\begin{align*}
+\exists \varepsilon > 0: B(a; \varepsilon) \subset A
+\end{align*}
+\end{definition}
+
+\begin{definition}
+Множина $A$ називається \textbf{відкритою}, якщо кожна точка множини $A$ - внутрішня
+\end{definition}
+
+\begin{example} Розглянемо такі приклади \\
+1. Маємо $X = \mathbb{R}, \rho(x,y) = |x-y|$ та множину $A = [0,1)$\\
+$a = \dfrac{1}{2}$ - внутрішня, бо $\exists \varepsilon = \dfrac{1}{4}: B\left(\dfrac{1}{2}; \dfrac{1}{4} \right) \subset A$, тобто $\left( \dfrac{1}{4}, \dfrac{3}{4} \right) \subset [0,1)$\\
+$a = 0$ - не внутрішня\\
+Тут $A$ - не відркита, бо $a = 0$ - не внутрішня
+\bigskip \\
+2. Маємо $X = [0,1], \rho(x,y) = |x-y|$ та множину $A = [0,1)$\\
+$a = 0$ - уже внутрішня. В попередньому прикладі ми могли $\varepsilon$-околом вийти за межі нуля ліворуч, а тут вже ні\\
+Тут $A$ - відкрита
+\bigskip \\
+3. Маємо $X = \{0,1,2\}$ - підпростір метричного простору \\ $(\mathbb{R}, \rho(x,y) = |x-y|)$\\
+Задамо множину $A = \{0,1\}$. Тут кожна точка - внутрішня\\
+Тут $A$ - відкрита
+\end{example}
+
+\begin{definition}
+Задано $A \subset X$ та $x_0 \in X$\\
+Точка $x_0$ називається \textbf{граничною} для $A$, якщо
+\begin{align*}
+\forall \varepsilon > 0: (B(x_0;\varepsilon) \setminus \{x_0\}) \cap A \neq \emptyset
+\end{align*}
+\end{definition}
+
+\begin{definition}
+Множина $A$ називається \textbf{замкненою}, якщо вона містить всі свої граничні точки
+\end{definition}
+
+\begin{example}
+Розглянемо такі приклади \\
+1. Маємо $X = \mathbb{R}, \rho(x,y) = |x-y|$ та множину $A = (0,1)$\\
+$x_0 = \left\{\dfrac{1}{2}, 0, 1\right\}$ - граничні\\
+$x_0 = \dfrac{3}{2}$ - не гранична\\
+Тут $A$ - не замкнена, бо $x_0 = 1 \not \in A$ - гранична
+\bigskip \\
+2. Маємо $X = \mathbb{R}, \rho(x,y) = |x-y|$\\
+Задамо множину $A = \{0,1 \}$. Тут жодна точка - гранична\\
+Тут $A$ - замкнена! Бо нема жодної граничної точки в $X$ для $A$, щоб порушити означення
+\bigskip \\
+3. $X, \emptyset$ - замкнені
+\end{example}
+
+\begin{theorem}
+Задано $(X,\rho)$, $A \subset X$\\
+Множина $A$ - відкрита $\iff$ множина $A^c$ - замкнена
+\end{theorem}
+
+\begin{pf}
+\rightproof Дано: $A$ - відкрита\\
+!Припустимо, що $A^c$ - не замкнена, тобто $\exists x_0 \in A: x_0$ - гранична для $A^c$, але $x_0 \not\in A^c$\\
+За умовою, оскільки $x_0 \in A$, то $x_0$ - внутрішня, тобто $\exists \varepsilon > 0: B(x_0;\varepsilon) \subset A$\\
+Отже, $B(x_0;\varepsilon) \cap A^c = \emptyset$ - суперечність!
+\bigskip \\
+
+\leftproof Дано: $A^c$ - замкнена\\
+Тоді вона містить всі граничні точки. Тоді $\forall x_0 \in A: x_0$ - не гранична для $A^c$, тобто $\exists \varepsilon > 0: B(x_0;\varepsilon) \cap A^c = \emptyset \Rightarrow B(x_0;\varepsilon) \subset A$\\
+Отже, $x_0$ - внутрішня для $A$, а тому $A$ - відкрита
+\end{pf}
+
+\begin{theorem} Задано $(X,\rho)$ - метричний простір\\
+1. Нехай $U_{\alpha} \subset X$, $\alpha \in I$ - сім'я відкритих множин \\ Тоді $\huge \bigcup_{\alpha \in I} U_{\alpha}$ - відкрита множина\\
+2. Нехай $U_k \subset X, k = \overline{1,n}$ - сім'я відкритих множин \\ Тоді $\huge \bigcap_{k=1}^n U_k$ - відкрита множина\\
+3. $\emptyset, X$ - відкриті множини
+\end{theorem}
+
+\begin{pf}
+1. Задано множину $U = \huge \bigcup_{\alpha \in I} U_{\alpha}$. Зафіксуємо $a \in U$\\
+Тоді $\exists \alpha_0: a \in U_{\alpha_0} \Rightarrow a$ - внутрішня для $U_{\alpha_0} \\ \Rightarrow \exists \varepsilon > 0: B(a;\varepsilon) \subset U_{\alpha_0} \subset U$\\
+Отже, $U$ - відкрита
+\bigskip \\
+2. Задано множину $U = \huge \bigcap_{k=1}^n U_k$. Зафіксуємо $a \in U$\\
+Тоді $\forall k = \overline{1,n}: a \in U_k \Rightarrow a$ - внутрішня для $U_k$\\
+$\Rightarrow \exists \varepsilon_k > 0: B(a;\varepsilon_k) \subset U_k$\\
+Задамо $\varepsilon = \huge\min_{1 \leq k \leq n} \varepsilon_k \Rightarrow B(a;\varepsilon) \subset U$\\
+Отже, $U$ - відкрита
+\bigskip \\
+3. $\emptyset$ - відкрита, бо нема внутрішніх точок, тому що там порожньо\\
+\text{} \hspace{0.1cm} $X$ - відкрита, бо для $a \in X$, який б $\varepsilon > 0$ не обрав, $B(a;\varepsilon) \subset X$
+\end{pf} \\
+\textit{Вправа: записати самостійно таку ж теорему для сім'ї замкнених множин}
+
+\begin{remark}
+Відповідь на питання, чому в другому лише скінченна кількість відкритих множин\\
+Розглянемо $X = \mathbb{R}$ із метрикою $\rho(x,y) = |x-y|$\\
+Задана сім'я відкритих множин $U_n = \left( -\dfrac{1}{n}, \dfrac{1}{n} \right)$, причому $\forall n \geq 1$\\
+$\huge\bigcap_{n=1}^\infty U_n = \{0\}$, але така множина вже не є відкритою
+\end{remark}
+
+\begin{remark} Такі твердження не є правдивими\\
+$A$ - не відкрита, а тому $A$ - замкнена (наприклад, $[0,1)$ в $\mathbb{R}$)\\
+$A$ - відкрита, а тому $A$ - не замкнена (наприклад, $\emptyset$ в $\mathbb{R}$)
+\end{remark}
+
+\begin{proposition} Задано $(X,\rho)$ - метричний простір та $a \in X$\\
+Множина $B(a;r) = \{x | \rho(a,x) < r \}$ - відкрита\\
+Множина $B[a;r] = \{x | \rho(a,x) \leq r \}$ - замкнена\\
+\end{proposition}
+
+\begin{pf}
+1. Задамо т. $b \in B(a;r)$. Нехай $\varepsilon = r - \rho(a,b) > 0$. Тоді якщо $x \in B(b; \varepsilon)$, то тоді $\rho(x, a) \leq \rho(x, b) + \rho(b, a) < \varepsilon + \rho(b,a) = r$\\
+Отже, $B(a;r)$ - відкрита
+\bigskip \\
+2. Доведемо, що $B^c[a;r] = \{x | \rho(a,x) > r\}$ - відкрита\\
+Якщо задати $\varepsilon = \rho(a,b) - r$ для точки $b \in B(a;r)$, то аналогічними міркуваннями отримаємо, що $B^c[a;r]$ - відкрита\\
+Отже, $B[a;r]$ - замкнена
+\end{pf}
+
+\begin{definition}
+Задана $\{x_n, n \geq 1\} \subset X$ та $x_0 \in X$\\
+Ця послідовність називається \textbf{збіжною} до $x_0$, якщо
+\begin{align*}
+\rho(x_n, x_0) \to 0, n \to \infty
+\end{align*}
+Позначення: $\huge\lim_{n \to \infty} x_n = x_0$
+\end{definition}
+
+\begin{theorem} Задано $(X,\rho)$, $A \subset X$ та $x_0 \in X$. Наступні твердження еквівалентні\\
+1. $x_0$ - гранична точка для $A$\\
+2. $\forall \varepsilon > 0: B(x_0;\varepsilon) \cap A$ - нескінченна множина\\
+3. $\exists \{x_n, n \geq 1\} \subset A: \forall n \geq 1: x_n \neq x_0: x_n \to x_0$
+\end{theorem}
+
+\begin{pf}
+$\boxed{1) \Rightarrow 2)}$ Дано: $x_0$ - гранична для $A$\\
+!Припустимо, що $\exists \varepsilon^* > 0: B(x_0;\varepsilon) \cap A$ - скінченна множина\\
+Тобто маємо, що $x_1,\dots,x_n \in B(x_0;\varepsilon^*)$, тоді\\
+$\rho(x_0,x_1) < \varepsilon^* \dots \rho(x_0,x_n)^* < \varepsilon$\\
+Оберемо найменшу відстань та задамо це для $\varepsilon^*_{new} = \huge \min_{1\leq i \leq n} \rho(x_0,x_i)$\\
+Створимо $B(x_0;\varepsilon^*_{new}) \subset B(x_0; \varepsilon)$\\
+У новому шару жодна точка $x_1,\dots,x_n \in A$ більше сюди не потрапляє\\
+Тоді $B((x_0;\varepsilon^*_{new}) \setminus \{x_0\}) \cap A = \emptyset$ - таке неможливо через те, що $x_0$ - гранична точка\\
+Суперечність!
+\bigskip \\
+
+$\boxed{2) \Rightarrow 3)}$ Дано: $\forall \varepsilon > 0: B(x_0;\varepsilon) \cap A$ - нескінченна множина\\
+Встановимо $\varepsilon = \dfrac{1}{n}$. Тоді оскільки $\forall n \geq 1: B \left(x_0;\dfrac{1}{n} \right) \cap A$ - нескінченна, то\\
+$\forall n \geq 1: \exists x_n \in A: \rho(x_0,x_n) < \dfrac{1}{n}$\\
+Якщо далі $n \to \infty$, тоді $\rho(x_0,x_n) \to 0$\\
+Остаточно, $\exists \{x_n, n \geq 1\} \subset A: x_n \neq x_0: x_n \to x_0$
+\bigskip \\
+
+$\boxed{3) \Rightarrow 1)}$ Дано: $\exists \{x_n, n \geq 1\} \subset A: x_n \neq x_0: x_n \to x_0$\\
+Тобто $\forall \varepsilon > 0: \exists N: \forall n \geq N: \rho(x_0,x_n) < \varepsilon$\\
+Або інакше кажучи, $\forall \varepsilon > 0: x_N \in B(x_0;\varepsilon) \cap A$\\
+Тоді $\forall \varepsilon > 0: (B(x_0;\varepsilon) \setminus \{x_0\}) \cap A \neq \emptyset$
+\end{pf}
+
+\subsection{Замикання множин}
+\begin{definition}
+Задано $(X,\rho)$, множина $A \subset X$ та $A'$ - множина граничних точок $A$\\
+\textbf{Замиканням} множини $A$ називають таку множину
+\begin{align*}
+\bar{A} = A \cup A'
+\end{align*}
+\end{definition}
+
+\begin{example}
+Маємо $X = \mathbb{R}$, $\rho(x,y) = |x-y|$ та множину $A = (0,1)$\\
+Тоді множина $A' = [0,1]$. А замикання $\bar{A} = A \cup A' = [0,1]$
+\end{example}
+
+\begin{remark}
+Розглянемо зараз сукупність замкнених множин $A \subset A_{\alpha} \subset X$\\
+Перетин $B = \huge\bigcap_{\alpha} A_{\alpha}$ - також замкнена, водночас $A\alpha \supset B \supset A$\\
+Отже, $B$ - найменша замкнена множина, що містить $A$
+\end{remark}
+
+\begin{proposition}
+Задано $\bar{A}$ - замикання\\
+1. $\bar{A}$ - найменша замкнена множина, що містить $A$\\
+2. $\overline{A \cup B} = \bar{A} \cup \bar{B}$ \hspace{0.5cm} $\overline{A \cap B} \subset \bar{A} \cap \bar{B}$\\
+3. $A$ - замкнена $\iff A = \bar{A}$
+\end{proposition}
+
+\begin{pf}
+1. !Припустимо, що $\bar{A}$ - не є найменшою замненою, що містить $A$, тобто\\
+$\exists B \subset \bar{A}: B \supset A$ - замкнена\\
+Зафіксуємо т. $x_0 \in \bar{A}$ - гранична, тоді $x_0 \in A' \cup A$\\
+Якщо $x_0 \in A'$, то тоді $x_0 \in B$, тому що $B$ містить всі граничні т. $A$\\
+Якщо $x_0 \in A$, то тоді $x_0 \in B$\\
+В обох випадках $\bar{A} \subset B$.
+Отже, $\bar{A} = B$. Суперечність!
+\bigskip \\
+
+2. Перша тотожність\\
+$\overline{A \cup B} = (A \cup B)' \cup (A \cup B) \boxed{=}$\\
+$x_0 \in (A \cup B)' \iff x_0$ - гранична т. $A \cup B \iff$ $\forall \varepsilon > 0: \\ B(x_0;\varepsilon) \cap (A \cup B) = (B(x_0;\varepsilon) \cap A) \cup (B(x_0; \varepsilon) \cap B) \neq \emptyset \text{(без т. } x_0) \iff$\\
+$\left[ \begin{gathered} x_0 - \text{гранична для } A \\ x_0 - \text{гранична для } B \end{gathered} \right. \iff \left[ \begin{gathered} x_0 \in A' \\ x_0 \in B' \end{gathered} \right. \iff x_0 \in A' \cup B'$\\
+Отже, $(A \cup B)' = A' \cup B'$\\
+$\boxed{=} A' \cup B' \cup A \cup B = \bar{A} \cup \bar{B}$
+\\
+\text{} \hspace{0.2cm} Друга тотожність\\
+$\overline{A \cap B} = (A \cap B)' \cup (A \cap B) \boxed{\subset}$\\
+$x_0 \in (A \cap B)' \iff x_0$ - гранична т. $A \cap B \iff$ $\forall \varepsilon > 0: \\ B(x_0;\varepsilon) \cap (A \cap B) = (B(x_0;\varepsilon) \cap A) \cap (B(x_0; \varepsilon) \cap B) \neq \emptyset \text{(без т. } x_0) \implies$\\
+$\begin{cases} x_0 - \text{гранична для } A \\ x_0 - \text{гранична для } B \end{cases} \iff \begin{cases} x_0 \in A' \\ x_0 \in B' \end{cases} \iff x_0 \in A' \cap B'$\\
+Отже, $(A \cap B)' \subset A' \cap B'$\\
+$\boxed{\subset} (A' \cap B') \cup (A \cap B) = $ (треба подумати)
+\bigskip \\
+
+
+3. \rightproof Дано: $A$ - замкнена\\
+Тоді $A$ містить всі свої граничні точки. Так само $A'$ містить граничні точки $A$. Тому $A = \bar{A}$\\
+\leftproof Дано: $A = \bar{A}$\\
+Тобто $A$ містить всі свої граничні точки. Отже, $A$ - замкнена
+\end{pf}
+
+\begin{definition} Задано $(X, \rho)$\\
+Множина $A$ називається \textbf{щільною} в $X$, якщо
+\begin{align*}
+\bar{A} = X
+\end{align*}
+\end{definition}
+
+\begin{definition}
+Задано $(X, \rho)$\\
+Метричний простір називається \textbf{сепарабельним}, якщо в ньому існує скінченна чи зліченна щільна підмножина
+\end{definition}
+
+\begin{example} Розглянемо такі приклади:\\
+1. $(\mathbb{R}, \rho(x,y) = |x-y|)$ - сепарабельний, тому що\\
+$\mathbb{Q}$ - зліченна та щільна підмножина в $\mathbb{R}$
+\bigskip \\
+
+2. Маємо простір $l_2 = \left\{ \vec{a} | \huge\sum_{n=1}^\infty a_n^2 < \infty \right\}$ - нормований простір\\
+Розглянемо множину $l_2O = \left\{ \vec{a} \in l_2 | \text{скінченна кількість членів не нуль} \right\}$\\
+Розглянемо $\vec{a} = \{a_1,a_2,\dots\} \in l_2$. Доведемо, що вона - гранична для $l_2O$\\
+Задамо послідовність $\{\vec{a}_n, n \geq 1\} \subset l_2O$, де кожний елемент задається таким чином\\
+$\vec{a}_n = \{a_1,\dots,a_n,0,\dots\}$\\
+$\Rightarrow \rho(\vec{a}, \vec{a}_n) = ||\vec{a} - \vec{a}_n|| = \huge\sum_{n=k+1}^\infty a_n^2 \to 0$, оскільки ряд збіжний, а тому хвіст ряду прямує до нуля\\
+Отже, $\vec{a}_n \to \vec{a}$, тож $\vec{a}_n$ - гранична точка\\
+Тоді можна ствердити, що $l_2O$ - щільна в $l_2$, або інакше\\
+$\overline{l_2O} = l_2$\\
+А оскільки $l_2O \subset l_2$ та ще й нескінченна, то тоді $l_2$ - сепарабельний
+\bigskip \\
+
+3. Простір $C([a,b])$ - сепарабельний\\
+\textit{Доведу пізніше, коли дізнаюсь про теорему Вейєрштрасса про наближення неперервної на відрізку функції многочленами}
+\bigskip \\
+
+4. А вот простір $l_{\infty}$ - не сепарабельний\\
+\textit{Доведу пізніше}
+\bigskip \\
+
+5. Підпростір сепарабельного метричного простору - сепарабельний\\
+\textit{Доведу пізніше}
+\end{example}
+
+\subsection{Повнота}
+\begin{definition}
+Задано $(X,\rho)$ - метричний простір\\
+Послідовність $\{x_n, n \geq 1\}$ називається \textbf{фундаментальною}, якщо
+\begin{align*}
+\forall \varepsilon > 0: \exists N: \forall m,n \geq N: \rho(x_n,x_m) < \varepsilon
+\end{align*}
+\end{definition}
+
+\begin{remark}
+Це означення можна інакше переписати
+\begin{align*}
+\rho(x_n,x_m) \overset{m,n \to \infty}{\longrightarrow} 0
+\end{align*}
+\end{remark}
+
+\begin{proposition}
+Будь-яка збіжна послідовність є фундаментальною
+\end{proposition}
+
+\begin{pf}
+Маємо $\{x_n, n \geq 1\}$ - збіжна, тобто $\rho(x_n,x) \overset{n \to \infty}{\to} 0$\\
+За нерівністю трикутника, маємо\\
+$\rho(x_n,x_m) \leq \rho(x_n,x) + \rho(x,x_m)$\\
+Якщо спрямувати одночасно $m.n \to \infty$, то тоді $\rho(x_n,x_m) \to 0$\\
+Отже, $\{x_n, n \geq 1\}$ - фундаментальна
+\end{pf}
+
+\begin{remark}
+Щоб не заплутатись\\
+$X = (0,1]$ - підпростір $\mathbb{R}$. Розглянемо послідовність $\left\{ x_n = \dfrac{1}{n}, n \geq 1 \right\}$\\
+$x_n \to 0$ при $n \to \infty$ - збіжна, проте $0 \not\in X$\\
+Тому така послідовність не має границі в $X$, але вона - фундаментальна за твердженням
+\end{remark}
+
+\begin{definition}
+Метричний простір $(X, \rho)$ називається \textbf{повним}, якщо будь-яка фундаментальна послідовність має границю
+\end{definition}
+
+\begin{example} Два приклади\\
+1. $X = \mathbb{R}$ - повний за критерієм Коші із матану\\
+2. $X = (0,1]$ - не повний, бо принаймні $\left\{x_n = \dfrac{1}{n}, n \geq 1 \right\}$ - фундаментальна, проте не має границі
+\end{example}
+
+\begin{proposition}
+Задано $(X,\rho)$ - повний та підпрострір $(Y,\rho)$\\
+Простір $(Y,\rho)$ - повний $\iff Y$ - замкнена в $X$
+\end{proposition}
+
+\begin{pf}
+\rightproof Дано: $(Y,\rho)$ - повний\\
+Візьмемо фундаментальну послідовність $\{x_n, n \geq 1\}$ в $Y$, а тому вона є збіжною, тобто $y_n \to y_0 \in Y$\\
+Отже, $y_0$ - гранична точка. А тому в силу повноти $Y$ - замкнена в $X$
+\bigskip \\
+\leftproof Дано: $Y$ - замкнена в $X$\\
+Візьмемо $\{y_n, n \geq 1\} \subset Y \subset X$ - фундаментальна. Тоді в силу повноти $X$, вона - збіжна (доробити)\\
+\end{pf}
+
+\begin{definition}
+Повний нормований простір називається \textbf{банаховим}. Повний евклідів простір (відносно метрики, що породжена скалярним добутков) називається \textbf{гільбертовим}
+\end{definition}
+
+\begin{proposition}
+Нормований простір $C([a,b])$ - банахів
+\end{proposition}
+
+\begin{pf}
+Задамо фундаментальну послідовність $\{x_n, n \geq 1\}$ на множині $C([a,b])$\\
+Тоді $\forall t_0 \in [a,b]: |x_n(t_0)-x_m(t_0)| \leq ||x_n-x_m|| = \huge\max_{t \in [a,b]} |x_n(t)-x_m(t)|$\\
+Із цієї нерівності випливає, що $\forall t_0 \in [a.b]: \{x_n(t_0), n \geq 1\}$ - фундаментальна\\
+За критерієм Коші (із матану), вона - збіжна, тобто $x_n(t_0) \overset{n \to \infty}{\to} y(t_0)$\\
+Щойно показали поточкову збіжність $\{x_n, n \geq 1\}$ до функції $y$\\
+Доведемо, що вона збігається рівномірно (тобто за нормою)\\
+$\{x_n, n \geq 1\}$ - фундаментальна, тобто\\
+$\forall \varepsilon > 0: \exists N: \forall m,n \geq N: ||x_n(t) - x_m(t)|| < \varepsilon$\\
+Або $\forall t \in [a,b]: |x_n(t) - x_m(t)| < \varepsilon$\\
+Зафіксуємо деякі $t \in [a,b]$ та $n \geq N$. А потім спрямуємо $m \to \infty$. Тоді\\
+$|x_n(t)-y(t)| < \varepsilon$\\
+Це виконується $\forall t \in [a,b]$ та $n \geq N$, або це записується інакше\\
+$\forall n \geq N: ||x_n - y|| < \varepsilon$\\
+Отже, $x_n \to y$
+\end{pf}
+
+\begin{proposition}
+Евклідів простір $l_2$ - гільбертів
+\end{proposition}
+
+\begin{pf}
+Задамо фундаментальну послідовність $\{\vec{x}_n, n \geq 1\}$ на множині $l_2$\\
+Тобто $\forall \varepsilon > 0: \exists N: \forall n, m \geq N: ||\vec{x}_n - \vec{x}_m|| < \varepsilon$\\
+$\Rightarrow ||\vec{x}_n - \vec{x}_m||^2 = \huge\sum_{k=1}^\infty (x_n^k - x_m^k)^2 < \varepsilon^2 \Rightarrow \forall k \geq 1: |x_n^k - x_m^k| < \varepsilon$\\
+Тоді послідовність $\{x_n^k, n \geq 1\}$ - фундаментальна - тому (за матаном) збіжна, $x_n^k \to y^k$\\
+Доведемо, що $\vec{x}$ збігається до $\vec{y}$ за нормою\\
+Маємо $\huge\sum_{k=1}^\infty (x_n^k - x_m^k)^2 < \varepsilon^2 \Rightarrow \forall K \geq 1: \huge\sum_{k=1}^K (x_n^k - x_m^k)^2 < \varepsilon^2$\\
+Спрямуємо $m \to \infty$, тоді $\huge\sum_{k=1}^K (x_n^k - y^k)^2 < \varepsilon^2$\\
+Звідки випливає збіжність ряду $\huge\sum_{k=1}^\infty (x_n^k - y^k)^2$ та його оцінка\\
+$\huge\sum_{k=1}^\infty (x_n^k - y^k)^2 < \varepsilon^2 \Rightarrow ||\vec{x}_n - \vec{y}|| < \varepsilon$\\
+Отже, $\vec{x}_n \to \vec{y}$
+\end{pf}
+\bigskip \\
+
+\begin{lemma}
+Задано $\{x_n, n \geq 1\}$ - фундаментальна та $\{x_{n_k}, k \geq 1\}$ - збіжна. Тоді $\{x_n, n \geq 1\}$ - збіжна
+\end{lemma}
+\begin{pf}
+Маємо $a_{n_k} \to a$, $k \to \infty$\\
+$\Rightarrow \forall \varepsilon > 0: \exists K: \forall k \geq K: \rho(a_{n_k}, a) < \varepsilon$\\
+Також відомо, що  $\forall n,m \geq N: \rho(a_n,a_m) < \varepsilon$\\
+Треба ще $n_k \geq N$. Тоді для $n \geq n_K$\\
+$\rho(a_n,a) \leq \rho(a_n,a_{n_K}) + \rho(a_{n_K},a) < 2\varepsilon$\\
+Отже, $a_n \to a_0$
+\end{pf}
+
+\begin{theorem}[Критерій Кантора]
+Задано умова Кантора: для кожної послдовності $\{B[a_n;r_n], n \geq 1\}$ такої, що $B[a_1;r_1] \supset B[a_2;r_2] \supset \dots$ та $r_n \to 0$, існує непорожній перетин (тобто послідовність куль, що стягується)\\
+$(X,\rho)$ - повний $\iff$ виконується умова Кантора
+\end{theorem}
+
+Перед доведенням пропоную зробити безліч зауважень\\
+I. Доведемо, що існує не більше однієї точки, що належить перетину\\
+!Припустимо, що це не так, тобто $\exists b^*, b^{**} \in \huge \bigcap_{n=1}^\infty B[a_n;r_n]$\\
+Тоді $\forall n \geq 1: \begin{cases} \rho(a_n, b^*) < r_n \\ \rho(a_n, b^{**}) < r_n \end{cases}$\\
+$\Rightarrow \rho(b^*, b^{**}) \leq \rho(b^*,a_n) + \rho(a_n, b^{**}) < r_n + r_n = 2r_n$\\
+Спрямуємо $n \to \infty$, тоді\\
+$\rho(b^*,b^{**}) \leq 0 \Rightarrow \rho(b^*,b^{**}) = 0 \Rightarrow b^{*} = b^{**}$. Суперечність!
+\bigskip \\
+II. Покажемо, що $\{a_n, n \geq 1\}$ - послідовність центрів - фундаментальна\\
+За умовою, $r_n \to 0 \Rightarrow \forall \varepsilon > 0: \exists N: \forall n \geq N: r_n < \varepsilon$\\
+Достатньо взяти лише $r_N < \varepsilon$\\
+Тоді $\forall n,m \geq N: a_m,a_n \in B[a_N,r_N] \Rightarrow \rho(a_m,a_N) < r_N$ та $\rho(a_n,a_N) < r_N$\\
+$\Rightarrow \rho(a_n,a_m) \leq \rho(a_n,a_N) + \rho(a_N,a_m) < 2r_N < 2 \varepsilon$\\
+Отже, $\{a_n, n \geq 1\}$ - фундаментальна\\
+А тепер час доводити\\
+
+\begin{pfNoTh}
+\rightproof Дано: $(X,\rho)$ - повний\\
+Задамо послідовність куль $\{B[a_n;r_n], n \geq 1\}$, що стягується. Тоді послідовність $\{a_n, n \geq 1\}$ - фундаментальна\\
+Оскільки $X$ - повний, то тоді $\{a_n, n \geq 1\}$ - збіжна, тобто $a_n \to a_0$\\
+Оскільки $B[a_n;r_n]$ - замкнені, то маємо, що $a_0 \in B_n$. Звідси $a_0 \huge \in \bigcap_{n=1}^\infty B_n$
+\bigskip
+
+\leftproof Дано: умова Кантора\\
+Достатньо знайти для $\{a_n, n \geq 1\}$ - уже фундаментальна - збіжну підпослідовність
+Нехай маємо $n_1 \in \mathbb{N}$, щоб $\forall n \geq n_1: \rho(a_n,a_{n_1}) < \dfrac{1}{2}$\\
+Тоді $\exists n_2 > n_1: \forall n \geq n_2: \rho(a_n,a_{n_2}) < \dfrac{1}{4}$\\
+...\\
+Тоді маємо послідовність $n_1 < n_2 < n_3 < \dots$ із властивістю\\
+$\forall n \geq n_k: \rho(a_n,a_{n_k}) < \dfrac{1}{2^k}$\\
+Маємо тоді кулі $B\left[a_{n_k}; \dfrac{1}{2^{k-1}} \right]$, що вкладені одна в одну\\
+Дійсно, $x \in B\left[a_{n_{k+1}}; \dfrac{1}{2^{k}} \right] \Rightarrow$\\
+$\rho(a_{n_k}, x) \leq \rho(a_{n_k}, a_{n_{k+1}}) + \rho(a_{n_{k+1}},x) \leq \dfrac{1}{2^{k-1}} \Rightarrow x \in B\left[a_{n_k}; \dfrac{1}{2^{k-1}} \right]$\\
+Якщо $a$ - спільна точка куль, то $a_{n_k} \to a$
+\end{pfNoTh}
+
+
+\newpage
+Описує час чекання, вимірювання з ціною поділки:
+\bigskip \\
+$\xi \sim U(a,b) \iff f_{\xi}(x) = \begin{cases} \dfrac{1}{b-a}, x \in [a,b] \\
+0, \text{ інакше} \end{cases}$\\
+\bigskip \\
+$\mathbb{E} \xi = \dfrac{a+b}{2}$\\
+$\mathbb{D} \xi = \dfrac{(a-b)^2}{12}$\\
+
+%1. $F_\xi \in [0,1]$\\
+%2. $F_\xi$ - неспадна\\
+%3. $\mathbb{P} \{ \xi \in [x,y] \} = F_\xi(y) - F_\xi(x)$\\
+%4. $\huge\lim_{x \to -\infty} F_\xi(x) = 0$ \hspace{1cm} $\huge\lim_{x \to +\infty} F_\xi(x) = 1$\\
+%5. $F_\xi$ - неперервна справа\\
+%6. $\xi$ - неперервна випадкова величина $\iff \forall x: \mathbb{P} \{ \xi = x\} = 0 \iff F_\xi \in C(\mathbb{R})$
+
+\end{document}
