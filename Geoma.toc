@@ -1,0 +1,10 @@
+\babel@toc {ukrainian}{}
+\contentsline {section}{\numberline {1}Найпростіші геометричні фігури, їхні властивості}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Точки та прямі}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Відрізок, довжина}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Промінь, кут, вимірювання кутів}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Суміжні та вертикальні кути}{7}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Перпендикулярні прямі}{7}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Трикутники}{10}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Основні означення. Висота, медіана, бісектриса}{10}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Ознаки рівності трикутників}{11}{subsection.2.2}%

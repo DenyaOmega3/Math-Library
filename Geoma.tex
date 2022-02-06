@@ -1,0 +1,742 @@
+\documentclass[a4paper, 14pt]{extarticle}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts, amsmath, amssymb, amsthm}
+\usepackage[none]{hyphenat}
+\usepackage{fancyhdr} %create a custom header and footer
+\usepackage[utf8]{inputenc}
+\usepackage[english, main=ukrainian]{babel}
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{physics}
+\usepackage[unicode]{hyperref}
+\usepgfplotslibrary{polar}
+\usepackage{ifthen}
+\usetikzlibrary{spy, quotes, angles}
+\usepackage{bbm}
+
+
+\fancyhead{}
+\fancyfoot{}
+\parindent 0ex
+\def\huge{\displaystyle}
+\def\rightproof{$\boxed{\Rightarrow}$ }
+\def\leftproof{$\boxed{\Leftarrow}$ }
+
+\usepackage{pdfpages}
+
+\newtheoremstyle{theoremdd}% name of the style to be used
+  {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+  {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+  {\normalfont}% name of font to use in the body of the theorem
+  {0pt}% measure of space to indent
+  {\bfseries}% name of head font
+  {}% punctuation between head and body
+  { }% space after theorem head; " " = normal interword space
+  {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ \textbf{#3}\\}}}
+
+\theoremstyle{theoremdd}
+\newtheorem{theorem}{Theorem}[subsection]
+  
+\theoremstyle{theoremdd}
+\newtheorem{definition}[theorem]{Definition}
+
+\theoremstyle{theoremdd}
+\newtheorem{samedef}[theorem]{Definition}
+
+\theoremstyle{theoremdd}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{theoremdd}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{theoremdd}
+\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{theoremdd}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{theoremdd}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{pf}{\vspace*{-3mm} \textbf{Proof. \\}}{$\blacksquare$}
+\newenvironment{pfMI}{\vspace*{-3mm} \textbf{Proof MI. \\}}{$\blacksquare$}
+\newenvironment{pfNoTh}{\textbf{Proof. \\}}{$\blacksquare$}
+
+%delete
+
+\begin{document}
+\tableofcontents
+\newpage
+
+\section{Найпростіші геометричні фігури, їхні властивості}
+\subsection{Точки та прямі}
+\begin{definition}
+\textbf{Точкою} назвемо найпростішу геометричну фігуру, яку не можна розбити на частини\\
+Позначення: $A,B,C,\dots$
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\fill[black] circle (2pt) node[anchor = south] {$A$};
+\fill[black] (1,1) circle (2pt) node[anchor = south] {$B$};
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+
+\begin{definition}
+\textbf{Прямою} назвемо геометричну фігуру, що має таку аксіому:\\
+\textbf{Axiom.} Через будь-які дві точки можна провести лише одну пряму\\
+Позначення: $a,b,\dots$
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (0,0)--(4,2) node at (0,0.5) {$a$};
+\fill[black] (3,1.5) circle (2pt) node[anchor = south] {$A$};
+\fill[black] (2,1) circle (2pt) node[anchor = south] {$B$};
+\fill[black] (2,2) circle (2pt) node[anchor = south] {$C$};
+\end{tikzpicture}
+\caption*{В цьому малюнку маємо пряму $a$ або ще називають пряму $AB$, яка була проведена через точки $A$,$B$ \\
+Точка, яка належить прямій, позначатимемо так: $A \in a, B \in a$ \\
+Точка, яка належить прямій, позначатимемо так: $C \not\in a$ \\}
+\end{figure}
+\end{definition}
+
+\begin{definition}
+Дві прямі називають такими, що \textbf{перетинаються}, якщо вони мають спільну точку
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (0,0)--(3,{3/2}) node at (0,0.5) {$a$};
+\draw[thick] (0,2)--(2,0) node at (0.5,2) {$b$};
+
+\fill[black] ({4/3},{2/3}) circle (2pt) node[anchor = south] {$O$};
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+
+\begin{theorem}
+Будь-які дві прямі, що перетинаються, мають лише одну спільну точку
+\end{theorem}
+
+\begin{pf}
+Задано дві прямі $a,b$, що перетинаються в спільній точці $O_1$\\
+!Припустимо, що $O_2$ - ще одна спільна точка \\
+Але тоді через ці дві точки проведені дві різні прямі, саме $a,b$, коли за означенням, лише єдина пряма можлива. Суперечність!\\
+(малюнку не буде, бо неможливо її уявити)
+\end{pf}
+
+\subsection{Відрізок, довжина}
+\begin{definition}
+Задана пряма $a$, що проходить через т. $A,B$\\
+\textbf{Відрізком} назвемо частину прямої, що обмежена двома точками, які називають \textbf{кінцями}\\
+Позначення: $AB$
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (0,0)--(4,0) node at (0,0.5) {$a$};
+\draw[thick, red] (1,0)--(2,0);
+\fill[black] (1,0) circle (2pt) node[anchor = south] {$A$};
+\fill[black] (2,0) circle (2pt) node[anchor = south] {$B$};
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+Зрозуміло, що для кожних двох точок буде існувати єдиний відрізок, тому що між ними існує єдина пряма
+
+\begin{definition}
+Задано відрізок $AB$\\
+Точку $X$ назвемо \textbf{внутрішньою}, якщо вона лежить між кінцями відрізка
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (1,0)--(4,0);
+\fill[black] (1,0) circle (2pt) node[anchor = south] {$A$};
+\fill[black] (4,0) circle (2pt) node[anchor = south] {$B$};
+\fill[black] (3,0) circle (2pt) node[anchor = south] {$X$};
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+Тоді відрізок $AB$ містить всі точки, що лежать між $A,B$, а також самі т. $A,B$
+
+\begin{definition}
+Задані відрізки $A_1B_1, A_2B_2$\\
+Їх назвемо \textbf{рівними}, якщо їх можна сумістити накладанням\\
+Позначення: $A_1B_1 = A_2B_2$
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (1,0)--(4,0);
+\draw[thick] (1,-1)--(4,-1);
+\fill[black] (1,0) circle (2pt) node[anchor = south] {$A_1$};
+\fill[black] (4,0) circle (2pt) node[anchor = south] {$B_1$};
+\fill[black] (1,-1) circle (2pt) node[anchor = south] {$A_2$};
+\fill[black] (4,-1) circle (2pt) node[anchor = south] {$B_2$};
+\end{tikzpicture}
+\end{figure}
+У разі, якщо вони не рівні, то може виникнути один із двох випадків:\\
+- відрізок $A_1B_1$ більший за $A_2B_2$: $A_1B_1 > A_2B_2$\\
+- відрізок $A_1B_1$ менший за $A_2B_2$: $A_1B_1 < A_2B_2$
+\end{definition}
+Для того щоб виміряти \textbf{довжину} відрізка, треба буде задати \textbf{відрізки одиничної довжини}\\
+Зазвичай це: $1$см, $1$м, $1$дм
+
+\begin{corollary}
+Відрізки рівні тоді й тільки тоді, коли їхні довжини рівні
+\end{corollary}
+
+\textbf{Axiom.} Якщо точка $C$ - внутіршня точка відрізка $AB$, то відрізок
+\begin{align*}
+AB = AC + CB
+\end{align*}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (1,0)--(4,0);
+\fill[black] (1,0) circle (2pt) node[anchor = south] {$A$};
+\fill[black] (4,0) circle (2pt) node[anchor = south] {$B$};
+\fill[black] (3,0) circle (2pt) node[anchor = south] {$C$};
+\end{tikzpicture}
+\end{figure}
+
+\begin{definition}
+\textbf{Відстанню} між точками $A,B$ називають довжину відрізка $AB$\\
+Якщо ці точки збігаються, то відстань $= 0$
+\end{definition}
+
+\begin{definition}
+\textbf{Серединою} відрізка $AB$ називають таку внутрішню точку $C$, що
+\begin{align*}
+AC = CB
+\end{align*}
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (1,0)--(4,0);
+\fill[black] (1,0) circle (2pt) node[anchor = south] {$A$};
+\fill[black] (2.5,0) circle (2pt) node[anchor = south] {$C$};
+\fill[black] (4,0) circle (2pt) node[anchor = south] {$B$};
+\draw (1.75,-2pt)--(1.75,2pt);
+\draw (3.25,-2pt)--(3.25,2pt);
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+
+\subsection{Промінь, кут, вимірювання кутів}
+\begin{definition}
+Задано пряму $AB$. Позначимо деяку точку $O$\\
+\textbf{Променем} або \textbf{півпрямою} називають частину прямої, де точка $O$ називається \textbf{початком} променя
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (1,0)--(4,0);
+\fill[black] (1,0) circle (0pt) node[anchor = south] {$A$};
+\fill[black] (4,0) circle (0pt) node[anchor = south] {$B$};
+\fill[black] (2,0) circle (2pt) node[anchor = south] {$O$};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}
+\draw[thick] (1,0)--(5,0);
+\fill[black] (2,0) circle (2pt) node[anchor = south] {$A$};
+\fill[black] (4,0) circle (2pt) node[anchor = south] {$B$};
+\fill[black] (1,0) circle (2pt) node[anchor = south] {$O$};
+\end{tikzpicture}
+\caption*{На першому малюнку два промені: $OA$ та $OB$\\
+На другому один промінь: $OA$ або $OB$, два імені}
+\end{figure}
+\end{definition}
+
+\begin{definition}
+Два промені називаються \textbf{доповняльними}, якщо вони мають спільний початок і лежать на одній прямій
+\end{definition}
+В попередньому малюнку, першому, промені $AO$, $OB$ - доповняльні. Тому що спільний початок $O$ та, об'єднавши, отримаємо пряму $AB$
+
+\begin{definition}
+Задано два промені зі спільним початком $O$\\
+\textbf{Кутом} будемо називати фігуру, що утворена двома променями\\
+Позначення: $\angle BOA$, $\angle AOB$ або $\angle O$
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\coordinate (a) at (2,-1);
+\coordinate (b) at (0,0);
+\coordinate (c) at (3,2);
+\pic [draw, angle eccentricity=1.5] {angle=a--b--c};
+\draw[thick] (b)--(c);
+\draw[thick] (b)--(a);
+\fill[black] (b) circle (2pt) node [anchor = south] {$O$};
+\fill[black] (c) circle (0pt) node[anchor = south] {$A$};
+\fill[black] (a) circle (0pt) node[anchor = south] {$B$};
+\end{tikzpicture}
+\caption*{Промені $OA,OB$ назвемо \textbf{сторонами кута}, а точку $O$ назвемо \textbf{вершиною кута}}
+\end{figure}
+\end{definition}
+Кут можна розглядати або всередині двох променів, або зовні. Зазвичай розглядається перший варіант
+
+\begin{definition}
+Кут назвемо \textbf{розгорнутим}, якщо сторони кутів - доповняльні промені
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\coordinate (a) at (1,0);
+\coordinate (b) at (2,0);
+\coordinate (c) at (4,0);
+\pic [draw] {angle=c--b--a};
+\draw[thick] (a)--(c);
+\fill[black] (a) circle (0pt) node[anchor = south] {$A$};
+\fill[black] (c) circle (0pt) node[anchor = south] {$B$};
+\fill[black] (b) circle (2pt) node[anchor = north] {$O$};
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+
+\begin{definition}
+Задані два кута $\angle A_1O_1B_1, \angle A_2O_2B_2$\\
+Їх назвемо \textbf{рівними}, якщо їх можна сумістити накладанням\\
+Позначення: $\angle A_1O_1B_1 = \angle A_2O_2B_2$
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (0,0)--(2,0);
+\draw[thick] (0,0)--(2,1);
+
+\draw[thick] (4,0)--(6,0);
+\draw[thick] (4,0)--(6,1);
+\fill[black] (0,0) circle (0pt) node [anchor = south] {$O_1$};
+\fill[black] (2,0) circle (0pt) node[anchor = south] {$A_1$};
+\fill[black] (2,1) circle (0pt) node[anchor = south] {$B_1$};
+\fill[black] (4,0) circle (0pt) node [anchor = south] {$O_2$};
+\fill[black] (6,0) circle (0pt) node[anchor = south] {$A_2$};
+\fill[black] (6,1) circle (0pt) node[anchor = south] {$B_2$};
+\end{tikzpicture}
+\end{figure}
+У разі, якщо вони не рівні, то може виникнути один із двох випадків:\\
+- кут $\angle A_1O_1B_1$ більший за $\angle A_2O_2B_2$: $\angle A_1O_1B_1 > \angle A_2O_2B_2$\\
+- кут $\angle A_1O_1B_1$ менший за $\angle A_2O_2B_2$: $\angle A_1O_1B_1 < \angle A_2O_2B_2$
+\end{definition}
+
+\textbf{Axiom.} Для кута $ABC$ та променя $B_1C_1$ існує єдиний кут $A_1B_1C_1$, який дорівнює куту $ABC$. Причому т. $C_1$ лежить у заданій півплощині відносно прямої $B_1C_1$
+
+\begin{definition}
+\textbf{Бісектрисою} кута називають промінь з початком у вершині кута, що ділить цей кут на два рівних кути
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\coordinate (a) at (2,-1);
+\coordinate (b) at (0,0);
+\coordinate (c) at (3,2);
+\coordinate (d) at (2,0.2);
+\pic [draw, angle eccentricity=1.5] {angle=a--b--c};
+\draw[thick] (b)--(c);
+\draw[thick] (b)--(a);
+\draw[thick] (b)--(d);
+\fill[black] (b) circle (2pt) node [anchor = south] {$O$};
+\fill[black] (c) circle (0pt) node[anchor = south] {$A$};
+\fill[black] (a) circle (0pt) node[anchor = south] {$B$};
+\fill[black] (d) circle (0pt) node[anchor = south] {$D$};
+\end{tikzpicture}
+\caption*{$OD$ - бісектриса кута $AOB$. Також $\angle AOD = \angle BOD$}
+\end{figure}
+\end{definition}
+
+Для того щоб виміряти \textbf{величину} кута, треба буде задати \textbf{одиничний кут}\\
+Зазвичай це $1^{\circ}$ - це можна отримати, якщо розгорнутий кут розділити на $180$ рівних кутів\\
+Є ще $1' = \dfrac{1}{60}^{\circ}$ - одна мінута (не хвилина)
+
+\begin{corollary}
+Розгорнутий кут дорівнює $180^{\circ}$
+\end{corollary}
+
+\begin{corollary}
+Кути рівні тоді й тільки тоді, коли їхні величини рівні
+\end{corollary}
+
+\begin{definition} Задано кут $\angle AOB$
+Кут називається \textbf{прямим}, якщо $\angle AOB = 90^{\circ}$\\
+Кут називається \textbf{гострим}, якщо $\angle AOB < 90^{\circ}$\\
+Кут називається \textbf{тупим}, якщо $\angle AOB > 90^{\circ}$
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (0,0)--(2,0);
+\draw[thick] (0,0)--(0,2);
+\fill[black] (0,0) circle (0pt) node [anchor = east] {$O$};
+\fill[black] (2,0) circle (0pt) node[anchor = south] {$A$};
+\fill[black] (0,2) circle (0pt) node[anchor = south] {$B$};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}
+\draw[thick] (0,0)--(2,0);
+\draw[thick] (0,0)--(2,1);
+\fill[black] (0,0) circle (0pt) node [anchor = south] {$O$};
+\fill[black] (2,0) circle (0pt) node[anchor = south] {$A$};
+\fill[black] (2,1) circle (0pt) node[anchor = south] {$B$};
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}
+\draw[thick] (0,0)--(2,0);
+\draw[thick] (0,0)--(-2,1);
+\fill[black] (0,0) circle (0pt) node [anchor = south] {$O$};
+\fill[black] (2,0) circle (0pt) node[anchor = south] {$A$};
+\fill[black] (-2,1) circle (0pt) node[anchor = south] {$B$};
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+
+\textbf{Axiom.} Якщо промінь $OC$ ділить кут $\angle AOB$ на два інших кути $\angle AOC$, $\angle COD$, то то кут
+\begin{align*}
+\angle AOB = \angle AOC + \angle COB
+\end{align*} 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\coordinate (a) at (2,-1);
+\coordinate (b) at (0,0);
+\coordinate (c) at (3,2);
+\coordinate (d) at (2,0);
+\draw[thick] (b)--(c);
+\draw[thick] (b)--(a);
+\draw[thick] (b)--(d);
+\fill[black] (b) circle (0pt) node [anchor = south] {$O$};
+\fill[black] (c) circle (0pt) node[anchor = south] {$A$};
+\fill[black] (a) circle (0pt) node[anchor = south] {$B$};
+\fill[black] (d) circle (0pt) node[anchor = south] {$C$};
+\end{tikzpicture}
+\end{figure}
+
+\subsection{Суміжні та вертикальні кути}
+\begin{definition}
+Два кути називають \textbf{суміжними}, якщо одна сторона спільна, а також два інших промені є доповняльними
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (0,0)--(3,0);
+\draw[thick] (1,0)--(2,1);
+\fill[black] (1,0) circle (0pt) node [anchor = south] {$O$};
+\fill[black] (0,0) circle (0pt) node[anchor = south] {$A$};
+\fill[black] (2,1) circle (0pt) node[anchor = south] {$B$};
+\fill[black] (3,0) circle (0pt) node[anchor = south] {$C$};
+\end{tikzpicture}
+\caption*{Тут кути $\angle AOB, \angle COB$ - суміжні}
+\end{figure}
+\end{definition}
+
+\begin{theorem}
+Сума суміжних кутів $= 180^{\circ}$
+\end{theorem}
+
+\begin{pf}
+Повернімось до малюнку. Хочемо: $\angle AOB + \angle COB = 180^{\circ}$\\
+Ці кути - суміжні. Отже, $OA,OB$ - доповняльні. А тому $\angle AOC = 180^{\circ}$, бо він - розгорнутий\\
+А також $\angle AOC = \angle AOB + \angle COB$\\
+Остаточно, $\angle AOB + \angle COB = 180^{\circ}$
+\end{pf}
+
+\begin{definition}
+Два кути називають \textbf{вертикальними}, якщо сторони одного кута - доповняльні промени других сторін
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (0,0)--(3,0);
+\draw[thick] (0,-1)--(2,1);
+\fill[black] (1,0) circle (0pt) node [anchor = south] {$O$};
+\fill[black] (0,0) circle (0pt) node[anchor = south] {$A$};
+\fill[black] (2,1) circle (0pt) node[anchor = south] {$B$};
+\fill[black] (3,0) circle (0pt) node[anchor = south] {$C$};
+\fill[black] (0,-1) circle (0pt) node[anchor = south] {$D$};
+\end{tikzpicture}
+\caption*{Тут кути $\angle AOD, \angle COB$ - вертикальні. Також кути $\angle AOB, \angle COD$ - вертикальні}
+\end{figure}
+\end{definition}
+
+\begin{theorem}
+Вертикальні кути рівні
+\end{theorem}
+
+\begin{pf}
+Повернімось до малюнку. Хочемо: $\angle AOD = \angle COB$\\
+$\angle AOD, \angle AOB$ - суміжні, а тому $\angle AOD + \angle AOB = 180^{\circ} \\ \Rightarrow \angle AOB = 180^{\circ} - \angle AOD$\\
+$\angle AOB, \angle BOC$ - суміжні, а тому $\angle AOB + \angle COB = 180^{\circ}$\\
+$\Rightarrow \angle COB = 180^{\circ} - \angle AOB = 180^{\circ} - (180^{\circ} - \angle AOD) = \angle AOD$
+\end{pf}
+
+\subsection{Перпендикулярні прямі}
+\begin{definition}
+Задані прямі $a,b$\\
+Дві прямі називають \textbf{перпендикулярними}, якщо при їхньому перетині утвориться прямий кут\\
+Позначення: $a \perp b$
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (-1,0)--(2,0) node[anchor = south] {$a$};
+\draw[thick] (0,-1)--(0,2) node[anchor = east] {$b$};
+\draw (0,0) rectangle (0.25,0.25);
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+
+\begin{definition}
+\textbf{Кутом між прямими} $AD,BC$ будемо називати величину гострого кута, що утворився в результаті перетину
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (0,0)--(3,0);
+\draw[thick] (0,-1)--(2,1);
+\fill[black] (1,0) circle (0pt) node [anchor = south] {$O$};
+\fill[black] (0,0) circle (0pt) node[anchor = south] {$A$};
+\fill[black] (2,1) circle (0pt) node[anchor = south] {$B$};
+\fill[black] (3,0) circle (0pt) node[anchor = south] {$D$};
+\fill[black] (0,-1) circle (0pt) node[anchor = south] {$C$};
+\end{tikzpicture}
+\caption*{Тобто $\angle AOC$ або $\angle BOD$ - кут між прямими $AD,BC$}
+\end{figure}
+\end{definition}
+
+\begin{definition} Задані відрізки $AB,CD$\\
+Вони називаються \textbf{перпендикулярними}, якщо вони лежать на перпендикулярних прямих
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (-1,0)--(3,0);
+\draw[thick, red] (1,0)--(2,0);
+\draw[thick] (0,-1)--(0,2.5);
+\draw[thick, red] (0,0.5)--(0,2);
+\draw (0,0) rectangle (0.25,0.25);
+\fill[black] (1,0) circle (2pt) node [anchor = south] {$A$};
+\fill[black] (2,0) circle (2pt) node [anchor = south] {$B$};
+\fill[black] (0,0.5) circle (2pt) node [anchor = east] {$C$};
+\fill[black] (0,2) circle (2pt) node [anchor = east] {$D$};
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+Можна також розглядати перпендикулярність двох променів, променя та відрізка, прямої та променя, відрізка та прямої
+
+\begin{definition}
+Задана пряма $a$ та точка $A \not\in a$\\
+Із точки $A$ на пряму $a$ можна \textbf{опустити перпендикуляр} $AB$. Тоді точка $B$ називається \textbf{основою перпендикуляра}\\
+Довжина $AB$ називається \textbf{відстанню} від т. $A$ до прямої $a$
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (-1,0)--(3,0) node[anchor = south] {$a$};
+\draw[thick, red] (0,0)--(0,2);
+\draw (0,0) rectangle (0.25,0.25);
+\fill[black] (0,0) circle (2pt) node [anchor = north] {$B$};
+\fill[black] (0,2) circle (2pt) node [anchor = east] {$A$};
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+Можна довжину $AB$ ще називати відстанню від т. $A$ до променя $BR$; або відстанюю від т. $A$ до відрізка $SG$, якщо $SG \in a$
+
+\begin{theorem}
+Через кожну точку прямої можна провести єдину пряму, що перпендикулярна до даної
+\end{theorem}
+
+\begin{pf}
+Нехай є пряма $AB$, на якій я позначу точку $M$\\
+Відкладемо від промення $AB$ кут $CMB$, який буде прямим\\
+Отже, $CM \perp AB$\\
+!Припустимо, що існує ще одна пряма, якась пряма $DM$, що перпендикулярна $AB$\\
+Нехай т. $D$ лежить у тій самій півплощині відносно прямої $AB$, що й точка $C$. Тоді ми маємо два кути: $\angle CMB, \angle DMB$, що є прямими. Але такий кут має бути єдиним. Суперечність!\\
+\end{pf}
+\newpage
+
+
+\section{Трикутники}
+\subsection{Основні означення. Висота, медіана, бісектриса}
+\begin{definition}
+Задано три точки $A,B,C$\\
+\textbf{Трикутником} назвемо геометричну фігуру, що була зроблена в результаті проведення відрізків $AB,BC,CA$\\
+Позначення: $\Delta ABC$
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (0,0)--(3,2)--(5,0)--(0,0);
+\fill[black] (0,0) circle (0pt) node [anchor = north] {$A$};
+\fill[black] (3,2) circle (0pt) node [anchor = south] {$B$};
+\fill[black] (5,0) circle (0pt) node [anchor = north] {$C$};
+\end{tikzpicture}
+\end{figure}
+Точки трикутника називаються \textbf{вершинами}, а відрізки трикутника називаються \textbf{сторонами}
+\end{definition}
+
+\begin{definition} Задано трикутник $\Delta ABC$\\
+\textbf{Периметром трикутника} назвемо таку величину
+\begin{align*}
+P_{\Delta ABC} = AB + BC + CA
+\end{align*}
+\end{definition}
+
+\begin{definition}
+Задано два трикутника $\Delta A_1B_1C_1$, $\Delta A_2B_2C_2$\\
+Ці трикутники називаються \textbf{рівними}, якщо їх можна сумістити накладанням\\
+Позначення: $\Delta A_1B_1C_1 = \Delta A_2B_2C_2$
+\end{definition}
+
+\begin{corollary}
+$\Delta A_1B_1C_1 = \Delta A_2B_2C_2 \iff$ кожний кут та кожна сторона першого трикутника дорівнює кожному куту та кожній стороні другого трикутника
+\end{corollary}
+
+\textbf{Axiom.} Для заданого трикутника $ABC$ та заданого променя $A_1M$ існує трикутник $A_1B_1C_1$, який дорівнює $ABC$. Причому сторона $A_1B_1$ належить променю $A_1M$
+
+\begin{theorem}
+Через точку, що не належить прямій, можна провести іншу єдину пряму, що перпендикулярна першій прямій 
+\end{theorem}
+
+\begin{pf}
+Розглянемо пряму $MN$ та точку $O \not\in MN$. Покажемо, що ми можемо провести пряму через т. $O$, перпендикулярна $MN$\\
+Відкладемо від променя $MN$ кут $O_1MN$ так, щоб $\angle OMN = \angle O_1MN$\\
+Нехай точка $O_2$ така, що $MO_1 = MO_2$\\
+Проведемо пряму через т. $O,O_1$. Позначимо точкою $A$ точку перетину $MN$ та $OO_1$\\
+Від променя $MA$ відкладемо трикутник $O_2MA$, причому $\Delta O_2MA = \Delta O_1MA$\\
+(TODO)
+\end{pf}
+
+\begin{definition}
+\textbf{Висотою} трикутника називають перпендикуляр, що опущений із вершини трикутника на пряму, яка містить протилежну сторону
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (0,0)--(3,2)--(5,0)--(0,0);
+\fill[black] (0,0) circle (0pt) node [anchor = north] {$A$};
+\fill[black] (3,2) circle (0pt) node [anchor = south] {$B$};
+\fill[black] (5,0) circle (0pt) node [anchor = north] {$C$};
+\draw[thick] (3,2)--(3,0);
+\fill[black] (3,0) circle (0pt) node [anchor = north] {$H$};
+\draw (3,0) rectangle (3.25,0.25);
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}
+\draw[thick] (0,0)--(3,2)--(2,0)--(0,0);
+\draw[dashed] (2,0)--(3.5,0);
+\fill[black] (0,0) circle (0pt) node [anchor = north] {$A$};
+\fill[black] (3,2) circle (0pt) node [anchor = south] {$B$};
+\fill[black] (2,0) circle (0pt) node [anchor = north] {$C$};
+\draw[thick] (3,2)--(3,0);
+\fill[black] (3,0) circle (0pt) node [anchor = north] {$H$};
+\draw (3,0) rectangle (3.25,0.25);
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+
+\begin{definition}
+\textbf{Медіаною} трикутника називають відрізок, що сполучає вершину трикутника з серединою протилежної сторони
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick] (0,0)--(3,2)--(5,0)--(0,0);
+\fill[black] (0,0) circle (0pt) node [anchor = north] {$A$};
+\fill[black] (3,2) circle (0pt) node [anchor = south] {$B$};
+\fill[black] (5,0) circle (0pt) node [anchor = north] {$C$};
+\draw[thick] (3,2)--(2.5,0);
+\fill[black] (2.5,0) circle (0pt) node [anchor = north] {$M$};
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+
+\begin{definition}
+\textbf{Бісектрисою} трикутника називають бісектрису трикутника, що сполучає вершину трикутника з точкою протилежної сторони
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\coordinate (a) at (2,-1);
+\coordinate (b) at (0,0);
+\coordinate (c) at (3,2);
+\coordinate (d) at (2.4,0.2);
+\pic [draw, angle eccentricity=1.5] {angle=a--b--c};
+\draw[thick] (b)--(c);
+\draw[thick] (b)--(a);
+\draw[thick] (b)--(d);
+\draw[thick] (c)--(a);
+\fill[black] (b) circle (0pt) node [anchor = south] {$A$};
+\fill[black] (c) circle (0pt) node[anchor = south] {$B$};
+\fill[black] (a) circle (0pt) node[anchor = south west] {$C$};
+\fill[black] (d) circle (0pt) node[anchor = south west] {$L$};
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+
+\subsection{Ознаки рівності трикутників}
+\begin{theorem}[Перша ознака]
+Нехай дві сторони та кут між ними одного трикутника дорівнює відповідно двом сторонам та куту між ними другого трикутника. Тоді ці трикутники рівні
+\end{theorem}
+
+\begin{pf}
+Задані $\Delta A_1B_1C_1$, $\Delta A_2B_2C_2$. Нехай буде $A_1B_1 = A_2B_2$, $B_1C_1 = B_2C_2$, $\angle B_1 = \angle B_2$
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\coordinate (a) at (0,0);
+\coordinate (b) at (1,2);
+\coordinate (c) at (3,0);
+\pic [draw, angle eccentricity=1.5] {angle=a--b--c};
+\draw[thick] (a)--(b)--(c)--(a);
+\fill[black] (a) circle (0pt) node [anchor = north] {$A_1$};
+\fill[black] (b) circle (0pt) node [anchor = south] {$B_1$};
+\fill[black] (c) circle (0pt) node [anchor = north] {$C_1$};
+\draw (0.4,1.05)--(0.6,0.95);
+\draw (1.9,0.95)--(2.1,1.05);
+\draw (2,0.85)--(2.2,0.95);
+\end{tikzpicture}
+\qquad
+\begin{tikzpicture}
+\coordinate (a) at (0,0);
+\coordinate (b) at (1,2);
+\coordinate (c) at (3,0);
+\pic [draw, angle eccentricity=1.5] {angle=a--b--c};
+\draw[thick] (a)--(b)--(c)--(a);
+\fill[black] (a) circle (0pt) node [anchor = north] {$A_2$};
+\fill[black] (b) circle (0pt) node [anchor = south] {$B_2$};
+\fill[black] (c) circle (0pt) node [anchor = north] {$C_2$};
+\draw (0.4,1.05)--(0.6,0.95);
+\draw (1.9,0.95)--(2.1,1.05);
+\draw (2,0.85)--(2.2,0.95);
+\end{tikzpicture}
+\end{figure}
+Оскільки $\angle B_1 = \angle B_2$, то ми накладемо промені $\Delta A_1B_1C_1$ на $\Delta A_2B_2C_2$ таким чином, щоб $B_1A_1$ сумістився з $B_2A_2$ та $B_1C_1$ сумістився з $B_2C_2$\\
+Оскільки $A_1B_1 = A_2B_2$, $B_1C_1 = B_2C_2$, то тоді сторони теж сумістяться. Отже, трикутники повністю сумістяться $\Rightarrow \Delta A_1B_1C_1 = \Delta A_2B_2C_2$
+\end{pf}
+
+\begin{definition}
+\textbf{Серединним перпендикуляром} називають пряму, що перпендикулярна до відрізка та проходить через його середину
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw[thick, red] (-1,0)--(3,0) node[anchor = south] {$a$};
+\draw[thick] (1,-1)--(1,1);
+\draw (1,0) rectangle (1.25,0.25);
+\fill[black] (1,1) circle (2pt) node [anchor = east] {$B$};
+\fill[black] (1,-1) circle (2pt) node [anchor = east] {$A$};
+\draw (1cm-2pt,0.5)--(1cm+2pt,0.5);
+\draw (1cm-2pt,-0.5)--(1cm+2pt,-0.5);
+\end{tikzpicture}
+\end{figure}
+\end{definition}
+
+%\begin{definition} Трикутник називають:\\
+%- \textbf{гострокутним}, якщо всі його кути гострі\\
+%- \textbf{прямокутним}, якщо один із кутів прямий\\
+%- \textbf{тупокутник}, якщо один із його кутів тупий
+%\end{definition}
+
+\begin{tikzpicture}
+\draw[draw=none, name path = C] (0,0)--(3.5,0);
+\draw[thick, ->] (-0.5,0)--(4.5,0) node[anchor=north west] {$\rho$};
+\draw [name path = A, thick] plot [smooth] coordinates {(1,1.5) (1.5,2) (2,1) (3,0.75) (4,0.25) (3.5,-0.5) (3.5, -1.5) (3,-2)} node[anchor = west] {$\rho(\varphi)$};
+\draw[dashed] (0,0)--(1,1.5);
+\draw[dashed] (0,0)--(1.6,1.8);
+\draw[dashed] (0,0)--(1.9,1.3);
+\draw[dashed] (0,0)--(3.5,-1.5);
+\draw[dashed, name path = B] (0,0)--(3,-2);
+
+\coordinate (a) at (0,0);
+\coordinate (b) at (1,1.5);
+\coordinate (c) at (1,0);
+\coordinate (d) at (3,-2);
+\tikzfillbetween[of=A and B]{blue, opacity = 0.3};
+\end{tikzpicture}
+
+$x^2 + 1 = 0$ \\
+
+\end{document}
