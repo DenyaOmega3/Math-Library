@@ -1,74 +1,46 @@
 \babel@toc {ukrainian}{}
-\contentsline {section}{\numberline {1}Перші дрібниці. Дійсні числа}{6}{section.1}%
+\contentsline {section}{\numberline {1}Множина дійсних чисел}{7}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Аксіоматика множини дійсних чисел, принцип Дедекінда}{7}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Принцип мат. індукції}{7}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Основні нерівності}{9}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.2}Точкові межі}{7}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Принцип Архімеда та її наслідки}{9}{subsection.1.3}%
 \contentsline {subsection}{\numberline {1.4}Відкриті, замкнені множини}{10}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Точкові межі}{13}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Принцип Архімеда та основні твердження мат. аналізу}{16}{subsection.1.6}%
-\contentsline {section}{\numberline {2}Границі числової послідовності}{19}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Основні означення}{19}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Нескінченно малі/великі послідовності}{22}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Нерівності в границях}{25}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Монотонні послідовності. Число $e$}{27}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Підпослідовності}{30}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Фундаментальна послідовність}{34}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}*Деякі теоретичні факти}{36}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}*Константа Ейлера-Маскероні}{36}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}*Теорема Штольца}{37}{subsection.2.9}%
-\contentsline {subsection}{\numberline {2.10}*Ірраціональність числа $e$}{40}{subsection.2.10}%
-\contentsline {subsection}{\numberline {2.11}*Звідки виник окіл в нескінченності}{41}{subsection.2.11}%
-\contentsline {section}{\numberline {3}Границі функції}{43}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Основні поняття про функції}{43}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Границі функції}{47}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Перша чудова границя}{53}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Друга чудова границя}{54}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Односторонні границі та границі монотонних функцій}{55}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Порівняння функцій, відношення О-велике, о-маленьке та еквівалентності}{56}{subsection.3.6}%
-\contentsline {section}{\numberline {4}Неперервність функції}{61}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Неперервність в точці}{61}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Неперервність елементарних функцій}{64}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Неперервність функції на відрізку}{66}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Рівномірна неперервність}{69}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}*Неперервність функції Діріхле та Рімана}{71}{subsection.4.5}%
-\contentsline {subsection}{\numberline {4.6}*Інші факти з неперервною функцією}{72}{subsection.4.6}%
-\contentsline {section}{\numberline {5}Диференціювання}{73}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Основні означення}{73}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Дотична та нормаль до графіку функції}{78}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Приблизне обчислення значень для диференційованих функцій}{80}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Диференціал функції}{80}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Похідні по один бік}{81}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5.6}Інваріантність форми першого диференціалу}{83}{subsection.5.6}%
-\contentsline {subsection}{\numberline {5.7}Похідна від параметрично заданої функції}{84}{subsection.5.7}%
-\contentsline {subsection}{\numberline {5.8}Похідна вищих порядків}{84}{subsection.5.8}%
-\contentsline {subsection}{\numberline {5.9}Основні теореми}{87}{subsection.5.9}%
-\contentsline {subsection}{\numberline {5.10}Дослідження функції на монотонність}{89}{subsection.5.10}%
-\contentsline {subsection}{\numberline {5.11}Екстремуми функції}{91}{subsection.5.11}%
-\contentsline {subsubsection}{\numberline {5.11.1}Локальні}{91}{subsubsection.5.11.1}%
-\contentsline {subsubsection}{\numberline {5.11.2}Глобальні}{92}{subsubsection.5.11.2}%
-\contentsline {subsection}{\numberline {5.12}Формула Тейлора та правила Лопіталя}{94}{subsection.5.12}%
-\contentsline {subsection}{\numberline {5.13}Опуклі функції та точки перегину}{98}{subsection.5.13}%
-\contentsline {section}{\numberline {6}Інтегрування}{105}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Первісна, невизначений інтеграл}{105}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Заміна змінної}{106}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Інтегрування за частинами}{107}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Інтегрування дробово-раціональних функцій}{108}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Інтегрування тригонометричних функцій}{110}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}Інтегрування ірраціональних виразів}{111}{subsection.6.6}%
-\contentsline {subsection}{\numberline {6.7}Диференціальний біном}{113}{subsection.6.7}%
-\contentsline {section}{\numberline {7}Визначений інтеграл}{115}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Підхід Рімана}{115}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Існування інтеграла}{117}{subsection.7.2}%
-\contentsline {section}{\numberline {8}Визначені інтеграли (спроба 2)}{123}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Визначений інтеграл Рімана}{123}{subsection.8.1}%
-\contentsline {section}{\numberline {9}Невласні інтеграли}{129}{section.9}%
-\contentsline {section}{\numberline {10}Ряди}{130}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Первинний аналіз збіжності та арифметика рядів}{131}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Знакододатні ряди}{133}{subsection.10.2}%
-\contentsline {subsection}{\numberline {10.3}Знакозмінні ряди}{139}{subsection.10.3}%
-\contentsline {section}{\numberline {11}Функціональні ряди}{143}{section.11}%
-\contentsline {subsection}{\numberline {11.1}Функціональні послідовності}{143}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2}Функціональні ряди}{145}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11.3}Степеневі ряди}{148}{subsection.11.3}%
-\contentsline {subsection}{\numberline {11.4}Зв'язок з Тейлором}{152}{subsection.11.4}%
-\contentsline {section}{\numberline {12}Premilinaries}{155}{section.12}%
+\contentsline {subsection}{\numberline {1.5}Основні твердження аналізу}{13}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Границі числової послідовності}{16}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Основні означення}{16}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Нескінченно малі/великі послідовності}{18}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Нерівності в границях}{20}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Монотонні послідовності}{21}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Число $e$}{21}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Підпослідовності}{22}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Фундаментальна послідовність}{26}{subsection.2.7}%
+\contentsline {section}{\numberline {3}Границі функції}{27}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Основні поняття про функції}{27}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Границі функції}{30}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Основні властивості}{33}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Односторонні границі та границі монотонних функцій}{36}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Перша чудова границя}{37}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Друга чудова границя}{38}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Порівняння функцій, відношення О-велике, о-маленьке та еквівалентності}{39}{subsection.3.7}%
+\contentsline {section}{\numberline {4}Неперервність функції}{43}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Неперервність в точці}{43}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Неперервність функції на відрізку}{46}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Неперервність функції на інтервалі}{47}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Неперервність елементарних функцій}{48}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Зведення в дійсну степінь}{49}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Рівномірна неперервність}{51}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Диференціювання}{54}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Основні означення}{54}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Похідні по один бік}{57}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Дотична та нормаль до графіку функції}{58}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Диференціал функції}{60}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Інваріантність форми першого диференціалу}{60}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Приблизне обчислення значень для диференційованих функцій}{61}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Похідна та диференціал вищих порядків}{61}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}Неінваріантність форми другого диференціалу}{62}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}Похідна від параметрично заданої функції}{63}{subsection.5.9}%
+\contentsline {subsection}{\numberline {5.10}Основні теореми}{63}{subsection.5.10}%
+\contentsline {subsection}{\numberline {5.11}Дослідження функції на монотонність}{65}{subsection.5.11}%
+\contentsline {subsection}{\numberline {5.12}Екстремуми функції}{66}{subsection.5.12}%
+\contentsline {subsection}{\numberline {5.13}Правила Лопіталя}{67}{subsection.5.13}%
+\contentsline {subsection}{\numberline {5.14}Формула Тейлора}{68}{subsection.5.14}%
+\contentsline {subsection}{\numberline {5.15}Опуклі функції та точки перегину}{71}{subsection.5.15}%
