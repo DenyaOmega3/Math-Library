@@ -1,60 +1,60 @@
 \babel@toc {ukrainian}{}
-\contentsline {section}{\numberline {1}Лінійні простори}{3}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Основні означення лінійних просторів}{3}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Лінійні підпростори}{4}{subsection.1.2}%
+\contentsline {section}{\numberline {1}Лінійні простори}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Основні означення лінійних просторів}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Лінійні підпростори}{5}{subsection.1.2}%
 \contentsline {subsection}{\numberline {1.3}Лінійна залежність/незалежність}{5}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Лінійні оболонки}{9}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Підпорядковані та еквівалентні системи}{10}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}База та ранг. Базиси та розмірності}{13}{subsection.1.6}%
-\contentsline {subsection}{\numberline {1.7}Сума, перетин, пряма сума лінійних просторів}{16}{subsection.1.7}%
-\contentsline {section}{\numberline {2}Дії з лінійними просторами}{22}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Лінійні оператори}{22}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Арифметичні дії з лінійними операторами}{24}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Ядро, образ}{27}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Лінійні функціонали}{30}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Обернений оператор, одиничний оператор}{30}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Ізоморфні лінійні простори, ізоморфізм}{33}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}Матриця лінійного оператора, що побудована за лінійним оператором}{34}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}Матриця добутку операторів}{37}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}Матриця лінійного функціоналу}{37}{subsection.2.9}%
-\contentsline {subsection}{\numberline {2.10}Пряма сума операторів}{38}{subsection.2.10}%
-\contentsline {section}{\numberline {3}Теорія матриць}{39}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Основні властивості}{39}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Кососиметричні функціонали}{41}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Перестановки}{42}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Визначники n-го порядку}{46}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Обернена матриця}{51}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Матричні алгебраїчні рівняння}{52}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}Інші теореми}{53}{subsection.3.7}%
-\contentsline {subsection}{\numberline {3.8}Ранг}{54}{subsection.3.8}%
-\contentsline {subsection}{\numberline {3.9}Системи лінійних рівнянь}{55}{subsection.3.9}%
+\contentsline {subsection}{\numberline {1.4}Лінійні оболонки}{8}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Підпорядковані та еквівалентні системи}{9}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}База та ранг. Базиси та розмірності}{10}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Сума, перетин, пряма сума лінійних просторів}{13}{subsection.1.7}%
+\contentsline {section}{\numberline {2}Дії з лінійними просторами}{16}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Лінійні оператори}{16}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Арифметичні дії з лінійними операторами}{17}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Ядро, образ}{19}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Лінійні функціонали}{20}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Обернений оператор, одиничний оператор}{21}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Ізоморфні лінійні простори, ізоморфізм}{23}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Матриця лінійного оператора, що побудована за лінійним оператором}{23}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Матриця добутку операторів}{24}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Матриця лінійного функціоналу}{25}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Пряма сума операторів}{25}{subsection.2.10}%
+\contentsline {section}{\numberline {3}Теорія матриць}{26}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Основні властивості}{26}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Кососиметричні функціонали}{27}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Трошки про перестановки та єдиність кососиметричного функціоналу}{28}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Визначники n-го порядку}{30}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Обернена матриця}{34}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Матричні алгебраїчні рівняння}{35}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Інші теореми}{36}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Ранг}{36}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Системи лінійних алгебраїчних рівнянь}{38}{subsection.3.9}%
 \vspace *{0.5cm}
-\contentsline {subsection}{\numberline {2.11}Різні базиси в лінійному просторі, матриця оператора переходу від одного базису до іншого}{57}{subsection.2.11}%
-\contentsline {subsection}{\numberline {2.12}Матриця лінійного оператору в різних базисах}{59}{subsection.2.12}%
-\contentsline {subsection}{\numberline {2.13}Інваріантні підпростори}{60}{subsection.2.13}%
-\contentsline {subsection}{\numberline {2.14}Матриця оператора в базисі, розширенному з базису в інваріантному просторі}{61}{subsection.2.14}%
-\contentsline {subsection}{\numberline {2.15}Оператор проєктування}{63}{subsection.2.15}%
-\contentsline {section}{\numberline {4}Нова ера з матрицями}{66}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Власні числа та власні вектори}{66}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Приєднаний власний вектор}{73}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Теорема Жордана}{77}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Властивості жорданової форми матриці}{82}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Застосування жорданової форми: функції від операторів, матриць}{84}{subsection.4.5}%
-\contentsline {section}{\numberline {5}Евклідові простори}{86}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Ортогональність, процес Грама-Шмідта}{86}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Нормований простір та інші поняття}{89}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Ортонормований базис, побудова}{90}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Ортогональні підпростори, ортогональне доповнення}{92}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Застосування, спряжений оператор}{96}{subsection.5.5}%
-\contentsline {subsection}{\numberline {5.6}Матриця спряженого оператора, зв'язок}{99}{subsection.5.6}%
-\contentsline {subsection}{\numberline {5.7}Унітарний оператор}{101}{subsection.5.7}%
-\contentsline {subsection}{\numberline {5.8}Самоспряжений оператор}{102}{subsection.5.8}%
-\contentsline {subsection}{\numberline {5.9}Квадратичні форми}{104}{subsection.5.9}%
-\contentsline {subsection}{\numberline {5.10}Знаковизначеність лінійного оператора, матриці}{107}{subsection.5.10}%
-\contentsline {subsection}{\numberline {5.11}Зведення кривих та поверхень другого порядку до канонічного вигляду}{108}{subsection.5.11}%
-\contentsline {section}{\numberline {6}Альтернативні пояснення}{111}{section.6}%
-\contentsline {section}{\numberline {7}Трошки про матриці}{116}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Основні означення}{116}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Трошки про визначники}{121}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Обернена матриця}{122}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Елементарні матриці}{124}{subsection.7.4}%
+\contentsline {subsection}{\numberline {2.11}Різні базиси в лінійному просторі, матриця оператора переходу від одного базису до іншого}{41}{subsection.2.11}%
+\contentsline {subsection}{\numberline {2.12}Матриця лінійного оператору в різних базисах}{42}{subsection.2.12}%
+\contentsline {subsection}{\numberline {2.13}Інваріантні підпростори}{43}{subsection.2.13}%
+\contentsline {subsection}{\numberline {2.14}Матриця оператора в базисі, розширенному з базису в інваріантному просторі}{44}{subsection.2.14}%
+\contentsline {section}{\numberline {4}Нова ера з матрицями}{46}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Власні числа та власні вектори}{46}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Про характеристичний многочлен}{47}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Діагоналізація матриці}{49}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Приєднаний власний вектор}{50}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Теорема Жордана}{53}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Властивості жорданової форми матриці}{57}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Застосування жорданової форми: функції від операторів, матриць}{59}{subsection.4.7}%
+\contentsline {section}{\numberline {5}Евклідові простори та інше}{61}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Евклідові простори}{61}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Нормований простір та інші поняття}{62}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Ортогональні системи, процес Грама-Шмідта}{63}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Матриця Грама}{65}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Ортогональні підпростори, ортогональне доповнення}{65}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Ізоморфізм евклідових просторів}{68}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Спряжені оператори та матриці}{69}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}Самоспряжений оператор}{72}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}Унітарний оператор}{73}{subsection.5.9}%
+\contentsline {section}{\numberline {6}Квадратичні форми}{75}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Білінійні форми}{75}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Квадратичні форми}{77}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Зведення квадратичної форми до суми квадратів}{78}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Закон інерції квадратичних форм}{80}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Квадратичні форми в евклідовому просторі}{82}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Зведення кривих та поверхень другого порядку до канонічного вигляду}{82}{subsection.6.6}%
