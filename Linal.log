@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.6)  10 JUL 2022 18:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.1.6)  19 JUL 2022 17:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1192,26 +1192,26 @@ File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ))
 \openout1 = `Linal.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 97.
-LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1274,10 +1274,10 @@ ABD: EveryShipout initializing macros
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 97.
+ on input line 75.
 
 \AtBeginShipoutBox=\box116
-Package hyperref Info: Link coloring OFF on input line 97.
+Package hyperref Info: Link coloring OFF on input line 75.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
 
@@ -1289,9 +1289,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count333
 )
-LaTeX Info: Redefining \ref on input line 97.
-LaTeX Info: Redefining \pageref on input line 97.
-LaTeX Info: Redefining \nameref on input line 97.
+LaTeX Info: Redefining \ref on input line 75.
+LaTeX Info: Redefining \pageref on input line 75.
+LaTeX Info: Redefining \nameref on input line 75.
 
 (./Linal.out) (./Linal.out)
 \@outlinefile=\write4
@@ -1309,34 +1309,34 @@ Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-<preview.jpg, id=240, 2489.3pt x 3521.155pt>
+<preview.jpg, id=236, 2489.3pt x 3521.155pt>
 File: preview.jpg Graphic file (type jpg)
 <use preview.jpg>
-Package pdftex.def Info: preview.jpg  used on input line 98.
+Package pdftex.def Info: preview.jpg  used on input line 76.
 (pdftex.def)             Requested size: 2489.29396pt x 3521.14645pt.
 File: preview.jpg Graphic file (type jpg)
 <use preview.jpg>
-Package pdftex.def Info: preview.jpg  used on input line 98.
+Package pdftex.def Info: preview.jpg  used on input line 76.
 (pdftex.def)             Requested size: 2489.29396pt x 3521.14645pt.
 File: preview.jpg Graphic file (type jpg)
 <use preview.jpg>
-Package pdftex.def Info: preview.jpg  used on input line 98.
+Package pdftex.def Info: preview.jpg  used on input line 76.
 (pdftex.def)             Requested size: 2489.29396pt x 3521.14645pt.
 File: preview.jpg Graphic file (type jpg)
 <use preview.jpg>
-Package pdftex.def Info: preview.jpg  used on input line 98.
+Package pdftex.def Info: preview.jpg  used on input line 76.
 (pdftex.def)             Requested size: 2489.29396pt x 3521.14645pt.
 File: preview.jpg Graphic file (type jpg)
 <use preview.jpg>
-Package pdftex.def Info: preview.jpg  used on input line 98.
+Package pdftex.def Info: preview.jpg  used on input line 76.
 (pdftex.def)             Requested size: 2489.29396pt x 3521.14645pt.
 File: preview.jpg Graphic file (type jpg)
 <use preview.jpg>
-Package pdftex.def Info: preview.jpg  used on input line 98.
+Package pdftex.def Info: preview.jpg  used on input line 76.
 (pdftex.def)             Requested size: 2489.29396pt x 3521.14645pt.
 File: preview.jpg Graphic file (type jpg)
 <use preview.jpg>
-Package pdftex.def Info: preview.jpg  used on input line 98.
+Package pdftex.def Info: preview.jpg  used on input line 76.
 (pdftex.def)             Requested size: 2489.29396pt x 3521.14645pt.
  [1
 
@@ -1354,39 +1354,34 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout5 = `Linal.toc'.
 
  [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 252--263
+Underfull \hbox (badness 10000) in paragraph at lines 229--245
 
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 264--270
-
- []
-
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 364--370
+[5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 339--345
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--370
+Underfull \hbox (badness 10000) in paragraph at lines 339--345
 
  []
 
 
-Overfull \hbox (7.42581pt too wide) in paragraph at lines 372--373
+Overfull \hbox (7.42581pt too wide) in paragraph at lines 347--348
 [][]\T2A/cmr/bx/n/10 Proposition 1.3.8 []\T2A/cmr/m/n/10 Пе-ре-тво-ре-н-ня I, I
 I та III збе-рi-га-ють вла-сти-вiсть лi-нiй-ноЁ за-ле-жно-стi/незалежностi. 
  []
 
 [7] [8]
-Overfull \hbox (4.31708pt too wide) in paragraph at lines 502--504
+Overfull \hbox (4.31708pt too wide) in paragraph at lines 483--485
 []\T2A/cmr/m/n/10 Пiд-по-ряд-ко-ва-на си-сте-ма № ре-фле-ксив-ною, ан-ти-си-ме-
 три-чною i тран-зи-тив-ною. Тоб-то це № вiд-но-ше-н-ням
  []
 
 
-Overfull \hbox (23.09868pt too wide) in paragraph at lines 507--532
+Overfull \hbox (23.09868pt too wide) in paragraph at lines 488--513
 \T2A/cmr/m/n/10 Отже, отри-ма-ли, що $\OML/cmm/m/it/10 span\OMS/cmsy/m/n/10 f[]
 \OML/cmm/m/it/10 ; []; []\OMS/cmsy/m/n/10 g \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 
 span\OMS/cmsy/m/n/10 f[]\OML/cmm/m/it/10 ; []; []\OMS/cmsy/m/n/10 g$\T2A/cmr/m/
@@ -1394,7 +1389,7 @@ n/10 , або iна-кше $[]$.
  []
 
 
-Overfull \hbox (16.10797pt too wide) in paragraph at lines 579--591
+Overfull \hbox (16.10797pt too wide) in paragraph at lines 561--573
 \OML/cmm/m/it/10 x[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 []y[] \OMS/cmsy/m/n/10
  ^^@ \OML/cmm/m/it/10 [][]x[] \OMS/cmsy/m/n/10 ^^@ [] ^^@ \OML/cmm/m/it/10 [
 ][]x[]$\T2A/cmr/m/n/10 . З цьо-го рiв-ня-н-ня ви-пли-ва№, що $\OMS/cmsy/m/n/10
@@ -1403,7 +1398,7 @@ Overfull \hbox (16.10797pt too wide) in paragraph at lines 579--591
  []
 
 
-Overfull \hbox (11.43903pt too wide) in paragraph at lines 579--591
+Overfull \hbox (11.43903pt too wide) in paragraph at lines 561--573
 \OML/cmm/m/it/10 x[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^L[]y[] \OMS/cmsy/m/n/
 10 ^^@ \OML/cmm/m/it/10 ^^L[]^^L[]y[] \OMS/cmsy/m/n/10 ^^@ [] ^^@ \OML/cmm/m/it
 /10 ^^L[]^^L[]x[]$\T2A/cmr/m/n/10 . З цьо-го рiв-ня-н-ня ви-пли-ва№, що $\OMS/c
@@ -1411,8 +1406,8 @@ msy/m/n/10 f\OML/cmm/m/it/10 y[]; x[]; [] ; x[]\OMS/cmsy/m/n/10 g ^^^ f\OML/cmm
 /m/it/10 y[]; y[]; [] ; x[]\OMS/cmsy/m/n/10 g$\T2A/cmr/m/n/10 . 
  []
 
-[9] [10]
-Overfull \hbox (9.75757pt too wide) in paragraph at lines 670--671
+[9]
+Overfull \hbox (9.75757pt too wide) in paragraph at lines 658--659
 [][]\T2A/cmr/bx/n/10 Theorem 1.6.6 []\T2A/cmr/m/n/10 За-да-но $\OML/cmm/m/it/10
  L$ \T2A/cmr/m/n/10 - лi-нiй-ний про-стiр та си-сте-му $\OMS/cmsy/m/n/10 f\OML/
 cmm/m/it/10 x[]; [] ; x[]\OMS/cmsy/m/n/10 g ^^Z \OML/cmm/m/it/10 L$\T2A/cmr/m/n
@@ -1421,7 +1416,7 @@ sy/m/n/10 g$\T2A/cmr/m/n/10 .
  []
 
 
-Overfull \hbox (54.31372pt too wide) in paragraph at lines 674--678
+Overfull \hbox (54.31372pt too wide) in paragraph at lines 662--666
 \T2A/cmr/m/n/10 Зро-зумi-ло, що $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; [] ; x
 []\OMS/cmsy/m/n/10 g ^^^ f\OML/cmm/m/it/10 x[]; [] ; x[]\OMS/cmsy/m/n/10 g$\T2A
 /cmr/m/n/10 . Дiй-сно, $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; [] ; x[]\OMS/cm
@@ -1429,18 +1424,25 @@ sy/m/n/10 g$ \T2A/cmr/m/n/10 - max. л.н.з., то-дi $\OMS/cmsy/m/n/10 f\OML/cmm/m
 /it/10 x[]; [] ; x[]; [] ; x[]; [] ; x[]\OMS/cmsy/m/n/10 g$
  []
 
-[11]
-Overfull \hbox (17.47697pt too wide) in paragraph at lines 771--772
-[][]\T2A/cmr/bx/n/10 Proposition 1.6.16 []\T2A/cmr/m/n/10 За-да-но $\OML/cmm/m/
-it/10 L \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 span\OMS/cmsy/m/n/10 f\OML/cmm/m/it/
-10 x[]; [] ; x[]\OMS/cmsy/m/n/10 g$\T2A/cmr/m/n/10 . Вi-до-мо що $\OMS/cmsy/m/n
-/10 f\OML/cmm/m/it/10 x[]; [] ; x[]\OMS/cmsy/m/n/10 g$ \T2A/cmr/m/n/10 - це ба-
-за си-сте-ми $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; [] ; x[]\OMS/cmsy/m/n/10 
-g$
+[10]
+Overfull \hbox (5.11942pt too wide) in paragraph at lines 739--744
+\T2A/cmr/m/n/10 Тодi за озна-че-н-ням, во-на № ба-зою, а то-му № max л.н.з. си-
+сте-мою. А то-му $\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 y \OMS/cmsy/m/n/10 2 \OML/
+cmm/m/it/10 L \OT1/cmr/m/n/10 :$ \T2A/cmr/m/n/10 си-сте-ма $\OMS/cmsy/m/n/10 f\
+OML/cmm/m/it/10 x[]; [] ; x[]; y\OMS/cmsy/m/n/10 g$
  []
 
 
-Overfull \hbox (0.51288pt too wide) in paragraph at lines 803--804
+Overfull \hbox (7.664pt too wide) in paragraph at lines 739--744
+\T2A/cmr/m/n/10 Звiдси $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; [] ; x[]\OMS/cm
+sy/m/n/10 g$ \T2A/cmr/m/n/10 - пов-на. А оскiль-ки роз-клад №ди-ний, си-сте-ма 
+$\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; [] ; x[]\OMS/cmsy/m/n/10 g$ \T2A/cmr/m
+/n/10 - л.н.з. От-же, $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; [] ; x[]\OMS/cms
+y/m/n/10 g$
+ []
+
+[11]
+Overfull \hbox (0.51288pt too wide) in paragraph at lines 816--817
 \T2A/cmr/m/n/10 мо-же-мо до-пов-ни-ти цю си-сте-му еле-мен-та-ми $\OML/cmm/m/it
 /10 g[]; [] ; g[] \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 L$\T2A/cmr/m/n/10 , щоб у
 тво-ри-ти ба-зис $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 f[]; [] ; f[]; g[]; [] ; g
@@ -1448,7 +1450,7 @@ Overfull \hbox (0.51288pt too wide) in paragraph at lines 803--804
  []
 
 [12]
-Overfull \hbox (22.89206pt too wide) in paragraph at lines 869--896
+Overfull \hbox (22.89206pt too wide) in paragraph at lines 883--910
 \T2A/cmr/m/n/10 Остаточно $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 h[]; [] ; h[]; f[
 ]; [] ; f[]; g[]; [] ; g[]\OMS/cmsy/m/n/10 g$ \T2A/cmr/m/n/10 - ба-зис $\OML/cm
 m/m/it/10 M[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 M[]$\T2A/cmr/m/n/10 . За-ли-ши
@@ -1456,28 +1458,20 @@ m/m/it/10 M[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 M[]$\T2A/cmr/m/n/10 . За-ли-ши
  []
 
 [13] [14] [15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 1114--1120
+Underfull \hbox (badness 10000) in paragraph at lines 1139--1145
 
- []
-
-
-Overfull \hbox (8.65302pt too wide) in paragraph at lines 1127--1129
-[][]\T2A/cmr/bx/n/10 Remark 2.2.5 []\T2A/cmr/m/n/10 Мно-жи-ну всiх лi-нiй-них о
-пе-ра-то-рiв $\OML/cmm/m/it/10 L \OMS/cmsy/m/n/10 ! \OML/cmm/m/it/10 M$ \T2A/cm
-r/m/n/10 по-зна-ча-ють $\OMS/cmsy/m/n/10 L\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 L; 
-M\OT1/cmr/m/n/10 )$ \T2A/cmr/m/n/10 i № лi-нiй-ним про-сто-ром. 
  []
 
 [17] [18] [19]
-Overfull \hbox (32.17432pt too wide) in paragraph at lines 1360--1379
+Overfull \hbox (31.06712pt too wide) in paragraph at lines 1385--1404
 \T2A/cmr/m/n/10 Але за те-о-ре-мою, ма-№-мо $[] [] \OML/cmm/m/it/10 A \OT1/cmr/
-m/n/10 = [] \U/msb/m/n/10 R[] \OMS/cmsy/m/n/10 ^^@ [] []\OML/cmm/m/it/10 A \OT1
-/cmr/m/n/10 = 2$\T2A/cmr/m/n/10 . То-дi вар-то пи-са-ти $[] \OML/cmm/m/it/10 A 
-\OT1/cmr/m/n/10 = \OML/cmm/m/it/10 span []$\T2A/cmr/m/n/10 . 
+m/n/10 = [] \U/msb/m/n/10 R[] \OMS/cmsy/m/n/10 ^^@ [] [] \OML/cmm/m/it/10 A \OT
+1/cmr/m/n/10 = 2$\T2A/cmr/m/n/10 . То-дi вар-то пи-са-ти $[] \OML/cmm/m/it/10 A
+ \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 span []$\T2A/cmr/m/n/10 . 
  []
 
 [20]
-Overfull \hbox (32.77724pt too wide) in paragraph at lines 1410--1440
+Overfull \hbox (32.77724pt too wide) in paragraph at lines 1424--1454
 \OMS/cmsy/m/n/10 8\U/msb/m/n/10 A \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 Mat\OT1/c
 mr/m/n/10 (2 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 2) : \OML/cmm/m/it/10 AB\U/ms
 b/m/n/10 A \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 A\OT1/cmr/m/n/10 (\OML/cmm/m/it/1
@@ -1486,71 +1480,80 @@ OML/cmm/m/it/10 A [] \OT1/cmr/m/n/10 =
  []
 
 [21] [22]
-Overfull \hbox (0.53387pt too wide) in paragraph at lines 1577--1577
+Overfull \hbox (0.53387pt too wide) in paragraph at lines 1591--1591
 []\T2A/cmr/bx/n/12 Матриця лi-нiй-но-го опе-ра-то-ра, що по-бу-до-ва-на за лi-н
 iй-ним опе-ра-то-ром 
  []
 
 [23] [24]
-Overfull \hbox (2.95195pt too wide) in paragraph at lines 1831--1831
+Overfull \hbox (5.3868pt too wide) in paragraph at lines 1845--1845
 []\T2A/cmr/m/it/10 Навiщо це все, дi-зна-№-мось ско-ро. А за-раз бу-де не-ве-ли
--чкий вiд-ступ, до опе-ра-то-рiв ми ще по-вер-не-мось 
+-чкий вiд-ступ, до опе-ра-то-рiв ми ще по-вер-не-мось. 
  []
 
 [25]
-Overfull \hbox (12.9611pt too wide) in paragraph at lines 1836--1837
+Overfull \hbox (12.9611pt too wide) in paragraph at lines 1850--1851
 [][]\T2A/cmr/bx/n/10 Definition 3.1.1 []Ма-три-цею лi-нiй-но-го опе-ра-то-ра \T
 2A/cmr/m/n/10 на-зи-ва-ють та-бли-цю, що мi-стить роз-клад ко-жно-го
  []
 
 
-Overfull \hbox (21.41498pt too wide) in paragraph at lines 1879--1944
+Overfull \hbox (21.41498pt too wide) in paragraph at lines 1893--1958
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^UA\OT1/cmr/m/n/10 )[] = \OML/cmm/m/it/10 ^^
 UA[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^U\U/msb/m/n/10 A[] \OT1/cmr/m/n/10 = 
 \OML/cmm/m/it/10 ^^U [] \OT1/cmr/m/n/10 = [] = [] []$
  []
 
 [26]
-Overfull \hbox (21.73581pt too wide) in paragraph at lines 2010--2016
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2011.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 2011.
+
+[27]
+Overfull \hbox (21.73581pt too wide) in paragraph at lines 2052--2058
 \OT1/cmr/m/n/10 = [] +\OML/cmm/m/it/10 F\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; 
 [] ; x[]; x[]; x[]; [] ; x[]; x[]; x[]; [] ; x[]\OT1/cmr/m/n/10 ) +
  []
 
 
-Overfull \hbox (10.92688pt too wide) in paragraph at lines 2010--2016
+Overfull \hbox (10.92688pt too wide) in paragraph at lines 2052--2058
 \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 F\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; [] ;
  x[]; x[]; x[]; [] ; x[]; x[]; x[]; [] ; x[]\OT1/cmr/m/n/10 ) + []$ 
  []
 
-[27]
-Overfull \hbox (3.20668pt too wide) in paragraph at lines 2018--2018
+
+Overfull \hbox (3.20668pt too wide) in paragraph at lines 2060--2060
 []\T2A/cmr/bx/n/12 Трошки про пе-ре-ста-нов-ки та №ди-нiсть ко-со-си-ме-три-чно
 -го фун-кцiо-на-лу 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2035--2057
+Underfull \hbox (badness 10000) in paragraph at lines 2077--2099
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2058--2075
+Underfull \hbox (badness 10000) in paragraph at lines 2100--2117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2058--2075
+Underfull \hbox (badness 10000) in paragraph at lines 2100--2117
 
  []
 
-
-Overfull \hbox (10.55891pt too wide) in paragraph at lines 2088--2090
+[28]
+Overfull \hbox (10.55891pt too wide) in paragraph at lines 2130--2132
 \T2A/cmr/m/n/10 роз-клад не № одно-зна-чним, але в усiх роз-кла-дах збе-рi-га-№
 -ться пар-нiсть/непарнiсть кiль-ко-стi мно-жни-кiв. 
  []
 
-[28]
-Overfull \hbox (34.8457pt too wide) in paragraph at lines 2141--2145
+
+Overfull \hbox (34.8457pt too wide) in paragraph at lines 2184--2188
 \OML/cmm/m/it/10 ^^[[]F\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]; [] ; x[]; [][]; x
 []; [] ; x[]; [][]; x[]; [] ; x[]\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 F\OT1/cmr
 /m/n/10 (\OML/cmm/m/it/10 x[]; [] ; x[]; [][]; x[]; [] ; x[]; [][]; x[]; [] ; x
@@ -1558,78 +1561,116 @@ Overfull \hbox (34.8457pt too wide) in paragraph at lines 2141--2145
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2152--2155
+Underfull \hbox (badness 10000) in paragraph at lines 2199--2236
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2170--2198
+Underfull \hbox (badness 10000) in paragraph at lines 2199--2236
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 2170--2198
-
- []
-
-
-Overfull \hbox (18.10446pt too wide) in paragraph at lines 2170--2198
+Overfull \hbox (18.10446pt too wide) in paragraph at lines 2199--2236
 \OT1/cmr/m/n/10 =[]\OMS/cmsy/m/n/10 )  \OML/cmm/m/it/10 F\OT1/cmr/m/n/10 (\OML/
 cmm/m/it/10 x[]; x[]; x[]\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 F [] \OT1/cmr/m/n
 /10 = [] [] [] \OML/cmm/m/it/10 x[]x[]x[]F\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 e[]
 ; e[]; e[]\OT1/cmr/m/n/10 )[]$ 
  []
 
-[29]
+[29] [30]
 
-LaTeX Warning: Command \CYRM invalid in math mode on input line 2221.
+LaTeX Warning: Command \CYRM invalid in math mode on input line 2263.
 
 Missing character: There is no М in font cmr10!
 
-Overfull \hbox (30.53632pt too wide) in paragraph at lines 2228--2244
+Overfull \hbox (30.53632pt too wide) in paragraph at lines 2268--2284
 \T2A/cmr/m/it/10 Всi щой-но пе-ре-лi-че-нi вла-сти-во-стi ви-пли-ва-ють з озна-
 че-н-ня де-тер-мi-нан-та - $\OML/cmm/m/it/10 n$\T2A/cmr/m/it/10 -лiнiйний ко-со
 -си-ме-три-чний
  []
 
-[30]
-Overfull \hbox (9.7728pt too wide) in paragraph at lines 2244--2249
+
+Overfull \hbox (9.7728pt too wide) in paragraph at lines 2284--2289
 \T2A/cmr/m/n/10 Переставимо мно-жни-ки та-ким чи-ном, щоб дру-гий iн-декс йшов 
 ну-ме-ра-цi-№ю $\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 2\OML/cmm/m
 /it/10 ; [] ; n$\T2A/cmr/m/n/10 . Що вiд-бу-ва-№-ться
  []
 
 
-Overfull \hbox (46.92131pt too wide) in paragraph at lines 2260--2289
+Overfull \hbox (46.92131pt too wide) in paragraph at lines 2300--2329
 \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 b[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 c[]
 \OT1/cmr/m/n/10 ) [] [] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 a[] [] [] \OT1/cm
 r/m/n/10 + [] + (\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 1)[]\OML/cmm/m/it/10 a[] [
 ] [] \OT1/cmr/m/n/10 =$ 
  []
 
-[31] [32] [33]
-Overfull \hbox (5.48436pt too wide) in paragraph at lines 2446--2466
-[][]\T2A/cmr/bx/n/10 Example 3.5.5 []\T2A/cmr/m/n/10 У нас № ма-три-ця $\U/msb/
+[31] [32]
+Underfull \hbox (badness 10000) in paragraph at lines 2358--2376
+
+ []
+
+[33]
+Overfull \hbox (11.79897pt too wide) in paragraph at lines 2444--2497
+[] \U/msb/m/n/10 N[] \OT1/cmr/m/n/10 = [] = [] [] \U/msb/m/n/10 N[]$\T2A/cmr/m/
+n/10 . 
+ []
+
+
+Overfull \hbox (6.2562pt too wide) in paragraph at lines 2515--2550
+[][]\T2A/cmr/bx/n/10 Example 3.4.5 []\T2A/cmr/m/n/10 Об-чи-сли-ти \T2A/cmr/bx/n
+/10 ви-зна-чник Ван-дер-мон-да $\OT1/cmr/m/n/10 ^^A(\OML/cmm/m/it/10 x[]; x[]; 
+[] ; x[]\OT1/cmr/m/n/10 ) = []$\T2A/cmr/m/n/10 . 
+ []
+
+
+Overfull \hbox (57.50893pt too wide) in paragraph at lines 2515--2550
+\OT1/cmr/m/n/10 = [] = (\OML/cmm/m/it/10 x[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it
+/10 x[]\OT1/cmr/m/n/10 )(\OML/cmm/m/it/10 x[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/i
+t/10 x[]\OT1/cmr/m/n/10 ) [] (\OML/cmm/m/it/10 x[] \OMS/cmsy/m/n/10 ^^@ \OML/cm
+m/m/it/10 x[]\OT1/cmr/m/n/10 ) [] =
+ []
+
+
+Overfull \hbox (3.09012pt too wide) in paragraph at lines 2515--2550
+\T2A/cmr/m/n/10 Отримали ви-зна-чник Ван-дер-мон-да $\OT1/cmr/m/n/10 ^^A(\OML/c
+mm/m/it/10 x[]; x[]; [] ; x[]\OT1/cmr/m/n/10 )$ \T2A/cmr/m/n/10 роз-мiр-нi-стю 
+на один мен-ше. Ана-ло-гi-чним чи-ном
+ []
+
+[34] [35]
+Underfull \hbox (badness 10000) in paragraph at lines 2630--2647
+
+ []
+
+
+Overfull \hbox (5.48436pt too wide) in paragraph at lines 2660--2680
+[][]\T2A/cmr/bx/n/10 Example 3.5.8 []\T2A/cmr/m/n/10 У нас № ма-три-ця $\U/msb/
 m/n/10 I \OT1/cmr/m/n/10 = []$\T2A/cmr/m/n/10 . На-сту-пнi пе-ре-лi-че-нi ма-тр
 и-цi бу-дуть еле-мен-тар-ни-ми: 
  []
 
-[34]
-Overfull \hbox (7.78711pt too wide) in paragraph at lines 2476--2501
+[36]
+Overfull \hbox (7.78711pt too wide) in paragraph at lines 2690--2721
 \T2A/cmr/m/n/10 У рiв-ня-н-ня (**) до-мно-жи-мо оби-двi ча-сти-нi рiв-но-стi на
  пе-ре-тво-ре-н-ня $\OML/cmm/m/it/10 T[]; T[]; [] ; T[]$\T2A/cmr/m/n/10 , щоб п
 ра-во-руч
  []
 
-[35] [36]
-Overfull \hbox (18.77979pt too wide) in paragraph at lines 2618--2620
+
+Overfull \hbox (39.18013pt too wide) in paragraph at lines 2723--2755
+[][]\OMS/cmsy/m/n/10 ! [] [] [] [] [] \OT1/cmr/m/n/10 = []$\T2A/cmr/m/n/10 . 
+ []
+
+[37]
+Overfull \hbox (18.77979pt too wide) in paragraph at lines 2877--2879
 [][]\T2A/cmr/bx/n/10 Definition 3.8.5 []Мi-нор-ним ран-гом \T2A/cmr/m/n/10 ма-т
 ри-цi $\U/msb/m/n/10 A$ \T2A/cmr/m/n/10 на-зи-ва-№-ться роз-мiр-нiсть ма-кси-ма
 ль-но-го за роз-мiр-нi-стю
  []
 
-
-Overfull \hbox (37.12587pt too wide) in paragraph at lines 2640--2661
+[38]
+Overfull \hbox (37.12587pt too wide) in paragraph at lines 2899--2920
 []\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 1)[]\OML/cmm/m/it/10 a[]
 M[] \OT1/cmr/m/n/10 + (\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 1)[]\OML/cmm/m/it/10
  a[]M[] \OT1/cmr/m/n/10 + [] + (\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 1)[]\OML/cm
@@ -1638,43 +1679,43 @@ L/cmm/m/it/10 a[]M[]$
  []
 
 
-Overfull \hbox (0.83194pt too wide) in paragraph at lines 2640--2661
+Overfull \hbox (0.83194pt too wide) in paragraph at lines 2899--2920
 \T2A/cmr/m/n/10 I мно-жи-мо на $\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m
 /n/10 1)$\T2A/cmr/m/n/10 , якщо це по-трi-бно. Ко-жну дрiб для про-сто-ти я по-
 зна-чу вiд-по-вiд-но $\OT1/cmr/m/n/10 ^^@[]\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 ^
 ^@[]\OML/cmm/m/it/10 ; [] ; \OT1/cmr/m/n/10 ^^@[]$
  []
 
-[37]
-Overfull \hbox (4.77724pt too wide) in paragraph at lines 2693--2714
+[39]
+Overfull \hbox (4.77724pt too wide) in paragraph at lines 2952--2973
 \T2A/cmr/m/n/10 Розгляду№мо мi-но-ри по-ряд-ку 3, що обво-дить наш по-пе-ре-днi
 й мi-нор по-ряд-ку 2. €х всьо-го 2: $\OML/cmm/m/it/10 M[]; M[]$\T2A/cmr/m/n/10 
 . 
  []
 
 
-Overfull \hbox (8.1779pt too wide) in paragraph at lines 2717--2719
+Overfull \hbox (8.1779pt too wide) in paragraph at lines 2976--2978
 \T2A/cmr/m/n/10 Ми бу-де-мо зво-ди-ти ма-три-цю $\U/msb/m/n/10 A$ \T2A/cmr/m/n/
 10 до сту-пiн-ча-то-го ви-гля-ду еле-мен-тар-ни-ми пе-ре-тво-ре-н-ня-ми. Еле-ме
 н-тар-нi
  []
 
-[38]
-Overfull \hbox (4.37328pt too wide) in paragraph at lines 2773--2775
+
+Overfull \hbox (4.37328pt too wide) in paragraph at lines 3032--3034
 []\T2A/cmr/m/n/10 Методом Га-у-са ма-три-цю $\U/msb/m/n/10 A$ \T2A/cmr/m/n/10 п
 е-ре-тво-ри-мо в ма-три-цю сту-пiн-ча-то-го ви-гля-ду. Да-лi пе-ре-пи-су-№-мо о
 нов-ле-ну
  []
 
-
-Overfull \hbox (3.44434pt too wide) in paragraph at lines 2847--2853
+[40]
+Overfull \hbox (3.44434pt too wide) in paragraph at lines 3106--3112
 \T2A/cmr/m/n/10 Отже, $[] \OMS/cmsy/m/n/10 ^^@ []$ \T2A/cmr/m/n/10 - розв'язок 
 одно-рi-дно-го рiв-ня-н-ня, що ма№ та-ку фун-да-мен-таль-ну си-сте-му: $\OMS/cm
 sy/m/n/10 f[]\OML/cmm/m/it/10 ; [] ; []\OMS/cmsy/m/n/10 g$\T2A/cmr/m/n/10 . 
  []
 
-[39]
-Overfull \hbox (9.60504pt too wide) in paragraph at lines 2860--2865
+
+Overfull \hbox (9.60504pt too wide) in paragraph at lines 3119--3124
 \T2A/cmr/m/n/10 Зрозумiло, що $\OML/cmm/m/it/10 span\OMS/cmsy/m/n/10 f[]\OML/cm
 m/m/it/10 ; [] ; []\OMS/cmsy/m/n/10 g ^^Z \OML/cmm/m/it/10 span\OMS/cmsy/m/n/10
  f[]\OML/cmm/m/it/10 ; [] ; []; []\OMS/cmsy/m/n/10 g$\T2A/cmr/m/n/10 . То-дi ще
@@ -1683,142 +1724,141 @@ n\OMS/cmsy/m/n/10 f[]\OML/cmm/m/it/10 ; [] ; []\OMS/cmsy/m/n/10 g \OT1/cmr/m/n/
 10 =
  []
 
-[40]
-Overfull \hbox (0.99184pt too wide) in paragraph at lines 2873--2905
+[41]
+Overfull \hbox (0.99184pt too wide) in paragraph at lines 3132--3164
 \T2A/cmr/m/n/10 Спробу№мо зна-йти зв'язок. Для цьо-го по-бу-ду-№-мо ма-три-цю о
 пе-ра-то-ра $\U/msb/m/n/10 U$\T2A/cmr/m/n/10 : (тут $\OML/cmm/m/it/10 U$ \T2A/c
 mr/m/n/10 - це якийсь опе-ра-тор): 
  []
 
-[41]
-Overfull \hbox (14.99391pt too wide) in paragraph at lines 2942--2943
-[][]\T2A/cmr/bx/n/10 Remark 2.11.2 []\T2A/cmr/m/n/10 Зна-хо-дже-н-ня ма-три-цi 
-ду-жа схо-жа з ви-пад-ком iз пун-кту 2.7. Тут вста-но-ви-ти оди-ни-чний
- []
-
-
-Overfull \hbox (22.44069pt too wide) in paragraph at lines 2962--3001
+[42]
+Overfull \hbox (22.44069pt too wide) in paragraph at lines 3221--3260
 \T2A/cmr/m/n/10 В обох про-сто-рах роз-гля-да-№-мо ба-зис $\OMS/cmsy/m/n/10 f[]
 \OML/cmm/m/it/10 ; []; []\OMS/cmsy/m/n/10 g$\T2A/cmr/m/n/10 . Зна-йти ма-три-цю
  лi-нiй-но-го опе-ра-то-ра. 
  []
 
-[42] [43]
-Overfull \hbox (2.21402pt too wide) in paragraph at lines 3126--3126
+[43] [44]
+Overfull \hbox (2.21402pt too wide) in paragraph at lines 3385--3385
 []\T2A/cmr/bx/n/12 Матриця опе-ра-то-ра в ба-зи-сi, роз-ши-рен-но-му з ба-зи-су
  в iн-ва-рi-ан-тно-му
  []
 
 
-Overfull \hbox (12.49117pt too wide) in paragraph at lines 3127--3163
+Overfull \hbox (12.49117pt too wide) in paragraph at lines 3386--3422
 \T2A/cmr/m/n/10 Продовжимо йо-го до ба-зи-су $\OML/cmm/m/it/10 L$\T2A/cmr/m/n/1
 0 , ма-№-мо $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 f[]; [] ; f[]; f[]; [] ; f[]\OM
 S/cmsy/m/n/10 g$\T2A/cmr/m/n/10 . Ме-та: зна-йти ма-три-цю для роз-ши-ре-но-го
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3127--3163
+Underfull \hbox (badness 10000) in paragraph at lines 3386--3422
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3127--3163
+Underfull \hbox (badness 10000) in paragraph at lines 3386--3422
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 3166--3187
+Underfull \hbox (badness 10000) in paragraph at lines 3425--3446
 
  []
 
-[44] [45] [46]
-Overfull \hbox (9.74515pt too wide) in paragraph at lines 3401--3402
+[45] [46] [47]
+Overfull \hbox (9.74515pt too wide) in paragraph at lines 3662--3663
 [][]\T2A/cmr/bx/n/10 Definition 4.2.1 []\T2A/cmr/m/n/10 Ви-раз $[][][]$ на-зи-в
 а-№-ться \T2A/cmr/bx/n/10 ха-ра-кте-ри-сти-чним мно-го-чле-ном\T2A/cmr/m/n/10 ,
  а са-ме рiв-ня-н-ня
  []
 
-[47]
-Overfull \hbox (56.59792pt too wide) in paragraph at lines 3473--3596
+[48]
+Overfull \hbox (56.59792pt too wide) in paragraph at lines 3736--3859
 [] \OT1/cmr/m/n/10 + [] + [] + []$ 
  []
 
-[48]
-Overfull \hbox (28.02872pt too wide) in paragraph at lines 3623--3625
+[49]
+Overfull \hbox (28.02872pt too wide) in paragraph at lines 3886--3888
 \T2A/cmr/m/n/10 Оператор $\OML/cmm/m/it/10 A$ \T2A/cmr/m/n/10 на-зи-ва-ють \T2A
 /cmr/bx/n/10 дi-а-го-на-лi-зов-ним\T2A/cmr/m/n/10 , якщо ма-три-ця опе-ра-то-ра
  в за-да-но-му ба-зи-сi № дi-а-го-на-лi-зо-ва-ною,
  []
 
 
-Overfull \hbox (3.92697pt too wide) in paragraph at lines 3640--3662
+Overfull \hbox (3.92697pt too wide) in paragraph at lines 3903--3925
 []$ \T2A/cmr/m/n/10 Да-но: $\OML/cmm/m/it/10 A$ \T2A/cmr/m/n/10 - дi-а-го-на-лi
 -зо-ва-ний, то-дi для за-да-но-го ба-зи-су ма-три-ця опе-ра-то-ру $\U/msb/m/n/1
 0 A[] \OT1/cmr/m/n/10 = []$\T2A/cmr/m/n/10 .
  []
 
 
-Overfull \hbox (3.56003pt too wide) in paragraph at lines 3640--3662
+Overfull \hbox (3.56003pt too wide) in paragraph at lines 3903--3925
 \T2A/cmr/m/n/10 Тодi з цих рiв-но-стей мо-жна твер-ди-ти, що $\OML/cmm/m/it/10 
 f[]; [] ; f[]$ \T2A/cmr/m/n/10 - вла-снi ве-кто-ри. То-му ми ма-№-мо ба-зис $\O
 MS/cmsy/m/n/10 f\OML/cmm/m/it/10 f[]; [] ; f[]\OMS/cmsy/m/n/10 g$
  []
 
-[49] [50] [51] [52]
-Underfull \hbox (badness 10000) in paragraph at lines 4083--4118
+[50] [51] [52] [53]
+Underfull \hbox (badness 10000) in paragraph at lines 4346--4381
 
  []
 
-[53]
-Overfull \hbox (21.86807pt too wide) in paragraph at lines 4159--4178
+[54]
+Overfull \hbox (21.86807pt too wide) in paragraph at lines 4422--4441
 \T2A/cmr/m/it/10 Чи мо-же-мо ми по-дов-жи-ти один лан-цюг на два но-вих при-№д-
 на-них або бiль-ше? Нi. Мо-жна при-пу-сти-ти,
  []
 
 
-Overfull \hbox (31.12149pt too wide) in paragraph at lines 4180--4202
-[]\OML/cmm/m/it/10 B\OMS/cmsy/m/n/10 j[]$\T2A/cmr/m/n/10 , то си-сте-ма $\OMS/c
-msy/m/n/10 f\OML/cmm/m/it/10 f[]; [] ; f[]\OMS/cmsy/m/n/10 g$ \T2A/cmr/m/n/10 в
- про-сто-рi $[]\OML/cmm/m/it/10 B$ \T2A/cmr/m/n/10 № л.н.з., то-му роз-ши-ри-мо
- до ба-зи-су $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 f[]; [] ; f[]; g[]; [] ; g[]\O
-MS/cmsy/m/n/10 g$\T2A/cmr/m/n/10 . 
+Overfull \hbox (28.9071pt too wide) in paragraph at lines 4443--4465
+[] \OML/cmm/m/it/10 B\OMS/cmsy/m/n/10 j[]$\T2A/cmr/m/n/10 , то си-сте-ма $\OMS/
+cmsy/m/n/10 f\OML/cmm/m/it/10 f[]; [] ; f[]\OMS/cmsy/m/n/10 g$ \T2A/cmr/m/n/10 
+в про-сто-рi $[] \OML/cmm/m/it/10 B$ \T2A/cmr/m/n/10 № л.н.з., то-му роз-ши-ри-
+мо до ба-зи-су $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 f[]; [] ; f[]; g[]; [] ; g[]
+\OMS/cmsy/m/n/10 g$\T2A/cmr/m/n/10 . 
  []
 
-[54] [55]
-Underfull \hbox (badness 10000) in paragraph at lines 4279--4322
-
- []
-
-[56] [57]
-Overfull \hbox (12.14075pt too wide) in paragraph at lines 4397--4399
+[55] [56] [57] [58] [59]
+Overfull \hbox (12.14075pt too wide) in paragraph at lines 4793--4795
 \T2A/cmr/m/n/10 Сумарна роз-мiр-нiсть клi-тин Жор-да-на до-рiв-ню№ кра-тно-стi 
 вла-сних чи-сел як ко-ре-ня ха-ра-кте-ри-сти-чно-го
  []
 
-[58]
-Overfull \hbox (7.8138pt too wide) in paragraph at lines 4448--4535
-\T2A/cmr/m/n/10 Особлива ува-га до фун-кцiЁ $\OML/cmm/m/it/10 f \OMS/cmsy/m/n/1
-0 2 \OML/cmm/m/it/10 C[]\OT1/cmr/m/n/10 (\U/msb/m/n/10 R\OT1/cmr/m/n/10 )$\T2A/
-cmr/m/n/10 . Ви-ни-ка№ пи-та-н-ня, як зна-йти $\OML/cmm/m/it/10 f\OT1/cmr/m/n/1
-0 (\OML/cmm/m/it/10 A\OT1/cmr/m/n/10 )$\T2A/cmr/m/n/10 . Са-ма про-це-ду-ра ана
--ло-гi-чна,
+[60]
+Underfull \hbox (badness 10000) in paragraph at lines 4843--4927
+
  []
 
-[59] [60]
-Overfull \hbox (35.60333pt too wide) in paragraph at lines 4577--4578
+[61]
+Overfull \hbox (7.8138pt too wide) in paragraph at lines 4928--4930
+[]\T2A/cmr/m/n/10 Особлива ува-га до фун-кцiЁ $\OML/cmm/m/it/10 f \OMS/cmsy/m/n
+/10 2 \OML/cmm/m/it/10 C[]\OT1/cmr/m/n/10 (\U/msb/m/n/10 R\OT1/cmr/m/n/10 )$\T2
+A/cmr/m/n/10 . Ви-ни-ка№ пи-та-н-ня, як зна-йти $\OML/cmm/m/it/10 f\OT1/cmr/m/n
+/10 (\OML/cmm/m/it/10 A\OT1/cmr/m/n/10 )$\T2A/cmr/m/n/10 . Са-ма про-це-ду-ра а
+на-ло-гi-чна,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4928--4930
+
+ []
+
+[62]
+Overfull \hbox (35.60333pt too wide) in paragraph at lines 4975--4976
 [][]\T2A/cmr/bx/n/10 Definition 5.1.4 []Ев-клi-до-вим про-сто-ром \T2A/cmr/m/n/
 10 на-зи-ва-ють лi-нiй-ний про-стiр $\OML/cmm/m/it/10 E$\T2A/cmr/m/n/10 , на як
 о-му за-да-но пiв-то-ра-лi-нiй-ний
  []
 
 
-Overfull \hbox (16.46025pt too wide) in paragraph at lines 4599--4600
+Overfull \hbox (16.46025pt too wide) in paragraph at lines 4997--4998
 [][]\T2A/cmr/bx/n/10 Remark 5.1.6 []\T2A/cmr/m/n/10 Вар-то за-зна-чи-ти, що для
  ев-клi-до-во-го про-сто-ру мо-же бу-ти ви-зна-че-но де-кiль-ка ска-ляр-них
  []
 
-[61]
-Overfull \hbox (54.24466pt too wide) in paragraph at lines 4641--4643
+[63]
+Overfull \hbox (54.24466pt too wide) in paragraph at lines 5039--5041
 [][]\T2A/cmr/bx/n/10 Example 5.1.10 []\T2A/cmr/m/n/10 Зокре-ма ма-№-мо ска-ляр-
 ний до-бу-ток $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 f; g\OT1/cmr/m/n/10 ) = [][] \
 OML/cmm/m/it/10 f\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 )\OML/cmm/m
@@ -1827,12 +1867,12 @@ x$\T2A/cmr/m/n/10 . За не-рiв-нi-стю Кошi-Буняковського,
  []
 
 
-Overfull \hbox (3.08574pt too wide) in paragraph at lines 4673--4681
+Overfull \hbox (3.08574pt too wide) in paragraph at lines 5071--5079
 [][] [] [] \OT1/cmr/m/n/10 = [] =
  []
 
-[62]
-Overfull \hbox (21.4262pt too wide) in paragraph at lines 4752--4753
+[64]
+Overfull \hbox (21.4262pt too wide) in paragraph at lines 5150--5151
 [][]\T2A/cmr/bx/n/10 Proposition 5.3.3 []\T2A/cmr/m/n/10 За-да-но $\OT1/cmr/m/n
 /10 (\OML/cmm/m/it/10 E; \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^A\OML/cmm/m/it/10 
 ; \OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 ))$ \T2A/cmr/m/n/10 - ев-клi-до-вий про-с
@@ -1841,7 +1881,7 @@ MS/cmsy/m/n/10 g$ \T2A/cmr/m/n/10 - ор-то-го-наль-на
  []
 
 
-Overfull \hbox (21.4262pt too wide) in paragraph at lines 4768--4770
+Overfull \hbox (21.4262pt too wide) in paragraph at lines 5167--5169
 [][]\T2A/cmr/bx/n/10 Proposition 5.3.4 []\T2A/cmr/m/n/10 За-да-но $\OT1/cmr/m/n
 /10 (\OML/cmm/m/it/10 E; \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^A\OML/cmm/m/it/10 
 ; \OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 ))$ \T2A/cmr/m/n/10 - ев-клi-до-вий про-с
@@ -1850,20 +1890,20 @@ MS/cmsy/m/n/10 g$ \T2A/cmr/m/n/10 - ор-то-го-наль-на
  []
 
 
-Overfull \hbox (15.49698pt too wide) in paragraph at lines 4777--4807
+Overfull \hbox (15.49698pt too wide) in paragraph at lines 5176--5206
 \T2A/cmr/m/n/10 Припустимо, що пiд час ор-то-го-на-лi-за-цiЁ в нас бу-ло $\OMS/
 cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; [] ; x[]\OMS/cmsy/m/n/10 g$ \T2A/cmr/m/n/10 
 л.н.з., а по-тiм ра-по-то-во $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x[]; [] ; x[];
  x[]\OMS/cmsy/m/n/10 g$
  []
 
-[63]
-Underfull \hbox (badness 10000) in paragraph at lines 4809--4852
+[65]
+Underfull \hbox (badness 10000) in paragraph at lines 5208--5251
 
  []
 
-[64]
-Overfull \hbox (12.55617pt too wide) in paragraph at lines 4868--4899
+[66]
+Overfull \hbox (12.55617pt too wide) in paragraph at lines 5267--5298
 \T2A/cmr/m/n/10 Задано $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 E; \OT1/cmr/m/n/10 (\
 OMS/cmsy/m/n/10 ^^A\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 ))$ \
 T2A/cmr/m/n/10 - ев-клi-до-вий про-стiр та до-вiль-ний ба-зис $\OMS/cmsy/m/n/10
@@ -1872,23 +1912,23 @@ T2A/cmr/m/n/10 - ев-клi-до-вий про-стiр та до-вiль-ний ба-зис $\OMS/cmsy/m/n/10
  роз-кла-да-№-ться
  []
 
-[65]
-Underfull \hbox (badness 10000) in paragraph at lines 4994--5000
+[67]
+Underfull \hbox (badness 10000) in paragraph at lines 5393--5399
 
  []
 
-[66]
-Underfull \hbox (badness 10000) in paragraph at lines 5003--5012
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5013--5023
+[68]
+Underfull \hbox (badness 10000) in paragraph at lines 5402--5411
 
  []
 
 
-Overfull \hbox (28.07945pt too wide) in paragraph at lines 5035--5037
+Underfull \hbox (badness 10000) in paragraph at lines 5412--5422
+
+ []
+
+
+Overfull \hbox (28.07945pt too wide) in paragraph at lines 5434--5436
 []\T2A/cmr/m/n/10 Ми вже з'ясували, що для ев-клi-до-во-го про-сто-ру $\OT1/cmr
 /m/n/10 (\OML/cmm/m/it/10 E; \OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 ^^A\OML/cmm/m/it
 /10 ; \OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 ))$ \T2A/cmr/m/n/10 та пiд-про-сто-ру
@@ -1896,21 +1936,21 @@ Overfull \hbox (28.07945pt too wide) in paragraph at lines 5035--5037
  []
 
 
-Overfull \hbox (5.66507pt too wide) in paragraph at lines 5048--5070
+Overfull \hbox (5.66507pt too wide) in paragraph at lines 5447--5469
 \T2A/cmr/m/n/10 пiд-про-стiр $\OML/cmm/m/it/10 L \OT1/cmr/m/n/10 = \OML/cmm/m/i
 t/10 span\OMS/cmsy/m/n/10 f[]\OML/cmm/m/it/10 ; []\OMS/cmsy/m/n/10 g$\T2A/cmr/m
 /n/10 , де $[] \OT1/cmr/m/n/10 = [][] \OML/cmm/m/it/10 ; [] \OT1/cmr/m/n/10 = [
 ][]$\T2A/cmr/m/n/10 . Зна-йти ор-то-го-наль-ну
  []
 
-[67]
-Overfull \hbox (51.2656pt too wide) in paragraph at lines 5073--5101
+[69]
+Overfull \hbox (51.2656pt too wide) in paragraph at lines 5472--5500
 []  \OT1/cmr/m/n/10 =[]\OMS/cmsy/m/n/10 )  []  \OT1/cmr/m/n/10 =[]\OMS/cmsy/m/n
 /10 )  []$ 
  []
 
 
-Overfull \hbox (11.40996pt too wide) in paragraph at lines 5138--5139
+Overfull \hbox (11.40996pt too wide) in paragraph at lines 5537--5538
 [][]\T2A/cmr/bx/n/10 Proposition 5.6.2 []\T2A/cmr/m/n/10 За-да-но два ев-клi-до
 -вих про-сто-ри $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 E[]; \OT1/cmr/m/n/10 (\OMS/c
 msy/m/n/10 ^^A\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 )[])\OML/c
@@ -1920,14 +1960,14 @@ m/n/10 ^^A\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 )[])$ \T2A/cmr
 /m/n/10 ! \OML/cmm/m/it/10 E[]$ \T2A/cmr/m/n/10 - iзо-мор-фiзм.
  []
 
-[68]
-Overfull \hbox (21.36572pt too wide) in paragraph at lines 5181--5182
+[70]
+Overfull \hbox (21.36572pt too wide) in paragraph at lines 5580--5581
 []\T2A/cmr/m/it/10 Наведене до-ве-де-н-ня бу-де май-же че-сним, оскiль-ки це сп
 ра-цьо-ву№ ли-ше для скiн-чен-но-ви-мiр-них про-сто-рiв. 
  []
 
-[69]
-Overfull \hbox (1.25348pt too wide) in paragraph at lines 5249--5263
+[71]
+Overfull \hbox (1.25348pt too wide) in paragraph at lines 5648--5662
 \T2A/cmr/m/n/10 3) $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; \OT1/cmr/m/n/10 (\OML/
 cmm/m/it/10 AB\OT1/cmr/m/n/10 )[]\OML/cmm/m/it/10 y\OT1/cmr/m/n/10 ) = (\OML/cm
 m/m/it/10 ABx; y\OT1/cmr/m/n/10 ) [] (\OML/cmm/m/it/10 Az; y\OT1/cmr/m/n/10 ) =
@@ -1937,21 +1977,21 @@ r/m/n/10 ) [] (\OML/cmm/m/it/10 Bx; w\OT1/cmr/m/n/10 ) = (\OML/cmm/m/it/10 x; B
  []
 
 
-Overfull \hbox (38.50761pt too wide) in paragraph at lines 5275--5372
+Overfull \hbox (38.50761pt too wide) in paragraph at lines 5675--5772
 \T2A/cmr/m/n/10 Нарештi, за-ува-жи-мо, що $[][] \OT1/cmr/m/n/10 = [][] = [][] =
 
  []
 
-[70] [71]
-Overfull \hbox (0.4292pt too wide) in paragraph at lines 5422--5440
+[72] [73]
+Overfull \hbox (0.4292pt too wide) in paragraph at lines 5823--5841
 \T2A/cmr/m/n/10 Нехай $\OML/cmm/m/it/10 ^^U[]$ \T2A/cmr/m/n/10 - вла-сне чи-сло
  $\OML/cmm/m/it/10 A$\T2A/cmr/m/n/10 , роз-гля-не-мо опе-ра-тор $\OML/cmm/m/it/
 10 B \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 A \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10
  ^^U[]I$ \T2A/cmr/m/n/10 - теж са-мо-спря-же-ний за вла-сти-во-стя-ми.
  []
 
-[72]
-Overfull \hbox (11.01825pt too wide) in paragraph at lines 5489--5523
+[74]
+Overfull \hbox (11.01825pt too wide) in paragraph at lines 5890--5924
 \T2A/cmr/m/n/10 Нехай $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 f[]; [] ; f[]\OMS/cms
 y/m/n/10 g$ \T2A/cmr/m/n/10 - якийсь ор-то-нор-мо-ва-ний ба-зис. Си-сте-ма $\OM
 S/cmsy/m/n/10 f\OML/cmm/m/it/10 g[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 Uf[]; []
@@ -1959,27 +1999,27 @@ S/cmsy/m/n/10 f\OML/cmm/m/it/10 g[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 Uf[]; []
 10 - ор-то-нор-мо-ва-на.
  []
 
-[73] [74]
-Overfull \hbox (4.12946pt too wide) in paragraph at lines 5733--5760
+[75] [76]
+Overfull \hbox (4.12946pt too wide) in paragraph at lines 6134--6161
 \OT1/cmr/m/n/10 = [] [] = [] [] []$ 
  []
 
 
-Overfull \hbox (8.80058pt too wide) in paragraph at lines 5733--5760
+Overfull \hbox (8.80058pt too wide) in paragraph at lines 6134--6161
 \T2A/cmr/m/n/10 Де $\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 7! [] \OT1/cmr/m/n/10 =
  []  \OML/cmm/m/it/10 y \OMS/cmsy/m/n/10 7! [] \OT1/cmr/m/n/10 = []$ \T2A/cmr/m
 /n/10 в си-лу iзо-мор-фно-стi. По-зна-чи-мо та-кож $\U/msb/m/n/10 B \OT1/cmr/m/
 n/10 = []$\T2A/cmr/m/n/10 .
  []
 
-[75]
-Overfull \hbox (40.80264pt too wide) in paragraph at lines 5773--5777
+[77]
+Overfull \hbox (40.80264pt too wide) in paragraph at lines 6174--6178
 \T2A/cmr/m/n/10 Навпаки, якщо ма-три-ця бу-ла си-ме-три-чною/кососиметричною, т
 о бу-де бi-лi-нiй-на си-ме-три-чна/кососиметрична
  []
 
-[76]
-Overfull \hbox (2.25636pt too wide) in paragraph at lines 5873--5881
+[78]
+Overfull \hbox (2.25636pt too wide) in paragraph at lines 6274--6282
 \T2A/cmr/m/n/10 Ма-№-мо $\OML/cmm/m/it/10 B[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 
 x; y\OT1/cmr/m/n/10 )$ \T2A/cmr/m/n/10 - си-ме-три-чна. Пiд-ста-ви-мо $\OML/cmm
 /m/it/10 y \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 x$\T2A/cmr/m/n/10 , то то-дi $\OM
@@ -1988,8 +2028,8 @@ L/cmm/m/it/10 B[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; x\OT1/cmr/m/n/10 ) = \OML
 n/10 - отри-ма-ли ква-дра-ти-чну
  []
 
-[77] [78]
-Overfull \hbox (1.37085pt too wide) in paragraph at lines 5961--6019
+[79] [80]
+Overfull \hbox (1.37085pt too wide) in paragraph at lines 6362--6420
 \OML/cmm/m/it/10 A\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 f[]; f[]\OT1/cmr/m/n/10 ) =
  \OML/cmm/m/it/10 A\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 []e[] \OT1/cmr/m/n/10 + \
 OML/cmm/m/it/10 []e[] \OT1/cmr/m/n/10 + [] + \OML/cmm/m/it/10 e[]; f[]\OT1/cmr
@@ -2000,20 +2040,20 @@ OML/cmm/m/it/10 []e[] \OT1/cmr/m/n/10 + [] + \OML/cmm/m/it/10 e[]; f[]\OT1/cmr
  []
 
 
-Overfull \hbox (9.61833pt too wide) in paragraph at lines 5961--6019
+Overfull \hbox (9.61833pt too wide) in paragraph at lines 6362--6420
 \T2A/cmr/m/n/10 Отримали си-сте-му $[]  \OT1/cmr/m/n/10 =[]\OMS/cmsy/m/n/10 )  
 []$\T2A/cmr/m/n/10 . 
  []
 
 
-Overfull \hbox (23.98764pt too wide) in paragraph at lines 5961--6019
+Overfull \hbox (23.98764pt too wide) in paragraph at lines 6362--6420
 \OT1/cmr/m/n/10 ^^A[]$ \T2A/cmr/m/n/10 - ку-то-вий мi-нор, де за-мiсть $\OML/cm
 m/m/it/10 i$\T2A/cmr/m/n/10 -го стов-пчи-ка бу-де стов-пчик, що скла-да-№-ться 
 з чи-сел $\OML/cmm/m/it/10 a[]; a[]; [] ; a[]$\T2A/cmr/m/n/10 .
  []
 
 
-Overfull \hbox (4.79788pt too wide) in paragraph at lines 5961--6019
+Overfull \hbox (4.79788pt too wide) in paragraph at lines 6362--6420
 \T2A/cmr/m/n/10 по-зна-чу за $\OT1/cmr/m/n/10 ^^A[]$\T2A/cmr/m/n/10 . То-дi $\O
 T1/cmr/m/n/10 ^^A[] = (\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 1)[]^^A[] = (\OMS/cm
 sy/m/n/10 ^^@\OT1/cmr/m/n/10 1)[]^^A[]$\T2A/cmr/m/n/10 . Да-лi, фор-му-лою Кра-
@@ -2021,66 +2061,66 @@ sy/m/n/10 ^^@\OT1/cmr/m/n/10 1)[]^^A[]$\T2A/cmr/m/n/10 . Да-лi, фор-му-лою Кра-
  []
 
 
-Overfull \hbox (5.42851pt too wide) in paragraph at lines 5961--6019
+Overfull \hbox (5.42851pt too wide) in paragraph at lines 6362--6420
 \OT1/cmr/m/n/10 = [] [] []$ 
  []
 
-[79] [80]
-Overfull \hbox (4.50343pt too wide) in paragraph at lines 6065--6074
+[81] [82]
+Overfull \hbox (4.50343pt too wide) in paragraph at lines 6466--6475
 []\T2A/cmr/m/n/10 За-да-но $\OML/cmm/m/it/10 L$ \T2A/cmr/m/n/10 - лi-нiй-ний пр
 о-стiр та $\OML/cmm/m/it/10 A$ \T2A/cmr/m/n/10 - ква-дра-ти-чна фор-ма, яка ма№
  ма-три-цю $\U/msb/m/n/10 A \OT1/cmr/m/n/10 = []$\T2A/cmr/m/n/10 . 
  []
 
-[81]
-Overfull \hbox (11.12009pt too wide) in paragraph at lines 6106--6106
+[83]
+Overfull \hbox (11.12009pt too wide) in paragraph at lines 6507--6507
 []\T2A/cmr/bx/n/12 Зведення кри-вих та по-вер-хень дру-го-го по-ряд-ку до ка-но
 -нi-чно-го ви-гля-ду 
  []
 
-[82] [83]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 7202.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 7202.
+[84] [85]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 7603.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 7603.
  (./Linal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 7202.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 7202.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 7603.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 7603.
 
 Package rerunfilecheck Info: File `Linal.out' has not changed.
-(rerunfilecheck)             Checksum: E6AA5ED755F2F389504EB6D82688D8F6;17553.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 7202.
+(rerunfilecheck)             Checksum: 7CF5FA7E6606B8092AFB469BC86CE9A2;17296.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 7603.
  ) 
 Here is how much of TeX's memory you used:
- 38418 strings out of 481239
- 852632 string characters out of 5920378
- 1204532 words of memory out of 5000000
- 52596 multiletter control sequences out of 15000+600000
- 547532 words of font info for 54 fonts, out of 8000000 for 9000
+ 38486 strings out of 481239
+ 853540 string characters out of 5920378
+ 1216052 words of memory out of 5000000
+ 52637 multiletter control sequences out of 15000+600000
+ 554946 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,22n,98p,936b,1178s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texm
-f/fonts/type1/public/cm-super/sfbx0700.pfb></usr/share/texmf/fonts/type1/public
-/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.p
-fb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf
-/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/
-cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pf
-b>
-Output written on Linal.pdf (83 pages, 1721603 bytes).
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+r7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf
+/fonts/type1/public/cm-super/sfbx0700.pfb></usr/share/texmf/fonts/type1/public/
+cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pf
+b></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/
+fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/c
+m-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb
+>
+Output written on Linal.pdf (85 pages, 1728808 bytes).
 PDF statistics:
- 1147 PDF objects out of 1200 (max. 8388607)
- 1027 compressed objects within 11 object streams
- 447 named destinations out of 1000 (max. 500000)
- 492 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1180 PDF objects out of 1200 (max. 8388607)
+ 1058 compressed objects within 11 object streams
+ 458 named destinations out of 1000 (max. 500000)
+ 484 words of extra memory for PDF output out of 10000 (max. 10000000)
 

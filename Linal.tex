@@ -25,27 +25,10 @@
 \fancyhead{}
 \fancyfoot{}
 \parindent 0ex
-\def\huge{\displaystyle}
-\def\defin#1{\textbf{Definition {#1}}}
-\def\ex#1{\textbf{Example {#1}}}
-\def\rm#1{\textbf{Remark {#1}}}
-\def\prp#1{\textbf{Proposition {#1}}}
-\def\lm#1{\textbf{Lemma {#1}}}
-\def\th#1{\textbf{Theorem {#1}}}
-\def\crl#1{\textbf{Corollary {#1}}}
-\def\proof{\textbf{Proof.}\\}
-\def\proofMI{\textbf{Proof MI.}\\}
-\def\bigline{\vspace{5mm}\\}
-\def\qed{$\blacksquare$}
-%\def\dim#1{\textrm{dim} {#1}}
-\def\ker#1{\textrm{Ker} {#1}}
-\def\contra{\textbf{! }}
 
 \def\rightproof{$\boxed{\Rightarrow}$ }
 
 \def\leftproof{$\boxed{\Leftarrow}$ }
-
-%\DeclareMathOperator{\dim}{dim}
 
 \newtheoremstyle{theoremdd}% name of the style to be used
   {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
@@ -59,27 +42,22 @@
 
 \theoremstyle{theoremdd}
 \newtheorem{theorem}{Theorem}[subsection]
-  
-\theoremstyle{theoremdd}
 \newtheorem{definition}[theorem]{Definition}
-
-\theoremstyle{theoremdd}
-\newtheorem{samedef}[theorem]{Definition}
-
-\theoremstyle{theoremdd}
 \newtheorem{example}[theorem]{Example}
-
-\theoremstyle{theoremdd}
 \newtheorem{proposition}[theorem]{Proposition}
-
-\theoremstyle{theoremdd}
 \newtheorem{remark}[theorem]{Remark}
-
-\theoremstyle{theoremdd}
 \newtheorem{lemma}[theorem]{Lemma}
-
-\theoremstyle{theoremdd}
 \newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand\thref[1]{\textbf{Th.~\ref{#1}}}
+\newcommand\defref[1]{\textbf{Def.~\ref{#1}}}
+\newcommand\exref[1]{\textbf{Ex.~\ref{#1}}}
+\newcommand\prpref[1]{\textbf{Prp.~\ref{#1}}}
+\newcommand\rmref[1]{\textbf{Rm.~\ref{#1}}}
+\newcommand\lmref[1]{\textbf{Lm.~\ref{#1}}}
+\newcommand\crlref[1]{\textbf{Crl.~\ref{#1}}}
+
+\renewcommand{\qedsymbol}{$\blacksquare$}
 
 \makeatletter
 \renewenvironment{proof}[1][Proof.\\]{\par
@@ -101,7 +79,7 @@
     	
 	\section{Лінійні простори}
 	\subsection{Основні означення лінійних просторів}
-	\begin{definition}
+	\begin{definition}\label{linear space}
 	\textbf{Лінійним простором} називається множина $L$, на якій задані дві операції:
 	\begin{align*}
 	\begin{tabular}{cl}
@@ -125,15 +103,14 @@
 	\end{definition}
 	
 	\begin{remark}
-	Якщо $\alpha, \beta \in \mathbb{R}$, то лінійний простір називається  \textbf{виключно дійсним}. При $\mathbb{C}$ - \textbf{комплексним}. \\ (я далі лише буду вказувати множину $\mathbb{R}$, для $\mathbb{C}$ теж можна.)
+	Якщо $\alpha, \beta \in \mathbb{R}$, то лінійний простір називається  \textbf{дійсним}. При $\mathbb{C}$ - \textbf{комплексним}. \\ (я далі лише буду вказувати множину $\mathbb{R}$, для $\mathbb{C}$ теж можна.)
 	\end{remark}
 	
 	\begin{example}
 	Розглянемо прості приклади лінійних просторів: \\
 	1) $L = \mathbb{R}^3$ - вектори в просторі; \\
-	2) $L = Mat(m \cross n)$ - матриці розмірності $m \times n$; \\
-	3) $L = \mathbb{R}[x]$ - многочлени з дійсними коефіцієнтами; \\
-	4) $L = C(A)$ - неперервні функції на множині $A$.
+	2) $L = \mathbb{R}[x]$ - многочлени з дійсними коефіцієнтами; \\
+	3) $L = C(A)$ - неперервні функції на множині $A$.
 	\end{example}
 	
 	\begin{example}
@@ -259,20 +236,18 @@
 	(2): -\alpha_2 + \alpha_3 - 2\alpha_4 = 0\\
 	(3): 2\alpha_1 + 2\alpha_2 - \alpha_3 + \alpha_4 = 0\\
 	(4): 3\alpha_1 + \alpha_2 + 3\alpha_3 - 5\alpha_4 = 0
-	\end{cases}$\\
-
-	$\begin{cases}
-	(1): \alpha_1 + 4\alpha_2 + 2\alpha_3 + \alpha_4 = 0\\
-	(2): \alpha_2 - \alpha_3 + 2\alpha_4 = 0\\
-	(3)-2(1): 6\alpha_2 + 5\alpha_3 + \alpha_4 = 0\\
-	(4)-3(1): 11\alpha_2 + 3\alpha_3 + 8\alpha_4 = 0
+	\end{cases} \implies \begin{cases}
+	(1): & \alpha_1 + 4\alpha_2 + 2\alpha_3 + \alpha_4 = 0\\
+	(2): & \alpha_2 - \alpha_3 + 2\alpha_4 = 0\\
+	(3)-2(1): & 6\alpha_2 + 5\alpha_3 + \alpha_4 = 0\\
+	(4)-3(1): & 11\alpha_2 + 3\alpha_3 + 8\alpha_4 = 0
 	\end{cases}$\\
 	
-	$\begin{cases}
-	(1): \alpha_1 + 4\alpha_2 + 2\alpha_3 + \alpha_4 = 0\\
-	(2): \alpha_2 - \alpha_3 + 2\alpha_4 = 0\\
-	-6(2)+(3): 11\alpha_3 - 11\alpha_4 = 0\\
-	-11(4)+(4): 14\alpha_3 - 14\alpha_4 = 0
+	$\implies \begin{cases}
+	(1): & \alpha_1 + 4\alpha_2 + 2\alpha_3 + \alpha_4 = 0\\
+	(2): & \alpha_2 - \alpha_3 + 2\alpha_4 = 0\\
+	-6(2)+(3): & 11\alpha_3 - 11\alpha_4 = 0\\
+	-11(4)+(4): & 14\alpha_3 - 14\alpha_4 = 0
 	\end{cases} 
 	\implies
 	\begin{cases}
@@ -294,9 +269,9 @@
 	\end{remark}
 	$\alpha_1 \sin x + \alpha_2 \cos x + \alpha_3 \cos 2x = 0(x)$, причому $\forall x \in \mathbb{R}$. Тут типу $0(x) = 0$ $\forall x \in \mathbb{R}$.\\
 	Якщо ця рівність виконується для довільних $x$, то зокрема має виконуватись й для конкретних.\\
-	При $\huge x = 0: \alpha_2 + \alpha_3 = 0$.\\
-	При $\huge x = \frac{\pi}{2}: \alpha_1 - \alpha_3 = 0$.\\
-	При $\huge x = \frac{\pi}{4}: \frac{\sqrt{2}}{2} \alpha_1 + \frac{\sqrt{2}}{2} \alpha_2 = 0$.\\
+	При $\displaystyle x = 0: \alpha_2 + \alpha_3 = 0$.\\
+	При $\displaystyle x = \frac{\pi}{2}: \alpha_1 - \alpha_3 = 0$.\\
+	При $\displaystyle x = \frac{\pi}{4}: \frac{\sqrt{2}}{2} \alpha_1 + \frac{\sqrt{2}}{2} \alpha_2 = 0$.\\
 	Отже, виникає система:\\
 	$\begin{cases}
 	\alpha_2 + \alpha_3 = 0\\
@@ -309,19 +284,19 @@
 	\alpha_1 = \alpha_3\\
 	\end{cases}
 	$\\
-	Тут вже можуть виникати думки, що це - л.з. система, але... Візьмемо ще один $\huge x = \frac{\pi}{3}: \\ \frac{\sqrt{3}}{2}\alpha_1 + \frac{1}{2}\alpha_2 + \frac{1}{2}\alpha_3 = 0$.\\
+	Тут вже можуть виникати думки, що це - л.з. система, але... Візьмемо ще один $\displaystyle x = \frac{\pi}{3}: \\ \frac{\sqrt{3}}{2}\alpha_1 + \frac{1}{2}\alpha_2 + \frac{1}{2}\alpha_3 = 0$.\\
 	У це рівняння підставимо отримані $\alpha_1,\alpha_2$:\\
 	$\sqrt{3}\alpha_3 - \alpha_3 + \alpha_3 = 0 \Rightarrow \alpha_3 = 0$. А отже, $\alpha_1 = \alpha_2 = 0$.\\
-	Якщо для таких $x$ ми отримали нульові розв'язки, то для решта обраних буде така сама картина.\\
+	Якщо підставляти абсолютно інші $x \in \mathbb{R}$, то ми отримаємо деяке рівняння, яке автоматично виконано в силу того, що $\alpha_1,\alpha_2,\alpha_3 = 0$.\\
 	Остаточно: $\{\sin x, \cos x, \cos 2x\}$ - л.н.з.
 	\end{example}
 	
 	\begin{proposition}[Властивості л.н.з. та л.з. систем]
-	1) Якщо система $\{x_1 \dots, x_n\}$ містить л.з. підсистему $\{x_{j_1} \dots, x_{j_k}\}$, то вся система л.з.\\
-	2) Якщо система $\{x_1, \dots, x_n\}$ л.н.з., то будь-яка підсистема теж л.н.з.\\
-	3) Якщо $\{x_1 \dots, x_n\}$ містить принаймні один нульовий елемент, то ця система - л.з.\\
-	4) Система $\{x_1 \dots, x_n\}$ - л.з. $\iff$ існує елемент, який можна виразити як лінійну комбінацію від інших.\\
-	5) Задано систему $\{x_1, \dots, x_n\}$ і елемент $y$, що є лінійною комбінацією елементів системи. Тоді\\
+	1) Якщо система $\{x_1 \dots, x_n\}$ містить л.з. підсистему $\{x_{j_1} \dots, x_{j_k}\}$, то вся система л.з.;\\
+	2) Якщо система $\{x_1, \dots, x_n\}$ л.н.з., то будь-яка підсистема теж л.н.з.;\\
+	3) Якщо $\{x_1 \dots, x_n\}$ містить принаймні один нульовий елемент, то ця система - л.з.;\\
+	4) Система $\{x_1 \dots, x_n\}$ - л.з. $\iff$ існує елемент, який можна виразити як лінійну комбінацію від інших;\\
+	5) Задано систему $\{x_1, \dots, x_n\}$ і елемент $y$, що є лінійною комбінацією елементів системи. \\
 		$\{x_1, \dots, x_n\}$ - л.н.з. $\iff$ розклад елемента $y$ є єдиним.
 	\end{proposition}
 	
@@ -339,7 +314,7 @@
 	\rightproof Дано: $\{x_1, \dots, x_n\}$ - л.з., тобто $\exists \beta_1, \dots, \beta_n$ не всі нулеві: $\beta_1 x_1 + \dots + \beta_n x_n = 0$.\\
 	Не всі нулеві, тобто $\exists \beta_j \neq 0$. Тоді
 	$\beta_j x_j = -\beta_1 x_1 - \dots - \beta_{j-1} x_{j-1} - \beta_{j+1} x_{j+1} - \dots - \beta_n x_n$.\\
-	$\huge x_j = \frac{-\beta_1}{\beta_j}x_1 - \dots - \frac{-\beta_n}{\beta_j}x_n$. А це є розклад в лінійну комбінацію інших.
+	$\displaystyle x_j = \frac{-\beta_1}{\beta_j}x_1 - \dots - \frac{-\beta_n}{\beta_j}x_n$. А це є розклад в лінійну комбінацію інших.
 	\bigskip \\
 	\leftproof Дано: $\exists x_j: \exists \alpha_1, \dots, \alpha_{j-1}, \alpha_{j+1}, \dots, \alpha_n: x_j = \alpha_1 x_1 + \dots + \alpha_{j-1} x_{j-1} + \alpha_{j+1} x_{j+1} + \dots + \alpha_n x_n$.\\
 	$\implies \alpha_1 x_1 + \dots + \alpha_{j-1} x_{j-1} + (-1)x_j + \alpha_{j+1} x_{j+1} + \dots + \alpha_n x_n = 0$.\\
@@ -418,7 +393,8 @@
 	\end{example}
 	
 	\subsection{Лінійні оболонки}
-	\defin{1.4.1.} Задано $L$ - лінійний простір і система $\{x_1, \dots, x_n\} \subset L$.\\
+	\begin{definition}
+	Задано $L$ - лінійний простір і система $\{x_1, \dots, x_n\} \subset L$.\\
 	\textbf{Лінійною оболонкою} цієї системи називають множину всіх лінійних комбінацій:
 	\begin{align*}
 	span\{x_1, \dots, x_n\} \overset{\textrm{або}}{=} \textrm{\textit{л.о.}}\{x_1, \dots, x_n\} = \{\alpha_1 x_1 + \dots + \alpha_n x_n | \alpha_1, \dots, \alpha_n \in \mathbb{R}\}
@@ -427,6 +403,7 @@
 	\begin{align*}
 	span M \overset{\textrm{або}}{=} \textrm{\textit{л.о.}} M = \{\alpha_1 x_1 + \dots + \alpha_j x_j | j \geq 1: x_1,\dots,x_j \in M: \alpha_1, \dots, \alpha_j \in \mathbb{R}\}
 	\end{align*}
+	\end{definition}
 	
 	\begin{proposition}
 	Лінійна оболонка є лінійним підпростором лінійного простороу $L$.
@@ -438,7 +415,8 @@
 	$w_2 = \beta_1 x_1 + \dots + \beta_n x_n$\\
 	$\implies w_1 + w_2 = (\alpha_1 + \beta_1)x_1 + \dots + (\alpha_n + \beta_n)x_n \implies w_1 + x_2 \in span\{x_1, \dots, x_n\}$\\
 	$\lambda w_1 = \lambda \alpha_1 x_1 + \dots + \lambda \alpha_n x_n \implies \lambda w_1 \in span\{x_1, \dots, x_n\}$.\\
-	Отже, $span\{x_1, \dots, x_n\}$ - підпростір $L$. Випадок для $span M$ є аналогічним.
+	Отже, $span\{x_1, \dots, x_n\}$ - підпростір $L$. \\
+	Випадок для $span M$ є аналогічним.
 	\end{proof} 
 	
 	\iffalse
@@ -461,10 +439,11 @@
 	$span\{\vec{e_1}, \vec{e_2}, \vec{e_3}\} \overset{\textrm{def}}{=} \{\alpha_1 \vec{e_1} + \alpha_2 \vec{e_2} + \alpha_3 \vec{e_3} | \alpha_1, \alpha_2, \alpha_3 \in \mathbb{R}\} = \{(\alpha_1, \alpha_2, \alpha_3)^T | \alpha_1, \alpha_2, \alpha_3 \in \mathbb{R}\} = \mathbb{R}^3$.
 	\end{example}
 	
+	\iffalse
 	\begin{remark}
-	Трошки англійського означення. Там кажуть, що system $\{ x_n,\dots,x_n \}$ \textbf{spans} linear space $L$, коли $\{x_1,\dots,x_n\} = L$. Адаптивного перекладу цього поки не знаю.
+	Трошки англійського означення. Там кажуть, що system $\{ x_n,\dots,x_n \}$ \textbf{spans} linear space $L$, if $\{x_1,\dots,x_n\} = L$. Адаптивного перекладу цього поки не знаю.
 	\end{remark}
-
+	\fi
 		
 	\subsection{Підпорядковані та еквівалентні системи}
 	\begin{definition}
@@ -482,6 +461,7 @@
 	\end{definition}
 	
 	\begin{proposition}
+	\label{subordinate_prp1}
 	Задано $L$ - лінійний простір та системи $\{x_1,\dots,x_m\}, \{y_1,\dots,y_n\} \subset L$.\\
 	$\{y_1, \dots, y_n \} \prec \{x_1, \dots, x_m \} \iff span \{y_1, \dots, y_n\} \subset span \{x_1, \dots, x_m \}$.
 	\end{proposition}
@@ -499,6 +479,7 @@
 	\end{proof}
 	
 	\begin{proposition}[Властивості підпорядкованих систем]
+	\label{subordinate_properties}
 	Підпорядкована система є рефлексивною, антисиметричною і транзитивною. Тобто це є відношенням порядку.\\
 	\textit{Випливає частково з попереднього твердження.}
 	\end{proposition}
@@ -532,6 +513,7 @@
 	\end{example}
 	
 	\begin{theorem}
+	\label{n_leq_m}
 	Задано $L$ - лінійний простір та системи, наведені нижче. Відомо, що \\ $\underset{\textrm{є лінійно незалежною}}{\{y_1, \dots, y_n \}} \prec \{x_1, \dots, x_m \}$. Тоді $n \leq m$.
 	\end{theorem}
 	
@@ -550,26 +532,26 @@
 	$ \\
 	Оскільки $\{y_1,\dots,y_n\}$ - л.н.з., то жодний елемент ненульовий, зокрема $y_n \neq 0$. А тоді існує коефіцієнт(не втрачаючи загальності, можемо вважати, що $\alpha^n_m \neq 0$)\\
 	Цю систему замінимо таким чином:\\
-	$\huge (1) = (1) - \frac{\alpha^1_m}{\alpha^n_m} (n)$\\
-	$\huge (2) = (2) - \frac{\alpha^2_m}{\alpha^2_m} (n)$\\
+	$\displaystyle (1) = (1) - \frac{\alpha^1_m}{\alpha^n_m} (n)$\\
+	$\displaystyle (2) = (2) - \frac{\alpha^2_m}{\alpha^2_m} (n)$\\
 	$\dots$\\
-	$\huge (n-1) = (n-1) - \frac{\alpha^{n-1}_m}{\alpha^{n-1}_m} (n)$\\
+	$\displaystyle (n-1) = (n-1) - \frac{\alpha^{n-1}_m}{\alpha^{n-1}_m} (n)$\\
 	Тоді отримаємо, що:\\
 	$
 	\begin{cases}
-	\huge y_1 - \frac{\alpha^1_m}{\alpha^n_m}y_n = \left(\alpha^1_1 - \alpha^n_1 \frac{\alpha^1_m}{\alpha^n_m}  \right) x_1 + \dots + \left(\alpha^1_{m-1} - \alpha^n_{m-1} \frac{\alpha^1_m}{\alpha^n_m}  \right) x_{m-1} + 0x_m\\
+	\displaystyle y_1 - \frac{\alpha^1_m}{\alpha^n_m}y_n = \left(\alpha^1_1 - \alpha^n_1 \frac{\alpha^1_m}{\alpha^n_m}  \right) x_1 + \dots + \left(\alpha^1_{m-1} - \alpha^n_{m-1} \frac{\alpha^1_m}{\alpha^n_m}  \right) x_{m-1} + 0x_m\\
 	\dots\\
-	\huge y_{n-1} - \frac{\alpha^{n-1}_m}{\alpha^n_m}y_n = \left(\alpha^{n-1}_1 - \alpha^n_1 \frac{\alpha^{n-1}_m}{\alpha^n_m}  \right) x_1 + \dots + \left(\alpha^{n-1}_{m-1} - \alpha^n_{m-1} \frac{\alpha^{n-1}_m}{\alpha^n_m}  \right) x_{m-1} + 0x_m\\
+	\displaystyle y_{n-1} - \frac{\alpha^{n-1}_m}{\alpha^n_m}y_n = \left(\alpha^{n-1}_1 - \alpha^n_1 \frac{\alpha^{n-1}_m}{\alpha^n_m}  \right) x_1 + \dots + \left(\alpha^{n-1}_{m-1} - \alpha^n_{m-1} \frac{\alpha^{n-1}_m}{\alpha^n_m}  \right) x_{m-1} + 0x_m\\
 	y_n = \alpha^n_1 x_1 + \dots + \alpha^n_m x_m
 	\end{cases}
 	$\\
-	Розглянемо таку систему: $\huge \left\{y_1 - \frac{\alpha^1_m}{\alpha^n_m}y_n, \dots, y_{n-1} - \frac{\alpha^{n-1}_m}{\alpha^n_m}y_n\right\}$ та перевіримо її на л.н.з.\\
-	$\huge \beta_1 \left(y_1 - \frac{\alpha^1_m}{\alpha^n_m}y_n \right) + \dots + \beta_{n-1} \left(y_{n-1} - \frac{\alpha^{n-1}_m}{\alpha^n_m}y_n \right) = 0$\\
+	Розглянемо таку систему: $\displaystyle \left\{y_1 - \frac{\alpha^1_m}{\alpha^n_m}y_n, \dots, y_{n-1} - \frac{\alpha^{n-1}_m}{\alpha^n_m}y_n\right\}$ та перевіримо її на л.н.з.\\
+	$\displaystyle \beta_1 \left(y_1 - \frac{\alpha^1_m}{\alpha^n_m}y_n \right) + \dots + \beta_{n-1} \left(y_{n-1} - \frac{\alpha^{n-1}_m}{\alpha^n_m}y_n \right) = 0$\\
 	Якщо розкрити дужки та звести цей вираз у формі лінійної комбінації $\{y_1,\dots,y_{n-1}, y_n\}$, то отримаємо\\
 	$\beta_1 y_1 + \dots + \beta_{n-1}y_{n-1} + \Gamma y_n = 0 \overset{\textrm{за умовою л.н.з.}}{\Rightarrow} \beta_1 = \dots = \beta_{n-1} = \Gamma = 0$\\
 	$\Gamma$ - це якесь число, що було сконструюване із $\alpha, \beta$ - не принципово.\\
 	Отже, наша задана система - л.н.з. Більш того, ця система є підпорядкованою через отриману систему рівнянь:\\
-	$\huge \left\{y_1 - \frac{\alpha^1_m}{\alpha^n_m}y_n, \dots, y_{n-1} - \frac{\alpha^{n-1}_m}{\alpha^n_m}y_n\right\} \prec \{x_1, \dots, x_{m-1} \}$.\\
+	$\displaystyle \left\{y_1 - \frac{\alpha^1_m}{\alpha^n_m}y_n, \dots, y_{n-1} - \frac{\alpha^{n-1}_m}{\alpha^n_m}y_n\right\} \prec \{x_1, \dots, x_{m-1} \}$.\\
 	Тоді за припущенням індукції, $n-1 \leq m-1 \Rightarrow n \leq m$.\\
 	MI доведено.
 	\end{proof}
@@ -608,17 +590,17 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	\begin{proposition}
 	Задано $L$ - лінійний простір та системи $\{x_1,\dots,x_m\}, \{y_1,\dots,y_n\} \subset L$.\\
 	$\{y_1, \dots, y_n \} \sim \{x_1, \dots, x_m \} \iff span \{y_1, \dots, y_n\} = span \{x_1, \dots, x_m \}$.\\
-	\textit{Випливає з} \textbf{Prp. 1.5.2.}
+	\textit{Випливає з} \prpref{subordinate_prp1}
 	\end{proposition}
 	
 	\begin{proposition}[Властивості еквівалентних систем]
 	Еквівалентна система є рефлексивною, симетричною і транзитивною. Тобто це є відношенням еквівалентності.\\
-	\textit{Випливає з} \textbf{Prp. 1.5.3.}
+	\textit{Випливає з} \prpref{subordinate_properties}
 	\end{proposition}
 	
 	\begin{theorem}
 	Якщо $\underset{\textrm{є лінійно незалежною}}{\{y_1, \dots, y_n \}} \sim \underset{\textrm{є лінійно незалежною}}{\{x_1, \dots, x_m \}} $, то $n = m$.\\
-	\textit{Випливає з} \textbf{Th. 1.5.5.}
+	\textit{Випливає з} \thref{n_leq_m}
 	\end{theorem}
 	
 	\begin{example}
@@ -629,8 +611,13 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	\begin{definition}
 	Задано $L$ - лінійний простір.\\
 	Підсистема $\{x_{j_1}, \dots, x_{j_k}\}$ системи $\{x_1, \dots, x_m\} \subset L$ називається \textbf{повною}, якщо
+	\iffalse
 	\begin{align*}
 	\forall x_t \in \{x_1, \dots, x_m\}: \exists \alpha^1_t, \dots, \alpha^k_t: x_t = \alpha^1_t x_{j_1} + \dots + \alpha^k_t x_{j_k}
+	\end{align*}
+	\fi
+	\begin{align*}
+	\forall x_t \in \{x_1,\dots,x_m\}: x_t \in span\{x_{j_1},\dots,x_{j_k}\}
 	\end{align*}
 	\end{definition}
 	
@@ -667,6 +654,7 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	\end{example}
 	
 	\begin{theorem}
+	\label{two_bases_equivalent}
 	Задано $L$ - лінійний простір та систему $\{x_1, \dots, x_m\} \subset L$, для якої є база $\{x_{p_1}, \dots, x_{p_s}\}$. Тоді $\{x_1, \dots, x_m\} \sim \{x_{p_1}, \dots, x_{p_s}\}$.
 	\end{theorem}
 	
@@ -680,7 +668,7 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	\begin{theorem}
 	Задано $L$ - лінійний простір та систему $\{x_1, \dots, x_m\} \subset L$, для якої є дві бази: $\{x_{p_1}, \dots, x_{p_s}\}$ та $\{x_{t_1}, \dots, x_{t_l}\}$. Тоді
 	$\{x_{p_1}, \dots, x_{p_s}\} \sim \{x_{t_1}, \dots, x_{t_l}\}$.\\
-	\textit{Випливає з} \textbf{Th. 1.6.6.} \textit{та властивості транзитивності.}
+	\textit{Випливає з} \thref{two_bases_equivalent} \textit{та властивості транзитивності.}
 	\end{theorem}
 	
 	\begin{definition}
@@ -698,7 +686,7 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	$\\
 	Загальна побудова: почергово додаємо елемент, допоки не дійдемо до л.з. А потім досліджуємо всі комбінації (раптом там виявиться л.н.з.).\\
 	$\{f_1\}$ - л.н.з.? Зрозуміло, що тут л.н.з.\\
-	$\{f_1, f_2 \}$ - л.н.з.? \\ $\alpha f_1 + \beta f_2 = 0 \iff \huge f_1 = -\frac{\beta}{\alpha}f_2$. Але коефіцієнти не є пропорційними, тому $\{f_1, f_2\}$ - л.н.з.\\
+	$\{f_1, f_2 \}$ - л.н.з.? \\ $\alpha f_1 + \beta f_2 = 0 \iff \displaystyle f_1 = -\frac{\beta}{\alpha}f_2$. Але коефіцієнти не є пропорційними, тому $\{f_1, f_2\}$ - л.н.з.\\
 	$\{f_1, f_2, f_3\}$ - л.н.з.? \\
 	$\alpha_1 f_1 + \alpha_2 f_2 + \alpha_3 f_3 = 0 \iff 
 	\begin{cases}
@@ -721,6 +709,7 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	\textbf{Базисом} лінійного простору називають його базу.
 	\end{definition}
 	
+	\iffalse
 	\begin{theorem}
 	Задано $L$ - лінійний простір та систему $\{x_1, \dots, x_n\} \subset L$. Наступні властивості еквівалентні:\\
 	$1) \{x_1, \dots, x_n\}$ - max л.н.з.\\
@@ -739,6 +728,24 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	$\boxed{2) \Leftarrow 3)}$ Дано: $\forall y \in L: \exists! \alpha_1, \dots, \alpha_n: y = \alpha_1 x_1 + \dots + \alpha_n x_n$\\
 	Тоді $\{x_1, \dots, x_n\}$ - повна і, за властивістю, л.н.з.
 	\end{proof}
+	\fi
+	
+	\begin{theorem}
+	Задано $L$ - лінійний простір.\\
+	$\{x_1,\dots,x_n\}$ - базис простору $L \iff \forall y \in L: \exists! \alpha_1, \dots, \alpha_n: y = \alpha_1 x_1 + \dots + \alpha_n x_n$. 
+	\end{theorem}
+	
+	\begin{proof}
+	\rightproof Дано: $\{x_1,\dots,x_n\}$ - базис.\\
+	Тоді за означенням, вона є базою, а тому є max л.н.з. системою. А тому $\forall y \in L:$ система $\{x_1,\dots,x_n,y\}$ - л.з., звідси $y = \alpha_1x_1+\dots+\alpha_n x_n$. У силу л.н.з. системи $\{x_1,\dots,x_n\}$ заданий розклад єдиний.
+	\bigskip \\
+	\leftproof Дано: $y \in L: \exists! \alpha_1, \dots, \alpha_n: y = \alpha_1 x_1 + \dots + \alpha_n x_n$.\\
+	Звідси $\{x_1,\dots,x_n\}$ - повна. А оскільки розклад єдиний, система $\{x_1,\dots,x_n\}$ - л.н.з. Отже, $\{x_1,\dots,x_n\}$ - база, звідси базис.
+	\end{proof}
+	
+	\begin{corollary}
+	Задано $L$ - лінійний простір та $\{x_1,\dots,x_n\}$ - базис. Тоді $L = span\{x_1,\dots,x_n\}$.
+	\end{corollary}
 	
 	\begin{definition}
 	Задано $L$ - лініний простір.\\
@@ -746,13 +753,17 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	Позначення: $\textrm{dim} L$.
 	\end{definition}
 	
+	\begin{remark}
+	Перевірити систему на базис можна трьома варіантами: перевірка на max л.н.з.; перевірка на повну л.н.з.; перевірка на єдиний розклад системи.
+	\end{remark}
+	
 	\begin{example}
-	Задано $L = \mathbb{R}_n[x]$. Розглянемо систему $\{1, x, x^2, \dots, x^n\}$ та перевіримо, що це - базис. І дійсно, за п 3) попередньої теореми,\\
+	Задано $L = \mathbb{R}_n[x]$. Розглянемо систему $\{1, x, x^2, \dots, x^n\}$ та перевіримо, що це - базис. І дійсно, за критерієм,\\
 	$\forall f(x) \in \mathbb{R}_n[x]: \exists! a_0, a_1, \dots, a_n \in \mathbb{R}: f(x) = a_0 + a_1 x + \dots + a_n x^n \implies \{1, x, \dots, x^n\}$ - базис $\mathbb{R}_n[x]$ \\ $\dim{\mathbb{R}_n[x]} = n+1$.
 	\end{example}
 	
 	\begin{remark}
-	Надалі працюємо з лінійними просторами, в яких скінченна кількість елементів в базисі.
+	Надалі працюємо з лінійними просторами, в яких скінченна (!) кількість елементів в базисі.
 	\end{remark}
 	
 	\begin{example}
@@ -766,7 +777,8 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	$\forall \vec{a} \in L: \vec{a} = \begin{pmatrix} a_1 \\ a_2 \\ a_3 \\ a_4 \end{pmatrix} = \begin{pmatrix} a_1 \\ a_2 \\ -a_1 + a_2 + 5a_4 \\ a_4 \end{pmatrix} = a_1 \begin{pmatrix} 1 \\ 0 \\ -1 \\ 0 \end{pmatrix} + a_2 \begin{pmatrix} 0 \\ 1 \\ 1 \\ 0 \end{pmatrix} + a_4 \begin{pmatrix} 0 \\ 0 \\ 5 \\ 1 \end{pmatrix}$\\
 	Тому $\left\{\vec{x_1} = \begin{pmatrix} 1 \\ 0 \\ -1 \\ 0\end{pmatrix}, \vec{x_2} = \begin{pmatrix} 0 \\ 1 \\ 1 \\ 0\end{pmatrix}, \vec{x_4} = \begin{pmatrix} 0 \\ 0 \\ 5 \\ 1\end{pmatrix} \right\}$ - базис, $\dim{L} = 3$.
 	\end{example}
-		
+	
+	\iffalse
 	\begin{proposition}
 	Задано $L = span\{x_1,\dots,x_n\}$. Відомо що $\{x_{j_1},\dots,x_{j_k}\}$ - це база системи $\{x_1,\dots,x_n\}$ Тоді $\{x_{j_1},\dots,x_{j_k}\}$ - базис $L$. Ба більше, $rank\{x_1,\dots,x_n\} = \dim L$.
 	\end{proposition}
@@ -776,6 +788,7 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	Оскільки $\{x_{j_1},\dots,x_{j_k}\}$ - база, то вона є базисом $span \{ x_{j_1},\dots,x_{j_k} \}$, а тому й базисом $L$.\\
 	Ба більше, $\dim L \overset{\text{def}}{=} \rank \{x_1,\dots,x_n\}$.
 	\end{proof}
+	\fi
 	
 	\begin{example}
 	Знайдемо базис та розмірність простору $span \{ \vec{x_1}, \vec{x_2}, \vec{x_3} \}$. В цьому випадку\\
@@ -804,6 +817,7 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	\end{proof}
 	
 	\begin{proposition}
+	\label{about_same_dim_prp}
 	Задано $L$ - лінійний простір та $M$ - такий лінійний підпростір, що $M \subset L$ та додатково $\dim M = \dim L$. Тоді $L=M$.
 	\end{proposition}
 	
@@ -937,7 +951,7 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	\end{definition}
 	
 	\begin{lemma}[Критерій прямої суми]
-	Сума $M_1 + M_2$ є прямою сумою $\iff M_1 \cap M_2 = \{0\}$.
+	$M_1 + M_2$ є прямою сумою $\iff M_1 \cap M_2 = \{0\}$.
 	\end{lemma}
 	
 	\begin{proof}
@@ -972,7 +986,7 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	\end{pmatrix}$. Отримаємо базис з трьох векторів, $\dim L_1 = 3$.\\
 	Якщо $\vec{x} \in L_2$, то $\vec{x} = \begin{pmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{pmatrix} = \begin{pmatrix} x_1 \\ x_1 \\ x_1 \\ x_1 \end{pmatrix} = x_1 \begin{pmatrix} 1 \\ 1 \\ 1 \\ 1 \end{pmatrix}$. Отримаємо базис з одного вектора, $\dim L_2 = 1$.\\
 	Тоді $L_1 + L_2 = span\{L_1,L_2\}$ - якщо обережно перевірити, то отримані 4 вектори будуть л.н.з., отже, $\dim (L_1 + L_2) = 4$ За формулою про зв'язок між розмірностями, маємо, що $\dim{(L_1 \cap L_2)} = 0$. Тобто $L_1 \cap L_2 = \{ \vec{0} \}$.\\
-	Таким чином, $L_1 + L_2$ є прямою сумою. І нарешті, за \textbf{Prp. 1.6.19.}, $\dim{(L_1 \dot{+} L_2)} = \dim {\mathbb{R}^4}$ та \\ $L_1 \dot{+} L_2 \subset \mathbb{R}^4 \implies L_1 \dot{+} L_2 = \mathbb{R}^4$.
+	Таким чином, $L_1 + L_2$ є прямою сумою. І нарешті, за \prpref{about_same_dim_prp}, $\dim{(L_1 \dot{+} L_2)} = \dim {\mathbb{R}^4}$ та \\ $L_1 \dot{+} L_2 \subset \mathbb{R}^4 \implies L_1 \dot{+} L_2 = \mathbb{R}^4$.
 	\end{example}
 	\newpage	
 	
@@ -1010,9 +1024,9 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	\end{proof}
 	
 	\begin{example}
-	Нехай задано оператор $A: \underset{=L}{\mathbb{R}^2} \to \underset{=M}{\mathbb{R}^2}$, де \hspace{0.3cm} $\huge A\vec{x} = \begin{pmatrix} x_1 - 2x_2 \\ 3x_2 + x_1 \end{pmatrix}$.\\
+	Нехай задано оператор $A: \underset{=L}{\mathbb{R}^2} \to \underset{=M}{\mathbb{R}^2}$, де \hspace{0.3cm} $\displaystyle A\vec{x} = \begin{pmatrix} x_1 - 2x_2 \\ 3x_2 + x_1 \end{pmatrix}$.\\
 	Перевіримо, що такий оператор є лінійним\\
-	$\huge \vec{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$, $\huge \vec{y} = \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} \implies \vec{x} + \vec{y} = \begin{pmatrix}
+	$\displaystyle \vec{x} = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$, $\displaystyle \vec{y} = \begin{pmatrix} y_1 \\ y_2 \end{pmatrix} \implies \vec{x} + \vec{y} = \begin{pmatrix}
 	x_1 + y_1 \\ x_2 + y_2
 	\end{pmatrix}$\\
 	$\implies A(\vec{x} + \vec{y}) = \begin{pmatrix} (x_1+y_1)-2(x_2+y_2) \\ 3(x_2+y_2)+(x_1+y_1) \end{pmatrix} = \dots = \begin{pmatrix} x_1 - 2x_2 \\ 3x_2 + x_1 \end{pmatrix} + \begin{pmatrix} y_1 - 2y_2 \\ 3y_2 + y_1 \end{pmatrix} = A\vec{x} + A\vec{y}$\\
@@ -1024,7 +1038,7 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	\iffalse
 	\begin{example}
 	Нехай задано оператор $A: \underset{=L}{\mathbb{R}^2} \to \underset{=M}{\mathbb{R}^2}$.\\
-	$\huge A\vec{x} = \begin{pmatrix} x_1 + x_2 + 3 \\ x_1 -x_2 \end{pmatrix}$\\
+	$\displaystyle A\vec{x} = \begin{pmatrix} x_1 + x_2 + 3 \\ x_1 -x_2 \end{pmatrix}$\\
 	$A(\vec{0}) = \begin{pmatrix} 3 \\ 0 \end{pmatrix} \neq \vec{0}$.\\
 	Отже, за другою властивістю, $A$ - НЕ лінійний оператор.
 	\end{example}
@@ -1036,13 +1050,14 @@ $x_2 = \beta_2^{-1}y_2 - \beta_2^{-1}\beta_1 y_1 - \dots - \beta_2^{-1} \beta_m 
 	\end{example}
 	
 	\begin{example}[Важливий]
+	\label{important_ex1}
 	Нехай задано оператор $A: \mathbb{R}^n \to \mathbb{R}^m$ таким чином:\\
 	$A\vec{x} = \begin{pmatrix}
 	a_{11}x_1 + \dots + a_{1n}x_n \\
 	\vdots \\
 	a_{m1}x_1 + \dots + a_{mn}x_n
 	\end{pmatrix}$.\\
-	Далі розглянемо матрицю $\huge \mathbb{A} = \begin{pmatrix}
+	Далі розглянемо матрицю $\displaystyle \mathbb{A} = \begin{pmatrix}
 	a_{11} & \cdots &  a_{1n} \\
 	\vdots & \ddots & \vdots \\
 	a_{m1} & \cdots & a_{mn}
@@ -1086,14 +1101,24 @@ $\boxed{=} x_1 \begin{pmatrix} a_{11} \\ \dots \\ a_{m1} \end{pmatrix} + \dots +
 	\textbf{Висновок}: матриця лінійного оператора задається єдиним чином.
 	\end{example}
 	
+	\begin{definition}
+	Задано $L$ - лінійний простір.\\
+	\textbf{Лінійним функціоналом} на $L$ називається лінійний оператор $\varphi: L \to \mathbb{R}$.
+	\end{definition}
+	
+	\begin{example}
+	$L=\mathbb{R}^4$, $\varphi: \underset{=L}{\mathbb{R}^4} \to \mathbb{R}:$\\
+	$\varphi(\vec{x}) = x_1 + 3x_2 - \pi x_3 + \sqrt{17}x_4$
+	\end{example}
+	
 	\subsection{Арифметичні дії з лінійними операторами}
 	\begin{definition}
 	Задані лінійні оператори $A,B: L \to M$.\\
-	- \textbf{сумою} лінійних операторів називають відображення $A+B: L \to M$, яке задається правилом:
+	\textbf{Сумою} лінійних операторів називають відображення $A+B: L \to M$, яке задається правилом:
 	\begin{align*}
 	\forall x \in L: (A+B)x = Ax+Bx
 	\end{align*}
-	- \textbf{множення константи} на лінійний оператор називають відображення $\alpha A: L \to M$, яке задається правилом:
+	\textbf{Множення константи} на лінійний оператор називають відображення $\alpha A: L \to M$, яке задається правилом:
 	\begin{align*}
 	\forall x \in L: (\alpha A)(x) = \alpha (Ax)
 	\end{align*}
@@ -1124,7 +1149,7 @@ $\boxed{=} x_1 \begin{pmatrix} a_{11} \\ \dots \\ a_{m1} \end{pmatrix} + \dots +
 	\end{remark}
 	
 	\begin{remark}
-	Множину всіх лінійних операторів $L \to M$ позначають $\mathcal{L}(L,M)$ і є лінійним простором.\\
+	Множину всіх лінійних операторів $A: L \to M$ позначають $\mathcal{L}(L,M)$ і є лінійним простором.\\
 	\textit{Вказівка: перевірити 8 аксіом}
 	\end{remark}
 	
@@ -1200,8 +1225,9 @@ $\boxed{=} x_1 \begin{pmatrix} a_{11} \\ \dots \\ a_{m1} \end{pmatrix} + \dots +
 	\end{remark}
 	
 	\begin{example}[Важливий]
+	\label{important_ex2}
 	Задані два лінійних оператори $A: \mathbb{R}^n \to \mathbb{R}^m$ та $B: \mathbb{R}^m \to \mathbb{R}^k$.\\
-	За \textbf{Ex. 2.1.5.}, першому оператору відповідає матриця $\mathbb{A}$, а другому - матриця $\mathbb{B}$, тобто\\
+	За \exref{important_ex1}, першому оператору відповідає матриця $\mathbb{A}$, а другому - матриця $\mathbb{B}$, тобто\\
 	$A\vec{x}=\mathbb{A}x$, $B\vec{x}=\mathbb{B}x$\\
 	Знайдемо добуток операторів:\\
 	$BA: \mathbb{R}^n \to \mathbb{R}^k$, тут їй теж буде відповідати матриця (якась інша)\\
@@ -1327,8 +1353,7 @@ $\boxed{=} x_1 \begin{pmatrix} a_{11} \\ \dots \\ a_{m1} \end{pmatrix} + \dots +
 	\end{proof}
 	
 	\begin{theorem}[Зв'язок розмірностей ядра та образа]
-	Задано лінійний оператор $A: L \to M$. Тоді\\
-	$\dim \ker A + \dim \Im A = \dim L$.
+	Задано лінійний оператор $A: L \to M$. Тоді $\dim \ker A + \dim \Im A = \dim L$.
 	\end{theorem}
 	
 	\begin{proof}
@@ -1376,17 +1401,6 @@ $\boxed{=} x_1 \begin{pmatrix} a_{11} \\ \dots \\ a_{m1} \end{pmatrix} + \dots +
 	\end{pmatrix}$.\\
 	Тоді за лемою, $\Im A = span \left\{ \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 1 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ -3 \\ -4 \end{pmatrix} \right\}$.\\
 	Але за теоремою, маємо $\dim \Im A = \dim \mathbb{R}^3 - \dim \ker A = 2$. Тоді варто писати $\Im A = span \left\{ \begin{pmatrix} 1 \\ 2 \\ 1 \end{pmatrix}, \begin{pmatrix} -1 \\ 1 \\ 2 \end{pmatrix} \right\}$.
-	\end{example}
-	
-	\subsection{Лінійні функціонали}
-	\begin{definition}
-	Задано $L$ - лінійний простір.\\
-	\textbf{Лінійним функціоналом} на $L$ називається лінійний оператор $\varphi: L \to \mathbb{R}$.
-	\end{definition}
-	
-	\begin{example}
-	$L=\mathbb{R}^4$, $\varphi: \underset{=L}{\mathbb{R}^4} \to \mathbb{R}:$\\
-	$\varphi(\vec{x}) = x_1 + 3x_2 - \pi x_3 + \sqrt{17}x_4$
 	\end{example}
 	
 	\subsection{Обернений оператор, одиничний оператор}
@@ -1598,7 +1612,7 @@ L \arrow{r}{A} \arrow{d}{J_f} & M \arrow{d}{J_g} \\
 	$Af_1 = a_{11}g_1 + \dots + a_{m1}g_m$\\
 	$\vdots$\\
 	$Af_n = a_{1n}g_1 + \dots + a_{mn}g_m$\\
-	$J_g(A(J_f^{-1}\vec{x})) = J_g(x_1Af_1 + \dots + x_nAf_n) = \huge J_g\left(x_1 \sum_{k=1}^m a_{k1}g_k + \dots + x_n \sum_{k=1}^m a_{kn}g_k\right) = \\ = J_g\left(\sum_{k=1}^m (a_{k1}x_1 + \dots + a_{kn}x_n)g_k \right) = \begin{pmatrix}
+	$J_g(A(J_f^{-1}\vec{x})) = J_g(x_1Af_1 + \dots + x_nAf_n) = \displaystyle J_g\left(x_1 \sum_{k=1}^m a_{k1}g_k + \dots + x_n \sum_{k=1}^m a_{kn}g_k\right) = \\ = J_g\left(\sum_{k=1}^m (a_{k1}x_1 + \dots + a_{kn}x_n)g_k \right) = \begin{pmatrix}
 	a_{11}x_1 + \dots + a_{1n}x_n \\
 	\dots \\
 	a_{m1}x_1 + \dots + a_{mn}x_n \\
@@ -1828,10 +1842,10 @@ L \arrow{r}{\varphi} \arrow{d}{J} & \mathbb{R} \arrow{d}{I} \\
 	$(A_1 \dot{+} A_2)(\alpha x + \beta y) = (A_1\dot{+}A_2)((\alpha x_1 + \beta y_1) + (\alpha x_2 + \beta y_2)) = \\ = A_1(\alpha x_1 + \beta y_1) + A_2(\alpha x_2 + \beta y_2) = \alpha A_1 x_1 + \beta A_1 y_1 + \alpha A_2 x_2 \beta A_2 y_2 = \\ = \alpha(A_1 x_1 + A_2 x_2) + \beta(A_1 y_1 + A_2 y_2) = \alpha(A_1 \dot{+}A_2)(x_1+x_2) + \beta(A_1 \dot{+} A_2)(y_1+y_2) = \\ = \alpha(A_1 \dot{+}A_2)x + \beta(A_1 \dot{+}A_2)y$
 	\end{proof}
 	
-	\textit{Навіщо це все, дізнаємось скоро. А зараз буде невеличкий відступ, до операторів ми ще повернемось} \newpage
+	\textit{Навіщо це все, дізнаємось скоро. А зараз буде невеличкий відступ, до операторів ми ще повернемось.} \newpage
 	\section{Теорія матриць}
 	\subsection{Основні властивості}
-	Згадаємо \textbf{Ex. 2.1.5}. Задано $A: \mathbb{R}^n \to \mathbb{R}^m$ - лінійний оператор. Нехай $\{ \vec{e}_1, \dots, \vec{e}_n \}$ - базис $\mathbb{R}^n$
+	Згадаємо \exref{important_ex1}. Задано $A: \mathbb{R}^n \to \mathbb{R}^m$ - лінійний оператор. Нехай $\{ \vec{e}_1, \dots, \vec{e}_n \}$ - базис $\mathbb{R}^n$.
 	\begin{definition}
 	\textbf{Матрицею лінійного оператора} називають таблицю, що містить розклад кожного елементу $A \vec{e}_1, \dots, A \vec{e}_n$.
 	\begin{align*}
@@ -1877,7 +1891,7 @@ L \arrow{r}{\varphi} \arrow{d}{J} & \mathbb{R} \arrow{d}{I} \\
 	0 & \dots & 0
 	\end{pmatrix}
 	\end{align*}
-	Ми вже задали основні арифметичні дії з лінійними операторами: це додавання та множення на скаляр. Через них ми зможемо отримати арифметичні дії з матрицями\\
+	Ми вже задали основні арифметичні дії з лінійними операторами: це додавання та множення на скаляр. Через них ми зможемо отримати арифметичні дії з матрицями.\\
 	Задані $A,B: \mathbb{R}^n \to \mathbb{R}^m$ - лінійні оператори та їхні матриці $\mathbb{A}, \mathbb{B}$.\\
 	Створимо $A+B: \mathbb{R}^n \to \mathbb{R}^m$, тоді\\
 	$(A+B)\vec{x} = A \vec{x} + B \vec{x} = \mathbb{A} \vec{x} + \mathbb{B} \vec{x} = \begin{pmatrix}
@@ -1933,7 +1947,7 @@ L \arrow{r}{\varphi} \arrow{d}{J} & \mathbb{R} \arrow{d}{I} \\
 	І виконуються всі 8 аксіом - там, в принципі, все зрозуміло.\\
 	Отже, $Mat (n \times m)$ утворює лінійний простір.
 	\bigskip \\
-	Ба більше, в \textbf{Ex. 2.2.12.} ми змогли визначити множення двох матриць таким чином:\\
+	Ба більше, в \exref{important_ex2} ми змогли визначити множення двох матриць таким чином:\\
 	$\forall \mathbb{B} \in Mat(k \times m), \forall \mathbb{A} \in Mat(m \times n): \mathbb{B} \cdot \mathbb{A} \in Mat(k \times n)$\\
 	$\mathbb{B} \cdot \mathbb{A} = \begin{pmatrix}
 	b_{11}a_{11}+\dots+b_{1m}a_{m1} & \dots & b_{11}a_{1n}+\dots+b_{1m}a_{mn} \\
@@ -1969,9 +1983,32 @@ L \arrow{r}{\varphi} \arrow{d}{J} & \mathbb{R} \arrow{d}{I} \\
 	0 & \dots & 1 
 	\end{pmatrix} = a_{11}E_{11} + \dots + a_{1n}E_{1n} + \dots + a_{m1}E_{m1} + \dots + a_{mn}E_{mn}$
 	\end{proof}
+	
+	\begin{definition}
+	Задано матрицю $\mathbb{A} \in Mat(m \times n)$.\\
+	\textbf{Транспонованою матрицею} називають матрицю $\mathbb{D} \in Mat(n \times m)$, яка була створена таким чином:
+	\begin{align*}
+	d_{ij} = a_{ji}
+	\end{align*}
+	Позначення: $\mathbb{D} = \mathbb{A}^T$.
+	\end{definition}
+	
+	\begin{proposition}[Властивості]
+	1. $(\mathbb{A}^T)^T = \mathbb{A}$; \\
+	2. $(\lambda \mathbb{A})^T = \lambda \mathbb{A}^T$; \\
+	3. $(\mathbb{A} + \mathbb{B})^T = \mathbb{A}^T + \mathbb{B}^T$; \\
+	4. $(\mathbb{A} \mathbb{B})^T = \mathbb{B}^T \mathbb{A}^T$.
+	\end{proposition}
+	
+	\begin{proof}
+	\textit{1),2),3) відносно зрозуміло.}\\
+	4) Позначимо $\mathbb{A} \mathbb{B} = \mathbb{C}$ та $\mathbb{B}^T \mathbb{A}^T = \mathbb{D}$.\\
+	Тут $c_{ij} = a_{i1}b_{1j} + \dots + a_{in}b_{nj}$. Таким чином, $c_{ji} = a_{j1}b_{1i} + \dots + a_{jn}b_{ni} = b_{i1}^T a_{1j}^T + \dots + b_{in}^T a_{nj}^T = d_{ij}$.\\
+	Отже, $\mathbb{C} = \mathbb{D} \implies (\mathbb{A} \mathbb{B})^T = \mathbb{B}^T \mathbb{A}^T$.
+	\end{proof}
 
 	
-	\subsection{Кососиметричні функціонали}
+	\subsection{$n$-лінійні функціонали}
 	\begin{definition}
 	Задано $L$ - лінійний простір.\\
 	\textbf{$n$-лінійним функціоналом} на $L$ називають відображення: $F: L \times L \times \underset{n\text{ разів}}{\dots} \times L \to \mathbb{R}$, для якого виконані властивості:
@@ -1989,6 +2026,11 @@ L \arrow{r}{\varphi} \arrow{d}{J} & \mathbb{R} \arrow{d}{I} \\
 	
 	\begin{definition}
 	Задано $F: L^n \to \mathbb{R}$ - $n$-лінійний функціонал.\\
+	Він називається \textbf{симетричним}, якщо виконується властивість:
+	\begin{align*}
+		\forall x_1 \dots, x_n \in L: \forall j,k = \overline{1,n}\\
+	F(x_1, \dots, \textcolor{red}{x_j}, \dots, \textcolor{red}{x_k}, \dots, x_n) = F(x_1, \dots, \textcolor{red}{x_k}, \dots, \textcolor{red}{x_j}, \dots, x_n)
+	\end{align*}
 	Він називається \textbf{кососиметричним}, якщо виконується властивість:
 	\begin{align*}
 	\forall x_1 \dots, x_n \in L: \forall j,k = \overline{1,n}\\
@@ -2121,16 +2163,17 @@ L \arrow{r}{\varphi} \arrow{d}{J} & \mathbb{R} \arrow{d}{I} \\
 	\end{align*}
 	
 	\begin{definition}
-	Задано $F: L^n \to \mathbb{R}$ - $n$-лінійний кососиметричний функціонал, $\dim L = n$. Також задано $\tau = \begin{pmatrix} 1 & 2 & \dots & n \\
+	Задано $F: L^n \to \mathbb{R}$ - $n$-лінійний функціонал, $\dim L = n$. Також задано \\ $\tau = \begin{pmatrix} 1 & 2 & \dots & n \\
 	j_1 & j_2 & \dots & j_n
 \end{pmatrix}	 \in S_n$ - перестановка.\\
-\textbf{Дія перестановки на кососиметричну функцію} визначається так:
+\textbf{Дія перестановки на функціонал} визначається так:
 \begin{align*}
 \tau F(x_1,\dots,x_n) = F(x_{j_1},\dots,x_{j_n})
 \end{align*}
 	\end{definition}
 	
 	\begin{lemma}
+	\label{permutation_functional}
 	Задано $F: L^n \to \mathbb{R}$ - $n$-лінійний кососиметричний функціонал, $\dim L = n$. Також задано $\tau = \begin{pmatrix} 1 & 2 & \dots & n \\
 	j_1 & j_2 & \dots & j_n
 \end{pmatrix}	 \in S_n$ - перестановка.\\
@@ -2139,19 +2182,17 @@ L \arrow{r}{\varphi} \arrow{d}{J} & \mathbb{R} \arrow{d}{I} \\
 	
 	\begin{proof}
 	Маємо факт: $\tau = \sigma_1 \dots \sigma_k$ - розклад в добуток транспозицій. Розглянемо, як діє одна транспозиція на функціонал:\\
-$\sigma_{j,k}F(x_1,\dots,x_{j-1},\textcolor{red}{x_j},x_{j+1},\dots,x_{k-1},\textcolor{red}{x_k},x_{k+1},\dots,x_n) = F(x_1,\dots,x_{j-1},\textcolor{red}{x_k},x_{j+1},\dots,x_{k-1},\textcolor{red}{x_j},x_{k+1},\dots,x_n) = \\ = -F(x_1,\dots,x_{j-1},x_j,x_{j+1},\dots,x_{k-1},x_k,x_{k+1},\dots,x_n)$\\
+$\sigma_{j,k}F(x_1,\dots,x_{j-1},\textcolor{red}{x_j},x_{j+1},\dots,x_{k-1},\textcolor{red}{x_k},x_{k+1},\dots,x_n) = F(x_1,\dots,x_{j-1},\textcolor{red}{x_k},x_{j+1},\dots,x_{k-1},\textcolor{red}{x_j},x_{k+1},\dots,x_n) = \\ = -F(x_1,\dots,x_{j-1},x_j,x_{j+1},\dots,x_{k-1},x_k,x_{k+1},\dots,x_n)$.\\
 Тоді якщо діяти по черзі, отримаємо бажану формулу:\\
 $\tau F(x_1,\dots,x_n) = \sigma_1 \dots \sigma_k F(x_1,\dots,x_n) = (-1)^{l(\tau)}F(x_1,\dots,x_n)$.
 \end{proof}
 
 \begin{theorem}[Єдиність $n$-лінійного кососиметричного функціоналу]
-Задано $F,\Phi: L \to \mathbb{R}$ - $n$-лінійні кососиметричні функціонали, де $F \not\equiv 0$ та $\dim L = n$.\\
+Задано $F,\Phi: L^n \to \mathbb{R}$ - $n$-лінійні кососиметричні функціонали, де $F, \Phi \not\equiv 0$ та $\dim L = n$.\\
 Тоді $\exists c \in \mathbb{R}: F(x_1,\dots,x_n) \equiv c\Phi(x_1,\dots,x_n)$.
 \end{theorem}
 
-\begin{remark} Є декілька важливих зауважень:\\
-1. Константа $c$ не залежить від $x_1,\dots,x_n$;\\
-2. $\dim L = n \implies$ кількість аргументів.\\
+\begin{remark} Константа $c$ не залежить від $x_1,\dots,x_n$.
 \end{remark}
 
 \begin{proof}
@@ -2163,19 +2204,16 @@ $\implies F(x_1,x_2)=F(x_{11}e_1 + x_{21}e_2, x_{12}e_1 + x_{22}e_2) \boxed{=}$\
 $\boxed{=} x_{11}x_{12}\underset{=0}{F(e_1,e_1)} + x_{11}x_{22}F(e_1,e_2)+x_{21}x_{12}F(e_2,e_1)+x_{21}x_{22}\underset{=0}{F(e_2,e_2)} = \\
 = x_{11}x_{22}F(e_1,e_2) - x_{21}x_{12}F(e_1,e_2) = F(e_1,e_2) \cdot \underbrace{(x_{11}x_{22}-x_{21}x_{12})}_{\textrm{схожий на визначник 2 порядку}}$\\
 Так само $\Phi(x_1,x_2) = \dots = \Phi(e_1,e_2)(x_{11}x_{22}-x_{21}x_{12})$.
-
-\begin{remark}
-$F \not\equiv 0 \iff F(e_1,e_2) \neq 0$. Так само і для $\Phi$.
-\end{remark}
-Оберемо $c = \huge \frac{F(e_1,e_2)}{\Phi(e_1,e_2)}$. Тоді $\huge \frac{F(x_1,x_2)}{\Phi(x_1,x_2)} = \frac{F(e_1,e_2)(x_{11}x_{22}-x_{12}x_{21})}{\Phi(e_1,e_2)(x_{11}x_{22}-x_{12}x_{21})} = c$\\
+\\
+Оберемо $c = \displaystyle \frac{F(e_1,e_2)}{\Phi(e_1,e_2)}$. Тоді $\displaystyle \frac{F(x_1,x_2)}{\Phi(x_1,x_2)} = \frac{F(e_1,e_2)(x_{11}x_{22}-x_{12}x_{21})}{\Phi(e_1,e_2)(x_{11}x_{22}-x_{12}x_{21})} = c$\\
 \\
 Для інших $n$ це аналогічно, тобто ми довели, але зробимо ту саму справу для $n=3$.\\
 \\
 Нехай $n=3$ і задано базис $\{e_1,e_2,e_3\}$. Тоді\\
-$\forall x_1 \in L: x_1 = \huge \sum_{j_1=1}^3 x_{j_11}e_{j_1}$\\
-$\forall x_2 \in L: x_2 = \huge \sum_{j_2=1}^3 x_{j_22}e_{j_2}$\\
-$\forall x_3 \in L: x_3 = \huge \sum_{j_1=1}^3 x_{j_33}e_{j_3}$\\
-$\implies F(x_1,x_2,x_3) = \huge F\left(\sum_{j_1=1}^3 x_{j_11}e_{j_1}, \sum_{j_2=1}^3 x_{j_22}e_{j_2}, \sum_{j_1=1}^3 x_{j_33}e_{j_3}\right) = \sum_{j_1 = 1}^3 \sum_{j_2 = 1}^3 \sum_{j_3 = 1}^3 x_{j_11}x_{j_22}x_{j_33} F(e_{j_1},e_{j_2},e_{j_3}) \boxed{=}$\\
+$\forall x_1 \in L: x_1 = \displaystyle \sum_{j_1=1}^3 x_{j_11}e_{j_1}$ \hspace{1cm}
+$\forall x_2 \in L: x_2 = \displaystyle \sum_{j_2=1}^3 x_{j_22}e_{j_2}$ \hspace{1cm}
+$\forall x_3 \in L: x_3 = \displaystyle \sum_{j_3=1}^3 x_{j_33}e_{j_3}$\\
+$\implies F(x_1,x_2,x_3) = \displaystyle F\left(\sum_{j_1=1}^3 x_{j_11}e_{j_1}, \sum_{j_2=1}^3 x_{j_22}e_{j_2}, \sum_{j_3=1}^3 x_{j_33}e_{j_3}\right) = \sum_{j_1 = 1}^3 \sum_{j_2 = 1}^3 \sum_{j_3 = 1}^3 x_{j_11}x_{j_22}x_{j_33} F(e_{j_1},e_{j_2},e_{j_3}) \boxed{=}$\\
 Залишуться лише 6 доданків, де в $F$ стоять різні елементи за базисом.\\
 $\boxed{=} x_{11}x_{22}x_{33}F(e_1,e_2,e_3) + x_{11}x_{23}x_{32}F(e_1,e_3,e_2)+x_{12}x_{21}x_{33}F(e_2,e_1,e_3) + x_{12}x_{23}x_{31}F(e_2,e_3,e_1) + \\ + x_{13}x_{21}x_{32}F(e_3,e_1,e_2) + x_{13}x_{22}x_{31}F(e_3,e_2,e_1) \boxed{=}$\\
 Змінимо в усіх функціоналах порядок елементів базису на $e_1,e_2,e_3$ та винесемо за дужки.\\
@@ -2183,16 +2221,16 @@ $\boxed{=} F(e_1,e_2,e_3)\cdot \underbrace{(x_{11}x_{22}x_{33} - x_{11}x_{23}x_{
 Ну а далі абсолютно аналогічні міркування, тут нам треба було акцентувати увагу на останній вираз.
 \bigskip \\
 І нарешті, загальний випадок, $\dim L = n$.\\
-$\forall k = 1,\dots,n: \forall x_k \in L: x_k = \huge \sum_{j_k=1}^{n} x_{j_kk}e_{j_k}$\\
-$\implies F(x_1,\dots,x_n) = \huge F\left(\sum_{j_1=1}^{n} x_{j_11}e_{j_1}, \dots, \sum_{j_n=1}^{n} x_{j_n n}e_{j_n}\right) = \sum_{j_1 = 1}^n \dots \sum_{j_n = 1}^n x_{1j_1}\dots x_{nj_n} F(e_{j_1},\dots,e_{j_n}) \boxed{=}$\\
+$\forall k = 1,\dots,n: \forall x_k \in L: x_k = \displaystyle \sum_{j_k=1}^{n} x_{j_kk}e_{j_k}$\\
+$\implies F(x_1,\dots,x_n) = \displaystyle F\left(\sum_{j_1=1}^{n} x_{j_11}e_{j_1}, \dots, \sum_{j_n=1}^{n} x_{j_n n}e_{j_n}\right) = \sum_{j_1 = 1}^n \dots \sum_{j_n = 1}^n x_{1j_1}\dots x_{nj_n} F(e_{j_1},\dots,e_{j_n}) \boxed{=}$\\
 Знову ж таки, зникають доданки, де принаймні 2 елементи однакові. Якщо математично:\\
 $\exists j_k = j_l \implies F(e_1,\dots, e_{j_k}, \dots, e_{j_l}, \dots, e_n) = 0$.\\
 Тоді залишаються доданки, де $j_k \neq j_l$ - різні. Тому буде перестановка.\\
-$\huge \boxed{=} \sum_{\tau \in S_n} x_{j_11}x_{j_22}\dots x_{j_nn} F(e_{j_1},e_{j_2}\dots, e_{j_n}) \boxed{=}$\\
-І переставимо елементи базису в природному порядку, завдяки \textbf{Lm. 3.3.8.} \\
-$\huge \boxed{=} \sum_{\tau \in S_n} x_{j_11}x_{j_22}\dots x_{j_nn} \tau F(e_1,e_2\dots, e_n) = \\
-= \huge \sum_{\tau \in S_n} x_{j_11}x_{j_22}\dots x_{j_nn} (-1)^{l(\tau)} F(e_1,e_2\dots, e_n) = \huge F(e_1,\dots,e_n) \sum_{\tau \in S_n} (-1)^{l(\tau)} x_{j_11}x_{j_22}\dots x_{j_nn}$.\\
-Позначимо $A(x_1,\dots,x_n) = \huge \sum_{\tau \in S_n} (-1)^{l(\tau)} x_{j_11}x_{j_22}\dots x_{j_nn}$\\
+$\displaystyle \boxed{=} \sum_{\tau \in S_n} x_{j_11}x_{j_22}\dots x_{j_nn} F(e_{j_1},e_{j_2}\dots, e_{j_n}) \boxed{=}$\\
+І переставимо елементи базису в природному порядку, завдяки \lmref{permutation_functional} \\
+$\displaystyle \boxed{=} \sum_{\tau \in S_n} x_{j_11}x_{j_22}\dots x_{j_nn} \tau F(e_1,e_2\dots, e_n) = \\
+= \displaystyle \sum_{\tau \in S_n} x_{j_11}x_{j_22}\dots x_{j_nn} (-1)^{l(\tau)} F(e_1,e_2\dots, e_n) = \displaystyle F(e_1,\dots,e_n) \sum_{\tau \in S_n} (-1)^{l(\tau)} x_{j_11}x_{j_22}\dots x_{j_nn}$.\\
+Позначимо $A(x_1,\dots,x_n) = \displaystyle \sum_{\tau \in S_n} (-1)^{l(\tau)} x_{j_11}x_{j_22}\dots x_{j_nn}$\\
 $\implies F(x_1,\dots,x_n) = F(e_1,\dots,e_n)A(x_1,\dots,x_n)$.\\
 І далі все абсолютно аналогічно.
 \end{proof}
@@ -2201,30 +2239,32 @@ $\implies F(x_1,\dots,x_n) = F(e_1,\dots,e_n)A(x_1,\dots,x_n)$.\\
 Якщо $\dim L = n$, але тепер $F$ - $(n+1)$-лінійний кососиметричний функціонал, то $F \equiv 0$.
 \end{remark}
 
+\begin{corollary}
+Задано $F: L^n \to \mathbb{R}$ - $n$-лінійний функціонал та $\{e_1,\dots,e_n\}$ - базис $L$. Тоді $F(x_1,\dots,x_n) = \displaystyle\sum_{j_1,\dots,j_n=1}^n x_{j_1 1}\dots x_{j_n n} F(e_{j_1},\dots,e_{j_n})$.
+\end{corollary}
+
 \subsection{Визначники n-го порядку}
 \begin{definition}
-\textbf{Визначником} $n$-го порядку називають відображення $\det : Mat(n \times n) \to \mathbb{R}$, який визначений наступним чином:\\
-$F: \mathbb{R}^n \times \dots \times \mathbb{R}^n \to \mathbb{R}$ - $n$-лінійний кососиметричний функціонал\\
-$\forall \mathbb{A} \in Mat(n \times n): \mathbb{A} = (\vec{a_1},\dots, \vec{a_n}) \implies \det \mathbb{A} = F(\vec{a_1},\dots,\vec{a_n})$\\
-Додаткова умова на $F$: ми розглядаємо базис одиничних векторів $\{\vec{e_1},\dots, \vec{e_n}\}$, тоді $F(\vec{e_1},\dots,\vec{e_n}) = 1$, або $\det \mathbb{I} = 1$\\
+\textbf{Визначником} $n$-го порядку називають відображення $\det : Mat(n \times n) \to \mathbb{R}$, який визначений таким чином:\\
+$F: \mathbb{R}^n \times \dots \times \mathbb{R}^n \to \mathbb{R}$ - $n$-лінійний кососиметричний функціонал.\\
+$\forall \mathbb{A} \in Mat(n \times n): \mathbb{A} = (\vec{a_1},\dots, \vec{a_n}) \implies \det \mathbb{A} = F(\vec{a_1},\dots,\vec{a_n})$.\\
+Додаткова умова на $F$: ми розглядаємо базис одиничних векторів $\{\vec{e_1},\dots, \vec{e_n}\}$, тоді $F(\vec{e_1},\dots,\vec{e_n}) = 1$, або $\det \mathbb{I} = 1$.\\
 \textit{Це робиться для того, щоб детермінант можна було б знайти однозначним чином.}
 \end{definition}
 
 \begin{remark}
 Із доведення попередньої теореми випливає, що
 \begin{align*}
-\det \mathbb{A} = \huge \sum_{\tau \in S_n} (-1)^{l(\tau)} a_{j_1 1}\dots a_{j_n n}
+\det \mathbb{A} = \displaystyle \sum_{\tau \in S_n} (-1)^{l(\tau)} a_{j_1 1}\dots a_{j_n n}
 \end{align*}
-При $\mathbb{A} = \begin{pmatrix}
+де $\mathbb{A} = \begin{pmatrix}
  a_{11} & \dots & a_{1n} \\
  \vdots & \ddots &\vdots \\
  a_{n1} & \dots & a_{nn}М
-\end{pmatrix} = (\vec{a_1}, \dots, \vec{a_n})$
+\end{pmatrix} = (\vec{a_1}, \dots, \vec{a_n})$.
 \end{remark}
 
-\begin{theorem}[Властивості]
-
-\end{theorem}
+\subsubsection*{Властивості}
 1) Нехай $\mathbb{A}_b = (\vec{a}_1, \dots, \vec{b}, \dots, \vec{a_n})$, $\mathbb{A}_c = (\vec{a}_1, \dots, \vec{c}, \dots, \vec{a_n})$ та $\mathbb{A}_{b+c} = (\vec{a}_1, \dots, \vec{b}+\vec{c}, \dots, \vec{a_n})$. Тоді\\
 $\det \mathbb{A}_{b+c} = \det \mathbb{A}_b + \det \mathbb{A}_{c}$.
 \bigskip \\
@@ -2241,11 +2281,11 @@ $\det (\mathbb{A}_{j + \lambda k}) = \det \mathbb{A}$.\\
 \bigskip \\
 5) $\det \mathbb{A}^T = \det \mathbb{A}$
 \begin{proof}
-Маємо $\det \mathbb{A} = \huge\sum_{\tau \in S_n} (-1)^{l(\tau)}a_{\tau(1)1}\dots a_{\tau(n)n}$. Тобто в кожному стовпчику обираємо елемент з цього рядка, який ми ще не брали.\\
-Із таких міркувань випливає, що $\det \mathbb{A}^T = \huge\sum_{\sigma \in S_n} (-1)^{l(\sigma)}a_{1 \sigma(1)}\dots a_{n \sigma(n)}$.\\
+Маємо $\det \mathbb{A} = \displaystyle\sum_{\tau \in S_n} (-1)^{l(\tau)}a_{\tau(1)1}\dots a_{\tau(n)n}$. Тобто в кожному стовпчику обираємо елемент з цього рядка, який ми ще не брали.\\
+Із таких міркувань випливає, що $\det \mathbb{A}^T = \displaystyle\sum_{\sigma \in S_n} (-1)^{l(\sigma)}a_{1 \sigma(1)}\dots a_{n \sigma(n)}$.\\
 Переставимо множники таким чином, щоб другий індекс йшов нумерацією $1,2,\dots,n$. Що відбувається тим часом з перестановкою $\sigma$: перший рядок переставляється, а другий групується. Тобто ми отримаємо $\sigma^{-1}$.\\
 Також зазначу, що $l(\sigma) = l(\sigma^{-1})$, оскільки якщо $\sigma = \tau_1 \tau_2 \dots \tau_n$ - добуток транспозицій, то звідси $\sigma^{-1} = \tau_n \dots \tau_2 \tau_1$.\\
-Тож $\det \mathbb{A}^T = \huge\sum_{\sigma^{-1} \in S_n} (-1)^{l(\sigma^{-1})} a_{\sigma^{-1}(1)1}\dots a_{\sigma^{(-1)}(n)n} \overset{\sigma^{-1} = \tau}{=} \det \mathbb{A}$.
+Тож $\det \mathbb{A}^T = \displaystyle\sum_{\sigma^{-1} \in S_n} (-1)^{l(\sigma^{-1})} a_{\sigma^{-1}(1)1}\dots a_{\sigma^{(-1)}(n)n} \overset{\sigma^{-1} = \tau}{=} \det \mathbb{A}$.
 \end{proof}
 
 
@@ -2255,12 +2295,12 @@ $\det (\mathbb{A}_{j + \lambda k}) = \det \mathbb{A}$.\\
 \textbf{Мінором} матриці $\mathbb{A}$ називається визначник $M_{jk}$, який був отриманий в результаті викреслення рядка $j$ та стовпчика $k$.
 \end{definition}
 
-6) Розкриття за $j$-им рядком: $\det \mathbb{A} = \huge \sum_{k=1}^n (-1)^{k+j} a_{jk}M_{jk}$.
+6) Розкриття за $j$-им рядком: $\det \mathbb{A} = \displaystyle \sum_{k=1}^n (-1)^{k+j} a_{jk}M_{jk}$.
 \begin{proof}
 Доведемо розкриття за 1-м рядком. Для решти аналогічно.\\
 Скористаємось теоремою про єдиність $n$-лінійного кососиметричного функціоналу. Для цього ми розглянемо два функціонала:\\
 1) $F(\vec{a_1},\dots, \vec{a_n}) = \det \mathbb{A}$\\
-2) $\Phi(\vec{a_1},\dots, \vec{a_n}) = \huge \sum_{k=1}^n (-1)^{k+1} a_{1k}M_{1k} =$\\
+2) $\Phi(\vec{a_1},\dots, \vec{a_n}) = \displaystyle \sum_{k=1}^n (-1)^{k+1} a_{1k}M_{1k} =$\\
 $= a_{11} \det \begin{pmatrix} a_{22} & \dots & a_{2n} \\ \vdots & \ddots & \vdots \\ a_{n2} & \dots & a_{nn} \end{pmatrix} - a_{12} \det \begin{pmatrix} a_{21} & \dots & a_{2n} \\ \vdots & \ddots & \vdots \\ a_{n1} & \dots & a_{nn} \end{pmatrix} + \dots + (-1)^{n+1} a_{1n} \det \begin{pmatrix} a_{21} & a_{22} & \dots \\ \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \dots \end{pmatrix}$\\
 Перевіримо на лінійність за 1-м аргументом: $\vec{a_1} = \vec{b} + \alpha \vec{c}$. Тоді\\
 $\Phi(\vec{b}+\alpha \vec{c},\dots,\vec{a_n}) =$ \\
@@ -2287,7 +2327,7 @@ $= 1 \det \begin{pmatrix} 1 & \dots & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dots
 Оскільки $F(\mathbb{I}) = C\cdot \Phi(\mathbb{I})$, то $C = 1$.\\
 Остаточно, $F(\mathbb{A}) = \Phi(\mathbb{A})$.
 \end{proof}
-6) $\huge\sum_{k=1}^n (-1)^{k+j} b_k M_{jk} = \det \begin{pmatrix}
+6) $\displaystyle\sum_{k=1}^n (-1)^{k+j} b_k M_{jk} = \det \begin{pmatrix}
 a_{11} & a_{12} & \dots & a_{1n} \\
 \vdots & \vdots & \ddots & \vdots \\
 b_1 & b_2 & \dots & b_n \\
@@ -2295,12 +2335,12 @@ b_1 & b_2 & \dots & b_n \\
 a_{n1} & a_{n2} & \dots & a_{nn} \\
 \end{pmatrix}$. Елементи $b_1,b_2,\dots,b_n$ знаходяться в $j$-му рядку.
 \bigskip \\
-7) \textquotedbl Фальшиве\textquotedbl{} розкриття за $j$-им рядком: $\huge \sum_{k=1}^n (-1)^{k+j} a_{mk}M_{jk} = \left[\begin{gathered} 0, m \neq j \\ \det \mathbb{A}, m = j \end{gathered} \right.$
+7) \textquotedbl Фальшиве\textquotedbl{} розкриття за $j$-им рядком: $\displaystyle \sum_{k=1}^n (-1)^{k+j} a_{mk}M_{jk} = \left[\begin{gathered} 0, m \neq j \\ \det \mathbb{A}, m = j \end{gathered} \right.$
 
 \begin{proof}
 Випадок $m = j$ - це \textquotedbl правдиве\textquotedbl{} розкриття за $j$-им рядком за 5).\\
 Випадок $m \neq j$ маємо:\\
-$\huge \sum_{k=1}^n (-1)^{k+j} a_{mk} M_{jk} \overset{\textrm{6)}}{=} \det \begin{pmatrix}
+$\displaystyle \sum_{k=1}^n (-1)^{k+j} a_{mk} M_{jk} \overset{\textrm{6)}}{=} \det \begin{pmatrix}
 a_{11} & a_{12} & \dots & a_{1n} \\
 \vdots & \vdots & \ddots & \vdots \\
 \underset{=a_{m1}}{a_{j1}} & \underset{=a_{m2}}{a_{j2}} & \dots & \underset{=a_{mn}}{a_{jn}} \\
@@ -2313,7 +2353,7 @@ a_{n1} & a_{n2} & \dots & a_{nn}
 \end{proof}
 
 8) Розкладати детермінант можна за елементами за стовпчиком.\\
-9) \textquotedbl Фальшиве\textquotedbl{} розкриття за $j$-им стовпчиком: $\huge \sum_{j=1}^n (-1)^{j+k} a_{jm}M_{jk} = \left[\begin{gathered} 0, m \neq k \\ \det \mathbb{A}, m = k \end{gathered} \right.$.
+9) \textquotedbl Фальшиве\textquotedbl{} розкриття за $j$-им стовпчиком: $\displaystyle \sum_{j=1}^n (-1)^{j+k} a_{jm}M_{jk} = \left[\begin{gathered} 0, m \neq k \\ \det \mathbb{A}, m = k \end{gathered} \right.$.
 \subsubsection*{Використання методу Гауса для обчислення детермінанту}
 $\det \mathbb{A} = \det \begin{pmatrix} 
 a_{11} & a_{12} & a_{13} & \dots & a_{1n} \\
@@ -2333,6 +2373,8 @@ $= (-1)^? \det \begin{pmatrix}
 Якщо розкрити за першим стовпчиком, то ми отримаємо добуток діагональних елементів\\
 $ = (-1)^? \tilde{a_{11}}\tilde{a_{22}}\tilde{a_{33}}\dots \tilde{a_{nn}}$
 \bigskip \\
+
+\iffalse
 10) $\det (\mathbb{A} \mathbb{B}) = \det \mathbb{A} \det \mathbb{B}$
 \begin{proof}
 Зафіксуємо матрицю $\mathbb{A}$, розглядатимемо 2 функціонала від стовпчика $\mathbb{B}$\\
@@ -2362,6 +2404,150 @@ $\Phi(\mathbb{A}) = \det \mathbb{D}$\\
 Якщо взяти матрицю $\mathbb{I}$, то $\Phi(\mathbb{I}) = \det \mathbb{B}$, якщо розкрити за першим стовпчиком. Ну і $F(\mathbb{I}) = \det \mathbb{B}$\\
 Отже, отримаємо, що $C = 1$.
 \end{proof}
+\fi
+
+10) $\det \begin{pmatrix}
+ \mathbb{A} & \vline & \mathbb{C} \\
+ \hline
+ \mathbb{O} & \vline & \mathbb{B}
+\end{pmatrix} = \det \mathbb{A} \det \mathbb{B}$, де $\mathbb{A} \in Mat(n \times n)$, $\mathbb{B} \in Mat(k \times k)$, $\mathbb{C} \in Mat(n \times k)$.
+
+\begin{proof}
+В розгорнутому виді $\det \begin{pmatrix}
+ \mathbb{A} & \vline & \mathbb{C} \\
+ \hline
+ \mathbb{O} & \vline & \mathbb{B}
+\end{pmatrix} = \begin{vmatrix}
+a_{11} & a_{12} & \dots & a_{1n} & c_{11} & c_{12} & \dots & c_{1k} \\
+a_{21} & a_{22} & \dots & a_{2n} & c_{21} & c_{22} & \dots & c_{2k} \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \dots & a_{nn} & c_{n1} & c_{n2} & \dots & c_{nk} \\
+0 & 0 & \dots & 0 & b_{11} & b_{12} & \dots & b_{1k} \\
+0 & 0 & \dots & 0 & b_{21} & b_{22} & \dots & b_{2k} \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \dots & 0 & b_{k1} & b_{k2} & \dots & b_{kk} \\
+\end{vmatrix} \overset{\text{метод Гауса}}{=} \\ =
+\begin{vmatrix}
+\tilde{a_{11}} & \tilde{a_{12}} & \dots & \tilde{a_{1n}} & \tilde{c_{11}} & \tilde{c_{12}} & \dots & \tilde{c_{1k}} \\
+0 & \tilde{a_{22}} & \dots & \tilde{a_{2n}} & \tilde{c_{21}} & \tilde{c_{22}} & \dots & \tilde{c_{2k}} \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \dots & \tilde{a_{nn}} & \tilde{c_{n1}} & \tilde{c_{n2}} & \dots & \tilde{c_{nk}} \\
+0 & 0 & \dots & 0 & \tilde{b_{11}} & \tilde{b_{12}} & \dots & \tilde{b_{1k}} \\
+0 & 0 & \dots & 0 & 0 & \tilde{b_{22}} & \dots & \tilde{b_{2k}} \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \dots & 0 & 0 & 0 & \dots & \tilde{b_{kk}} \\
+\end{vmatrix} = \tilde{a_{11}} \tilde{a_{22}} \dots \tilde{a_{nn}} \cdot \tilde{b_{11}} \tilde{b_{22}} \dots \tilde{b_{kk}} = \det \mathbb{A} \det \mathbb{B}$
+\end{proof}
+11) $\det \mathbb{A} \mathbb{B} = \det \mathbb{A} \det \mathbb{B}$
+
+\begin{proof}
+Розглянемо матриці $\mathbb{N}_1 = \begin{pmatrix}
+ \mathbb{A} & \vline & \mathbb{O} \\
+ \hline
+ -\mathbb{I} & \vline & \mathbb{B}
+\end{pmatrix}$ та $\mathbb{N}_2 = \begin{pmatrix}
+ \mathbb{A} & \vline & \mathbb{C} \\
+ \hline
+ -\mathbb{I} & \vline & \mathbb{O}
+\end{pmatrix}$, де матриця $\mathbb{C} = \mathbb{A} \mathbb{B}$. За формулою 10), маємо:\\
+$\det \mathbb{N}_1 = \begin{pmatrix}
+ \mathbb{A} & \vline & \mathbb{O} \\
+ \hline
+ -\mathbb{I} & \vline & \mathbb{B}
+\end{pmatrix} = \begin{pmatrix}
+ \mathbb{B} & \vline & -\mathbb{I} \\
+ \hline
+ -\mathbb{O} & \vline & \mathbb{A}
+\end{pmatrix} = \det \mathbb{A} \det \mathbb{B}$ \\ $\det \mathbb{N}_2 = \det \begin{pmatrix}
+ \mathbb{A} & \vline & \mathbb{C} \\
+ \hline
+ -\mathbb{I} & \vline & \mathbb{O}
+\end{pmatrix} = (-1)^n \begin{pmatrix}
+ \mathbb{C} & \vline & \mathbb{A} \\
+ \hline
+ \mathbb{O} & \vline & -\mathbb{I}
+\end{pmatrix} = \det \mathbb{C}$.\\
+Ми хочемо довести, що $\det \mathbb{N}_1 = \det \mathbb{N}_2$.\\
+Будемо рахувати таким чином:\\
+- до $n+1$-го стовпчика $\mathbb{N}_1$ додаємо $1$-ий, що помножений на $b_{11}$, $2$-ий, що помножений на $b_{21}$, \dots , $n$-ий, що помножений на $b_{n1}$\\
+- до $n+2$-го стовпчика $\mathbb{N}_1$ додаємо $1$-ий, що помножений на $b_{12}$, $2$-ий, що помножений на $b_{22}$, \dots , $n$-ий, що помножений на $b_{n2}$\\
+\vdots \\
+- до $2n$-го стовпчика $\mathbb{N}_1$ додаємо $1$-ий, що помножений на $b_{1n}$, $2$-ий, що помножений на $b_{2n}$, \dots , $n$-ий, що помножений на $b_{nn}$\\
+Визначник від цього не зміниться. Тоді отримаємо:\\
+$\det \mathbb{N}_1 = \begin{vmatrix}
+a_{11} & a_{12} & \dots & a_{1n} & 0 & 0 & \dots & 0 \\
+a_{21} & a_{22} & \dots & a_{2n} & 0 & 0 & \dots & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \dots & a_{nn} & 0 & 0 & \dots & 0 \\
+-1 & 0 & \dots & 0 & b_{11} & b_{12} & \dots & b_{1k} \\
+0 & -1 & \dots & 0 & b_{21} & b_{22} & \dots & b_{2k} \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \dots & -1 & b_{k1} & b_{k2} & \dots & b_{kk} \\
+\end{vmatrix} = \begin{vmatrix}
+a_{11} & a_{12} & \dots & a_{1n} & c_{11} & c_{12} & \dots & c_{1n} \\
+a_{21} & a_{22} & \dots & a_{2n} & c_{21} & c_{22} & \dots & c_{2n} \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \dots & a_{nn} & c_{n1} & c_{n2} & \dots & c_{nn} \\
+-1 & 0 & \dots & 0 & 0 & 0 & \dots & 0 \\
+0 & -1 & \dots & 0 & 0 & 0 & \dots & 0 \\
+\vdots & \vdots & \ddots & \vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \dots & -1 & 0 & 0 & \dots & 0 \\
+\end{vmatrix} \det \mathbb{N}_2$.\\
+Отже, $\det \mathbb{A} \mathbb{B} = \det \mathbb{A} \det \mathbb{B}$.
+\end{proof}
+
+\begin{example}
+$\begin{vmatrix}
+1 & 1 & 2021 & 2022 \\
+2 & 5 & 2023 & 2024 \\
+0 & 0 & 3 & 4 \\
+0 & 0 & 3 & 6
+\end{vmatrix} = \begin{vmatrix}
+1 & 1 \\
+2 & 5
+\end{vmatrix} \cdot \begin{vmatrix}
+3 & 4 \\
+3 & 6
+\end{vmatrix} = 3 \cdot 6 = 18$.
+\end{example}
+
+\begin{example}
+Обчислити \textbf{визначник Вандермонда} $\Delta (x_1,x_2,\dots,x_n) = \begin{vmatrix}
+1 & 1 & \dots & 1 \\
+x_1 & x_2 & \dots & x_n \\
+x_1^2 & x_2^2 & \dots & x_n^2 \\
+\vdots & \vdots & \ddots & \vdots \\
+x_1^{n-1} & x_2^{n-1} & \dots & x_n^{n-1}
+\end{vmatrix}$.\\
+Будемо обчислювати таким чином:\\
+- від $n$-го рядка віднімаємо $n-1$-ий, помножений на $x_1$\\
+- від $n-1$-го рядка віднімаємо $n-2$-ий, помножений на $x_1$\\
+\vdots \\
+- від $2$-го рядка віднімаємо $1$-ий, помножений на $x_1$\\
+Оскільки від цього визначник не змінюється, то ми отримаємо:\\
+$\Delta (x_1,x_2,\dots,x_n) = \begin{vmatrix}
+1 & 1 & \dots & 1 \\
+0 & x_2 - x_1 & \dots & x_n -x_1 \\
+0 & x_2(x_2-x_1) & \dots & x_n(x_n-x_1) \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & x_2^{n-2}(x_2-x_1) & \dots & x_n^{n-2}(x_n-x_1)
+\end{vmatrix} \overset{\text{розкриття за 1 стовпчиком}}{=} \\
+= \begin{vmatrix}
+x_2 - x_1 & x_3 - x_1 & \dots & x_n -x_1 \\
+x_2(x_2-x_1) & x_3(x_3-x_1) & \dots & x_n(x_n-x_1) \\
+\vdots & \vdots & \ddots & \vdots \\
+x_2^{n-2}(x_2-x_1) & x_3^{n-2}(x_3-x_1) & \dots & x_n^{n-2}(x_n-x_1)
+\end{vmatrix} = (x_2-x_1)(x_3-x_1) \dots (x_n-x_1) \begin{vmatrix}
+1 & 1 & \dots & 1 \\
+x_2 & x_3 & \dots & x_n \\
+\vdots & \vdots & \ddots & \vdots \\
+x_2^{n-2} & x_3^{n-2} & \dots & x_n^{n-2}
+\end{vmatrix} = \displaystyle\prod_{i=2}^n (x_i-x_1) \Delta (x_2,x_3,\dots,x_n)$.\\
+Отримали визначник Вандермонда $\Delta (x_2,x_3,\dots,x_n)$ розмірністю на один менше. Аналогічним чином ми отримаємо, що $\Delta (x_2,x_3,\dots,x_n) = \displaystyle\prod_{j=3}^n (x_i-x_2) \Delta (x_3,x_4,\dots,x_n)$.\\
+Тому $\Delta (x_1,x_2,\dots,x_n) = \displaystyle\prod_{i=2}^n (x_i-x_1) \prod_{j=3}^n (x_j-x_2) \Delta (x_3,x_4,\dots,x_n)$.\\
+Якщо продовжувати до кінця, то остаточно отримаємо таку формулу:\\
+$\Delta (x_1,x_2,\dots,x_n) = \displaystyle\prod_{1 \leq i<j \leq n} (x_j-x_i)$.
+\end{example}
 
 \subsection{Обернена матриця}
 \begin{definition}
@@ -2378,10 +2564,13 @@ $\Phi(\mathbb{A}) = \det \mathbb{D}$\\
 Матриця $\mathbb{A}$ - оборотна $\iff \det \mathbb{A} \neq 0$.
 \end{theorem}
 
+\begin{remark}
+Матрицю $\mathbb{A}$ ще називають \textbf{виродженою}, якщо $\det \mathbb{A} = 0$.
+\end{remark}
+
 \begin{proof}
 \rightproof Дано: $\mathbb{A}$ - оборотна. Тоді $\exists \mathbb{A}^{-1}: \mathbb{A} \mathbb{A}^{-1} = \mathbb{I}$.\\
-$\implies \det (\mathbb{A} \mathbb{A}^{-1}) = \det \mathbb{A} \det \mathbb{A}^{-1} = \det \mathbb{I} = 1$. Тому $\det \mathbb{A} \neq 0$\\
-Додатково зауважу, що $\det \mathbb{A}^{-1} = \dfrac{1}{\det \mathbb{A}}$.
+$\implies \det (\mathbb{A} \mathbb{A}^{-1}) = \det \mathbb{A} \det \mathbb{A}^{-1} = \det \mathbb{I} = 1$. Тому $\det \mathbb{A} \neq 0$.
 \bigskip \\
 \leftproof Дано: $\det \mathbb{A} \neq 0$. Спробуємо сконструювати обернену матрицю $\mathbb{A}^{-1}$.\\
 Для цього розглянемо матрицю $\tilde{\mathbb{A}} = \begin{pmatrix}
@@ -2391,7 +2580,7 @@ A_{21} & A_{22} & \dots & A_{2n} \\
 A_{n1} & A_{n2} & \dots & A_{nn} \\
 \end{pmatrix}^T$ - \textbf{приєднана матриця}.\\
 Тут $A_{jk} = (-1)^{j+k}M_{jk}$ - \textbf{алгебраїчне доповнення}.\\
-Головною мотивацією цієї побудови слугує властивість 7), використання цієї формули.\\
+Головною мотивацією цієї побудови слугує властивість визначника 7), використання цієї формули.\\
 Щоб це зробити, нам необхідно розглянути добуток таких матриць:\\
 $\mathbb{A} \cdot \tilde{\mathbb{A}} = \begin{pmatrix}
 a_{11} & a_{12} & \dots & a_{1n} \\
@@ -2414,7 +2603,31 @@ $\mathbb{A} \cdot \dfrac{\tilde{\mathbb{A}}}{\det \mathbb{A}} = \mathbb{I}$\\
 Якщо встановити $\mathbb{A}^{-1} = \dfrac{1}{\det \mathbb{A}} \tilde{\mathbb{A}}$, то отримаємо $\mathbb{A} \mathbb{A}^{-1} = \mathbb{I}$.
 \end{proof}
 
+\begin{corollary}
+Якщо матриця $\mathbb{A}$ є невиродженою, то можна знайти обернену за формулою \\ $\mathbb{A}^{-1} = \dfrac{1}{\det \mathbb{A}} \tilde{\mathbb{A}}$, де $\tilde{\mathbb{A}}$ - приєднана матриця.
+\end{corollary}
+
+\begin{example}
+Знайти обернену матрицю від матриці $\mathbb{A} = \begin{pmatrix}
+4 & 3 \\
+3 & 2
+\end{pmatrix}$.\\
+$\det \mathbb{A} = \begin{vmatrix}
+4 & 3 \\
+3 & 2
+\end{vmatrix} = 8-9 = -1 \neq 0$. Отже, можна знайти обернену:\\
+$\mathbb{A}^{-1} = \dfrac{1}{\det \mathbb{A}} \begin{pmatrix}
+A_{11} & A_{12} \\
+A_{21} & A_{22}
+\end{pmatrix}^T$, в нашому випадку $A_{11} = 2$, $A_{12} = -3$, $A_{21} = -3$, $A_{22}=4$.\\
+Остаточно $\mathbb{A} = \begin{pmatrix}
+-2 & 3 \\
+3 & -4
+\end{pmatrix}$.
+\end{example}
+
 \begin{proposition}[Властивості]
+	0) $\det \mathbb{A}^{-1} = (\det \mathbb{A})^{-1}$;\\
 	1) Існуюча обернена матриця є єдиною;\\
 	2) $\mathbb{I}^{-1} = \mathbb{I}$;\\
 	3) $(\mathbb{A}^{-1})^{-1} = \mathbb{A}$;\\
@@ -2431,7 +2644,8 @@ $\mathbb{A} \cdot \dfrac{\tilde{\mathbb{A}}}{\det \mathbb{A}} = \mathbb{I}$\\
 	\vdots & \ddots & \vdots \\
 	0 & \dots & a_{nn}^{-1}
 	\end{pmatrix}$, причому $a_{11},\dots,a_{nn} \neq 0$.\\
-	\textit{1)-5) випливають з властивостей обернених операторів. 6) - наслідок 4), 7),8) зрозуміло.}
+	
+	\textit{0) отримано під час доведення теореми. 1)-5) випливають з властивостей обернених операторів. 6) - наслідок 4), 7),8) зрозуміло.}
 \end{proposition}
 
 \subsubsection*{Побудова оберненої матриці методом Гауса}
@@ -2497,7 +2711,48 @@ $T_m \dots T_{n+2} T_{n+1} T_n \dots T_2 T_1 \mathbb{A} = \begin{pmatrix}
 \bigskip \\
 Висновок: під час пошуку оберненої матриці ми беремо матрицю $\mathbb{A}$ та матрицю $\mathbb{I}$, одночасно діємо на однакові перетворення до рівняння (*), а згодом до рівняння (**).\\
 Це можна записати через \textbf{розширені матриці} таким чином:\\
-$(\mathbb{A} | \mathbb{I}) \longrightarrow (T_n \dots T_2 T_1 \mathbb{A} | T_n \dots T_2 T_1 \mathbb{I} ) \longrightarrow (\mathbb{I} | \mathbb{A}^{-1})$
+$\begin{pmatrix}
+\mathbb{A} & \vline & \mathbb{I}
+\end{pmatrix} \longrightarrow \begin{pmatrix}
+T_n \dots T_2 T_1 \mathbb{A} & \vline & T_n \dots T_2 T_1 \mathbb{I}
+\end{pmatrix} \longrightarrow \begin{pmatrix}
+\mathbb{I} & \mathbb{A}^{-1}
+\end{pmatrix}$.
+
+\begin{example}
+Обчислити обернену матрицю $\mathbb{A} = \begin{pmatrix}
+4 & 3 \\
+3 & 2
+\end{pmatrix}$ методом Гауса.\\
+Запишемо розширену матрицю:\\
+$\begin{pmatrix}
+\mathbb{A} & \vline & \mathbb{I}
+\end{pmatrix} = \begin{pmatrix}
+4 & 3 & \vline & 1 & 0 \\
+3 & 2 & \vline & 0 & 1
+\end{pmatrix} \underrightarrow{\substack{l_1 \to 3l_1 \\ l_2 \to -4l_2}} \begin{pmatrix}
+12 & 9 & \vline & 3 & 0 \\
+-12 & -8 & \vline & 0 & -4
+\end{pmatrix} \underrightarrow{l_2 \to l_2 + l_1} \begin{pmatrix}
+12 & 9 & \vline & 3 & 0 \\
+0 & 1 & \vline & 3 & -4
+\end{pmatrix} \underrightarrow{\substack{l_2 \to 9l_2 \\ l_1 \to -l_1}} \\ \longrightarrow \begin{pmatrix}
+-12 & -9 & \vline & -3 & 0 \\
+0 & 9 & \vline & 27 & -36
+\end{pmatrix} \underrightarrow{l_1 \to l_1 + l_2} \begin{pmatrix}
+-12 & 0 & \vline & 24 & -36 \\
+0 & 9 & \vline & 27 & -36
+\end{pmatrix} \underrightarrow{\substack{l_1 \to -\frac{1}{12}l_1 \\ l_2 \to \frac{1}{9}l_2}} \begin{pmatrix}
+1 & 0 & \vline & -2 & 3 \\
+0 & 1 & \vline & 3 & -4
+\end{pmatrix} = \begin{pmatrix}
+\mathbb{I} & \vline & \mathbb{A}^{-1}
+\end{pmatrix}$.\\
+Таким чином, $\mathbb{A}^{-1} = \begin{pmatrix}
+-2 & 3 \\
+3 & -4
+\end{pmatrix}$.
+\end{example}
 
 
 \subsection{Матричні алгебраїчні рівняння}
@@ -2505,16 +2760,16 @@ $(\mathbb{A} | \mathbb{I}) \longrightarrow (T_n \dots T_2 T_1 \mathbb{A} | T_n \
 1) $\mathbb{A} X = \mathbb{D}_1$;\\
 2) $X \mathbb{B} = \mathbb{D}_2$;\\
 3) $\mathbb{A} X \mathbb{B} = \mathbb{D}_3$.\\
-Причому $\mathbb{A} \in Mat(n \times n)$ та $\mathbb{B} \in Mat(m \times m)$ - обидва оборотні.\\
+Вважаємо, що $\mathbb{A} \in Mat(n \times n)$ та $\mathbb{B} \in Mat(m \times m)$ - обидва оборотні.\\
 Також $\mathbb{D}_1 \in Mat(n \times k), \mathbb{D}_2 \in Mat(k \times m), \mathbb{D}_3 \in Mat(n \times m)$.\\
-Розв'язки:\\
+Отримаємо такі розв'язки:\\
 1) $\mathbb{A}^{-1} \mathbb{A} X = \mathbb{A}^{-1} \mathbb{D}_1 \implies X = \mathbb{A}^{-1} \mathbb{D}_1$;\\
 2) $X \mathbb{B} \mathbb{B}^{-1} = \mathbb{D}_2 \mathbb{B}^{-1} \implies X = \mathbb{D}_2 \mathbb{B}^{-1}$;\\
 3) Комбінація 1) та 2) $\implies X = \mathbb{A}^{-1} \mathbb{D}_3 \mathbb{B}^{-1}$.
 \bigskip \\
 Особливий випадок:\\
 $\mathbb{A} \vec{x} = \vec{b}$\\
-Причому $\mathbb{A} \in Mat(n \times n)$ - оборотна. Тоді $\vec{x} = \mathbb{A}^{-1} \vec{b}$\\
+Ми вважали, що $\mathbb{A} \in Mat(n \times n)$ - оборотна. Тоді $\vec{x} = \mathbb{A}^{-1} \vec{b}$.\\
 Розпишемо це покоординатно:\\
 $\begin{pmatrix}
 x_1 \\ x_2 \\ \vdots \\ x_n
@@ -2546,9 +2801,9 @@ a_{21} & a_{22} & \dots & b_2 \\
 \vdots & \vdots & \ddots & \vdots \\
 a_{n1} & a_{n2} & \dots & b_n
 \end{pmatrix} \overset{\text{позн.}}{=} \Delta_n$\\
-Отримали ось що
+Отримали ось що:
 \begin{theorem}[Метод Крамера]
-Розв'язком рівняння $\mathbb{A} \vec{x} = \vec{b}$ є такі вирази: $x_1 = \dfrac{\Delta_1}{\det \mathbb{A}}, \dots, x_n = \dfrac{\Delta_n}{\det \mathbb{A}}$.
+Розв'язком рівняння $\mathbb{A} \vec{x} = \vec{b}$ є такі вирази: $x_1 = \dfrac{\Delta_1}{\det \mathbb{A}}, \dots, x_n = \dfrac{\Delta_n}{\det \mathbb{A}}$, якщо матриця $\mathbb{A}$ - оборотна.
 \end{theorem}
 
 \subsection{Інші теореми}
@@ -2558,9 +2813,10 @@ a_{n1} & a_{n2} & \dots & b_n
 \end{theorem}
 
 \begin{proof}
-$\{\vec{a}_1,\dots,\vec{a}_n\}$ - л.н.з. $\iff$ $\{\vec{a}_1,\dots,\vec{a}_n\}$ - базис в $\mathbb{R}^n \iff \mathbb{A} = (\vec{a}_1,\dots,\vec{a}_n)$ задає ізоморфізм $A: \mathbb{R}^n \to \mathbb{R}^n \iff$ має обернений $A^{-1} \iff \det \mathbb{A} \neq 0$.
+$\{\vec{a}_1,\dots,\vec{a}_n\}$ - л.н.з. $\iff$ $\{\vec{a}_1,\dots,\vec{a}_n\}$ - базис в $\mathbb{R}^n \iff \\ \iff \mathbb{A} = (\vec{a}_1,\dots,\vec{a}_n)$ задає ізоморфізм $A: \mathbb{R}^n \to \mathbb{R}^n \iff$ має обернений $A^{-1} \iff \det \mathbb{A} \neq 0$.
 \end{proof}
 
+\iffalse
 Час повернутись до формули $\det (\mathbb{A} \mathbb{B}) = \det \mathbb{A} \det \mathbb{B}$.\\
 Розглянемо випадок, коли $\det \mathbb{B} = 0$\\
 Тоді звідси $\{\vec{b}_1, \dots, \vec{b}_n\}$ - л.з., зокрема $\{\mathbb{A}\vec{b}_1, \dots, \mathbb{A} \vec{b}_n\}$ - л.з. $\implies \det \mathbb{A} \mathbb{B} = 0$\\
@@ -2578,6 +2834,7 @@ $\{\vec{a}_1,\dots,\vec{a}_n\}$ - л.н.з. $\iff$ $\{\vec{a}_1,\dots,\vec{a}_n\
  \hline
  \mathbb{O} & \vline & \mathbb{B}
 \end{pmatrix} = 0$.
+\fi
 
 \subsection{Ранг}
 \begin{definition}
@@ -2586,16 +2843,18 @@ $\{\vec{a}_1,\dots,\vec{a}_n\}$ - л.н.з. $\iff$ $\{\vec{a}_1,\dots,\vec{a}_n\
 \begin{align*}
 \rank A = \dim \Im A
 \end{align*}
-\textbf{Дефектом} оператора $A$ називають значення:
+\iffalse
+\textbf{Дефектом} оператора $A$ називають значення (нам це не потрібно):
 \begin{align*}
 \textrm{def } A = \dim{\ker A}
 \end{align*}
+\fi
 \end{definition}
 
 \subsubsection*{Випадок матриці}
 Маємо $A: \mathbb{R}^n \to \mathbb{R}^m$. За лемою, $\Im A = span\{A\vec{e}_1,\dots, A\vec{e}_n\} = span\{\vec{a}_1,\dots,\vec{a}_n\}$. Маємо такі означення:
 \begin{definition}
-\textbf{Стовпчиковим рангом} матриці $\mathbb{A}$ називають ранг системи стовпчиків"
+\textbf{Стовпчиковим рангом} матриці $\mathbb{A}$ називають ранг системи стовпчиків:
 \begin{align*}
 \rank_{\textrm{col}} \mathbb{A} = span\{\vec{a}_1,\dots,\vec{a}_n\}
 \end{align*}
@@ -2894,8 +3153,8 @@ $U \vec{x}_g = U(b_1 \vec{e_1} + \dots + b_n \vec{e_n}) = b_1 U\vec{e_1} + \dots
 $g_1 = u_{11}f_1 + \dots + u_{n1}f_n$;\\
 $\vdots$\\
 $g_n = u_{1n}f_1 + \dots + u_{nn}f_n$.\\
-$\boxed{=} \huge \sum_{k=1}^n b_k J_f g_k = \sum_{k=1}^n b_k J_f \left(\sum_{j=1}^n u_{jk} f_j\right) = \sum_{k=1}^n \sum_{j=1}^n b_k u_{jk} \vec{e_j} = \sum_{j=1}^n \left(\sum_{k=1}^n u_{jk} b_k \right) \vec{e_j} = \begin{pmatrix}
- \huge \sum_{k=1}^n u_{1k} b_k \\ \dots \\ \huge \sum_{k=1}^n u_{nk} b_k
+$\boxed{=} \displaystyle \sum_{k=1}^n b_k J_f g_k = \sum_{k=1}^n b_k J_f \left(\sum_{j=1}^n u_{jk} f_j\right) = \sum_{k=1}^n \sum_{j=1}^n b_k u_{jk} \vec{e_j} = \sum_{j=1}^n \left(\sum_{k=1}^n u_{jk} b_k \right) \vec{e_j} = \begin{pmatrix}
+ \displaystyle \sum_{k=1}^n u_{1k} b_k \\ \dots \\ \displaystyle \sum_{k=1}^n u_{nk} b_k
 \end{pmatrix} = \mathbb{U} \vec{x_g}$,\\
 де $\mathbb{U} = \begin{pmatrix}
 u_{11} & \dots & u_{1n} \\
@@ -2928,7 +3187,7 @@ $\implies \mathbb{U}_{f \to e} = \begin{pmatrix}
 \end{pmatrix}$.\\
 Ясно, що $\vec{x}_e = \mathbb{U}_{f \to e}\vec{x}_f$. Звідси випливає, що $\vec{x}_f = \mathbb{U}^{-1}_{f \to e} \vec{x}_e = \mathbb{U}_{e \to f} \vec{x}_e$.\\
 Декілька магій обчислень для одержання оберненої матриці:\\
-$\mathbb{U}_{e \to f} = \huge \frac{1}{8} \begin{pmatrix}
+$\mathbb{U}_{e \to f} = \displaystyle \frac{1}{8} \begin{pmatrix}
 -2 & -8 & 6 \\
 4 & 8 & -4 \\
 5 & 8 & -7
@@ -2939,7 +3198,7 @@ $\mathbb{U}_{e \to f} = \huge \frac{1}{8} \begin{pmatrix}
 \end{example}
 
 \begin{remark}
-Знаходження матриці дужа схожа з випадком із пункту 2.7. Тут встановити одиничний оператор $I: L_f \to L_g$, в якому для першого старий базис, а в другому відповідно новий, то отримаємо наш поточний випадок.
+Знаходження матриці дужа схожа з випадком із пункту 2.7. Якщо тут встановити одиничний оператор $I: L_f \to L_g$, в якому для першого старий базис, а в другому відповідно новий, то отримаємо наш поточний випадок.
 \end{remark}
 
 \subsection{Матриця лінійного оператору в різних базисах}
@@ -3243,6 +3502,8 @@ $ \mathbb{A} =
 $\\
 Перший квадрат відповідає матриці $\mathbb{A}_{|_{L_{1}}}$, а другий квадрат - $\mathbb{A}_{|_{L_{2}}}$.
 
+%stopped here
+
 \iffalse
 \subsection{Оператор проєктування}
 \defin{2.15.1.} Задано $L = L_1 \dot{+} L_2$ - лінійний простір\\
@@ -3406,6 +3667,7 @@ $\implies \mathbb{A}_g (J_g f) = \lambda (J_g f)$.
 \end{remark}
 
 \begin{example}
+\label{find_eigenvectors}
 Задано матрицю $\mathbb{A} = \begin{pmatrix}
 4 & -1 & -2 \\
 2 & 1 & -2 \\
@@ -3455,6 +3717,7 @@ $\vec{f} = f_1 \begin{pmatrix}
 \end{example}
 
 \begin{proposition}
+\label{change_of_basis_characteristic_polynomial}
 Задано $A: L \to L$ - лінійний оператор та матриці $\mathbb{A}_f, \mathbb{A}_g$ в різних базисах. Тоді $\det(\mathbb{A}_f - \lambda \mathbb{I}) = \det(\mathbb{A}_g - \lambda \mathbb{I})$.\\
 Тобто неважливо, який там базис в просторі $L$, характеристичний поліном той самий.
 \end{proposition}
@@ -3466,7 +3729,7 @@ $\implies \det(\mathbb{A}_f - \lambda I) = \det(U \mathbb{A}_g U^{-1} - \lambda 
 \end{proof}
 
 \begin{proposition}
-Характеристичний многочлен має таку формулу: \\ $\det(\mathbb{A} - \lambda \mathbb{I}) = \huge (-1)^n \lambda^n + \sum_{k=1}^{n-1} \left( \sum_{1 \leq j_1 < j_2 < \dots < j_k \leq n} (-1)^{n-k} M_{j_1 \dots j_n}^{j_1 \dots j_n} \right) \lambda^{n-k} + \det \mathbb{A}$.
+Характеристичний многочлен має таку формулу: \\ $\det(\mathbb{A} - \lambda \mathbb{I}) = \displaystyle (-1)^n \lambda^n + \sum_{k=1}^{n-1} \left( \sum_{1 \leq j_1 < j_2 < \dots < j_k \leq n} (-1)^{n-k} M_{j_1 \dots j_n}^{j_1 \dots j_n} \right) \lambda^{n-k} + \det \mathbb{A}$.
 \end{proposition}
 
 \begin{proof}
@@ -3537,7 +3800,7 @@ a_{21} & a_{22}
 Оскільки нам потрібна степінь $n-2$, то ми обираємо останній доданок, що є $M_{12}^{12}$.\\
 Для інших випадків все аналогічно.\\
 Загалом маємо коефіцієнт при $\lambda^{n-2}:$\\
-$(-1)^{n-2} (M_{12}^{12} + M_{13}^{13} + \dots + M_{1n}^{1n} + M_{23}^{23} + \dots + M_{2n}^{2n} + \dots + M_{n-1,n}^{n-1,n} + M_{nn}^{nn}) = \\ = (-1)^{n-2} \huge \sum_{1 \leq j < m \leq n} M_{jm}^{jm}$ - сума всіх головних мінорів 2-го порядку.\\
+$(-1)^{n-2} (M_{12}^{12} + M_{13}^{13} + \dots + M_{1n}^{1n} + M_{23}^{23} + \dots + M_{2n}^{2n} + \dots + M_{n-1,n}^{n-1,n} + M_{nn}^{nn}) = \\ = (-1)^{n-2} \displaystyle \sum_{1 \leq j < m \leq n} M_{jm}^{jm}$ - сума всіх головних мінорів 2-го порядку.\\
 $\begin{pmatrix}
 \textcolor{red}{a_{11}}-\lambda & \textcolor{red}{a_{12}} & a_{13} & \dots & a_{1n} \\
 \textcolor{red}{a_{21}} & \textcolor{red}{a_{22}}-\lambda & a_{23} & \dots & a_{2n} \\
@@ -3581,7 +3844,7 @@ a_{n1} & a_{n2} & \textcolor{red}{\dots} & \textcolor{red}{a_{nn}}-\lambda
 \end{pmatrix}
 $\\
 - все аналогічно для $\lambda^{n-3}$, коефіцієнт:\\
-$(-1)^{n-3} \huge \sum_{1 \leq j < m < p \leq n} M_{jmp}^{jmp}$ - сума всіх головних мінорів 3-го порядку.\\
+$(-1)^{n-3} \displaystyle \sum_{1 \leq j < m < p \leq n} M_{jmp}^{jmp}$ - сума всіх головних мінорів 3-го порядку.\\
 \vdots \\
 - коефіцієнт вільного доданку: $\det \mathbb{A}$:\\
 $\begin{pmatrix}
@@ -3591,7 +3854,7 @@ $\begin{pmatrix}
 \textcolor{red}{a_{n1}} & \textcolor{red}{a_{n2}} & \textcolor{red}{\dots} & \textcolor{red}{a_{nn}}-\lambda
 \end{pmatrix}$\\
 В результаті маємо:\\
-$\det (\mathbb{A} - \lambda \mathbb{I}) = \huge (-1)^n \lambda^n + (-1)^{n-1} (a_{11} + a_{22} + \dots + a_{nn}) \lambda^{n-1} + (-1)^{n-2} \sum_{1 \leq j < m \leq n} M_{jm}^{jm} \lambda^{n-2} \\ + (-1)^{n-3} \sum_{1 \leq j < m < p \leq n} M_{jmp}^{jmp} \lambda^{n-3} + \dots + \det \mathbb{A} = \\
+$\det (\mathbb{A} - \lambda \mathbb{I}) = \displaystyle (-1)^n \lambda^n + (-1)^{n-1} (a_{11} + a_{22} + \dots + a_{nn}) \lambda^{n-1} + (-1)^{n-2} \sum_{1 \leq j < m \leq n} M_{jm}^{jm} \lambda^{n-2} \\ + (-1)^{n-3} \sum_{1 \leq j < m < p \leq n} M_{jmp}^{jmp} \lambda^{n-3} + \dots + \det \mathbb{A} = \\
 = (-1)^n \lambda^n + \sum_{k=1}^{n-1} (-1)^{n-k} \left( \sum_{1 \leq j_1 < j_2 < \dots < j_k} M_{j_1j_2\dots j_k}^{j_1j_2\dots j_k} \lambda^{n-k} \right) + \det \mathbb{A}$
 \end{proof}
 
@@ -3662,7 +3925,7 @@ $\mathbb{A}_f = \begin{pmatrix}
 \end{proof}
 
 
-В \textbf{Ex. 4.2.3.} мали 3 власних числа: $\lambda_1 = 1, \lambda_2 = 2,\lambda_3 = 3$\\
+В \exref{find_eigenvectors} мали 3 власних числа: $\lambda_1 = 1, \lambda_2 = 2,\lambda_3 = 3$.\\
 І також ми мали власні вектори: $\vec{f_1} = \begin{pmatrix}
 1 \\ 1 \\ 1
 \end{pmatrix}, \vec{f_2} = \begin{pmatrix}
@@ -4260,8 +4523,7 @@ $z = \left(\tau_1 f_1 + \alpha_1^0 h_1^1 + \alpha_1^1 h_1^2 + \dots + \alpha_1^{
 
 \begin{theorem}
 Задано $A: L \to L$ - лінійний оператор, маємо базис власних та приєднаних $\{\underset{\lambda_1}{f_1, h_1^1, \dots ,h_1^{k_1}}, \hspace{1cm} \underset{\lambda_2}{f_2, h_2^1, \dots, h_2^{k_2}}, \hspace{1cm} \dots \hspace{1cm} \underset{\lambda_m}{f_m, h_m^{1}, \dots, h_m^{k_m}}\}$.\\
-Позначимо $L_j = span\{f_j, h_j^1,\dots, h_j^{k_j}\}$. Тоді $L_j$ - інваріантні відносно $A$ та \\ 
-$L = L_1 \dot{+} L_2 \dot{+} \dots \dot{+} L_m$.
+Позначимо $L_j = span\{f_j, h_j^1,\dots, h_j^{k_j}\}$. Тоді $L_j$ - інваріантні відносно $A$ та $L = L_1 \dot{+} L_2 \dot{+} \dots \dot{+} L_m$.
 \end{theorem}
 
 \begin{proof}
@@ -4318,7 +4580,141 @@ $ - \textbf{Жорданова форма матриці}.
 \end{tikzcd}
 \\
 Розглядаємо базисні елементи жорданового базису. Будуємо матрицю $\mathbb{U}$ оператора переходу від одного базису до іншого. Отримаємо зв'язок:\\
-$\mathbb{A}_e = \mathbb{U} \mathbb{A}_{J} \mathbb{U}^{-1}$.\\
+$\mathbb{A}_e = \mathbb{U} \mathbb{A}_{J} \mathbb{U}^{-1}$.
+
+\begin{example}
+Задано матрицю оператора $\mathbb{A} = \begin{pmatrix}
+0 & 1 & 0 & 0 \\
+-1 & 2 & 0 & 0 \\
+-2 & 2 & 1 & 0 \\
+0 & 1 & 0 & -1
+\end{pmatrix}$. Знайдемо жорданову форму.\\
+$\det(\mathbb{A}-\lambda \mathbb{I}) = \dots = (\lambda - 1)^3(\lambda + 1) = 0$.\\
+$\lambda = -1$:\\
+$(\mathbb{A} - \lambda \mathbb{I}) \vec{f} = \begin{pmatrix}
+1 & 1 & 0 & 0 \\
+-1 & 3 & 0 & 0 \\
+-2 & 2 & 2 & 0 \\
+0 & 1 & 0 & 0
+\end{pmatrix} \vec{f} = \vec{0}$\\
+$\begin{pmatrix}
+1 & 1 & 0 & 0 \\
+-1 & 3 & 0 & 0 \\
+-2 & 2 & 2 & 0 \\
+0 & 1 & 0 & 0
+\end{pmatrix} \sim \begin{pmatrix}
+1 & 1 & 0 & 0 \\
+0 & 4 & 0 & 0 \\
+0 & 4 & 2 & 0 \\
+0 & 1 & 0 & 0
+\end{pmatrix} \sim \begin{pmatrix}
+1 & 1 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 2 & 1 & 0 \\
+0 & 1 & 0 & 0
+\end{pmatrix} \sim \begin{pmatrix}
+1 & 1 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}$\\
+$\vec{f} = \begin{pmatrix}
+0 \\ 0 \\ 0 \\ f_4
+\end{pmatrix} = f_1 \begin{pmatrix}
+0 \\ 0 \\ 0 \\ 1
+\end{pmatrix} \implies \vec{f} \in span \left\{ \begin{pmatrix}
+0 \\ 0 \\ 0 \\ 1
+\end{pmatrix} \right\}$\\
+Можемо взяти власний вектор $\vec{f}_1 = \begin{pmatrix}
+0 \\ 0 \\ 0 \\ 1
+\end{pmatrix}$
+\bigskip \\
+$\lambda = 1$:\\
+$(\mathbb{A} - \lambda \mathbb{I}) \vec{f} = \begin{pmatrix}
+-1 & 1 & 0 & 0 \\
+-1 & 1 & 0 & 0 \\
+-2 & 2 & 0 & 0 \\
+0 & 1 & 0 & -2
+\end{pmatrix} \vec{f} = \vec{0}$\\
+$\begin{pmatrix}
+-1 & 1 & 0 & 0 \\
+-1 & 1 & 0 & 0 \\
+-2 & 2 & 0 & 0 \\
+0 & 1 & 0 & -2
+\end{pmatrix} \sim \begin{pmatrix}
+-1 & 1 & 0 & 0 \\
+0 & 1 & 0 & -2 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+\end{pmatrix}$\\
+$\vec{f} = \begin{pmatrix}
+f_2 \\ f_2 \\ f_3 \\ \dfrac{f_2}{2}
+\end{pmatrix} = f_2 \begin{pmatrix}
+1 \\ 1 \\ 0 \\ \dfrac{1}{2}
+\end{pmatrix} + f_3 \begin{pmatrix}
+0 \\ 0 \\ 1 \\ 0
+\end{pmatrix} = f_2 \begin{pmatrix}
+2 \\ 2 \\ 0 \\ 1
+\end{pmatrix} + f_3 \begin{pmatrix}
+0 \\ 0 \\ 1 \\ 0
+\end{pmatrix} \implies \vec{f} \in span\left\{ \begin{pmatrix}
+2 \\ 2 \\ 0 \\ 1
+\end{pmatrix}, \begin{pmatrix}
+0 \\ 0 \\ 1 \\ 0
+\end{pmatrix} \right\}$.\\
+Кількість л.н.з. векторів недостатня для базису. Тому має існувати приєднаний.\\
+$(\mathbb{A} - \lambda \mathbb{I}) \vec{h} = \begin{pmatrix}
+-1 & 1 & 0 & 0 \\
+-1 & 1 & 0 & 0 \\
+-2 & 2 & 0 & 0 \\
+0 & 1 & 0 & -2
+\end{pmatrix} \vec{h} = \vec{f}$\\
+$\begin{pmatrix}
+-1 & 1 & 0 & 0 & \vline & f_1 \\
+-1 & 1 & 0 & 0 & \vline & f_2 \\
+-2 & 2 & 0 & 0 & \vline & f_3 \\
+0 & 1 & 0 & -2 & \vline & f_4
+\end{pmatrix} \sim \begin{pmatrix}
+-1 & 1 & 0 & 0 & \vline & f_1 \\
+0 & 1 & 0 & -2 & \vline & f_4 \\
+0 & 0 & 0 & 0 & \vline & f_2 - f_1 \\
+0 & 0 & 0 & 0 & \vline & f_3 - 2f_1 \\
+\end{pmatrix}$\\
+Щоб система була сумісною, ми вимагатимемо $\begin{cases} f_2 - f_1 = 0 \\ f_3 - 2f_1 = 0 \end{cases} \implies \begin{cases} f_1 = f_2 \\ f_3 = 2f_1 \end{cases}$.\\
+Під такі умови можемо взяти власний вектор $\vec{f}_2 = \begin{pmatrix}
+2 \\ 2 \\ 4 \\ 1
+\end{pmatrix}$. Тоді для нього знайдуться такі приєднані вектори:\\
+$\vec{h} = \begin{pmatrix}
+-1 + 2h_4 \\ 1 + 2h_4 \\ h_3 \\ h_4
+\end{pmatrix} = \begin{pmatrix}
+-1 \\ 1 \\ 0 \\ 0
+\end{pmatrix} + h_3 \begin{pmatrix}
+0 \\ 0 \\ 1 \\ 0
+\end{pmatrix} + h_4 \begin{pmatrix}
+2 \\ 2 \\ 0 \\ 1 
+\end{pmatrix} \implies \vec{h} \in span \left\{ \begin{pmatrix}
+-1 \\ 1 \\ 0 \\ 0
+\end{pmatrix}, \begin{pmatrix}
+0 \\ 0 \\ 1 \\ 0
+\end{pmatrix}, \begin{pmatrix}
+2 \\ 2 \\ 0 \\ 1
+\end{pmatrix} \right\}$.\\
+Оберемо $\vec{h_2} = \begin{pmatrix}
+-1 \\ 1 \\ 0 \\ 0
+\end{pmatrix}$. Далі вже продовження не буде.\\
+Також візьмемо $\vec{f_3} = \begin{pmatrix}
+2 \\ 2 \\ 0 \\ 1
+\end{pmatrix}$, який не має продовження.\\
+Таким чином, ми отримаємо таку форму:\\
+$\mathbb{A}_J = \begin{pmatrix}
+-1 & 0 & 0 & 0 \\
+0 & 1 & 1 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}$
+\end{example}
+
+
 \subsection{Властивості жорданової форми матриці}
 Задано $A: L \to L$ - лінійний оператор.\\
 1. Кількість клітин Жордана, що відповідають власному числу $\lambda_0$, дорівнює кількості л.н.з. власних векторів з власним числом $\lambda_0$.
@@ -4398,7 +4794,7 @@ $\mathbb{A} = \begin{pmatrix}
 Сумарна розмірність клітин Жордана дорівнює кратності власних чисел як кореня характеристичного полінома $\det (\mathbb{A} - \lambda \mathbb{I})$.
 
 \begin{proof}
-Зв'язок матриці оператора $A: L \to L$ в деякому базисі та жордановою формою має таку формулу: $\mathbb{A} = \mathbb{U} \mathbb{A}_J \mathbb{U}^{-1}$. Тоді за \textbf{Prp 4.2.4.}, $\det (\mathbb{A}-\lambda \mathbb{I}) = \det (\mathbb{A}_J -\lambda \mathbb{I})$.\\
+Зв'язок матриці оператора $A: L \to L$ в деякому базисі та жордановою формою має таку формулу: $\mathbb{A} = \mathbb{U} \mathbb{A}_J \mathbb{U}^{-1}$. Тоді за \prpref{change_of_basis_characteristic_polynomial}, $\det (\mathbb{A}-\lambda \mathbb{I}) = \det (\mathbb{A}_J -\lambda \mathbb{I})$.\\
 $\det (\mathbb{A} - \lambda \mathbb{I}) = \det (\mathbb{A}_{J} - \lambda \mathbb{I}) = \det \begin{pmatrix}
 J(\lambda_1) - \lambda \mathbb{I} & \dots & 0 \\
 \vdots & \ddots & \vdots \\
@@ -4433,7 +4829,6 @@ $\boxed{=} (\lambda_1-\lambda)^{k_1}(\lambda_2-\lambda)^{k_2} \dots (\lambda_m-\
 Кількість клітин для кожного власного числа та заданою розмірністю $k \times k$ визначається числом $R_k$. Отже, для $A$ це визначається однозначно.\\
 Наостанок: переставленню клітин у Жорданової формі відповідає переставлення ланцюжків з власного та башти приєднаних до нього векторів.
 \end{proof}
-
 
 \subsection{Застосування жорданової форми: функції від операторів, матриць}
 \begin{definition}
@@ -4529,16 +4924,18 @@ $\implies f(J(\lambda_j)) = \begin{pmatrix}
 \end{pmatrix}$\\
 Ну а далі просто підсумовуємо і отримуємо остаточні дані.
 \bigskip \\
-Особлива увага до функції $f \in C^{\infty}(\mathbb{R})$. Виникає питання, як знайти $f(A)$. Сама процедура аналогічна, а функція $f$ розкладається за Тейлором. Але існує єдина проблема - збіжність.
+
+Особлива увага до функції $f \in C^{\infty}(\mathbb{R})$. Виникає питання, як знайти $f(A)$. Сама процедура аналогічна, а функція $f$ розкладається за Тейлором. Але існує єдина проблема - збіжність. Про збіжність буду (напевно, колись) порушувати питання на функані.
 \bigskip \\
+
 Розділ завершу одним цікавим фактом:
 \begin{theorem}[Теорема Гамільтона-Келі]
 Задано $A: L \to L$ - лінійний оператор. Позначу характеристичний многочлен $\chi (\lambda) = \det (A-\lambda I)$.\\
 Тоді $\chi (A) = O$, де $O$ - нульовий оператор.\\
 \textit{Без доведення.}
 \end{theorem}
-
 \newpage
+
 \section{Евклідові простори та інше}
 \subsection{Евклідові простори}
 \begin{definition}
@@ -4554,23 +4951,24 @@ $\implies f(J(\lambda_j)) = \begin{pmatrix}
 \end{definition}
 
 \begin{example}
+\label{bilinear_functional}
 Розглянемо приклади білінійних функціоналів:\\
 \begin{tabular}{cll}
 1) & $L = \mathbb{R}^3$ & $\varphi(\vec{x},\vec{y}) = (\vec{x},\vec{y})$;\\
-2) & $L = \mathbb{R}_n[x]$ & $\varphi(f,g) = \huge \int_a^b f(x)g(x)\,dx$;\\
+2) & $L = \mathbb{R}_n[x]$ & $\varphi(f,g) = \displaystyle \int_a^b f(x)g(x)\,dx$;\\
 3) & $L = Mat(n \times n)$ & $\varphi(A,B) = tr(AB)$.
 \end{tabular}
 
 \end{example}
 
 \begin{example}
+\label{one_half_functional}
 Розглянемо приклади півторалінійних функціоналів:\\
 \begin{tabular}{cll}
 1) & $L = \mathbb{C}^2$ & $\varphi(\vec{z},\vec{w}) = z_1 \overline{w_1} + z_2 \overline{w_2}$;\\
-2) & $L = \mathbb{C}_n[x]$ & $\varphi(f,g) = \huge \int_a^b f(x) \overline{g}(x)\,dx$;\\
+2) & $L = \mathbb{C}_n[x]$ & $\varphi(f,g) = \displaystyle \int_a^b f(x) \overline{g}(x)\,dx$;\\
 3) & $L = Mat(n \times n)$ & $\varphi(A,B) = tr(A \overline{B}^T)$.
 \end{tabular}
-
 \end{example}
 
 \begin{definition}
@@ -4587,8 +4985,8 @@ $\implies f(J(\lambda_j)) = \begin{pmatrix}
 \end{definition}
 
 \begin{example}
-Приклади 1),2) в \textbf{Ex.5.1.2}, \textbf{Ex.5.1.3} лінійні простори є евклідовими, а задані функціонали - це скалярні добутки.\\
-Доведу лише для 1) \textbf{Ex. 5.1.3.}. Перевіряємо всі властивості:\\
+Приклади 1),2) в \exref{bilinear_functional}, \exref{one_half_functional} лінійні простори є евклідовими, а задані функціонали - це скалярні добутки.\\
+Доведу лише для 1) \exref{one_half_functional}. Перевіряємо всі властивості:\\
 1) $\varphi(\vec{z},\vec{z}) = z_1 \overline{z_1} + z_2 \overline{z_2} = |z_1|^2 + |z_2|^2 \in \mathbb{R}$ та $\varphi(\vec{z},\vec{z}) \geq 0$;\\
 2) $\varphi(\vec{z},\vec{z}) = 0 \iff |z_1|^2 + |z_2|^2 = 0 \iff \begin{cases} z_1 = 0 \\ z_2 = 0 \end{cases} \iff \vec{z} = \vec{0}$;\\
 3) $\varphi(\vec{z},\vec{w}) = z_1 \overline{w_1} + z_2 \overline{w_2} = \overline{\overline{z_1} w_1 + \overline{z_2} w_2} = \overline{\varphi(\vec{w},\vec{z}})$.\\
@@ -4601,7 +4999,7 @@ $\implies f(J(\lambda_j)) = \begin{pmatrix}
 
 \begin{example}
 Зокрема для $E = \mathbb{R}_n[x]$ ми маємо такі скалярні добутки:\\
-$(f,g) = \huge\int_a^b f(x)g(x)\,dx$;\\
+$(f,g) = \displaystyle\int_a^b f(x)g(x)\,dx$;\\
 $(f,g) = a_0 b_0 + a_1 b_1 + \dots + a_n b_n$, де $a_i,b_i$ - відповідно коефіцієнти $f,g$;\\
 $(f,g) = f(t_0)g(t_0) + f(t_1)g(t_1) + \dots + f(t_n)g(t_n)$, де $t_i \in \mathbb{R}$.
 \end{example}
@@ -4634,12 +5032,12 @@ $\implies |(x,y)|^2 \leq (x,x)(y,y)$.
 \end{proof}
 
 \begin{remark}
-$|(x,y)|^2 \leq (x,x)(y,y) \iff y = \alpha x$, де число $\alpha \in \mathbb{C}$ або $\mathbb{R}$.
+$|(x,y)|^2 = (x,x)(y,y) \iff y = \alpha x$, де число $\alpha \in \mathbb{C}$ або $\mathbb{R}$.
 \end{remark}
 
 \begin{example}
-Зокрема маємо скалярний добуток $(f,g) = \huge\int_a^b f(x)g(x)\,dx$. За нерівністю Коші-Буняковського,\\
-$\huge\int_a^b f(x)g(x)\,dx \leq \int_a^b f^2(x)\,dx \int_a^b g^2(x)\,dx$.
+Зокрема маємо скалярний добуток $(f,g) = \displaystyle\int_a^b f(x)g(x)\,dx$. За нерівністю Коші-Буняковського,\\
+$\displaystyle\int_a^b f(x)g(x)\,dx \leq \int_a^b f^2(x)\,dx \int_a^b g^2(x)\,dx$.
 \end{example}
 
 \subsection{Нормований простір та інші поняття}
@@ -4659,9 +5057,9 @@ $\huge\int_a^b f(x)g(x)\,dx \leq \int_a^b f^2(x)\,dx \int_a^b g^2(x)\,dx$.
 \begin{example}
 Розглянемо декілька прикладів нормованих просторів:\\
 \begin{tabular}{ll}
-1. $N = \mathbb{R}^n$, & $||\vec{x}|| = \huge \sum_{j=1}^n |x_j|$.\\
-2. $N = \mathbb{C}^n$, & $||\vec{z}|| = \huge \sqrt[p]{\sum_{j=1}^n |z_j|^p}$, $p>1$.\\
-3. $N = C([a,b])$, & $||f|| = \huge \max_{[a,b]} |f(x)|$.
+1. $N = \mathbb{R}^n$, & $||\vec{x}|| = \displaystyle \sum_{j=1}^n |x_j|$.\\
+2. $N = \mathbb{C}^n$, & $||\vec{z}|| = \displaystyle \sqrt[p]{\sum_{j=1}^n |z_j|^p}$, $p>1$.\\
+3. $N = C([a,b])$, & $||f|| = \displaystyle \max_{[a,b]} |f(x)|$.
 \end{tabular}
 \end{example}
 
@@ -4765,6 +5163,7 @@ $\alpha_j (x_j,x_j) = 0 \implies \alpha_j = 0$.
 \end{proof}
 
 \begin{proposition}
+\label{orthogonal_to_orthonormal}
 Задано $(E,(\cdot,\cdot))$ - евклідовий простір. Відомо, що система $\{x_1,\dots,x_m\}$ - ортогональна та $\norm{x_j} \neq 0, \forall j$. Тоді система $\{e_1,\dots,e_m\}$, де $e_j = \dfrac{x_j}{\norm{x_j}}$ - ортонормована.\\
 \textit{Зрозуміло.}
 \end{proposition}
@@ -4790,7 +5189,7 @@ $\begin{cases}
 $\alpha_{31} = \dfrac{(x_3, \tilde{e_1})}{(\tilde{e_1},\tilde{e_1})} \hspace{1cm} \alpha_{32} = \dfrac{(x_3, \tilde{e_2})}{(\tilde{e_2},\tilde{e_2})}$\\
 $\vdots$\\
 Узагальнюючи, отримаємо наступне:\\
-$\tilde{e_k} = x_k - \alpha_{k1} \tilde{e_1} - \dots - \alpha_{k k-1} \tilde{e_{k-1}} = x_k - \huge\sum_{s=1}^{k=1} \alpha_{ks} \tilde{e_s}$\\
+$\tilde{e_k} = x_k - \alpha_{k1} \tilde{e_1} - \dots - \alpha_{k k-1} \tilde{e_{k-1}} = x_k - \displaystyle\sum_{s=1}^{k=1} \alpha_{ks} \tilde{e_s}$\\
 $\alpha_{ks} = \dfrac{(x_k, \tilde{e_s})}{(\tilde{e_s},\tilde{e_s})}$, де число $s = \overline{1,k-1}$. Більш того, зрозуміло, що $\{x_1,\dots,x_k\} \sim \{\tilde{e_1},\dots, \tilde{e_k}\}$.\\
 Оці всі дослідження справедливі $\forall k = \overline{1,m}$.
 \bigskip \\
@@ -4801,7 +5200,7 @@ $\alpha_{ks} = \dfrac{(x_k, \tilde{e_s})}{(\tilde{e_s},\tilde{e_s})}$, де чи
 \textit{Бо інакше система стане л.н.з., а ранг системи збільшиться на одиничку.}\\
 У цьому випадку елемент $x_{k+1}$ ми викидуємо та продовжуємо ортогоналізацію.
 \bigskip \\
-Остання дія - це ортонормуємо нашу систему за \textbf{Prp 5.3.4.} і отримаємо бажану систему $\{e_1,\dots,e_k\}$ - ортонормована система.
+Остання дія - це ортонормуємо нашу систему за \prpref{orthogonal_to_orthonormal} і отримаємо бажану систему $\{e_1,\dots,e_k\}$ - ортонормована система.
 \bigskip \\
 Процес ортогоналізації позначатиму далі так: $\{x_1,\dots,x_m\} \overset{\text{Gram-Schmidt}}{\longrightarrow} \{e_1,\dots,e_m\}$.
 
@@ -5073,7 +5472,7 @@ $ort_L \vec{z} = \vec{z} - pr_L \vec{z} = \begin{pmatrix}
 Маємо $(E,(\cdot, \cdot))$ - евклідовий простір. Розглянемо $L = span\{a_1,\dots,a_m\}$ - всі вектори всередині л.н.з.\\
 $z \in E \implies z = pr_L z + ort_L z$\\
 Оскільки $pr_L z \in L$, то тоді $pr_L z = \alpha_1 a_1 + \dots + \alpha_m a_m$.\\
-$ort_L z = z - pr_L z = \huge z - \alpha_1 a_1 - \dots - \alpha_m a_m$.\\
+$ort_L z = z - pr_L z = \displaystyle z - \alpha_1 a_1 - \dots - \alpha_m a_m$.\\
 Оскільки $ort_L z \in L^\perp$, а елементи $a_1,\dots,a_m \in L$, то звідси $z \perp a_1, \dots, z \perp a_m$.\\
 $\begin{cases}
 (ort_L z, a_1) = 0 \\
@@ -5081,9 +5480,9 @@ $\begin{cases}
 (ort_L z, a_m) = 0 \\
 \end{cases} \implies
 \begin{cases}
-(\huge z - \alpha_1 a_1 - \dots - \alpha_m a_m, a_1) = 0 \\
+(\displaystyle z - \alpha_1 a_1 - \dots - \alpha_m a_m, a_1) = 0 \\
 \vdots \\
-(\huge z - \alpha_1 a_1 - \dots - \alpha_m a_m,a_m) = 0 \\
+(\displaystyle z - \alpha_1 a_1 - \dots - \alpha_m a_m,a_m) = 0 \\
 \end{cases} \implies
 \begin{cases}
 \alpha_1 (a_1,a_1) + \dots + \alpha_m (a_m,a_1) = (z,a_1) \\
@@ -5117,7 +5516,7 @@ $\\
 $\norm{z-y}^2 = \norm{pr_L z + ort_L z - y}^2 = (ort_L z + [pr_L z - y], ort_L z + [pr_L z - y]) = \\ = (ort_L z, ort_L z) + (pr_L z - y,ort_L z) + (ort_L z,pr_L z - y) + (pr_L z-y, pr_L z-y) \boxed{=}$\\
 Зауважимо, що $ort_L z \in L^\perp$, а $pr_L z - y \in L$. Тому $(pr_L z-y,ort_L z) = (ort_L z, pr_L z -y) = 0$.\\
 $\boxed{=} \norm{ort_L z}^2 + \norm{pr_L z - y}^2 \geq \norm{ort_L z}^2$.\\
-Таким чином, $\forall y \in L: \norm{ort_L z} \leq \norm{z-y} \implies \norm{ort_L z} = \huge\inf_{y \in L} \norm{z-y} = \rho(z,L)$.\\
+Таким чином, $\forall y \in L: \norm{ort_L z} \leq \norm{z-y} \implies \norm{ort_L z} = \displaystyle\inf_{y \in L} \norm{z-y} = \rho(z,L)$.\\
 Згідно з ланцюга нерівності, $\rho (z,L)$ досягається при $y = pr_L z$.
 \end{proof}
 
@@ -5263,6 +5662,7 @@ $\implies (AB)^* = B^* A^*$
 \end{proof}
 
 \begin{theorem}
+\label{euclid_decomposition}
 Задано $(E,(\cdot,\cdot))$ - евклідовий простір та $A: E \to E$ - лінійний оператор.\\
 Тоді $E = \ker A^* \bigoplus \Im A$, \hspace{2cm} або $E = \ker A \bigoplus \Im A^*$.
 \end{theorem}
@@ -5393,9 +5793,10 @@ A^* = A
 \end{proposition}
 
 \begin{theorem}
+\label{euclid_decomposition_2}
 Задано $(E,(\cdot,\cdot))$ - евклідовий простір та $A: E \to E$ - самоспряжений.\\
 Тоді $E = \ker A \bigoplus \Im A$.\\
-\textit{Випливає з } \textbf{Th. 5.7.5}
+\textit{Випливає з } \thref{euclid_decomposition}
 \end{theorem}
 
 \begin{proposition}[Властивості власних чисел та власних векторів]
@@ -5426,7 +5827,7 @@ $\implies (f_1,f_2) = 0$
 \bigskip \\
 2. Крок індукції. Нехай для $\dim E < n$ теорема виконується.\\
 Перевіримо для $\dim E = n$.\\
-Нехай $\lambda_0$ - власне число $A$, розглянемо оператор $B = A - \lambda_0 I$ - теж самоспряжений за властивостями. Тоді за \textbf{Th. 5.8.3.}, маємо $E = \ker B \bigoplus \Im B$.\\
+Нехай $\lambda_0$ - власне число $A$, розглянемо оператор $B = A - \lambda_0 I$ - теж самоспряжений за властивостями. Тоді за \thref{euclid_decomposition_2}, маємо $E = \ker B \bigoplus \Im B$.\\
 1) Оскільки $\ker B \neq \{0\}$, то нехай $\{e_1,\dots,e_k\}$ - ортонормований (уже застосували процес) базис $\ker B$. Всі вони є власними векторами власного числа $\lambda_0$.\\
 2) $\Im B$ є інваріантним для $A$. Дійсно:\\
 $\forall y \in \Im B: y = Bx = (A-\lambda_0 I)x \implies Ay = A(A-\lambda_0 I)x = (A-\lambda_0 I)(Ax) = B(Ax) \in \Im B$.\\
@@ -5510,15 +5911,15 @@ $\implies U$ - унітарний.
 $(g_j,g_k) = (Uf_j, Uf_k) = (f_j,f_k) = \begin{cases} 1 & j = k \\ 0 & j \neq k \end{cases}$.
 \bigskip \\
 \leftproof Дано: $\{f_1,\dots,f_n\}$, $\{g_1,\dots,g_n\}$ - два ортонормованих базиси, де $Uf_j = g_j$ - умова перевода з одного базису в інший.\\
-$\forall x \in E: x = \huge \sum_{j=1}^n x_j f_j$
+$\forall x \in E: x = \displaystyle \sum_{j=1}^n x_j f_j$
 \hspace{2.3cm}
-$\forall y \in E: y = \huge \sum_{k=1}^n y_k f_k \implies$\\
-$Ux = \huge U\left(\sum_{j=1}^n x_j f_j \right) = \sum_{j=1}^n x_j g_j$
+$\forall y \in E: y = \displaystyle \sum_{k=1}^n y_k f_k \implies$\\
+$Ux = \displaystyle U\left(\sum_{j=1}^n x_j f_j \right) = \sum_{j=1}^n x_j g_j$
 \hspace{0.8cm}
-$Uy = \huge U\left(\sum_{k=1}^n y_k f_k \right) = \sum_{k=1}^n y_k g_k \implies$\\
-$\huge (Ux, Uy) = \left(\sum_{j=1}^n x_j g_j, \sum_{k=1}^n y_k g_k \right) = \sum_{j=1}^n \sum_{k=1}^n x_j \overline{y_k} (g_j,g_k) \boxed{=}$\\
+$Uy = \displaystyle U\left(\sum_{k=1}^n y_k f_k \right) = \sum_{k=1}^n y_k g_k \implies$\\
+$\displaystyle (Ux, Uy) = \left(\sum_{j=1}^n x_j g_j, \sum_{k=1}^n y_k g_k \right) = \sum_{j=1}^n \sum_{k=1}^n x_j \overline{y_k} (g_j,g_k) \boxed{=}$\\
 Оскільки обидві базиси ортонормовані, то $(g_j,g_k) = (f_j,f_k) = \begin{cases} 1 & j = k \\ 0 & j \neq k \end{cases}$.\\
-$\boxed{=} \huge \sum_{j=1}^n \sum_{k=1}^n x_j \overline{y_k} (f_j,f_k) = \left(\sum_{j=1}^n x_jf_j, \sum_{k=1}^n y_k f_k \right) = (x,y)$.\\
+$\boxed{=} \displaystyle \sum_{j=1}^n \sum_{k=1}^n x_j \overline{y_k} (f_j,f_k) = \left(\sum_{j=1}^n x_jf_j, \sum_{k=1}^n y_k f_k \right) = (x,y)$.\\
 Остаточно, $U$ - унітарний оператор.
 \end{proof}
 
@@ -5627,10 +6028,10 @@ $A = U \mathbb{A}_{f} U^{-1} = U \mathbb{A}_{f} U^{*}$\\
 Тоді\\
 $S(x) = (x,Ax) = (x,U \mathbb{A}_{f} U^{*} x) = (U^*x, \mathbb{A}_{f} U^{*} x) =$\\
 $U^* x = y = y_1f_1 + \dots + y_nf_n$\\
-$= \huge \left(\sum_{j=1}^n y_jf_j, \mathbb{A}_{f} \sum_{k=1}^n y_k f_k \right) \sum_{j=1}^n \sum_{k=1}^n y_j \overline{y_k} (f_j, \mathbb{A}_f f_k) = \sum_{j=1}^n \sum_{k=1}^n y_j \overline{y_k} \lambda_k (f_j,f_k) = \sum_{j=1}^n \lambda_j (y_j)^2$\\
+$= \displaystyle \left(\sum_{j=1}^n y_jf_j, \mathbb{A}_{f} \sum_{k=1}^n y_k f_k \right) \sum_{j=1}^n \sum_{k=1}^n y_j \overline{y_k} (f_j, \mathbb{A}_f f_k) = \sum_{j=1}^n \sum_{k=1}^n y_j \overline{y_k} \lambda_k (f_j,f_k) = \sum_{j=1}^n \lambda_j (y_j)^2$\\
 Висновок: дійснозначна квадратична форма $S(x) = (x,Ax)$ має канонічний вигляд:\\
-$S(x) = \huge \sum_{j=1}^n \lambda_j (y_j)^2$\\
-$U^*x = y = \huge \sum_{j=1}^n y_j f_j$\\
+$S(x) = \displaystyle \sum_{j=1}^n \lambda_j (y_j)^2$\\
+$U^*x = y = \displaystyle \sum_{j=1}^n y_j f_j$\\
 \subsection{Знаковизначеність лінійного оператора, матриці}
 Заданий $E$ - евклідовий простір із $(\cdot,\cdot)$ і $A$ - самоспряжений оператор\\
 (Або заданий $E = \mathbb{R}^n (\mathbb{C}^n)$ - евклідовий простір із $(\cdot,\cdot)$ і $\mathbb{A}$ - симетрична матриця)\\
@@ -5648,10 +6049,10 @@ $A > 0 \iff$ всі власні числа $\lambda_j > 0$\\
 $A < 0 \iff$ всі власні числа $\lambda_j < 0$\\
 Для нестрогих нерівностей теж саме\\
 \proof
-$S(x) = (Ax,x) = \huge \sum_{j=1}^n \lambda_j |y_j|^2$\\
+$S(x) = (Ax,x) = \displaystyle \sum_{j=1}^n \lambda_j |y_j|^2$\\
 $A > 0 \Rightarrow \forall x \Rightarrow \forall \vec{y} = \begin{pmatrix}
 y_1 \\ \dots \\ y_n
-\end{pmatrix}: \huge \sum_{j=1}^n \lambda_j |y_j|^2 > 0 \Rightarrow$\\
+\end{pmatrix}: \displaystyle \sum_{j=1}^n \lambda_j |y_j|^2 > 0 \Rightarrow$\\
 $\vec{y} = \begin{pmatrix}
 1 \\ 0 \\ \dots \\ 0
 \end{pmatrix}, \lambda_1 > 0 \dots \vec{y} = \begin{pmatrix}
@@ -5724,14 +6125,14 @@ $\implies A_{sym}(x,y) - \tilde{A}_{sym}(x,y) = \tilde{A}_{skew}(x,y) - A_{skew}
 Задамо $L$ - лінійний простір, $\{f_1,\dots,f_n\}$ - базис та $B$ - білінійна форма.\\
 $x \in L \implies x = \xi_1 f_1 + \dots + \xi_n f_n$\\
 $y \in L \implies y = \eta_1 f_1 + \dots + \eta_n f_n$\\
-$B(x,y) = B(\xi_1 f_1 + \dots + \xi_n f_n, \eta_1 f_1 + \dots + \eta_n f_n) = \huge\sum_{i,j=1}^n \xi_i \eta_j b_{ij}$, де $b_{ij} = B(f_i,f_j)$.\\
+$B(x,y) = B(\xi_1 f_1 + \dots + \xi_n f_n, \eta_1 f_1 + \dots + \eta_n f_n) = \displaystyle\sum_{i,j=1}^n \xi_i \eta_j b_{ij}$, де $b_{ij} = B(f_i,f_j)$.\\
 Таким чином, білінійну форму можна задати однозначно формулою:
 \begin{align*}
 B(x,y) = \sum_{i,j=1}^n \xi_i \eta_j b_{ij}
 \end{align*}
 
 Оскільки $L \cong \mathbb{R}^n$, то формулу можна записати в матричному вигляді:\\
-$B(x,y) = \huge\sum_{i,j=1}^n \xi_i \eta_j b_{ij} = \xi_1 \left( \eta_1 b_{11} + \eta_2 b_{12} + \dots + \eta_n b_{1n} \right) + \dots + \xi_n \left( \eta_1 b_{n1} + \eta_2 b_{n2} + \dots + \eta_n b_{nn} \right) = \\ = \begin{pmatrix}
+$B(x,y) = \displaystyle\sum_{i,j=1}^n \xi_i \eta_j b_{ij} = \xi_1 \left( \eta_1 b_{11} + \eta_2 b_{12} + \dots + \eta_n b_{1n} \right) + \dots + \xi_n \left( \eta_1 b_{n1} + \eta_2 b_{n2} + \dots + \eta_n b_{nn} \right) = \\ = \begin{pmatrix}
 \xi_1 & \xi_2 & \dots & \xi_n
 \end{pmatrix} \begin{pmatrix}
 \eta_1 b_{11} + \eta_2 b_{12} + \dots + \eta_n b_{1n} \\
@@ -5765,7 +6166,7 @@ B(x,y) = \vec{x}^T \mathbb{B} \vec{y}
 \textbf{Висновок:} будь-яку білінійну форму в деякому базисі можна представити матрицею єдиним чином.
 \bigskip \\
 Поставимо зворотнє питання: чи задають матриці білійні форми в заданому базисі?\\
-Нехай $\{f_1,\dots,f_n\}$ - базис $L$ та матриця $\mathbb{B}$ задані. Встановимо форму $B(x,y) = \huge\sum_{i,j=1}^n b_{ij}\xi_i \eta_j$.\\
+Нехай $\{f_1,\dots,f_n\}$ - базис $L$ та матриця $\mathbb{B}$ задані. Встановимо форму $B(x,y) = \displaystyle\sum_{i,j=1}^n b_{ij}\xi_i \eta_j$.\\
 Зрозуміло, що дана форма є білінійною.\\
 \textbf{Висновок:} будь-яка матриця задає білійну форму в деякому базисі.
 
@@ -5782,7 +6183,7 @@ B(x,y) = \vec{x}^T \mathbb{B} \vec{y}
 
 \begin{proof}
 Маємо $B(x,y) = \vec{x}^T \mathbb{B} \vec{y}$. Тоді $\tilde{B}(x,y) = B(y,x) = \vec{y}^T \mathbb{B} \vec{x}$. Перепишемо в зручному вигляді, щоб був спочатку $\vec{x}$, а потім $\vec{y}$:\\
-$\tilde{B}(x,y) = \huge\sum_{i,j=1}^n \eta_i \xi_j b_{ij} = \huge\sum_{j,i=1}^n \xi_j \eta_i b_{ij} = \vec{x}^T \begin{pmatrix}
+$\tilde{B}(x,y) = \displaystyle\sum_{i,j=1}^n \eta_i \xi_j b_{ij} = \displaystyle\sum_{j,i=1}^n \xi_j \eta_i b_{ij} = \vec{x}^T \begin{pmatrix}
 b_{11} & b_{21} & \dots & b_{n1} \\
 b_{12} & b_{22} & \dots & b_{n2} \\
 \vdots & \vdots & \ddots & \vdots \\
@@ -5886,7 +6287,7 @@ A(x) \arrow{rr}{\textrm{поляризаційна ф-ла}} && B_{sym}(x,y) \ar
 
 Із означення випливає, що квадратична форма в базисі $\{f_1,\dots,f_n\}$ простору $L$ може бути записана так:
 \begin{align*}
-A(x) = \huge\sum_{i,j=1}^n a_{ij} \xi_i \xi_j
+A(x) = \displaystyle\sum_{i,j=1}^n a_{ij} \xi_i \xi_j
 \end{align*}
 де $a_{ij} = B(f_i,b_j)$. Кожній квадратичній формі відповідає симетрична матриця
 \begin{align*}
@@ -5912,7 +6313,7 @@ A(x) = \vec{x}^T \mathbb{A} \vec{x}
 \end{definition}
 
 \subsection{Зведення квадратичної форми до суми квадратів}
-Маємо квадратичну форму \\ $A(x) = \huge\sum_{i,j=1}^n a_{ij} \xi_i \xi_j = (a_{11}\xi_1^2 + a_{12}\xi_1\xi_2 + \dots + a_{1n}\xi_1 \xi_n) + (a_{21}\xi_2\xi_1 + a_{22}\xi_2^2 + \dots + a_{2n}\xi_2 \xi_n) + \dots + \\ +
+Маємо квадратичну форму \\ $A(x) = \displaystyle\sum_{i,j=1}^n a_{ij} \xi_i \xi_j = (a_{11}\xi_1^2 + a_{12}\xi_1\xi_2 + \dots + a_{1n}\xi_1 \xi_n) + (a_{21}\xi_2\xi_1 + a_{22}\xi_2^2 + \dots + a_{2n}\xi_2 \xi_n) + \dots + \\ +
 (a_{n1}\xi_n \xi_1 + a_{n2}\xi_n\xi_2 + \dots + a_{nn}\xi_n^2)$. Вважаємо, що $A(x) \not\equiv 0$. \\
 Мета: звести квадратичну форму до вигляду $A(x) = \lambda_1 \eta_1^2 + \lambda_2 \eta_2^2 + \dots + \lambda_n \eta_n^2$.
 
@@ -5920,7 +6321,7 @@ A(x) = \vec{x}^T \mathbb{A} \vec{x}
 Розглянемо дві можливі випадки:\\
 I. $a_{11} = 0$. Не втрачаючи загальності, нехай $a_{12} \neq 0$. Тоді робимо таку заміну:\\
 $\xi_1 = \xi_1' - \xi_2'$, $\xi_2 = \xi_1' + \xi_2'$, $\xi_3 = \xi_3'$, \dots, $\xi_n = \xi_n'$.\\
-$A(x) = 2a_{12} (\xi_1' - \xi_2') (\xi_1' + \xi_2') + 2a_{13} (\xi_1'-\xi_2') \xi_3' + \dots + 2a_{1n} (\xi_1' - \xi_2')\xi_n' + \\ + a_{22}\xi_2^2 + 2a_{23}(\xi_1'+\xi_2') \xi_3' + \dots + 2a_{2n}(\xi_1'+\xi_2')\xi_n + \huge\sum_{i,j=3}^n a_{ij} \xi_i' \xi_j' = \dots \dots = \huge\sum_{i,j=1}^n a_{ij}' \xi_i' \xi_j'$.\\
+$A(x) = 2a_{12} (\xi_1' - \xi_2') (\xi_1' + \xi_2') + 2a_{13} (\xi_1'-\xi_2') \xi_3' + \dots + 2a_{1n} (\xi_1' - \xi_2')\xi_n' + \\ + a_{22}\xi_2^2 + 2a_{23}(\xi_1'+\xi_2') \xi_3' + \dots + 2a_{2n}(\xi_1'+\xi_2')\xi_n + \displaystyle\sum_{i,j=3}^n a_{ij} \xi_i' \xi_j' = \dots \dots = \displaystyle\sum_{i,j=1}^n a_{ij}' \xi_i' \xi_j'$.\\
 Коефіцієнт тепер при ${\xi_1'}^2$, тобто $a_{11}' = 2a_{12} \neq 0$.
 \bigskip \\
 II. $a_{11} \neq 0$. Тоді з квадратичної форми відокремлюємо групу доданків, що містять $\xi_1$, тобто\\
@@ -5932,9 +6333,9 @@ $a_{11}\xi_1^2 + 2a_{12} \xi_1 \xi_2 + \dots + 2a_{1n} \xi_1 \xi_n = \\
 Позначу $\eta_1 = \xi_1 + \dfrac{a_{12}}{a_{11}} \xi_2 + \dots + \dfrac{a_{1n}}{a_{11}} \xi_n$, а решта просто заміна літери: $\xi_2 = \eta_2, \dots, \xi_n = \eta_n$.\\
 $\boxed{=} a_{11}\eta_1^2 - \dfrac{a_{12}^2}{a_{11}} \eta_2^2 - \dots - \dfrac{a_{1n}^2}{a_{11}} \eta_n^2 - 2 \dfrac{a_{12} a_{13}}{a_{11}}\eta_2 \eta_3 - \dots - 2 \dfrac{a_{1 n-1} a_{1n}}{a_{11}} \eta_{n-1}\eta_n$.\\
 Таким чином, отримаємо квадратичну форму\\
-$A(x) = a_{11}\eta_1^2 + \huge\sum_{i,j=2}^n a_{ij} \eta_i \eta_j - \dfrac{a_{12}^2}{a_{11}} \eta_2^2 - \dots - \dfrac{a_{1n}^2}{a_{11}} \eta_n^2 - 2 \dfrac{a_{12} a_{13}}{a_{11}}\eta_2 \eta_3 - \dots - 2 \dfrac{a_{1 n-1} a_{1n}}{a_{11}} \eta_{n-1}\eta_n = \\ = a_{11}\eta_1^2 + \huge\sum_{i,j=1}^n a_{ij}^* \eta_i \eta_j$.
+$A(x) = a_{11}\eta_1^2 + \displaystyle\sum_{i,j=2}^n a_{ij} \eta_i \eta_j - \dfrac{a_{12}^2}{a_{11}} \eta_2^2 - \dots - \dfrac{a_{1n}^2}{a_{11}} \eta_n^2 - 2 \dfrac{a_{12} a_{13}}{a_{11}}\eta_2 \eta_3 - \dots - 2 \dfrac{a_{1 n-1} a_{1n}}{a_{11}} \eta_{n-1}\eta_n = \\ = a_{11}\eta_1^2 + \displaystyle\sum_{i,j=1}^n a_{ij}^* \eta_i \eta_j$.
 \bigskip \\
-А потім розглядаємо квадратичну форму $A'(x) = \huge\sum_{i,j=1}^n a_{ij}^* \eta_i \eta_j$ та робимо ті самі процедури, якщо $A'(x) \not\equiv 0$. При цьому координата $\eta_1$ не буде змінюватись. Кількість таких процедур буде скінченна, до $n$ разів.\\
+А потім розглядаємо квадратичну форму $A'(x) = \displaystyle\sum_{i,j=1}^n a_{ij}^* \eta_i \eta_j$ та робимо ті самі процедури, якщо $A'(x) \not\equiv 0$. При цьому координата $\eta_1$ не буде змінюватись. Кількість таких процедур буде скінченна, до $n$ разів.\\
 Тоді ми й отримаємо бажаний результат:\\
 $A(x) = \lambda_1 \eta_1^2 + \dots + \lambda_n \eta_n^2$. (не обов'язково всі $\lambda_i \neq 0$).
 
@@ -6080,7 +6481,7 @@ $\begin{cases}
 a_{11}\xi_1 + \dots + a_{1k}\xi_k = 0 | \cdot \xi_1 \\
 \vdots \\
 a_{k1}\xi_1 + \dots + a_{kk}\xi_k = 0 | \cdot \xi_k \\
-\end{cases} \implies \huge\sum_{i,j=1}^k a_{ij}\xi_i \xi_j = 0$.\\
+\end{cases} \implies \displaystyle\sum_{i,j=1}^k a_{ij}\xi_i \xi_j = 0$.\\
 Тоді якщо візьмемо елемент $x = \xi_1 f_1 + \dots + \xi_k f_k \in L$, то звідси $A(x) = 0$. Суперечність!\\
 Таким чином, $\forall i=\overline{1,n}: \Delta_i \neq 0$. А тепер запишемо квадратичну форму в канонічному вигляді:\\
 $A(x) = \Delta_1 x_1^2 + \dfrac{\Delta_2}{\Delta_1} x_2^2 + \dots + \dfrac{\Delta_n}{\Delta_{n-1}} x_n^2$.\\
@@ -6094,13 +6495,13 @@ $A(x) = \Delta_1 x_1^2 + \dfrac{\Delta_2}{\Delta_1} x_2^2 + \dots + \dfrac{\Delt
 \subsection{Квадратичні форми в евклідовому просторі}
 \begin{theorem}
 Задано $(E,(\cdot,\cdot))$ - евклідовий простір та $B(x,y)$ - симетрична білінійна форма. Тоді існує $\{e_1,\dots,e_n\}$ - ортонормований базис, для якого квадратична форма $A(x) = B(x,x)$ запишеться таким чином:\\
-$A(x) = \huge\sum_{k=1}^n \lambda_k \xi_k^2$, де $\lambda_k$ - власні числа.
+$A(x) = \displaystyle\sum_{k=1}^n \lambda_k \xi_k^2$, де $\lambda_k$ - власні числа.
 \end{theorem}
 
 \begin{proof}
 Оскільки $B$ - білінійна форма, то за теоремою Ріса, $\exists A: E \to E$, для якого $B(x,y) = (Ax,y)$. Причому $A$ - самоспряжений оператор. За спектральною теоремою, існує ортонормований базис $\{e_1,\dots,e_n\}$ із власних векторів оператора $A$.\\
 Маємо $x \in E \implies x = \xi_1 e_1 + \dots + \xi_n e_n$. Тоді $Ax = \lambda_1 \xi_1 e_1 + \dots + \lambda_n \xi_n e_n$. Лишилось записати квадратичну форму\\
-$A(x) = (Ax,x) = (\lambda_1 \xi_1 e_1 + \dots + \lambda_n \xi_n e_n, \xi_1 e_1 + \dots + \xi_n e_n) = \lambda_1 \xi_1^2 + \dots + \lambda_n \xi_n^2 = \huge\sum_{k=1}^n \lambda_k \xi_k^2$.
+$A(x) = (Ax,x) = (\lambda_1 \xi_1 e_1 + \dots + \lambda_n \xi_n e_n, \xi_1 e_1 + \dots + \xi_n e_n) = \lambda_1 \xi_1^2 + \dots + \lambda_n \xi_n^2 = \displaystyle\sum_{k=1}^n \lambda_k \xi_k^2$.
 \end{proof}
 
 \subsection{Зведення кривих та поверхень другого порядку до канонічного вигляду}
